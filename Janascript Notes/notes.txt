@@ -1,0 +1,920 @@
+## Undefined:
+   Its falsy value.
+   property attributes of undefined:
+     -> non-writabel
+     -> non-enumerable
+    undefined is primitive value that is automatically assigned to variable that has been declared but has not been assigned.
+     -> It can also be returned by function that doesn't explicitly return a value.
+     -> Example:
+       1) let x;
+          console.log(x)
+          //output- undefined;
+        2) function foo(){};
+          console.log(foo()) // undefined
+
+-----------
+
+## Null :
+  => Null is intentional absence of any object value.
+  => It can be assigned to varible to indicate that it has no value.
+  => Example:
+    1) let y=null;
+      console.log(y) //null;
+  
+  =>Undefined: varible is declared but not defined/assigned any value.
+  => Null: Varible has beeen explicitly set to no value.
+  => In JS both have a falsy value.
+  => Null==undefined // true
+  =>Null===Undefined //false
+
+---------------
+
+## Nan: Not A Number
+  => represent the result of an operation that is not a valid number.
+  =>Example: 1) devide 0 by 0 // console.log(0/0)
+              2) Square root of negative number // Math.sqrt(-1);
+              3) trying mathematical operation on a string //console.log(parseInt("hello");
+  => Nan===NaN // false;
+  => console.log(isNaN(NaN)); // outputs: true
+     console.log(isNaN(42)); // outputs: false
+     console.log(isNaN("hello")); // outputs: true
+
+----------------
+
+## Two arrays or objects are not equivalent:
+  Examples: [1,2]===[1,2] //false
+            {}==={} //false;
+
+--------------------------
+
+## Operators:
+
+Operator is a symbol or keyword that represents a specific action to be performed on one or more operands (values or variables).
+
+Unary operators operate on a single operand, while binary operators operate on two operands.
+
+Some examples of unary operators include:
+
+Unary minus (-) : negates the value of a numeric operand
+Logical not (!) : inverts the logical value of a boolean operand
+Increment (++) : adds 1 to the value of a numeric operand
+Decrement (--) : subtracts 1 from the value of a numeric operand
+Some examples of binary operators include:
+
+Addition (+) : adds two numeric operands
+Subtraction (-) : subtracts one numeric operand from another
+Multiplication (*) : multiplies two numeric operands
+Division (/) : divides one numeric operand by another
+Logical AND (&&) : returns true if both boolean operands are true
+Logical OR (||) : returns true if at least one of the boolean operands is true
+It's important to note that not all operators are unary or binary. For example, the ternary operator (?:) is a conditional operator that takes three operands.
+
+------------------------------------
+
+## Precedence:
+  =>Operator precedence determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.
+  =>Left-associativity (left-to-right) means that it is interpreted as (a OP1 b) OP2 c,
+  => while right-associativity (right-to-left) means it is interpreted as a OP1 (b OP2 c).
+  => a = b = 5; // same as writing a = (b = 5);
+  =>const a = 4 ** 3 ** 2; // Same as 4 ** (3 ** 2); evaluates to 262144
+  => const b = 4 / 3 / 2; // Same as (4 / 3) / 2; evaluates to 0.6666...
+  => when mixing division and exponentiation, the exponentiation always comes before the division. For example, 2 ** 3 / 3 ** 2 results in 0.8888888888888888 because it is the same as (2 ** 3) / (3 ** 2).
+  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence
+
+---------------------------------------------
+
+## Higher Order Functions:
+=> In JavaScript, higher-order functions are functions that operate on other functions by taking them as arguments, returning them as values, or both.
+=> They enable functional programming paradigms and are a fundamental concept in JavaScript programming.
+
+Here are some examples of higher-order functions in JavaScript:
+
+1) Map():
+  => The map() method creates a new array with the results of calling a provided function on every element in the original array.
+  => The provided function is a callback function that takes one argument, which is the current element being processed.
+  => Example: const numbers = [1, 2, 3, 4, 5];
+    const squareNumbers = numbers.map(function(num) {
+    return num * num;
+    });
+console.log(squareNumbers); // [1, 4, 9, 16, 25]
+
+2) Filter():
+  => The filter() method creates a new array with all elements that "pass the test implemented by the provided function".
+  => The provided function is a callback function that takes one argument, which is the current element being processed.
+  => Example:
+    const numbers = [1, 2, 3, 4, 5];
+    const evenNumbers = numbers.filter(function(num) {
+    return num % 2 === 0;
+    });
+    console.log(evenNumbers); // [2, 4]
+
+3) Reduce():
+  => The reduce() method applies a function against an "accumulator and each element in the array (from left to right) to reduce it to a single value".
+  => The provided function is a callback function that takes two arguments: the accumulator and the current element being processed.
+  => Example:
+     const numbers = [1, 2, 3, 4, 5];
+     const sum = numbers.reduce(function(acc, num) {
+     return acc + num;
+     }, 0);
+     console.log(sum); // 15
+
+4) Foreach():
+   =>  function that is used to iterate over an array and execute a provided callback function on each element in the array. 
+   => The callback function takes three arguments: the current element being processed, the index of the current element, and the array that forEach() was called upon.
+   => Example:
+      const numbers = [1, 2, 3, 4, 5];
+      numbers.forEach(function(number) {
+      console.log(number);
+      });
+      // 1
+      // 2
+      // 3
+      // 4
+      // 5
+
+------------------------------------
+
+## **Difference Between Parameters and Arguments :**
+
+- *Parameters* are variables listed as a part of the function definition.
+- *Arguments* are values passed to the function when it is invoked.
+-> function sum( a, b, c ) {}; // a, b, and c are the parameters
+
+   sum( 1, 2, 3 ); // 1, 2, and 3 are the arguments
+------------------------------------
+
+## Difference between var and const and let:
+    
+    => In JavaScript, var, let, and const are keywords used to declare variables. However, they differ in their behavior and scope.
+
+    => var was the original keyword used to declare variables in JavaScript, but it has some quirks that can lead to bugs. let and const were introduced in ES6 to address some of these issues.
+
+    =>Here's a summary of the differences between var, let, and const:
+
+    1) var: 
+        => Variables declared with var are function-scoped or globally-scoped.
+        => This means that they are accessible throughout the function or the global scope, regardless of where they are declared.
+        => var variables "can also be re-declared and updated".
+        => Example:
+            function example() {
+            var x = 10;
+            if (true) {
+            var x = 20; // re-declares the variable
+            console.log(x); // outputs 20
+            }
+            console.log(x); // outputs 20
+            }
+
+      2) let:
+          => Variables declared with let are block-scoped.
+          => This means that they are accessible only within the block where they are declared, including nested blocks.
+          => let variables "cannot be re-declared within the same block, but they can be updated".
+          => function example() {
+              let x = 10;
+              if (true) {
+              let x = 20; // does not re-declare the variable
+              console.log(x); // outputs 20
+              }
+              console.log(x); // outputs 10
+              }
+
+      3) const:
+          => Variables declared with const are also "block-scoped", but they are read-only.
+          => This means that once a variable is assigned with const, its value "cannot be changed".
+          => const variables must be assigned a value when they are declared.
+          => function example() {
+              const x = 10;
+              if (true) {
+              const x = 20; // does not re-declare the variable
+              console.log(x); // outputs 20
+               }
+              console.log(x); // outputs 10
+              }
+
+--------------------------
+
+## Hoisting :
+
+    => Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their respective scopes, before the code is executed.
+    => This means that you can use a variable or function before it is declared.
+    => However, it's important to note that only the declarations are hoisted, not the assignments. In other words, the value of a variable is not hoisted, only the variable name.
+    => Hoisting can only possible with var , let and const variables not allow the hoisting.
+    => Example:
+       1) x = 10; // assign a value to x
+       console.log(x); // outputs 10
+
+      var x; // declare the variable after it's been used
+       
+       2) example(); // call the function before it's been declared
+
+           function example() {
+            console.log('Hello, world!');
+          }
+          
+         Here's an example of hoisting in JavaScript:
+
+         x = 10; // assign a value to x
+         console.log(x); // outputs 10
+
+         var x; // declare the variable after it's been used
+         In this example, the assignment of x is executed before the variable declaration, but it still works because the variable declaration is hoisted to the top of the scope.
+
+         Here's another example with function hoisting:
+         example(); // call the function before it's been declared
+
+         function example() {
+         console.log('Hello, world!');
+         }
+         => In this example, the function declaration is hoisted to the top of the scope, so we can call the function before it's been declared.
+
+------------------------------------
+
+ ## Scopes in JavaScript
+
+   => In JavaScript, scopes determine the visibility and accessibility of variables and functions in different parts of your code.
+   =>There are two main types of scopes in JavaScript: global scope and local scope.
+
+    1) Global scope:
+       -> Variables and functions declared outside of any function or block are in the global scope.
+       -> This means that they are accessible throughout the entire code, including inside functions and blocks.
+       -> However, variables declared in the global scope can be overwritten accidentally and can cause unintended behavior.
+       -> Example:
+          var globalVariable = 'Hello, world!';
+
+          function example() {
+          console.log(globalVariable); // outputs 'Hello, world!'
+          }
+
+          console.log(globalVariable); // outputs 'Hello, world!'
+
+    2) Local scope:
+       -> Variables and functions declared inside a function or block are in the local scope.
+       -> This means that they are accessible only within the function or block where they are declared.
+       -> This can help to prevent accidental overwriting of variables and improve code organization.
+       -> Example:
+          function example() {
+          var localVariable = 'Hello, world!';
+          console.log(localVariable); // outputs 'Hello, world!'
+          }
+
+          console.log(localVariable); // throws an error
+
+  3) In addition to these two types of scopes, JavaScript also has function scope, which means that variables declared inside a function are not accessible outside of that function.
+     Example:
+        function example() {
+        var functionVariable = 'Hello, world!';
+        console.log(functionVariable); // outputs 'Hello, world!'
+        }
+
+        console.log(functionVariable); // throws an error
+
+  #* Lexical Scope:
+
+    => Lexical scope refers to "the way that variable names are resolved in a programming language". It is based on the physical structure of the code, and determines which variables are accessible in a particular part of the code.
+
+    => In JavaScript, lexical scope is determined by the placement of functions and blocks in the code. When a variable is declared inside a function or block, it is only accessible within that function or block and any nested functions or blocks.
+
+    Example:
+    function outer() {
+      const x = 10;
+
+      function inner() {
+        console.log(x); // 10
+      }
+
+      inner();
+    }
+
+    outer();
+
+    => Lexical scope is important for writing maintainable and modular code, because it allows you to control the visibility of variables and avoid naming collisions between different parts of your program. By keeping variables in their appropriate lexical scope, you can reduce the risk of unexpected behavior and make your code more predictable and reliable.
+
+
+----------------------------------
+
+## Promises 
+
+  => In JavaScript, a promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+  => Promises are a way to handle asynchronous code that is more readable and easier to reason about than traditional callback-based approaches.
+
+  => When you create a promise, it starts in a pending state, which means that the outcome of the operation is still unknown. Once the operation completes, the promise transitions to a resolved (fulfilled) or rejected state, and the corresponding handlers attached to the promise are called.
+
+ => Promises have three states:
+
+  1) Pending: The initial state, neither fulfilled nor rejected.
+  2) Fulfilled: The operation completed successfully, and the promise has a resulting value.
+  3) Rejected: The operation failed, and the promise has a reason for the failure.
+   
+  => You can create a promise using the Promise constructor, and you can attach handlers to it using the then method to handle the fulfilled state or the catch method to handle the rejected state. You can also chain multiple promises together using the then method, which returns a new promise that represents the eventual outcome of the chain.
+
+  => Example:
+  let getmeData=new Promise((resolve,rejecte)=>{
+    setTimeout(()=>{
+      let data=moviesData
+      if(data!==null){
+        resolve(data)
+      }else{
+        reject(''err:server could not find the movies data)
+      }
+    },3000);
+  });
+  getmeData.then((success)=>{
+  display(success)
+  .catch((error)=>{
+    console.log('error:',error)
+  })
+  })
+
+Promises provide a way to write more concise and maintainable asynchronous code in JavaScript, and they are widely used in modern web development frameworks and libraries.
+
+  => Example:
+    function prinHello(time){
+      return new Promise((res,resj)=>{
+        if(typeof time!==='number'){
+          rej('assignment of function should ne a number')
+          return
+        }
+        setTimeout(()=>{
+          res({status:200})
+        },time);
+      })
+    }
+    prinHello(2000)
+    .then(res=>console.log('printed after 2s'))
+    .catch(err=>console.log(err))
+
+  => Using async await
+  async function test(){
+    console.log('waiting for results')
+    let res=await prinHello(2000);
+    
+    console.log(res)
+    if(res.status===200){
+      return true
+    }
+  }
+  test()
+  .then(res=>{
+    console.log(res)
+  })
+  // async await return the promise hence we can use the .then on it.
+
+  Syntax:
+      
+      fetch('url')
+      .then((res)=>{
+        console.log(res.data)
+      })
+      .catch((err)=>console.log(err))
+
+
+-----------------------------------
+
+## Execution Context
+Execution context (EC) is defined as the environment in which the JavaScript code is executed. By environment, I mean what variables JavaScript code has access to at a particular time.
+
+Execution context changes when Js starts running a function, that context is called Functional Execution Context. Otherwise, its Global Execution Context by default.
+
+--------------------------------
+
+## Execution Stack
+
+Execution stack, also known as “calling stack” in other programming languages, is a stack with a LIFO (Last in, First out) structure, which is used to store all the execution context created during the code execution.
+
+When the JavaScript engine first encounters your script, it creates a global execution context and pushes it to the current execution stack.
+
+Whenever the engine finds a function invocation, it creates a new execution context for that function and pushes it to the top of the stack.
+
+-----------------------------
+
+## What is a prototype?
+
+A blueprint we can use to create a new object.
+An original object from which a new object is created.
+
+=> In JavaScript, prototype is a mechanism that allows objects to inherit properties and methods from other objects. It's a fundamental feature of the language's object-oriented programming model.
+
+=> The prototype chain is a way to look for properties and methods on an object's prototype and its prototype's prototype, and so on. This allows objects to share functionality without duplicating code.
+
+=> You can define the prototype of an object using the prototype property of a constructor function or using the Object.create() method. In JavaScript, functions are objects, so you can define a prototype for a function and then use that function as a constructor to create new objects with the same prototype.
+
+let obj={
+  name: "Dilip"
+}
+var obj2=Object.create(obj);
+console.log("obj2:"obj); // all obj will returned
+// console.log(obj2)
+
+=> Example:
+
+  var family(){
+    father:"Barku"
+    myFathet(){
+      console.log(this.father)
+    }
+  }
+
+  var son=Object.create(family){
+    console.log(son.father);
+    son.myFathet();
+    console.log('son:',son);
+  }
+
+  => Example:
+   function Person(n,a){
+    this.name = n;
+    this.age = a;
+   }
+   Pesron.prototype.setCity=function(c){
+    this.city=c
+   }
+   Person.prototype.eat=function(e){
+    this.eat=e
+   }
+
+   var.p1=new Person("Dilip",26)
+   p1.setCity('Nashik');
+   p1.eat('Veg')
+
+      var.p2=new Person("Kalpesh",26)
+   p1.setCity('Sinnar');
+   p1.eat('Non-veg')
+
+   console.log(p1);
+   // p1:Person{name:'Dilip',age:26,city:'Nashik',eat:'Veg'}
+   console.log(p2)
+   //   // p1:Person{name:'Kalpesh',age:26,city:'Sinnar',eat:'Veg'}
+
+  => Using prototypes can help reduce memory usage and make code more efficient by allowing objects to share common properties and methods. It also makes it easier to add new properties and methods to a group of related objects by modifying the prototype instead of each individual object.
+
+ ## What is inheritance?
+In simple terms, inheritance is the concept of one thing gaining the properties or behaviors of something else.
+
+To say A inherits from B, is saying that A is a type of B.
+
+a Bird inherits from an Animal because a Bird is a type of Animal - it has characteristics of every other animal, but other features as well.
+
+ ## Why Inheritance?
+It allows us to borrow properties and function methods of one object on another object. ( Inheritance )
+more reusable code
+
+-----------------------------------
+
+## Event Loop
+
+=> How Js keeps track of what to run when?
+
+## Call Stack
+    When you call a function in JavaScript all the instructions within that function get loaded into a Stack.
+
+    Javascript then executes the instructions in each function by popping them from the stack.
+
+## Callback queue
+    It’s a one more data structure that Js to add next code to execute.
+
+    Such code are called tasks, since they need more time to execute.
+
+    Tasks are added to the queue whenever Js finds a function which will take some time to execute like setTimeout.
+
+## Event loop:
+
+    Event loop runs a loop to keep on checking if anything is remaining in callback queue.
+
+    If function calls are still there, they are sent to call stack where they will be executed.
+
+    console.log(1); //stack
+
+    console.log(2); //stack
+
+    setTimeout(function () {
+      console.log(3);
+    }, 3000); //queue
+
+    console.log(4); //stack
+
+    //js looks for more code
+    //stack is empty, no more code!
+    //it will go to queue, will start lookign for code to execute
+    //it will add to stack
+
+
+-----------------------
+
+## Class:
+
+    Classes are syntactical sugar over the existing object/prototype oriented model in JavaScript. This means that it does not introduced any new features but improves upon old features.
+
+      They are similar to function constructors , but give you much more functionality with less code.
+
+        Example:
+
+        class Rectangle {
+          constructor(height, width) {
+            this.height = height;
+            this.width = width;
+          }
+        }
+
+        let box = new Rectangle(12, 13);
+        The constructor is a special function for initializing objects created with class. They work similar to function constructors.
+
+        They also support simple instance methods/functions with short declaration syntax.
+
+        class Rectangle {
+          constructor(height, width) {
+            this.height = height;
+            this.width = width;
+          }
+
+          area(){
+            return this.height * this.width;
+          }
+
+        }
+
+        let box = new Rectangle(12, 13);
+        box.area();
+
+----------------------------------
+
+## Inheritance
+Classes also support inheritance which means they can take properties and functions from other classes.
+
+For example, let's say we have two classes Car and Sedan.
+
+Car:
+
+class Car{
+  constructor(horsePower){
+    this.horsePower = horsePower;
+    this.fuel = 100;
+  }
+
+  consumeFuel(amount){
+    this.fuel -= amount;
+  }
+}
+let myCar = new Car(102);
+
+
+-----------------------------
+
+## super
+    Now what if we need to access the parent class's properties or functions in the child class?
+
+    Also what if we want to declare a constructor for our child class?
+
+    The super keyword is used to access and call functions on an object's parent.
+
+    Lets update our above example with the super keyword.
+
+    class Car{
+      constructor(horsePower, name){
+        this.horsePower = horsePower;
+        this.fuel = 100;
+        this.name = name;
+      }
+
+      consumeFuel(amount){
+        this.fuel -= amount;
+      }
+    }
+
+    class Sedan extends Car{
+      constructor(horsePower, name, numSeats){
+        super(horsePower, name);
+        this.numSeats = numSeats;
+      }
+      printName(){
+        console.log(this.name);
+      }
+
+      updateHorsePower(input){
+        super.horsePower = input;
+      }
+    }
+
+    let mySedan = new Sedan(150, 'Civic', 4);
+
+    mySedan.updateHorsePower(300);
+
+    // let car = new Sedan(1000, 'abc', 4);
+// console.log(car);
+// console.log(car.printName());
+// car.updateHorsePower(1500);
+// console.log(car)
+
+
+    It is important to note that when used in a constructor, the super keyword appears alone and must be used before the this keyword is used.
+
+----------------------------------
+
+## OOPS:
+  
+  Inheritance
+=> The property of acquiring all the properties and behaviors of the parent object by an object is termed as inheritance.
+=> This is a unique feature in object oriented programming languages which facilitates re-usability of the code of the parent class by the derived class.
+=> In JavaScript, extends keyword is used to serve the purpose of inheritance.
+
+Unlike old-school constructor functions where the new operator does the initialization of this to a newly-allocated object, this isn't automatically initialized for a class defined by the extends keyword, i.e the sub-classes.
+
+Therefore running the above code will give an error:
+
+Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor.
+
+-----------------------------
+
+## Encapsulation
+
+   => Encapsulation is the "packing of data and functions into one component" (for example, a class) and then controlling access to that component to make a "blackbox" out of the object. Because of this, a user of that class only needs to know its interface (that is, the data and functions exposed outside the class), not the hidden implementation.
+
+  => OOPs restrict direct access to its methods and variables by encapsulating the code and data together. There are two ways of encapsulation in Javascript:
+
+   1) Class fields are public by default, but private class members can be created by using a hash # prefix. The privacy encapsulation of these class features is enforced by JavaScript itself.
+
+   2) Private instance fields Private instance fields are declared with # names (pronounced "hash names"), which are identifiers prefixed with #. The # is a part of the name itself. Private fields are accessible on the class constructor from inside the class declaration itself. They are used for declaration of field names as well as for accessing a field's value.
+
+   It is a syntax error to refer to # names from out of scope. It is also a syntax error to refer to private fields that were not declared before they were called, or to attempt to remove declared fields with delete.
+
+   Making data members private using var keyword. Set the data using setter methods and get that data using getter methods. We can manage read and write access of object’s properties by using encapsulation.
+
+  Read Only Access : If we declare getter methods only then it facilitates the read only access. Write Only Access : If we declare setter methods only then it facilitates the write only access. Read & Write Access : If we declare both getter and setter methods then it facilitates both read and write access.
+
+## Why should Encapsulation to be used ?
+
+  Flexibility: It’s more flexible and easy to change the encapsulated code with new set of requirements. For example, if the requirement for adding/removing the project of a employee changes, we can easily update the logic in the setter method () or provided methods.
+
+  Reusability: Encapsulated code can be reused throughout the application or across multiple applications.
+
+  Maintainability: When application code is encapsulated in separate units (classes, interfaces, methods, getters/setters etc) so it’s easy to change or update a part of the application without affecting other parts, thus reducing the effort and time of the developer.
+
+  Testability: For an encapsulated class writing unit tests are easier as the member variables are not scattered all around, thus reducing the time and effort of the tester as well.
+
+  Data Hiding: The caller of the methods will have no idea about the internal logic of the class as the member variables are not visible to the caller function. Caller only knows the parameters which are to be passed to the setter method (or any method) for getting initialized with that value. For e.g
+
+
+  class ClassWithPrivateField {
+    #privateField;
+
+    constructor() {
+      this.#privateField = 42;
+    }
+  }
+
+  class SubClass extends ClassWithPrivateField {
+    #subPrivateField;
+
+    constructor() {
+      super();
+      this.#subPrivateField = 23;
+    }
+  }
+
+  let x = new ClassWithPrivateField();
+  console.log('x:', x.privateField);
+
+----------------------------
+
+## Abstraction :
+
+  =>An abstraction is a way of hiding the implementation details and showing only the functionality to the users. In other words, it ignores the irrelevant details and shows only the required one.
+
+  => Points to remember We cannot create an instance of Abstract Class. It reduces the duplication of code.
+
+-------------------------------
+
+## Polymorphism
+  => As JavaScript has a mechanism to support the OOPS paradigm, Polymorphism is one of the basic principles which is supported by it.
+  => As object-oriented programming concepts revolve mainly around objects the objects can behave differently in different scenarios.
+  => Polymorphism is nothing but one type but many forms.
+  => One type of object can behave differently depending upon the runtime scenario.
+  => Polymorphism uses the concept of Inheritance to achieve this.
+  => In polymorphism, multiple objects will have the same method but different implementation and depending upon the user preference the corresponding object will be selected and the method corresponding to that object will be executed.
+
+  => Example:
+  class Vehicle {
+    run() {
+    console.log( " Vehicle is running " );
+    }
+    }
+    class Car extends Vehicle {
+    run() {
+    console.log( " Car is running " );
+    }
+    }
+    class Truck extends Vehicle {
+    run() {
+    console.log( " Truck is running " );
+    }
+    }
+    var v1 = new Vehicle();
+    var v2 = new Car();
+    var v3 = new Truck();
+    console.log( v1 );
+    v1.run();
+    console.log( v2 );
+    v2.run();
+    console.log( v3 );
+    v3.run();
+
+    --------------------------------------------
+
+    ## Arrow Functions
+
+    => They have a shorter syntax, which makes them more concise and easier to read.
+    => They have an implicit ("not expressed in a direct way but understood by the people involved.") return statement, which means that if the function body is a single expression, it will be automatically returned.
+
+    => They have a lexical this binding, which means that the this value inside an arrow function is the same as the this value outside the function
+    
+    => While arrow functions have several advantages and are widely used in JavaScript, there are a few scenarios where they cannot be used or may not be suitable. Here are some cases where arrow functions should not be used:
+
+    1) As methods of an object: Arrow functions do not have their own this binding, so they cannot be used as methods of an object. In other words, if you need to access the object's properties or methods within the function, you should use a traditional function expression instead.
+
+    2) In constructors: Arrow functions cannot be used as constructors because they do not have a prototype property, which is required for creating new objects. If you need to create new objects based on a blueprint, you should use a traditional function expression instead.
+
+    3) With the arguments object: Arrow functions do not have their own arguments object, so they cannot be used to access the arguments passed to the function. If you need to access the arguments, you should use a traditional function expression instead.
+
+    4) With yield keyword: Arrow functions cannot be used with the yield keyword in a generator function, because they do not have their own this binding.
+
+    6) When you need to bind this to a different value: Arrow functions have a lexical this binding, which means that the value of this is determined by the surrounding context. If you need to bind this to a different value, you should use a traditional function expression instead.
+
+    => In summary, arrow functions are a powerful and useful feature in JavaScript, but they have some limitations and may not be suitable for all scenarios. It's important to understand when to use arrow functions and when to use traditional function expressions to write clean, maintainable, and bug-free code
+
+----------------------------------------------
+
+## Difference between .call , .apply and .bind
+
+=>In JavaScript, call, apply, and bind are three methods that can be used to call functions with a specific this value, as well as arguments to be passed to the function.
+=> Here's the difference between them:
+
+1) .call():
+   -> call: The call() method is a function method that allows you to call a function with a given this value and "arguments provided individually".
+   -> With call(), you can pass arguments to the function one by one, separated by commas.
+
+   -> Example:
+
+      function greet() {
+      console.log(`Hello, ${this.name}`);
+      }
+
+      const person = {
+        name: 'Alice'
+      };
+
+      greet.call(person); // Output: Hello, Alice
+    -----------------
+      Example-2:
+      let person2 ={
+        name:'Dilip'
+      }
+      function myName(age,city) {
+        this.age=age,
+        this.city=city,
+      }
+      myName.call(person2,21,'Nashik')
+
+      // output prerson2:{name:"Dilip",age:21,city:'Nashik'}
+
+--------------
+
+
+2)  .apply():
+   -> The apply() method is similar to call(), but it "takes arguments as an array instead of individual arguments".
+   -> The first argument passed to apply() is the this value, and the second argument is an array of arguments to be passed to the function.
+   -> Example-1:
+
+     function greet(greeting, city) {
+        console.log(`${greeting}, ${this.name} from ${city}`);
+      }
+
+      const person = {
+        name: 'Alice'
+      };
+
+      greet.apply(person, ['Hi', 'New York']);
+      
+       // Output: Hi, Alice from New York
+
+    -> Example-2:
+
+    => .apply->array //printBio.apply(obj,[20,'Mumbai']);
+    => .call-> commas //printBio.call(obj,20,'Mumbai');
+
+    // Output: obj,20,Mumbai
+
+----------------
+
+3) .bind():
+
+   -> The bind() method creates a new function with a specified this value and any arguments provided.
+   -> Unlike call() and apply(), bind() doesn't invoke the function immediately. Instead, it returns a new function with the bound this value and any arguments provided.
+
+   -> Example-1:
+     
+     function greet(greeting, city) {
+        console.log(`${greeting}, ${this.name} from ${city}`);
+      }
+
+      const person = {
+        name: 'Alice'
+      };
+
+      const greetPerson = greet.bind(person, 'Hi', 'New York');
+
+      greetPerson(); // Output: Hi, Alice from New York
+
+
+## Closures
+
+        var arr=[1,2,3,4,5];
+
+        for (var i=0; i<arr.length;i++){
+          setTimeout(()=>console.log(arr[i],i),i*1000)
+        }
+        // undefined 5
+        // undefined 5
+        // undefined 5
+        // undefined 5
+        // undefined 5
+          
+
+## IIFE -> to fix the above problem
+
+    for(var i=0;i<arr.length;i++){
+      setTimeout(function(i){
+        return function(){
+          console.log(arr[i],i)
+        }
+      }(i),i*1000)
+    }
+    // 1 0
+    // 2 1
+    // 3 2
+    // 4 3
+    // 5 4
+
+    function display(i) {
+      setTimeout(()=>console.log(this[i],i),i*1000)
+    }
+    for (let i = 0; i < arr.length; i++){
+      display.call(arr,i);
+    }
+    // 1 0
+    // 2 1
+    // 3 2
+    // 4 3
+    // 5 4
+
+-----------------------------------------------------
+
+## Strict mode in JS
+
+  -> JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of "sloppy mode".
+  -> Strict mode isn't just a subset: it intentionally has different semantics from normal code.
+  -> Browsers not supporting strict mode will run strict mode code with different behavior from browsers that do, so don't rely on strict mode without feature-testing for support for the relevant aspects of strict mode
+  -> Strict mode code and non-strict mode code can coexist, so scripts can opt into strict mode incrementally.
+
+  => Strict mode makes several changes to normal JavaScript semantics:
+
+    1) Eliminates some JavaScript silent errors by changing them to throw errors.
+    2) Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that's not strict mode.
+    3) Prohibits some syntax likely to be defined in future versions of ECMAScript.
+
+---------------------------------------------------
+
+## API Event:
+  => An event API is a set of interfaces and methods that enable developers to create and manage events in their applications.
+  => It provides a way to respond to user actions or system events such as a mouse click, a keypress, or a network request completion.
+
+## Event Listener:
+  => An event listener is a function or a piece of code that is called when a specific event occurs in an application.
+  => It is attached to an element in the DOM tree and listens for events that occur on that element, its child elements, or the window object.
+
+## Event Bubbling:
+  => Event bubbling is a phenomenon in which an event that is triggered on an element is also propagated up the DOM tree, from the innermost element to the outermost element, until it reaches the document object.
+  => This allows multiple event listeners to be triggered in a specific order, starting from the innermost element and moving outwards.
+
+## Event Capturing:
+  => Event capturing is the opposite of event bubbling, in which an event that is triggered on an element is first captured by the outermost element and then propagated down the DOM tree until it reaches the innermost element.
+  => This allows event listeners to be triggered in a specific order, starting from the outermost element and moving inwards.
+
+Together, event bubbling and capturing are called "event propagation", and they can be used to handle events in a specific order or to prevent events from propagating further up or down the
+
+--------------------------------------------------------------
+
+## Difference between Debounce and throttle:
+
+  => Debounce monitors the time delay between user actions and only executes the callback function if the delay exceeds the time delay defined by the developer.
+  - So, continuous user actions can significantly delay the callback function’s execution if we use debounce.
+  - Debounce is most suitable for control events like typing or button clicks.
+  
+  =>Throttle uses the time delay to execute the callback function at regular intervals until the event trigger is active.
+  - So, it does not delay the callback function execution for a significant period like debounce.
+  - Throttle is most suitable for continuous user events like resizing and scrolling.
+
+  Example:
+
+  
+
+Conclusion
+This article discussed how we could use debounce and throttle to handle user events and minimize unnecessary function executions in JavaScript applications. Ultimately, these two techniques can significantly improve your application’s performance since they can avoid many unnecessary API calls, DB queries, and so on. So, give them a try when implementing event triggers on your next application.
