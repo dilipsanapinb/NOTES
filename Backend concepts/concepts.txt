@@ -10,9 +10,10 @@
 
 ## What is non-blocking vs blocking?
 
-Bloxking and non-blocing are the terms used in CS and refer to how the system/process behaves when waiting for a particular event or resource.
+Blocking and non-blocing are the terms used in CS and refer to how the system/process behaves when waiting for a particular event or resource.
 
 #BLOCKING:-
+
 -In a blocking system , when a process requests a resource , its blocked or put on hold untill the resources becomes available. 
 During this time process cannot perform any other tasks.
 -In the backend, blocking code can cause significant delays and poor performance, 
@@ -22,7 +23,7 @@ especially when the server is handling multiple requests simultaneously.
 -All of the I/O methods in the Node.js standard library provide asynchronous versions, which are non-blocking, and accept callback functions. Some methods also have blocking counterparts, which have names that end with Sync.
   eg.
 `const fs = require("fs");
-const data = fs.readFileSync("/data.txt");`
+const data = fs.readFileSync("./data.txt");`
 
 #NON-BLOCKING
 
@@ -988,7 +989,35 @@ The common libraries you work with express are as follows :->
 
   The choice between SQL and NoSQL databases depends on the specific requirements of the application. SQL databases are best suited for applications that require data consistency and a fixed schema, while NoSQL databases are ideal for applications that require scalability, flexibility, and the ability to handle unstructured data. In some cases, a combination of both SQL and NoSQL databases may be used to take advantage of their respective strengths.
 
+--------------------------------------------------------
+
+## What are some common queries in SQL?
+
+SQL is a powerful language for managing and manipulating relational databases. Here are some common queries in SQL:
+
+=> SELECT: This is the most basic query in SQL, used to retrieve data from one or more tables. The syntax is:
+
+   SELECT column1, column2, ... FROM table_name;
+
+
+=> WHERE: This is used to filter data based on a condition. The syntax is:
+   SELECT column1, column2, ... FROM table_name WHERE condition;
+
+=> ORDER BY: This is used to sort the results of a query by one or more columns. The syntax is:
+   SELECT column1, column2, ... FROM table_name ORDER BY column1 ASC/DESC, column2 ASC/DESC, ...;
+
+=> GROUP BY: This is used to group the results of a query by one or more columns. The syntax is:
+   SELECT column1, column2, ... FROM table_name GROUP BY column1, column2, ...;
+
+=> JOIN: This is used to combine data from two or more tables based on a related column. There are several types of joins, including INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN. The syntax for an INNER JOIN is:
+   SELECT column1, column2, ... FROM table1 INNER JOIN table2 ON table1.column = table2.column;
+
+These are just a few examples of common queries in SQL. There are many other SQL commands and functions that can be used to manipulate and analyze data in a relational database.
+
+-------------------------------------------------------
+
 # Q. How do you do joins in SQL?
+
 -In SQL, joins are used to combine data from two or more tables based on a related column between them.
 - There are several types of joins that can be used, including INNER JOIN, LEFT JOIN (or LEFT OUTER JOIN), RIGHT JOIN (or RIGHT OUTER JOIN), and FULL OUTER JOIN.
 - Here's an overview of how you can perform joins in SQL:
@@ -1021,7 +1050,7 @@ SELECT column1, column2 FROM table1
 FULL OUTER JOIN table2 ON table1.column_name = table2.column_name;
 In this example, all the rows from both table1 and table2 are returned, including the matching rows as well as the unmatched rows from both tables. If there are no matching rows in either table, NULL values are returned for the columns from the respective table.
 
-
+----------------------------------------------------------
 
 ### Q. How do you use lookup in mongodb? *** 
 
@@ -1041,6 +1070,7 @@ db.orders.aggregate([
    }
 ])
 
+-------------------------------------------
 
 ### Q. What is CAP theorem? ***
 
@@ -1048,8 +1078,10 @@ db.orders.aggregate([
 - CAP stands for Consistency, Availability, and Partition Tolerance.
 
  1)Consistency: Every read receives the most recent write or an error.
+
  2)Availability: Every request receives a response, without guarantee that it contains the most recent version of the information.
- 3)artition tolerance: The system continues to function even when network partitions occur.
+
+ 3)Partition tolerance: The system continues to function even when network partitions occur.
 
 - According to the CAP theorem, it is impossible to achieve all three guarantees simultaneously in a distributed database system.
 - In a Node.js backend application, the CAP theorem impacts the design and behavior of the database system.
@@ -1058,6 +1090,8 @@ db.orders.aggregate([
   - If it provides availability and partition tolerance, it will sacrifice consistency, and
   - If it provides consistency and partition tolerance, it will sacrifice availability.
 - You may need to prioritize and make trade-offs between consistency, availability, and partition tolerance based on your application requirements.
+
+-------------------------------------------------
 
 ### Q. What is indexing? ***
 -  Indexing in a database is the process of creating a data structure that allows for faster retrieval of data from a table.
@@ -1077,6 +1111,8 @@ db.orders.aggregate([
 - The biggest benefit of Indexing is that it helps you to reduce the total number of I/O operations needed to retrieve that data.
 - The biggest drawback to performing the indexing database management system, you need a primary key on the table with a unique value.
 
+---------------------------------------------
+
 ### Q.  What is DB replication? ***
 
 - *Database replication* is the process of copying data from one database server to another, or to multiple servers, in order to maintain a redundant and distributed database system.
@@ -1090,25 +1126,35 @@ db.orders.aggregate([
 
 Overall, database replication is an important technique for building scalable and reliable database systems, and it is commonly used in modern web applications, e-commerce sites, and other large-scale systems that require high availability and performance.
 
+-------------------------------------------------------------------
+
 ### What is PACELC? ***
+
 - PACELC is a concept related to distributed systems that expands on the CAP theorem (Consistency, Availability, Partition tolerance) to include additional factors that affect the behavior of distributed systems.
 - PACELC stands for:
  1) Partition tolerance (P):
     - The system must continue to function despite network partitions, which can occur when a network failure causes a group of nodes to become separated from the rest of the network.
+
  2) Availability (A):
     - Every request received by a non-failing node must receive a response, although the response may not contain the most recent data.
+
  3) Consistency (C): 
     - All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
+
  4) Else (E):
     - In the presence of a network partition, the system can choose to either prioritize Availability or Consistency.
+
  5) Latency (L):
     - The time it takes for a request to be processed.
+
  6) Consistency (C): 
     - All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
 
 - The PACELC theorem suggests that, in the presence of a network partition, a distributed system must choose between availability and consistency.
 - In particular, the system can provide both consistency and partition tolerance (CP), availability and partition tolerance (AP), or consistency and availability (CA), but not all three simultaneously.
 - The PACELC theorem provides a useful framework for designing distributed systems that must operate in the presence of network partitions, helping architects to make trade-offs between consistency, availability, and partition tolerance based on the specific needs of their application.
+
+-----------------------------------------------------
 
 ### What is Normalization / Denormalization? ***
 - Normalization and denormalization are techniques used in database design to optimize the structure of tables and improve the efficiency and performance of queries.
@@ -1127,6 +1173,39 @@ Overall, database replication is an important technique for building scalable an
 - Normalization is generally preferred for databases that require a high level of data integrity,
 - while denormalization is often used in data warehousing or reporting applications where fast query performance is more important than data consistency.
 
+-------------------------------------------------------------------------------------------------------
+
+## What is Eventual Consistency?
+
+  => Eventual consistency is a consistency model that enables the data store to be highly available. It is also known as optimistic replication & is key to distributed systems. 
+
+  => Real World Use Case :
+
+        - Think of a popular microblogging site deployed across the world in different geographical regions like Asia, America, and Europe. Moreover, each geographical region has multiple data center zones: North, East, West, and South. 
+        - Furthermore, each zone has multiple clusters which have multiple server nodes running. So, we have many datastore nodes spread across the world that micro-blogging site uses for persisting data. Since there are so many nodes running, there is no single point of failure.
+        - The data store service is highly available. Even if a few nodes go down persistence service is still up. Let’s say a celebrity makes a post on the website that everybody starts liking around the world. 
+        - At a point in time, a user in Japan likes a post which increases the “Like” count of the post from say 100 to 101. At the same point in time, a user in America, in a different geographical zone, clicks on the post, and he sees “Like” count as 100, not 101.
+
+        # Reason for the above Use case :
+
+         - Simply, because the new updated value of the Post “Like” counter needs some time to move from Japan to America and update server nodes running there. Though the value of the counter at that point in time was 101, the user in America sees old inconsistent values. 
+         - But when he refreshes his web page after a few seconds “Like” counter value shows as 101. So, data was initially inconsistent but eventually got consistent across server nodes deployed around the world. This is what eventual consistency is.
+
+
+-----------------------------------------------------------
+
+## What is Strong Consistency?
+
+=> Strong Consistency simply means the data must be strongly consistent at all times. All the server nodes across the world should contain the same value as an entity at any point in time. And the only way to implement this behavior is by locking down the nodes when being updated.
+
+=> Real World Use Case : 
+
+    - Let’s continue the same Eventual Consistency example from the previous lesson. To ensure Strong Consistency in the system, when a user in Japan likes posts, all nodes across different geographical zones must be locked down to prevent any concurrent updates. 
+    - This means at one point in time, only one user can update the post “Like” counter value. So, once a user in Japan updates the “Like” counter from 100 to 101. The value gets replicated globally across all nodes. Once all nodes reach consensus, locks get lifted. Now, other users can Like posts. 
+    - If the nodes take a while to reach a consensus, they must wait until then. Well, this is surely not desired in the case of social applications. But think of a stock market application where the users are seeing different prices of the same stock at one point in time and updating it concurrently. This would create chaos. Therefore, to avoid this confusion we need our systems to be Strongly Consistent. 
+    - The nodes must be locked down for updates. Queuing all requests is one good way of making a system Strongly Consistent. The strong Consistency model hits the capability of the system to be Highly Available & perform concurrent updates. This is how strongly consistent ACID transactions are implemented.
+
+------------------------------------------------------------
 
 ###  What is Entity Relationship Model? ( ER Model ) ***
 - The Entity Relationship Model (ER Model) is a conceptual data model used in database design.
@@ -1142,6 +1221,8 @@ Overall, database replication is an important technique for building scalable an
 
 - The ER Model is typically represented graphically using ER diagrams, which show entities as boxes, attributes as ovals, and relationships as lines connecting the boxes.
 - The ER Model is an important tool for designing and understanding complex databases, and is widely used in database design and development.
+
+----------------------------------------------------------
 
 ## What are Models? **
 
@@ -2243,3 +2324,300 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
 
 => JavaScript is internally compiled by V8 with just-in-time (JIT) compilation to speed up the execution.
 
+------------------------------------------
+
+## What are message queues?
+
+  => A message queue is a form of asynchronous service-to-service communication used in serverless and microservices architectures.
+  => Messages are stored on the queue until they are processed and deleted. Each message is processed only once, by a single consumer.
+  => Message queues can be used to decouple heavyweight processing, to buffer or batch work, and to smooth spiky workloads.
+
+  => In modern cloud architecture, applications are decoupled into smaller, independent building blocks that are easier to develop, deploy and maintain.
+  => Message queues provide communication and coordination for these distributed applications. Message queues can significantly simplify coding of decoupled applications, while improving performance, reliability and scalability.
+
+  => Message queues allow different parts of a system to communicate and process operations asynchronously.
+  => A message queue provides a lightweight buffer which temporarily stores messages, and endpoints that allow software components to connect to the queue in order to send and receive messages.
+  => The messages are usually small, and can be things like requests, replies, error messages, or just plain information.
+  => To send a message, a component called a producer adds a message to the queue. The message is stored on the queue until another component called a consumer retrieves the message and does something with it.
+  => Many producers and consumers can use the queue, but each message is processed only once, by a single consumer.
+  => For this reason, this messaging pattern is often called one-to-one, or point-to-point, communications. When a message needs to be processed by more than one consumer, message queues can be combined with Pub/Sub messaging in a fanout design pattern. 
+
+  -------------------------------------------------
+
+  ## Which service by Amazon Web Services (AWS) can you use for Queues?
+
+  Amazon Simple Queue Service (SQS) lets you send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available.
+
+  ------------------------------------------------
+
+  # What is Pub Sub ?
+
+  => Publish/subscribe messaging, or pub/sub messaging, is a form of asynchronous service-to-service communication used in serverless and microservices architectures.
+  => In a pub/sub model, any message published to a topic is immediately received by all of the subscribers to the topic.
+  => Pub/sub messaging can be used to enable event-driven architectures, or to decouple applications in order to increase performance, reliability and scalability.
+  => Publish/Subscribe (Pub/Sub) messaging provides instant event notifications for these distributed applications.  
+  => The Publish Subscribe model allows messages to be broadcast to different parts of a system asynchronously.
+  => A sibling to a message queue, a message topic provides a lightweight mechanism to broadcast asynchronous event notifications, and endpoints that allow software components to connect to the topic in order to send and receive those messages.
+  => To broadcast a message, a component called a publisher simply pushes a message to the topic.
+  => Unlike message queues, which batch messages until they are retrieved, message topics transfer messages with no or very little queuing, and push them out immediately to all subscribers.
+  => All components that subscribe to the topic will receive every message that is broadcast, unless a message filtering policy is set by the subscriber.
+
+  -------------------------------------------
+
+ ## What is Webhooks?
+  
+  => A webhook is one of the many ways to facilitate communication between online services.
+
+  => E-commerce apps need to communicate with payment systems, payment systems need to communicate with banking systems, banking systems need to communicate with customer accounts.
+
+  => A webhook is an HTTP request, triggered by an event in a source system and sent to a destination system, often with a payload of data.
+  => Webhooks are automated, in other words, they are automatically sent out when their event is fired in the source system.
+  => This provides a way for one system (the source) to “speak” (HTTP request) to another system (the destination) when an event occurs, and share information (request payload) about the event that occurred.
+  => Webhooks are userd for,
+    - Let’s say you subscribe to a streaming service. At the beginning of each month, your credit card is charged and your bank needs to communicate this to you via SMS or email. The banking system (the source) can use a webhook to call a mailing or SMS service (the destination) to immediately send you a debit notification each time your card is charged.
+
+  => For a system to send webhooks, the system has to be able to support the process. You can build your system to send webhooks by triggering HTTP requests for different types of events, however, webhooks are most common in SaaS platforms like GitHub, Shopify, Stripe, Twilio, and Slack.
+
+  => These platforms support different types of events based on the activities that happen within them.
+
+  => To receive webhook requests, you have to register for one or more of the events (also known as topics) for which the platform offers a webhook. A webhook request will be sent to a destination endpoint on your application so you need to build one for it and register the URL as the *Webhook URL* for that event.
+
+  => Once the webhook registration for an event is complete with the endpoint added, you will receive webhook requests at the destination URL you provided each time the event occurs.
+
+  ## Webhooks vs polling
+    => Polling is when your application periodically calls an API to check if an event has occurred or new data exists. Webhooks, on the other, hand push data down to your application when an event occurs in real-time.
+
+    => To capture the difference between these two approaches with a relatable example, polling is like going to the post office to check if you have new mail. Using webhooks is basically having mail delivered to your house every time you have new mail simply by giving the postman your house address.
+
+    => Polling is more resource-heavy compared to webhooks, as it can take multiple network requests before new information is discovered, while webhooks only make network requests when there is new information.
+
+  ## When to use webhooks
+    The keyword here is real-time. Use webhooks when you want to:
+
+    Be aware of an event in a connected system in real-time
+    Send information to a destination in real-time
+    Find a cheaper alternative to polling
+    Examples of these types of scenarios include:
+
+    An e-commerce store notifying your invoicing application about a sale
+    E-commerce stores notifying merchants when a particular item is out of stock
+    Payment gateway notifying merchants about a payment
+    Version control systems notifying team members about a commit to a repository
+    Monitoring systems alerting administrators about an error or unusual activity in a system
+    Synchronizing information across systems — for example when a user changes their email in your HR or CRM system, their email is also changed in the payroll or invoicing system
+
+  -------------------------------------------
+
+  ##  What is Docker? Why do we use it?
+
+  => Docker is a container runtime
+  => Containers, or Linux Containers, are a technology that allows us to isolate certain kernel processes and trick them into thinking they're the only ones running in a completely new computer.
+
+  => Different from Virtual Machines, a container can share the kernel of the operating system while only having their different binaries/libraries loaded with them.
+
+  => In other words, you don't need to have whole different OS (called guest OS) installed inside your host OS. You can have several containers running within a single OS without having several different guest OS's installed.
+
+  => Finally, in 2010, Solomon Hykes and Sebastien Pahl created Docker during the Y Combinator startup incubator group. In 2011 the platform was launched.
+
+  =>Finally, in 2020, Docker became the worldwide choice for containers. 
+
+  => Docker packages an application and all its dependencies in a virtual container that can run on any Linux server. This is why we call them containers. Because they have all the necessary dependencies contained in a single piece of software.
+
+  =>Docker is composed of the following elements:
+
+    -> a Daemon, which is used to build, run, and manage the containers
+
+    -> a high-level API which allows the user to communicate with the Daemon,
+
+    ->and a CLI, the interface we use to make this all available.
+
+    https://www.freecodecamp.org/news/what-is-docker-used-for-a-docker-container-tutorial-for-beginners/
+
+
+
+
+
+------------------------------------------------------
+
+## What is AWS S3?
+
+ => Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. 
+ => Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics. Amazon S3 provides management features so that you can optimize, organize, and configure access to your data to meet your specific business, organizational, and compliance requirements.
+
+-------------------------------------------------------
+
+## What is EC2 Instance in AWS?
+
+  => Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) Cloud.
+  => Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster.
+  => You can use Amazon EC2 to launch as many or as few virtual servers as you need, configure security and networking, and manage storage.
+  => Amazon EC2 enables you to scale up or down to handle changes in requirements or spikes in popularity, reducing your need to forecast traffic.
+
+  => Amazon EC2 provides the following features:
+
+      - Virtual computing environments, known as instances
+
+      - Preconfigured templates for your instances, known as Amazon Machine Images (AMIs), that package the bits you need for your server (including the operating system and additional software)
+
+      - Various configurations of CPU, memory, storage, and networking capacity for your instances, known as instance types
+
+      - Secure login information for your instances using key pairs (AWS stores the public key, and you store the private key in a secure place)
+
+      - Storage volumes for temporary data that's deleted when you stop, hibernate, or terminate your instance, known as instance store volumes
+
+      - Persistent storage volumes for your data using Amazon Elastic Block Store (Amazon EBS), known as Amazon EBS volumes
+
+      - Multiple physical locations for your resources, such as instances and Amazon EBS volumes, known as Regions and Availability Zones
+
+      - A firewall that enables you to specify the protocols, ports, and source IP ranges that can reach your instances using security groups
+
+      - Static IPv4 addresses for dynamic cloud computing, known as Elastic IP addresses
+
+      - Metadata, known as tags, that you can create and assign to your Amazon EC2 resources
+
+      - Virtual networks you can create that are logically isolated from the rest of the AWS Cloud, and that you can optionally connect to your own network, known as virtual private clouds (VPCs)
+
+------------------------------------------------------
+
+## What is Cloudfront in AWS?
+
+   => Amazon CloudFront is a web service that 'speeds up distribution of your static and dynamic web content', such as .html, .css, .js, and image files, to your users.
+   => CloudFront delivers your content through a worldwide network of data centers called edge locations.
+   => When a user requests content that you're serving with CloudFront, the request is routed to the edge location that provides the lowest latency (time delay), so that content is delivered with the best possible performance.
+   => If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately.
+   => If the content is not in that edge location, CloudFront retrieves it from an origin that you've defined—such as an Amazon S3 bucket, a MediaPackage channel, or an HTTP server (for example, a web server) that you have identified as the source for the definitive version of your content.
+
+    => As an example, suppose that you're serving an image from a traditional web server, not from CloudFront. For example, you might serve an image, sunsetphoto.png, using the URL https://example.com/sunsetphoto.png.
+
+    Your users can easily navigate to this URL and see the image. But they probably don't know that their request is routed from one network to another—through the complex collection of interconnected networks that comprise the internet—until the image is found.
+
+  => CloudFront speeds up the distribution of your content by routing each user request through the AWS backbone network to the edge location that can best serve your content.
+  => Typically, this is a CloudFront edge server that provides the fastest delivery to the viewer.
+  => Using the AWS network dramatically reduces the number of networks that your users' requests must pass through, which improves performance.
+  => Users get lower latency—the time it takes to load the first byte of the file—and higher data transfer rates.
+  => You also get increased reliability and availability because copies of your files (also known as objects) are now held (or cached) in multiple edge locations around the world.
+
+-------------------------------------------------
+
+## What is Route 53 In AWS?
+
+  => Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service.
+  => It is basically designed for developers and corporate to route the end users to Internet applications by translating human-readable names like www.example.org into the numeric IP addresses like 192.0.1.1 that computers use to connect to each other.
+  =>  You cannot use Amazon Route 53 to connect your on-premises network with AWS Cloud.
+
+  => Functions of Route53:
+
+      - If a web application requires a domain name, Route53 service helps to register the name for the website (i.e domain name).
+      Whenever a user enters the domain name, Route53 helps to connect the user to the website.
+
+      - If any failure is detected at any level, it automatically routes the user to a healthy resource.
+
+      - Amazon Route 53 is cost effective, secure and scalable.
+      - Amazon Route 53 is flexible, highly available and reliable.
+
+  => Methodologies related to Route53: 
+
+      - Records: Records are created to route internet traffic to the resources. They are the objects present in the hosted zone which determines how the internet traffic has to be routed for a domain name so that it finally reaches the resources. The name of each record in a hosted zone must end with the name of the hosted zone.
+      - Hosted zone: When the domain name is registered, Route53 creates a public hosted zone that has the same name as the domain name. It is a collection of records that contains information about how to route traffic of its domains and all of its subdomains.
+      - DNS query: It is a request for information sent from DNS client to the DNS server.
+      - Alias records: Alias records helps in routing internet traffic to AWS resources like S3 bucket, Amazon CloudFront, etc. It is created at the top node of the DNS namespace.
+      - Name servers: They are the servers in the DNS that translates the domain name into IP address so that internet traffic can be routed to the resources.
+      - DNS failover: A method for routing the traffic from unhealthy resources to healthy resources, whenever a failure is detected.
+      - Routing policy: Routing policy determines how Amazon Route53 responds to queries.
+
+    => Types of Routing Policy :4
+
+      - Simple routing policy: It is a simple Route53 routing technique that can be used to route internet traffic to a single resource. For example; Web server to a website. Using this, routing multiple records with the same name cannot be created but multiple values ( such as multiple IP addresses ) can be specified in the same record.
+      - Failover routing policy: Whenever a resource goes unhealthy, this policy allows to route the traffic from unhealthy resource to healthy resource.
+      - Geolocation routing policy: This routing policy routes the traffic to resources on the basis of the geographic location of the user. Geographic locations can be specified by continent, country, or state.  For example; A person residing in France will be redirected to the website in the French language while a person from the US will be redirected to the website in the English language.
+      - Geoproximity routing policy: It routes traffic on the basis of the geographical location of the user and the type of content user wants to access. The user can optionally shift traffic from resources at one location to resource at another location. Using this policy, a user can shift more traffic to one location compared to another location by specifying a value known as bias.
+      Latency routing policy: If a website has to be hosted in multiple regions then a latency based routing policy is used. To improve performance for the users, this policy helps in serving requests from the AWS region that provides the lowest latency. To use this policy the latency records for the resources are created in multiple AWS regions.
+      - Multivalue routing policy:  It is used when users want Route53 to return multiple values in response to DNS queries. It first checks the health of resources and then returns the multiple values only for the health resources.
+      Weighted routing policy:  This routing policy routes traffic to multiple resources with a single domain name according to the proportion decided by the user.
+
+
+=> Benefits of Route53 :
+
+    - Highly Reliable: Route53 is built using AWS’s highly available and reliable infrastructure. The distributed nature of the AWS DNS servers helps ensure a consistent ability to route the end-users to the web application.
+    - Scalable: It automatically scales the resources during large traffic and also handles large queries without the user’s intervention.
+    - Easy to use:  Very user-friendly and easy to configure DNS settings. It can start to answer your DNS queries within minutes. Can be mapped easily to any resource.
+    - Health Check: Route 53 monitors the health of the application. If any failure is detected, it automatically redirects the user to a healthy resource before the customer can identify the problem.
+    - Flexible: You can decide which policy you want to use at given time.
+    - Simple: Using routing types, Route53 helps to manage traffic globally.
+    - Cost-effective: Payment is done only according to the services used.
+    - Secure: By integrating it with IAM, the access to Amazon Route53 is secured by giving its permissions to only the authorized users.
+    Mapped with various AWS services: It can be used to map domain names to Amazon EC2 instances, S3 buckets, and other AWS resources.
+
+
+------------------------------------------------------------
+
+## What is ELB(Elastic Load Balancing) in AWS?
+ 
+ => Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones.
+ =>  It monitors the health of its registered targets, and routes traffic only to the healthy targets.
+ => Elastic Load Balancing scales your load balancer capacity automatically in response to changes in incoming traffic.
+ => A load balancer distributes workloads across multiple compute resources, such as virtual servers.
+ => Using a load balancer increases the availability and fault tolerance of your applications.
+
+----------------------------------------------------------------
+
+# What is a reverse proxy?
+
+=> A reverse proxy is a server that sits in front of web servers and forwards client (e.g. web browser) requests to those web servers.
+=> Reverse proxies are typically implemented to help increase security, performance, and reliability.
+=> In order to better understand how a reverse proxy works and the benefits it can provide, let’s first define what a proxy server is.
+
+=> What is a proxy server?
+
+A=>  forward proxy, often called a proxy, proxy server, or web proxy, is a server that sits in front of a group of client machines.
+=> When those computers make requests to sites and services on the Internet, the proxy server intercepts those requests and then communicates with web servers on behalf of those clients, like a middleman.
+
+For example, let’s name 3 computers involved in a typical forward proxy communication:
+
+A: This is a user’s home computer
+B: This is a forward proxy server
+C: This is a website’s origin server (where the website data is stored)
+
+=> In a standard Internet communication, computer A would reach out directly to computer C, with the client sending requests to the origin server and the origin server responding to the client.
+=> When a forward proxy is in place, A will instead send requests to B, which will then forward the request to C. C will then send a response to B, which will forward the response back to A.
+
+=> Why would anyone add this extra middleman to their Internet activity? There are a few reasons one might want to use a forward proxy:
+
+    - To avoid state or institutional browsing restrictions - Some governments, schools, and other organizations use firewalls to give their users access to a limited version of the Internet. A forward proxy can be used to get around these restrictions, as they let the user connect to the proxy rather than directly to the sites they are visiting.
+    - To block access to certain content - Conversely, proxies can also be set up to block a group of users from accessing certain sites. For example, a school network might be configured to connect to the web through a proxy which enables content filtering rules, refusing to forward responses from Facebook and other social media sites.
+    - To protect their identity online - In some cases, regular Internet users simply desire increased anonymity online, but in other cases, Internet users live in places where the government can impose serious consequences to political dissidents. Criticizing the government in a web forum or on social media can lead to fines or imprisonment for these users. If one of these dissidents uses a forward proxy to connect to a website where they post politically sensitive comments, the IP address used to post the comments will be harder to trace back to the dissident. Only the IP address of the proxy server will be visible.
+
+
+## How is a reverse proxy different?
+
+    => A reverse proxy is a server that sits in front of one or more web servers, intercepting requests from clients.
+    => This is different from a forward proxy, where the proxy sits in front of the clients.
+    => With a reverse proxy, when clients send requests to the origin server of a website, those requests are intercepted at the network edge by the reverse proxy server.
+    => The reverse proxy server will then send requests to and receive responses from the origin server.
+
+ ** The difference between a forward and reverse proxy is subtle but important.
+     A simplified way to sum it up would be to say that,
+
+     => A forward proxy sits in front of a client and ensures that no origin server ever communicates directly with that specific client.
+
+    => On the other hand, a reverse proxy sits in front of an origin server and ensures that no client ever communicates directly with that origin server.
+
+Once again, let’s illustrate by naming the computers involved:
+
+D: Any number of users’ home computers
+E: This is a reverse proxy server
+F: One or more origin servers
+Reverse proxy flow: traffic flows from user's device (D) to Internet to reverse proxy (E) to origin server (F)
+Typically all requests from D would go directly to F, and F would send responses directly to D. With a reverse proxy, all requests from D will go directly to E, and E will send its requests to and receive responses from F. E will then pass along the appropriate responses to D.
+
+** Below we outline some of the benefits of a reverse proxy:
+
+    - Load balancing - A popular website that gets millions of users every day may not be able to handle all of its incoming site traffic with a single origin server. Instead, the site can be distributed among a pool of different servers, all handling requests for the same site. In this case, a reverse proxy can provide a load balancing solution which will distribute the incoming traffic evenly among the different servers to prevent any single server from becoming overloaded. In the event that a server fails completely, other servers can step up to handle the traffic.
+
+    - Protection from attacks - With a reverse proxy in place, a web site or service never needs to reveal the IP address of their origin server(s). This makes it much harder for attackers to leverage a targeted attack against them, such as a DDoS attack. Instead the attackers will only be able to target the reverse proxy, such as Cloudflare’s CDN, which will have tighter security and more resources to fend off a cyber attack.
+
+    - Global server load balancing (GSLB) - In this form of load balancing, a website can be distributed on several servers around the globe and the reverse proxy will send clients to the server that’s geographically closest to them. This decreases the distances that requests and responses need to travel, minimizing load times.
+
+    - Caching - A reverse proxy can also cache content, resulting in faster performance. For example, if a user in Paris visits a reverse-proxied website with web servers in Los Angeles, the user might actually connect to a local reverse proxy server in Paris, which will then have to communicate with an origin server in L.A. The proxy server can then cache (or temporarily save) the response data. Subsequent Parisian users who browse the site will then get the locally cached version from the Parisian reverse proxy server, resulting in much faster performance.
+
+    - SSL encryption - Encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
