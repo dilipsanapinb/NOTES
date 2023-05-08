@@ -185,7 +185,7 @@
 //     son.myFather(),
 //     console.log('son:',son)
 
-var arr=[1,2,3,4,5];
+// var arr=[1,2,3,4,5];
 
 // for (var i=0; i<arr.length;i++){
 //   setTimeout(()=>console.log(arr[i],i),i*1000)
@@ -199,9 +199,39 @@ var arr=[1,2,3,4,5];
 //   }(i),i*1000)
 // }
 
-function display(i) {
-  setTimeout(()=>console.log(this[i],i),i*1000)
+// function display(i) {
+//   setTimeout(()=>console.log(this[i],i),i*1000)
+// }
+// for (let i = 0; i < arr.length; i++){
+//   display.call(arr,i);
+// }
+
+// const _setInterval = (callback, delay) => {
+//   const timerRef = { id: null };
+//   const timeout = () => {
+//     timerRef.id = setTimeout(() => {
+//       callback();
+//       timeout();
+//     }, delay);
+//   }
+//   timeout();
+//   return timerRef;
+// };
+
+// const timerRef = _setInterval(() => {
+//   console.log("Callback");
+// }, 1000);
+
+// setTimeout(() => {
+//   clearTimeout(timerRef.id);
+// },5000);
+
+let obj={
+  name: "Dilip"
 }
-for (let i = 0; i < arr.length; i++){
-  display.call(arr,i);
-}
+var obj2=Object.create(obj);
+console.log("obj2:",obj); // all obj will returned
+// console.log(obj2)
+
+
+  
