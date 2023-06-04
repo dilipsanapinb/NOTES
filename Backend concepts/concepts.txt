@@ -166,7 +166,7 @@ The Node.js event loop is what allows Node.js to perform non-blocking I/O operat
 
 A tick is a term that refers to one iteration of the event loop, where it executes any callbacks that are in the queue for the current phase2. A tick ends when the queue is emptied or the maximum number of callbacks has been reached1.
 
-Therefore, process.nextTick () can starve your event loop if you use it too much or if your callback functions are too long. This is because process.nextTick () callbacks are executed before the event loop moves to the next phase, and they can prevent other I/O operations from being processed in a timely manner3. You should use process.nextTick () sparingly and only for cases where you need to run some code before anything else happens in the next tick.
+Therefore, process.nextTick () can starve your event loop if you use it too much or if your callback functions are too long. This is because process.nextTick () callbacks are executed before the event loop moves to the next phase, and they can prevent other I/O operations from being processed in a timely manner. You should use process.nextTick () sparingly and only for cases where you need to run some code before anything else happens in the next tick.
 
 ------------------------------------------------------
 
@@ -255,7 +255,7 @@ readFileSync is blocking sync.
 ## readFileSync()
 =>readFileSync() method uses a variable to store the file content and then delivers it. Due to its blocking nature, the program waits till the file is read completely. So that the -->The end<-- message will be printed only after the content is delivered.
   `const fs=require('fs');
-var contents = fs.readFileSync('test.txt', 'utf8'); //utf decoding to avoid binary code output.
+var contents = fs.readFileSync('test.txt', 'utf-8'); //utf decoding to avoid binary code output.
 console.log(contents);
 console.log(" -->The end<-- ");`
 
@@ -377,7 +377,92 @@ response.end();
       console.log(`Server running at http://${hostname}:${port}/`);
     });
 
+------------------------------------------------
 
+## What are some HTTP response codes? what does it mean? 2xx, 3xx, 4xx, 5xx
+
+HTTP status codes are classified into 5 broad categories. The status codes provide an easy way for clients to understand the results of their transactions.
+
+As methods tell the server what to do, status codes tell the client what happened. Status codes live in the start lines of responses. For example, in the line “HTTP/1.1 200 OK” the status code is 200.
+
+When clients send request messages to an HTTP server, many things can happen. If you are fortunate, the request will complete successfully. You might not always be so lucky. The server may tell you that the resource you requested could not be found, that you don’t have permission to access the resource, or perhaps that the resource has moved someplace else.
+
+Status codes are returned in the start line of each response message. Both a numeric and a human readable status are returned. The numeric code makes error processing easy for programs, while the reason phrase is easily understood by humans.
+
+The different status codes are grouped into classes by their three-digit numeric codes. Status codes between 200 and 299 represent success. Codes between 300 and 399 indicate that the resource has been moved. Codes between 400 and 499 mean that the client did something wrong in the request. Codes between 500 and 599 mean something went wrong on the server.
+
+Overall range	Defined range	Category
+100-199	100-101	Informational
+200-299	200-206	Successful
+300-399	300-305	Redirection
+400-499	400-415	Client error
+500-599	500-505	Server error
+100-199: Informational Status Codes
+HTTP/1.1 introduced the informational status codes to the protocol. They are relatively new and subject to a bit of controversy about their complexity and perceived value.
+
+Status code	Reason phrase	Meaning
+100	Continue	Indicates that an initial part of the request was received and the client should continue. After sending this, the server must respond after receiving the request.
+101	Switching Protocols	Indicates that the server is changing protocols, as specified by the client, to one listed in the Upgrade header.
+200-299: Success Status Codes
+When clients make requests, the requests usually are successful. Servers have an array of status codes to indicate success, matched up with different types of requests.
+
+Status code	Reason phrase	Meaning
+200	OK	Request is okay, entity body contains requested resource.
+201	Created	For requests that create server objects (e.g., PUT). The entity body of the response should contain the various URLs for referencing the created resource, with the Location header containing the most specific reference. The server must have created the object prior to sending this status code.
+202	Accepted	The request was accepted, but the server has not yet performed any action with it. There are no guarantees that the server will complete the request; this just means that the request looked valid when accepted. The server should include an entity body with a description indicating the status of the request and possibly an estimate for when it will be completed (or a pointer to where this information can be obtained).
+203	Non-Authoritative Information	The information contained in the entity headers came not from the origin server but from a copy of the resource. This could happen if an intermediary had a copy of a resource but could not or did not validate the meta-information (headers) it sent about the resource. This response code is not required to be used; it is an option for applications that have a response that would be a 200 status if the entity headers had come from the origin server.
+204	No Content	The response message contains headers and a status line, but no entity body. Primarily used to update browsers without having them move to a new document (e.g., refreshing a form page).
+205	Reset Content	Another code primarily for browsers. Tells the browser to clear any HTML form elements on the current page.
+206	Partial Content	A partial or range request was successful. Later, we will see that clients can request part or a range of a document by using special headers – this status code indicates that the range request was successful. A 206 response must include a Content-Range, Date, and either ETag or Content-Location header.
+300-399: Redirection Status Codes
+The redirection status codes either tell clients to use alternate locations for the resources they’re interested in or provide an alternate response instead of the content. If a resource has moved, a redirection status code and an optional Location header can be sent to tell the client that the resource has moved and where it can now be found. This allows browsers to go to the new location transparently, without bothering their human users.
+
+Status code	Reason phrase	Meaning
+300	Multiple Choices	Returned when a client has requested a URL that actually refers to multiple resources, such as a server hosting an English and French version of an HTML document. This code is returned along with a list of options; the user can then select which one he wants.
+301	Moved Permanently	Used when the requested URL has been moved. The response should contain in the Location header the URL where the resource now resides.
+302	Found	Like the 301 status code; however, the client should use the URL given in the Location header to locate the resource temporarily. Future requests should use the old URL.
+303	See Other	Used to tell the client that the resource should be fetched using a different URL. This new URL is in the Location header of the response message. Its main purpose is to allow responses to POST requests to direct a client to a resource.
+304	Not Modified	Clients can make their requests conditional by the request headers they include. If a client makes a conditional request, such as a GET if the resource has not been changed recently, this code is used to indicate that the resource has not changed. Responses with this status code should not contain an entity body.
+305	Use Proxy	Used to indicate that the resource must be accessed through a proxy; the location of the proxy is given in the Location header. It’s important that clients interpret this response relative to a specific resource and do not assume that this proxy should be used for all requests or even all requests to the server holding the requested resource. This could lead to broken behavior if the proxy mistakenly interfered with a request, and it poses a security hole.
+306	(Unused)	Not currently used.
+307	Temporary Redirect	Like the 301 status code; however, the client should use the URL given in the Location header to locate the resource temporarily. Future requests should use the old URL.
+400-499: Client Error Status Codes
+Sometimes a client sends something that a server just can’t handle, such as a badly formed request message or, most often, a request for a URL that does not exist. We’ve all seen the infamous 404 Not Found error code while browsing  this is just the server telling us that we have requested a resource about which it knows nothing.
+
+Many of the client errors are dealt with by your browser, without it ever bothering you. A few, like 404, might still pass through.
+
+Status code	Reason phrase	Meaning
+400	Bad Request	Used to tell the client that it has sent a malformed request.
+401	Unauthorized	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
+402	Payment Required	Currently this status code is not used, but it has been set aside for future use.
+403	Forbidden	Used to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
+404	Not Found	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
+405	Method Not Allowed	Used when a request is made with a method that is not supported for the requested URL. The Allow header should be included in the response to tell the client what methods are allowed on the requested resource.
+406	Not Acceptable	Clients can specify parameters about what types of entities they are willing to accept. This code is used when the server has no resource matching the URL that is acceptable for the client. Often, servers include headers that allow the client to figure out why the request could not be satisfied.
+407	Proxy Authentication Required	Like the 401 status code, but used for proxy servers that require authentication for a resource.
+408	Request Timeout	If a client takes too long to complete its request, a server can send back this status code and close down the connection. The length of this timeout varies from server to server but generally is long enough to accommodate any legitimate request.
+409	Conflict	Used to indicate some conflict that the request may be causing on a resource. Servers might send this code when they fear that a request could cause a conflict. The response should contain a body describing the conflict.
+410	Gone	Similar to 404, except that the server once held the resource. Used mostly for web site maintenance, so a server’s administrator can notify clients when a resource has been removed.
+411	Length Required	Used when the server requires a Content-Length header in the request message.
+412	Precondition Failed	Used if a client makes a conditional request and one of the conditions fails. Conditional requests occur when a client includes an Expect header.
+413	Request Entity Too Large	Used when a client sends an entity body that is larger than the server can or wants to process.
+414	Request URI Too Long	Used when a client sends a request with a request URL that is larger than the server can or wants to process.
+415	Unsupported Media Type	Used when a client sends an entity of a content type that the server does not understand or support. 416 Requested Range Used when the request message requested a range of a given resource and Not Satisfiable that range either was invalid or could not be met.
+417	Expectation Failed	Used when the request contained an expectation in the Expect request header that the server could not satisfy. See Expect for more on the Expect header. A proxy or other intermediary application can send this response code if it has unambiguous evidence that the origin server will generate a failed expectation for the request.
+500-599: Server Error Status Codes
+Sometimes a client sends a valid request, but the server itself has an error. This could be a client running into a limitation of the server or an error in one of the server’s subcomponents, such as a gateway resource. Proxies often run into problems when trying to talk to servers on a client’s behalf.
+Download the pdf Download Pdf Types Abbreviation Advertise
+Alaska Abbreviation Client Conditional Contained Could Happen
+
+Status code	Reason phrase	Meaning
+500	Internal Server Error	Used when the server encounters an error that prevents it from servicing the request.
+501	Not Implemented	Used when a client makes a request that is beyond the server’s capabilities (e.g., using a request method that the server does not support).
+502	Bad Gateway	Used when a server acting as a proxy or gateway encounters a bogus response from the next link in the request response chain (e.g., if it is unable to connect to its parent gateway). You can click here to fix 502 bad gateway errors with relative ease.
+503	Service Unavailable	Used to indicate that the server currently cannot service the request but will be able to in the future. If the server knows when the resource will become available, it can include a Retry-After header in the response.
+504	Gateway Timeout	Similar to status code 408, except that the response is coming from a gateway or proxy that has timed out waiting for a response to its request from another server.
+505	HTTP Version Not Supported	Used when a server receives a request in a version of the protocol that it can’t or won’t support. Some server applications elect not to support older versions of the protocol.
+
+-----------------------------------------------
 
 ##### How to create a web server without express?**********
 -we can create server without using express by using the http module.
@@ -412,10 +497,11 @@ req.on('error', (error) => {
 req.end();
 
 
-
+-----------------------------------------------------------------------
 
 # What is Libuv?
-- Libuv is a C library originally written for Node.js to abstract non-blocking I/O operationsor to provide cross-platform support for features such as file syste, acces, network programming and timers.
+
+- Libuv is a C library originally written for Node.js to abstract non-blocking I/O operations or to provide cross-platform support for features such as file system, acces, network programming and timers.
 - It is multi-platform support library with a focus on asynchronnus I/O, event driven programming and networking.
 - Libuv was initially developed by Bert Belder, Ryan Dahl, and others as part of the Node.js project to provide a consistent way to handle I/O operations across multiple platforms.
 - Event-driven asynchronous I/O model is integrated.
@@ -452,7 +538,7 @@ The event loop in Node.js enables asynchronous programming, which allows develop
   When the timer expires, the callbackis added to the next phase of event loop.
 
 2)I/O callback:->
-   This phase is responsible for executing the callbackthat were deffered during a previous I/O operation, such as reading/writing the data from a socket or file.
+   This phase is responsible for executing the callback that were deffered during a previous I/O operation, such as reading/writing the data from a socket or file.
    When an I/O operations completes, its callbackis added to the callback phases.
 
 3)Idle, prepare:->
@@ -599,12 +685,12 @@ Microservices are an architectural and organizational approach to software devel
 1)Scalability: Each microservice can be scaled independently, allowing organizations to handle spikes in traffic more easily.
 2)Flexibility: Microservices can be developed and deployed independently, allowing for greater agility and faster time to market.
 3)Resilience: A failure in one microservice does not necessarily affect the entire system, reducing the impact of downtime.
-4)echnology independence: Each microservice can be developed using different technologies and programming languages, allowing teams to use the best tools for each job.
+4)Technology independence: Each microservice can be developed using different technologies and programming languages, allowing teams to use the best tools for each job.
 5)Ease of maintenance: Each microservice is responsible for a specific business capability, making it easier to test, deploy, and maintain the system.
 **However, implementing microservices can also introduce new challenges, such as increased complexity in managing the communication between services and the need for strong testing and monitoring practices. As with any development approach, there are trade-offs that need to be carefully considered and managed.
 # How does express work?
 
-###Creating a CLI based app using Node.js and publish it***
+### Creating a CLI based app using Node.js and publish it***
 Steps need to follow to create the Command Line Intrface app
 1)create a new directory and initializes the app with npm
 -mkdir First-cli-app
@@ -913,6 +999,55 @@ The common libraries you work with express are as follows :->
   11) Client-side: Web developers need to make sure that the client-side code, such as JavaScript, that sends cross-origin requests includes the necessary credentials and handles CORS-related errors appropriately. This may involve handling CORS errors, including the appropriate CORS headers in requests, and configuring the client-side code to work with cross-origin resources.
 
   12) In conclusion, CORS is a security mechanism implemented in web browsers that controls cross-origin requests to prevent unauthorized access to resources. It involves both server-side configuration and client-side handling, and it is an important consideration for web developers when building modern web applications that interact with cross-origin resources.
+
+---------------------------------------
+
+## Explain all the different HTTP methods?
+  
+  HTTP (Hypertext Transfer Protocol) defines several methods or verbs that indicate the desired action to be performed on a resource. Each HTTP method has a specific purpose and behavior. Here are the most common HTTP methods:
+
+    GET: The GET method is used to retrieve a representation of a resource from the server. It requests the server to send back the specified resource in the response. GET should be used for safe and idempotent operations, meaning it should not have any side effects on the server or the resource.
+
+    POST: The POST method is used to submit data to the server to create a new resource. It sends data in the request payload, typically used for form submissions, file uploads, or other actions that result in a change on the server. POST is not idempotent as multiple requests may create multiple resources.
+
+    PUT: The PUT method is used to update or replace an existing resource on the server. It sends the entire updated representation of the resource in the request payload. If the resource does not exist, PUT can create a new resource with the specified identifier. PUT is idempotent, meaning that multiple identical requests should have the same result as a single request.
+
+    DELETE: The DELETE method is used to delete a specified resource on the server. It requests the server to remove the resource identified by the URL. DELETE is idempotent, meaning that multiple identical requests should have the same result as a single request.
+
+    PATCH: The PATCH method is used to partially update a resource on the server. It sends a set of changes or instructions to be applied to the existing resource. Unlike PUT, which requires sending the entire updated representation, PATCH allows sending only the modified fields or instructions. PATCH is not guaranteed to be idempotent.
+
+    HEAD: The HEAD method is similar to GET but only retrieves the response headers, without the response body. It is often used to retrieve metadata or check the status of a resource without downloading its entire contents.
+
+    OPTIONS: The OPTIONS method is used to retrieve the communication options available for a resource or server. It allows the client to determine the supported methods, headers, and other capabilities of the server.
+
+    These are the most commonly used HTTP methods. It's important to note that the usage of these methods should align with their intended purpose and follow the principles of RESTful web services.
+
+---------------------------------------
+
+##  What are HTTP headers?
+HTTP headers are additional pieces of information sent along with an HTTP request or response. They provide metadata about the request or response and help in conveying important details and instructions between the client and the server. HTTP headers consist of a key-value pair and are included in the header section of an HTTP message.
+
+There are two main types of HTTP headers:
+
+Request Headers: Request headers are included in an HTTP request sent from the client to the server. They provide information about the request itself, the client, and any additional instructions. Some commonly used request headers include:
+
+User-Agent: Specifies the client application or browser making the request.
+Accept: Indicates the media types (MIME types) that the client can handle in the response.
+Content-Type: Specifies the media type of the data sent in the request payload.
+Authorization: Contains credentials or tokens for authentication purposes.
+Cookie: Contains client-side cookies to be sent to the server.
+Response Headers: Response headers are included in an HTTP response sent from the server to the client. They provide information about the response, its status, and any additional instructions. Some commonly used response headers include:
+
+Content-Type: Specifies the media type of the response content.
+Content-Length: Indicates the length of the response content in bytes.
+Cache-Control: Provides caching instructions for the client or intermediary caches.
+Location: Used in redirect responses to indicate the new location of a resource.
+Set-Cookie: Sets a cookie on the client-side for future requests.
+HTTP headers are flexible and can be extended to include custom headers specific to the application or domain. They play a crucial role in various aspects of HTTP communication, such as content negotiation, authentication, caching, and controlling the behavior of clients and servers.
+
+Both clients and servers can include multiple headers in their respective requests or responses to convey specific information and facilitate effective communication between the two parties.
+
+--------------------------------------
 
 ### Q.  What is testing?***
   - Testing in Node.js backend development involves the process of verifying the correctness, reliability, and functionality of Node.js applications through various types of tests, such as unit testing, integration testing, API testing, performance testing, security testing, and end-to-end testing.
@@ -1238,7 +1373,7 @@ Overall, database replication is an important technique for building scalable an
 
 ##  Explain why mongoose does not return a promise but has a .then **
    => The Mongoose does not return a promise direcly because it was designed to support both the call-back base and promise bases API's. Insted of returning a promise, Mongoose provide a ".then()" methode on queries that allows us to chain promise based operations.
-    -> Mongoose queries are executed asynchronously and return a query object that implements the Promise API. The `.then()` method on Query object allows you to chai additional asynchronous operations that will be executed when the query is complete. This is similar to how promise work, where you can chain additional operations using `.then()`.
+    -> Mongoose queries are executed asynchronously and return a query object that implements the Promise API. The `.then()` method on Query object allows you to chain additional asynchronous operations that will be executed when the query is complete. This is similar to how promise work, where you can chain additional operations using `.then()`.
     -> Mongoose also suppports callback-bases API's, which means we can pass callback function to a queryinsted using a promise.
     ->".then()" is provided to developers convinience who prefer to use promises, but Mongoose queries can be used with callback as well.
 
@@ -1355,13 +1490,13 @@ Overall, database replication is an important technique for building scalable an
 ## My query/update seems to execute twice. Why is this happening? **
    
    => This can be hapen by not handling the asynchronous function properly, because Mongoose queries and upadates are asynchronous i.e. they dont block the event loop. Thats why the query/update is being executed twice.
-   => It can also happen due to to midleware function executed before/ after the function.If  a middleware function that is executing the query/update, it can cause the operation to be executed twice.
+   => It can also happen due to to midleware function executed before/ after the function.If a middleware function that is executing the query/update, it can cause the operation to be executed twice.
    
 -----------------------------------------------------------------------------------
 
 ## How we can create indexes with mongoose **
 
-   =>In Mongoose we can create indexes on collection using the "inex" method in schema defination
+   =>In Mongoose we can create indexes on collection using the "index" method in schema defination
    *Example:-
          const mongoose = require('mongoose');
          const mySchema = mongoose.Schema({
@@ -1374,7 +1509,7 @@ Overall, database replication is an important technique for building scalable an
 
         const MyModel = mongoose.model('MyModel', mySchema);
        
-       -> The value of 1 indicates that the index should be     created in ascending order. You can also use -1 to indicate descending order.
+       -> The value of 1 indicates that the index should be created in ascending order. You can also use -1 to indicate descending order.
        -> Once we defined the indexes, Mongoose create the index automatically when the model is first used.
        * we can create compund indexes by passing an objects with multiple fields to the 'indexs' method'
        - eg. mySchema.index({name:1,email:1})
@@ -1402,7 +1537,7 @@ Overall, database replication is an important technique for building scalable an
 ## What are pre and post hooks? **
 -> Pre and post also known as middlewares are the functions which are passes control during execution of asynchronous functions. 
 -> middleware is specified on the schema level ans is usefull for writin plugins.
--> Pre and post are functions that are executed before or after a certain action that wespecify.
+-> Pre and post are functions that are executed before or after a certain action that we specify.
   -eg. I we want run a function everytime before we save a document in the DB, we use pre-hook and if we want something to be executed after that we use post hooks.
 -> These hooks allow us to add custom logic to a Mongoose schema, such as validating data before it saved to database or updating related document when a document is deleted.
 
@@ -1974,7 +2109,7 @@ Overall, database replication is an important technique for building scalable an
         -> Bandwidth consupmtion costs for website is primary expenses for websites. Through caching and other optimizations, CDN is able to reduce the amount of data an origin server must provide, thus it will reduce the cost to site owners.
      3) High availability and redundancy: 
         -> Large amounts of traffic or hardware failures can interrupt normal website function. Thanks to their distributed nature, a CDN can handle more traffic and withstand hardware failure better than many origin servers.
-     4) Imprve Security: 
+     4) Improve Security: 
         -> A CDN may improve security by providing DDoS mitigation, improvements to security certificates, and other optimizations.
 
     =>t its core, a CDN is a network of servers linked together with the goal of delivering content as quickly, cheaply, reliably, and securely as possible. In order to improve speed and connectivity, a CDN will place servers at the exchange points between different networks.
@@ -2046,6 +2181,25 @@ Overall, database replication is an important technique for building scalable an
    12)Overall, browsers use a combination of network protocols, markup languages, scripting languages, and rendering engines to provide a seamless user experience when browsing the web.
 
 ---------------------------------------------------------------------------------
+
+## What is a URLs full form? Explain what a url is and the four parts it consists of The protocol in use The hostname of the server The location of the file The arguments to the file
+
+URL stands for Uniform Resource Locator. It is a standardized address used to identify resources on the internet. A URL provides the necessary information for a client (such as a web browser) to locate and retrieve a specific resource, such as a webpage, image, or file.
+
+A URL consists of four main parts:
+
+Protocol: The protocol indicates the method or protocol that the client uses to communicate with the server and retrieve the resource. The most common protocol is "http://" or "https://" for web pages, but there are other protocols like "ftp://" for file transfer, "mailto://" for email, and "file://" for local files.
+
+Hostname: The hostname represents the domain name or IP address of the server that hosts the resource. It identifies the location where the resource is stored. For example, in the URL "https://www.example.com", "www.example.com" is the hostname.
+
+File Path: The file path specifies the location of the specific file or resource on the server. It includes the directory structure leading to the file. For example, in the URL "https://www.example.com/images/pic.jpg", "/images/pic.jpg" is the file path.
+
+Query Parameters: Query parameters, also known as arguments or query strings, are optional parts of a URL that provide additional information or data to the server. They are appended to the end of the URL and separated by a question mark (?) from the rest of the URL. Query parameters are in the form of key-value pairs, with each pair separated by an ampersand (&). For example, in the URL "https://www.example.com/search?q=keyword&page=1", the query parameters are "q=keyword" and "page=1".
+
+Together, these four parts form a complete URL that allows the client to communicate with the server, specify the desired resource, and provide any necessary additional information.
+
+Note: It's important to mention that URLs can have additional components such as fragments (indicated by a hash sign #) for specifying a specific section within a webpage and port numbers for non-standard port usage. However, the four parts mentioned above are the fundamental components of a URL.
+--------------------------------------------------
 
 ## What is Stateless Backend? **
 

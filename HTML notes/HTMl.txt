@@ -1,3 +1,148 @@
+
+## What is HTML?
+  - HTML stands for 'Hyper Text Markup Language'
+  - HTML is the standard markup language for creating Web pages
+  - HTML describes the structure of a Web page
+  - HTML consists of a series of elements
+  - HTML elements tell the browser how to display the content
+  - HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link", etc.
+
+  <!DOCTYPE html> // it declares that this document is a HTML5 document. Andd helps browsers to display web pages correctly.
+  
+  //It must only appear once, at the top of the page (before any HTML tags).
+
+  // its not a case sensitive
+
+<html>  // root element of html page. It defines the whole HTML document.
+
+    <head>  // element contains meta info abt the HTML page.
+
+        <title>Practice</title>  // title of browser page which shown on browsers bar.
+
+    </head>
+    <body> // container for all visible content-h,p,img,a,t,li,etc
+    <h1>hii</h1>    
+    </body>
+</html>
+
+-------------------------------------
+
+## What is an HTML Element?
+
+=> In HTML element is that can be used to define the structure and content of web page.
+An HTML element is defined by a start tag, some content, and an end tag:
+
+   eg. html, head, title, body, h1-h6, p, a, img, ul, li, ol, table,form,input, button
+
+   => The <br> tag defines a line break, and is an empty element without a closing tag:
+
+   => HTML tags are not case sensitive.
+
+   => <hr> tag defines a thematic break in an HTML page, and is most often displayed as a horizontal rule.
+
+   => The <br> tag is an empty tag, which means that it has no end tag.
+     -> it defines a line break.
+     -> we can use it to make new line without starting new paragraph.
+
+  => <pre> element:
+    -> pre defines the preformated text.
+    -> text inside a <pre> element is displayed in fixed-width font usually in Courier, and it preserves both spaces and line breaks.
+
+
+----------------------------------------
+
+# BEM(Block,Element,Modifier);
+ BEM methodology is popular naming convention for classes in css.
+ BEM, which stands for Block, Element, Modifier, is a methodology for organizing and naming CSS classes in order to create more maintainable and modular stylesheets. It provides a structured approach to writing CSS and helps in avoiding style conflicts and increasing code reusability.
+
+Here's a brief explanation of the three main components in BEM:
+
+(1) Block: A block represents a standalone component or a higher-level module on a web page. It can be thought of as a reusable, self-contained unit. Blocks are usually defined by a class name that describes their purpose or function. For example, a navigation bar could be a block with the class name "navbar".
+
+(2) Element: Elements are the components that make up a block. They are dependent on the block they belong to and have no standalone meaning. Elements are typically denoted by two underscores (__) followed by a name within the context of the block. For instance, within the "navbar" block, there could be elements such as "logo" and "menu" with class names like "navbar__logo" and "navbar__menu".
+(3) Modifier: Modifiers are used to modify the appearance or behavior of blocks or elements. They allow for variations of a block or element without duplicating code. Modifiers are denoted by two hyphens (--) followed by a name. For example, if you have a "button" block, you might have modifiers like "button--primary" and "button--large" to indicate a primary button or a larger button size.
+
+By using BEM, you can create clear and structured class names that help identify the purpose and relationships of different components in your CSS. This methodology promotes code maintainability, reusability, and reduces the chances of style conflicts, especially in larger projects with many developers working together.
+
+ eg.
+ /* Block component */
+.btn {}
+
+/* Element that depends upon the block */ 
+.btn__price {}
+
+/* Modifier that changes the style of the block */
+.btn--orange {} 
+.btn--big {}
+
+-> block is a top level abstraction of new component eg. .btn{}. this block should be thought as parent.
+-> Child elements, can be places inside and denoted by two underscores following the name of block like btn__price{}.
+-> Finally Modifiers can manipulate the block so that we can theme or style the particular component without inflicting changes on a completely unrelated module. This is done by appending two hypens to the nameof the block just like btn--orange.
+
+---------------------------------------
+
+## Difference between display none and display hidden.
+-> display:none and visibility:hidden are two style declarations you can use to hide elements on the screen with CSS.
+-> With a none value for this property, the display for the element is turned off. This means the element – as well as its children – will not be displayed. The document is rendered without the element like it did not exist.
+-> With a hidden value for this property, the element it is applied to becomes "invisible". The space required by the element's box model stays but the element itself is hidden.
+
+--------------------------------------
+
+## styling the HTML using the formating elements:
+
+    <b> - Bold text
+    <strong> - Important text
+    <i> - Italic text
+    <em> - Emphasized text
+    <mark> - Marked text
+    <small> - Smaller text
+    <del> - Deleted text
+    <ins> - Inserted text  // 
+<p>My favorite color is <del>blue</del> <ins>red</ins>.</p>
+    <sub> - Subscript text
+          ->The HTML <sub> element defines subscript text. Subscript text appears half a character below the normal line, and is sometimes rendered in a smaller font. Subscript text can be used for chemical formulas, like H2O:
+          <p>This is <sub>subscripted</sub> text.</p>
+    <sup> - Superscript text;
+
+
+HTML Attributes:
+ 
+ - it provide additional info abt HTML element.
+ - All HTML elements can have attribute.
+ - attribute are always specified in the start tag.
+ - attributes are usually caome in name/value pairs like: name="value";
+
+ eg. id, class, style, src, href, alt, title, value, type, name, placeholder, disabled, selected, checked, maxlength.
+
+ -> <a href="https://www.w3schools.com">Visit W3Schools</a>
+
+ -> <img src="img_girl.jpg">
+       src-> absolute url eg:httts://example.jpg
+          -> relative /images/example.jpg
+  
+ -> width and heigth attributes.
+
+ -> style attributes
+
+ -> You should always include the lang attribute inside the <html> tag, to declare the language of the Web page. This is meant to assist search engines and browsers.
+
+    <html lang="en"></html>
+
+ -> title attribute
+    - it give some extra info abt an element
+
+ => <p title="I am a tooltip"> This is a paragraph</p>
+
+----------------------------------------
+
+## Web Browsers :
+
+    The purpose of a web browser (Chrome, Edge, Firefox, Safari) is to read HTML documents and display them correctly.
+
+    A browser does not display the HTML tags, but uses them to determine how to display the document:
+  
+
+
 ## Z-index 
   
   =>z-index is a CSS property that controls the vertical stacking order of elements that overlap in a web page.
@@ -15,6 +160,26 @@
      => In this example, the second div has a higher z-index value and will be displayed on top of the first div
 
      Note that z-index only works on positioned elements (position: relative, position: absolute, position: fixed, or position: sticky).
+
+# What is stacking-context?
+    
+    The stacking context is a concept in CSS that determines how elements are layered and stacked on top of each other within a web page. It defines the order in which elements are painted and displayed on the screen. Understanding the stacking context is crucial when dealing with overlapping elements and controlling their visibility.
+
+Each stacking context consists of one or more stacking contexts, which can be created in the following scenarios:
+
+Root Stacking Context: The root of the document establishes the initial stacking context. It typically represents the viewport or the browser window.
+
+Stacking Contexts within Elements: Certain CSS properties and values create stacking contexts within individual elements. These properties include position (with values other than static) and z-index.
+
+When elements belong to different stacking contexts, their stacking order is determined by a set of rules:
+
+Elements in the same stacking context are painted in the order they appear in the HTML markup, with the last one painted on top.
+
+Stacking contexts with a higher stacking order (higher z-index value) are painted on top of stacking contexts with a lower stacking order.
+
+If an element is positioned outside its stacking context, it may still overlap elements within other stacking contexts if its stacking order is higher.
+
+Understanding the stacking context and its rules is important for managing the visibility and layering of elements, especially when dealing with complex layouts, overlapping elements, and managing z-index values. It allows you to control how elements are stacked and which elements are visually displayed on top of others on the web page.
 
 -----------------------------------------------------------------------------------
 
@@ -66,7 +231,8 @@ Using semantic tags can make your HTML code more readable and understandable, bo
 7) Device access: allowing for the usage of various input and output devices.
 Styling: letting authors write more sophisticated themes
 
-------------------------
+------------------------------------------------------
+
 ## Responsive web
   => Add viewport
   -> <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -197,13 +363,15 @@ PostCSS each with their own syntax and features. These preprocessors are compile
 
 Using a CSS preprocessor can help you to write cleaner, more maintainable, and more efficient CSS code, and can save you time and effort in the long run.
 
+--------------------------------------------------------------------------
+
 ## What is the difference between "resetting" and "normalizing" CSS?
 
 1) 1. Resetting: CSS resets aim to remove all built-in browser styling. For example margins, paddings, font-sizes of all elements are reset to be the same. You will have to redeclare styling for common typographic elements.
 
 2) 2. Normalizing: Normalize CSS aims to make built-in browser styling consistent across browsers. It also corrects bugs for common browser dependencies.
 
----------------
+--------------------------------------------------------------------------
 
 ##  Describe the layout of the CSS Box Model and briefly describe each component.
 
@@ -215,6 +383,7 @@ Border: The area surrounding the padding (if any) and content. It has dimensions
 
 Margin: The transparent outer-most layer that surrounds the border. It separates the element from other elements in the DOM. It has dimensions margin-box width and margin-box height.
 
+------------------------------------------------------------------
 
 ## What is the difference between em and rem units?
 
@@ -224,7 +393,7 @@ Margin: The transparent outer-most layer that surrounds the border. It separates
 => rem units inherit their value from the font-size of the root element (html)
 => In most browsers, the font-size of the root element is set to 16px by default.
 
------------------------------------
+--------------------------------------------------------------------------
 
 ## What are the advantages of using CSS sprites and how are they utilized?
  => 
@@ -232,7 +401,7 @@ CSS sprites combine multiple images into one image, limiting the number of HTTP 
 
 => To utilize a spritesheet in CSS, one would use certain properties, such as background-image, background-position and background-size to ultimately alter the background of an element.
 
----------------
+-----------------------------------------------------------------------------
 
 ## What is the purpose of cache busting and how can you achieve it?
 
@@ -248,10 +417,11 @@ src="js/script.js" => src="js/script.js?v=2"
 
 The browser considers it a different file but prevents the need to change the file name.
 
+-------------------------------------------------------
 
 ## What are defer and async attributes on a <script> tag?
  
- => f neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing
+ => If neither attribute is present, the script is downloaded and executed synchronously, and will halt parsing of the document until it has finished executing
 
  => The "defer" attribute downloads the script while the document is still parsing but waits until the document has finished parsing before executing it, equivalent to executing inside a DOMContentLoaded event listener. defer scripts will "execute in order".
 
