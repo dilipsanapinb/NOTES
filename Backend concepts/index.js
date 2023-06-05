@@ -46,11 +46,37 @@
 
 // func()
 
-let btn = document.getElementById('btn');
-btn.addEventListener('click', displayModal  )
+// let btn = document.getElementById('btn');
+// btn.addEventListener('click', displayModal  )
 
-function displayModal() {
-    console.log("X");
-    let modal = document.getElementById('modal');
-    modal.style.display='block'
-}
+// function displayModal() {
+//     console.log("X");
+//     let modal = document.getElementById('modal');
+//     modal.style.display='block'
+// }
+
+// const customEvent = new CustomEvent('myEvent', {
+//     detail: { message: "Hello from my event" },
+//     bubbles: true,  // bubble up the DOM tree
+//     cancelable: true  //allow canceled
+// });
+
+// // dispatch the event
+
+// document.dispatchEvent(customEvent);
+
+// // handle the custome event
+
+// document.addEventListener('myEvent', function (event) {
+//     console.log(event.detail.message);
+//     // Output:"Hello from myEvent"
+// })
+
+const myEventTarget = new EventTarget();
+
+const myEvent = new Event('myEvent');
+
+myEventTarget.addEventListener('myEvent', function (event) {
+    console.log('Custom event triggered');
+})
+myEventTarget.dispatchEvent(myEvent);

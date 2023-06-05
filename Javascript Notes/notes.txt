@@ -1014,7 +1014,7 @@ console.log(myCar);
 ## OOPS:
   
   Inheritance
-=> The property of acquiring all the properties and behaviors of the parent object by an object is termed as inheritance.
+=> The property of acquiring all the properties and behaviors of the parent object by an child object is termed as inheritance.
 => This is a unique feature in object oriented programming languages which facilitates re-usability of the code of the parent class by the derived class.
 => In JavaScript, extends keyword is used to serve the purpose of inheritance.
 
@@ -1032,7 +1032,7 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
   => OOPs restrict direct access to its methods and variables by encapsulating the code and data together. There are two ways of encapsulation in Javascript:
 
-   1) Class fields are public by default, but private class members can be created by using a hash # prefix. The privacy encapsulation of these class features is enforced by JavaScript itself.
+   1) Class fields are public by default, but "private class members can be created by using a hash # prefix". The privacy encapsulation of these class features is enforced by JavaScript itself.
 
    2) Private instance fields Private instance fields are declared with # names (pronounced "hash names"), which are identifiers prefixed with #. The # is a part of the name itself. Private fields are accessible on the class constructor from inside the class declaration itself. They are used for declaration of field names as well as for accessing a field's value.
 
@@ -1040,7 +1040,11 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
    Making data members private using var keyword. Set the data using setter methods and get that data using getter methods. We can manage read and write access of object’s properties by using encapsulation.
 
-  Read Only Access : If we declare getter methods only then it facilitates the read only access. Write Only Access : If we declare setter methods only then it facilitates the write only access. Read & Write Access : If we declare both getter and setter methods then it facilitates both read and write access.
+  Read Only Access : If we declare getter methods only then it facilitates the read only access.
+  
+  Write Only Access : If we declare setter methods only then it facilitates the write only access.
+  
+  Read & Write Access : If we declare both getter and setter methods then it facilitates both read and write access.
 
 ## Why should Encapsulation to be used ?
 
@@ -1075,21 +1079,86 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
   let x = new ClassWithPrivateField();
   console.log('x:', x.privateField);
 
+  Example 2)
+
+            class Car {
+
+            constructor(make, model, year) {
+              this.year = year;
+              this.model = model;
+              this.make = make;
+            }
+
+              getMake() {
+                return this.make
+              }
+              getModel() {
+                return this.model
+              }
+              getYear() {
+                return this.year
+              }
+              setMake(newMake) {
+                this.make = newMake
+              }
+              setYear(newYear) {
+                this.year = newYear
+              }
+              setModel(newModel) {
+                this.model = newModel
+              }
+            }
+
+          let myCar = new Car("Mastang", "69", 1969);
+
+          console.log(myCar.getMake());
+          console.log(myCar.getModel());
+          console.log(myCar.getYear());
+
+          myCar.setMake("Ford Mastang");
+          myCar.setModel("GT-90")
+          myCar.setYear("1990")
+
+          console.log(myCar.getMake());
+          console.log(myCar.getModel());
+          console.log(myCar.getYear());
+
+  ** Example 3) 
+        
+        class Slot{
+            #timeSlots
+            constructor(){
+              this.#timeSlots=[]
+            }
+            add(slot) {
+              if (this.isAllowed(slot.start, slot.end))
+                this.#timeSlots.push(slot)
+            }
+            isAllowed(start, end) {
+              for (let slot of this.#timeSlots) {
+                if (start < slot.end && end < slot.start) {
+                  return false
+                }
+              }
+              return start
+            }
+          }
+
 ----------------------------
 
 ## Abstraction :
 
-  =>An abstraction is a way of hiding the implementation details and showing only the functionality to the users. In other words, it ignores the irrelevant details and shows only the required one.
+  =>An abstraction is a way of "hiding the implementation details and showing only the functionality to the users". In other words," it ignores the irrelevant details and shows only the required one".
 
-  => Abstraction in JavaScript is the process of hiding implementation details while showing only the necessary information to the user. It allows developers to focus on the essential features of an object or function without worrying about how it works internally.
+  => Abstraction in JavaScript is the process of "hiding implementation details while showing only the necessary information to the user". It allows developers to focus on the essential features of an object or function without worrying about how it works internally.
 
     => In JavaScript, abstraction can be achieved through various techniques such as:
 
-    - Encapsulation: This involves bundling related data and functions together and exposing only the necessary functions to the outside world. This helps to keep the internal details of an object hidden and maintain data integrity.
+    - "Encapsulation": This involves bundling related data and functions together and exposing only the necessary functions to the outside world. This helps to keep the internal details of an object hidden and maintain data integrity.
 
-    - Inheritance: This allows objects to inherit properties and methods from other objects, reducing the amount of redundant code in a program.
+    - "Inheritance": This allows objects to inherit properties and methods from other objects, reducing the amount of redundant code in a program.
 
-   -  Polymorphism: This refers to the ability of objects to take on multiple forms, allowing them to behave differently in different contexts.
+   - "Polymorphism": This refers to the ability of objects to take on multiple forms, allowing them to behave differently in different contexts.
 
     By using these techniques, developers can create code that is easier to understand, maintain, and extend over time. Abstraction is a crucial concept in object-oriented programming and is widely used in JavaScript frameworks such as React and Angular.
 
@@ -1179,17 +1248,19 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
     => They have a shorter syntax, which makes them more concise and easier to read.
     => They have an implicit ("not expressed in a direct way but understood by the people involved.") return statement, which means that if the function body is a single expression, it will be automatically returned.
 
-    => They have a lexical this binding, which means that the this value inside an arrow function is the same as the this value outside the function
+    => They have a "lexical this binding", which means that the "this value inside an arrow function is the same as the this value outside the function".
     
-    => While arrow functions have several advantages and are widely used in JavaScript, there are a few scenarios where they cannot be used or may not be suitable. Here are some cases where arrow functions should not be used:
+    => While arrow functions have several advantages and are widely used in JavaScript, there are a "few scenarios where they cannot be used or may not be suitable".
 
-    1) As methods of an object: Arrow functions do not have their own this binding, so they cannot be used as methods of an object. In other words, if you need to access the object's properties or methods within the function, you should use a traditional function expression instead.
+    => Here are some cases where arrow functions should not be used:
 
-    2) In constructors: Arrow functions cannot be used as constructors because they do not have a prototype property, which is required for creating new objects. If you need to create new objects based on a blueprint, you should use a traditional function expression instead.
+    1) "As methods of an object": Arrow functions "do not have their own this binding", so they cannot be used as methods of an object. In other words, if you need to access the object's properties or methods within the function, you should use a traditional function expression instead.
 
-    3) With the arguments object: Arrow functions do not have their own arguments object, so they cannot be used to access the arguments passed to the function. If you need to access the arguments, you should use a traditional function expression instead.
+    2) "In constructors": Arrow functions cannot be used as constructors because "they do not have a prototype property", which is required for creating new objects. If you need to create new objects based on a blueprint, you should use a traditional function expression instead.
 
-    4) With yield keyword: Arrow functions cannot be used with the yield keyword in a generator function, because they do not have their own this binding.
+    3) "With the arguments object": Arrow functions "do not have their own arguments object", so they cannot be used to access the arguments passed to the function. If you need to access the arguments, you should use a traditional function expression instead.
+
+    4) "With yield keyword": Arrow functions cannot be used with the yield keyword in a generator function, because "they do not have their own this binding".
 
     6) When you need to bind this to a different value: Arrow functions have a lexical this binding, which means that the value of this is determined by the surrounding context. If you need to bind this to a different value, you should use a traditional function expression instead.
 
@@ -1200,11 +1271,11 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
 ## Difference between .call , .apply and .bind
 
-=>In JavaScript, call, apply, and bind are three methods that can be used to call functions with a specific this value, as well as arguments to be passed to the function.
+=>In JavaScript, call, apply, and bind are three methods that can be "used to call functions with a specific this value, as well as arguments to be passed to the function".
 => Here's the difference between them:
 
 1) .call():
-   -> call: The call() method is a function method that allows you to call a function with a given this value and "arguments provided individually".
+   -> call: The call() method is a function method that allows you "to call a function with a given this value" and "arguments provided individually".
    -> With call(), you can pass arguments to the function one by one, separated by commas.
 
    -> Example:
@@ -1225,13 +1296,14 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
       }
       function myName(age,city) {
         this.age=age,
-        this.city=city,
+        this.city=city
       }
       myName.call(person2,21,'Nashik')
+      console.log("person2:".person2);
 
       // output prerson2:{name:"Dilip",age:21,city:'Nashik'}
 
---------------
+----------------------------
 
 
 2)  .apply():
@@ -1279,15 +1351,34 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
       greetPerson(); // Output: Hi, Alice from New York
 
+
+  ** Examples .call .apply and .bind
+
+  let person2 ={
+        name:'Dilip'
+      }
+      function myName(age,city) {
+        this.age=age,
+        this.city=city
+      }
+myName.call(person2, 21, 'Nashik');
+console.log("pesron2:", person2);
+myName.apply(person2,[26,"Sinnar"])
+console.log("pesron2:", person2);
+
+let ans=myName.bind(person2, 27, "Nimgaon");
+ans()
+ console.log("pesron2:", person2);
+
 ---------------------------------------------------
 
 ## Closures
 
-=> In JavaScript, a closure is a feature that allows a function to access and remember variables from the lexical scope in which it was defined, even if that function is executed outside of its original lexical scope.
-=> In simpler terms, a closure is a function that "remembers" the environment in which it was created.
+=> In JavaScript, a closure is a feature that "allows a function to access and remember variables from the lexical scope" in which it was defined, even if that function is executed outside of its original lexical scope.
+=> In simpler terms, a closure is a function that "remembers the environment in which it was created".
 
-=> Closures are created when a function is defined inside another function and the inner function references variables from the outer function's scope.
-=> The inner function can access these variables even after the outer function has returned, because the variables are still in memory and accessible to the inner function.
+=> Closures are created when a function is defined inside another function and the "inner function references variables from the outer function's scope".
+=> The "inner function can access these variables even after the outer function has returned, because the variables are still in memory and accessible to the inner function".
 
 => Here's an example to illustrate the concept of closures:
 
@@ -1441,6 +1532,7 @@ Together, event bubbling and capturing are called "event propagation", and they 
 --------------------------------------------------------------
 
 ## Difference between Debounce and throttle:
+## How to re-render the view when browser is resized? show it in code.
 
   => Debounce monitors the time delay between user actions and only executes the callback function if the delay exceeds the time delay defined by the developer.
   - So, continuous user actions can significantly delay the callback function’s execution if we use debounce.

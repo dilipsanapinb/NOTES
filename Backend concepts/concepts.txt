@@ -48,17 +48,18 @@ Throughput in a Node.js backend can be influenced by several factors, including 
 
 ## Techniques can used to high throughput:
 
-Event-driven, non-blocking I/O: Node.js uses an event-driven, non-blocking I/O model, which allows it to handle multiple concurrent connections without blocking the main event loop. This enables high concurrency and efficient handling of incoming requests, leading to higher throughput.
+(1) "Event-driven, non-blocking I/O": Node.js uses an event-driven, non-blocking I/O model, which allows it to handle multiple concurrent connections without blocking the main event loop. This enables high concurrency and efficient handling of incoming requests, leading to higher throughput.
+    eg. fetching the data using async and await by event 'onclick'.
 
-Asynchronous programming: Node.js encourages the use of asynchronous programming techniques, such as callbacks, Promises, and async/await, which allow for efficient handling of I/O-bound operations. This prevents the server from blocking while waiting for I/O operations to complete, resulting in higher throughput.
+(2) "Asynchronous programming": Node.js encourages the use of asynchronous programming techniques, such as callbacks, Promises, and async/await, which allow for efficient handling of I/O-bound operations. This prevents the server from blocking while waiting for I/O operations to complete, resulting in higher throughput.
 
-Scalability: Node.js applications can be designed to scale horizontally, meaning they can be distributed across multiple instances or nodes to handle increased load. This can be achieved using techniques such as clustering or load balancing, which allow for better utilization of resources and increased throughput.
+(3) "Scalability": Node.js applications can be designed to scale horizontally, meaning they can be distributed across multiple instances or nodes to handle increased load. This can be achieved using techniques such as clustering or load balancing, which allow for better utilization of resources and increased throughput.
 
-Performance optimizations: Properly optimizing the performance of a Node.js application can significantly impact its throughput. This may involve techniques such as optimizing database queries, caching, minimizing unnecessary computations, and optimizing resource utilization.
+(4) "Performance optimizations": Properly optimizing the performance of a Node.js application can significantly impact its throughput. This may involve techniques such as optimizing database queries, caching, minimizing unnecessary computations, and optimizing resource utilization.
 
-Hardware resources: The hardware resources available to the Node.js server, such as CPU, memory, and network bandwidth, can also impact throughput. Higher hardware resources generally allow for higher throughput, as the server has more capacity to handle incoming requests.
+(5) "Hardware resources": The hardware resources available to the Node.js server, such as CPU, memory, and network bandwidth, can also impact throughput. Higher hardware resources generally allow for higher throughput, as the server has more capacity to handle incoming requests.
 
-Application design: The design of the Node.js application, including its architecture, code organization, and efficiency, can also impact throughput. Well-structured and optimized code, along with efficient handling of requests and responses, can contribute to higher throughput.
+(6) "Application design": The design of the Node.js application, including its architecture, code organization, and efficiency, can also impact throughput. Well-structured and optimized code, along with efficient handling of requests and responses, can contribute to higher throughput.
 
 It's important to note that throughput is not the only consideration in evaluating the performance of a Node.js backend. Response time, latency, and resource utilization are also important factors to consider. A well-optimized Node.js backend should aim for a balance between high throughput, low latency, and efficient resource utilization to provide optimal performance for the specific requirements of the application.
 
@@ -68,6 +69,7 @@ It's important to note that throughput is not the only consideration in evaluati
 
 => CPU-intensive tasks are computing tasks that require a lot of processing power from the central processing unit (CPU) of a computer or server.
 => These tasks involve performing a large number of calculations or processing large amounts of data, which can cause the CPU usage to spike and slow down other processes running on the system.
+
 => Examples of CPU-intensive tasks include:
 
 - Video encoding or rendering
@@ -91,13 +93,13 @@ It's important to note that throughput is not the only consideration in evaluati
 
 =>Here are some common ways in which the main thread can be blocked in Node.js:
 
-    - Synchronous I/O operations: If you use synchronous versions of I/O operations like fs.readFileSync or process.stdin.readSync, they will block the main thread until the operation is completed, causing the event loop to stall and become unresponsive.
+    - "Synchronous I/O operations": If you use synchronous versions of I/O operations like fs.readFileSync or process.stdin.readSync, they will block the main thread until the operation is completed, causing the event loop to stall and become unresponsive.
 
-    - Long-running computations: If you have computationally intensive tasks that take a long time to execute, such as complex mathematical calculations or data processing, these tasks can block the main thread and cause the event loop to become unresponsive.
+    - "Long-running computations": If you have computationally intensive tasks that take a long time to execute, such as complex mathematical calculations or data processing, these tasks can block the main thread and cause the event loop to become unresponsive.
 
-    - Infinite loops: If you have an infinite loop in your code that runs continuously without yielding control back to the event loop, this can block the main thread and cause the application to become unresponsive.
+    - "Infinite loops": If you have an infinite loop in your code that runs continuously without yielding control back to the event loop, this can block the main thread and cause the application to become unresponsive.
 
-    - Recursive functions: If you have a recursive function that calls itself repeatedly without returning control to the event loop, this can cause the call stack to grow indefinitely and eventually lead to a stack overflow error, blocking the main thread.
+    - "Recursive functions": If you have a recursive function that calls itself repeatedly without returning control to the event loop, this can cause the call stack to grow indefinitely and eventually lead to a stack overflow error, blocking the main thread.
 
 =>To avoid blocking the main thread in Node.js, it's important to use asynchronous I/O operations, break up long-running computations into smaller chunks, and avoid infinite loops or recursive functions that don't return control to the event loop. You can also use worker threads or child processes to offload CPU-intensive tasks to separate threads or processes and keep the main thread free to process I/O operations and events.
 
@@ -115,6 +117,102 @@ It's important to note that throughput is not the only consideration in evaluati
 => Rate limiting can also be used to prevent brute-force attacks on password-protected resources by limiting the number of failed login attempts that can be made within a certain period of time. This helps protect user accounts from being compromised by attackers who attempt to guess passwords through automated scripts.
 
 Overall, rate limiting is an important technique for controlling traffic and preventing overload in applications and networks. It helps ensure that resources are used efficiently and can improve the overall performance and reliability of the system
+
+
+  // rate limit middlewares that limit the request per minut is 10 and after a minute it will resume to take a request and if within a minute we exhausted all 10 limits then it will again unaccessable till next minute
+
+      const express = require("express");
+      const { rate } = require("./middlewares/rate");
+
+      const app = express();
+
+      app.get('/api/getdata',rate(10,60*1000,60*1000), (req,res) => {
+          res.status(200).send({"Message":"Get a Data "})
+      })
+
+      app.listen(8000, () => {
+          console.log(`server is listening to port 8000`);
+      })
+
+
+      **middlewares/rate.js
+
+      const rate = (limit, time, blockedTime) => {
+    // We define a new function called `rateLimit` which takes three arguments: 
+    // `limit` - the maximum number of requests allowed within `time` milliseconds.
+    // `time` - the duration of the time window in milliseconds.
+    // `blockedTime` - the duration of the blocked period in milliseconds.
+
+    const requests = {};
+    // We create an object called `requests` to store the request history for each IP address.
+
+    setInterval(() => {
+        // We create a new interval which runs every `time` milliseconds to remove old requests from the `requests` object.
+
+        for (const ip in requests) {
+            // We loop through each IP address in the `requests` object.
+
+            const now = Date.now();
+            // We get the current timestamp.
+
+            const timeWindow = requests[ip].timeWindow;
+            // We get the start of the current time window for the IP address.
+
+            const blockedUntil = requests[ip].blockedUntil;
+            // We get the end of the blocked period for the IP address.
+
+            requests[ip].requests = requests[ip].requests.filter((time) => {
+                return time > now - timeWindow;
+            });
+            // We remove all requests from the `requests` array for the IP address which are older than `timeWindow` milliseconds.
+
+            if (requests[ip].requests.length === 0) {
+                requests[ip].timeWindow = now;
+            }
+            // If there are no requests in the current time window for the IP address, we reset the start of the time window to the current timestamp.
+
+            if (blockedUntil && blockedUntil <= now) {
+                requests[ip].blockedUntil = null;
+                requests[ip].requests = [];
+                requests[ip].timeWindow = now;
+            }
+            // If the blocked period for the IP address has ended, we reset the request count, the start of the time window, and the end of the blocked period.
+        }
+    }, time);
+    // We set the interval to run every `time` milliseconds.
+
+    return (req, res, next) => {
+        // We return a middleware function which takes three arguments: `req`, `res`, and `next`.
+
+        const ip = req.ip;
+        // We get the IP address of the client making the request.
+
+        const now = Date.now();
+        // We get the current timestamp.
+
+        requests[ip] = requests[ip] || { requests: [], timeWindow: now };
+        // If there is no entry in the `requests` object for the IP address, we create one and initialize the `requests` array and the start of the time window.
+
+        if (requests[ip].blockedUntil && requests[ip].blockedUntil > now) {
+            const remainingTime = Math.ceil((requests[ip].blockedUntil - now) / 1000);
+            res.status(429).send(`Too many requests, please try again after ${remainingTime} seconds.`);
+        }
+        // If the client is currently blocked, we send a 429 status code with a message indicating how long the client must wait before making more requests.
+
+        else if (requests[ip].requests.length >= limit) {
+            requests[ip].blockedUntil = now + blockedTime;
+            const remainingTime = Math.ceil(blockedTime / 1000);
+            res.status(429).send(`Too many requests, please try again after ${remainingTime} seconds.`);
+            // If the client has reached the request limit, we block the client for the specified `blockedTime` and send a 429 status code with a message indicating how long the client must wait before making more requests
+        } else {
+            requests[ip].requests.push(now);
+            next();
+        }
+    }
+};
+
+module.exports={rate}   
+
 
 ----------------------------------------------------
 
@@ -164,7 +262,7 @@ The process.nextTick () is a method that adds a callback function to the start o
 
 The Node.js event loop is what allows Node.js to perform non-blocking I/O operations by offloading operations to the system kernel whenever possible. The event loop has several phases, each with a FIFO queue of callbacks to execute.
 
-A tick is a term that refers to one iteration of the event loop, where it executes any callbacks that are in the queue for the current phase2. A tick ends when the queue is emptied or the maximum number of callbacks has been reached1.
+A tick is a term that refers to one iteration of the event loop, where it executes any callbacks that are in the queue for the current phase. A tick ends when the queue is emptied or the maximum number of callbacks has been reached.
 
 Therefore, process.nextTick () can starve your event loop if you use it too much or if your callback functions are too long. This is because process.nextTick () callbacks are executed before the event loop moves to the next phase, and they can prevent other I/O operations from being processed in a timely manner. You should use process.nextTick () sparingly and only for cases where you need to run some code before anything else happens in the next tick.
 
@@ -172,23 +270,22 @@ Therefore, process.nextTick () can starve your event loop if you use it too much
 
 ## How can you create your own events?
 
-Synthetic events;
+// Create a new event target
 
-const event =new Event ("build");
+const myEventTarget = new EventTarget();
 
-// listen to event 
+// Define a custom event
 
-elem.addeventListener(
-  'build',
-  (el)=>{
-    /*
-    */
-  },
-  false
-);
-// Dispatch the event 
+const myEvent = new Event('myEvent');
 
-elem.dispatchEvent(event)
+// Add an event listener to handle the custom event
+
+myEventTarget.addEventListener('myEvent', function(event) {
+  console.log('Custom event triggered');
+});
+
+// Dispatch the custom event
+myEventTarget.dispatchEvent(myEvent);
 
 
 Example-2
@@ -238,6 +335,7 @@ Reading a file is a common thing in every progrmming languages and every languag
 
 readFile is non-blocking async.
 readFileSync is blocking sync.
+
 `const fs=require('fs'); // imports file system module in variable fs`
 ##readFile()
 =>readFile() method uses a callback function. Due to its non-blocking nature, the program wont wait for the file to be read completely. So that the -->The end<-- message will be printed in first or in between the file content.
@@ -2775,3 +2873,11 @@ Typically all requests from D would go directly to F, and F would send responses
     - Caching - A reverse proxy can also cache content, resulting in faster performance. For example, if a user in Paris visits a reverse-proxied website with web servers in Los Angeles, the user might actually connect to a local reverse proxy server in Paris, which will then have to communicate with an origin server in L.A. The proxy server can then cache (or temporarily save) the response data. Subsequent Parisian users who browse the site will then get the locally cached version from the Parisian reverse proxy server, resulting in much faster performance.
 
     - SSL encryption - Encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
+
+---------------------------------------------------
+
+## What is Indexing ? 
+
+
+--------------------------------------------------
+

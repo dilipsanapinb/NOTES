@@ -33,5 +33,20 @@
     </p>
 </body>
 
+<button id="ebnt">Event</button>
+<script>
+    let elem=document.getElementById('ebnt');
+    elem.addeventListener(
+            'build',
+            (el) => {
+                console.log("Event is clicked");
+            },
+            false
+        );
+        // Dispatch the event 
+
+        elem.dispatchEvent(event)
+</script>
+
 </html>
 <script src="./index.js"></script>

@@ -489,15 +489,177 @@ let arr = [1, 2, 3, 4, 5];
 // p1.setProffesssion("Coder");
 // console.log(p1);
 
-class Rectangle{
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
-  }
-  area() {
-    return this.height*this.width
-  }
-}
+// class Rectangle{
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
+//   area() {
+//     return this.height*this.width
+//   }
+// }
 
-let box = new Rectangle(12, 13);
-console.log(box.area());
+// let box = new Rectangle(12, 13);
+// console.log(box.area());
+
+// class Slot{
+//   #timeSlots
+//   constructor(){
+//     this.#timeSlots=[]
+//   }
+//   add(slot) {
+//     if (this.isAllowed(slot.start, slot.end))
+//       this.#timeSlots.push(slot)
+//   }
+//   isAllowed(start, end) {
+//     for (let slot of this.#timeSlots) {
+//       if (start < slot.end && end < slot.start) {
+//         return false
+//       }
+//     }
+//     return start
+//   }
+// }
+// class Car {
+//   constructor(make, model, year) {
+//     this.year = year;
+//     this.model = model;
+//     this.make = make;
+//   }
+//     getMake() {
+//       return this.make
+//     }
+//     getModel() {
+//       return this.model
+//     }
+//     getYear() {
+//       return this.year
+//     }
+//     setMake(newMake) {
+//       this.make = newMake
+//     }
+//     setYear(newYear) {
+//       this.year = newYear
+//     }
+//     setModel(newModel) {
+//       this.model = newModel
+//     }
+//   }
+
+// let myCar = new Car("Mastang", "69", 1969);
+
+// console.log(myCar.getMake());
+// console.log(myCar.getModel());
+// console.log(myCar.getYear());
+
+// myCar.setMake("Ford Mastang");
+// myCar.setModel("GT-90")
+// myCar.setYear("1990")
+
+// console.log(myCar.getMake());
+// console.log(myCar.getModel());
+// console.log(myCar.getYear())
+
+
+// let person2 ={
+//         name:'Dilip'
+//       }
+//       function myName(age,city) {
+//         this.age=age,
+//         this.city=city
+//       }
+// myName.call(person2, 21, 'Nashik');
+// console.log("pesron2:", person2);
+// myName.apply(person2,[26,"Sinnar"])
+// console.log("pesron2:", person2);
+
+// let ans=myName.bind(person2, 27, "Nimgaon");
+// ans()
+//  console.log("pesron2:", person2);
+
+// let arrr = [1, 2, 3, 4, 5];
+// for (var i = 0; i < arrr.length; i++) {
+//   (function (i) {
+//   setTimeout(() =>
+//     console.log(arr[i], i)
+//     , i * 1000)
+// })(i)
+// }
+
+//  for (let i=0; i<arr.length;i++){
+//          setTimeout(()=>console.log(arr[i],i),   i*1000)
+//         }
+
+
+// rate limit middlewares that limit the request per minut is 10 and after a minute it will resume to take a request and if within a minute we exhausted all 10 limits then it will again unaccessable till next minute
+
+// const rate = (limit, time, blockedTime) => {
+//   const requests = {};
+//   setInterval(() => {
+//     for (const ip in requests) {
+//       const now = Date.now();
+//       const timeWindow = requests[ip].timeWindow;
+//       const blockUntill = requests[ip].blockUntill;
+
+//       requests[ip].requests =
+//         requests[ip].requests.filter((time) => {
+//           return time > now - timeWindow;
+//         });
+//       if (requests[ip].requests.length === 0) {
+//         requests[ip].timeWindow = now;
+//       }
+//       if (blockUntill && blockUntill <= now) {
+//         requests[ip].blockUntill = null;
+//         requests[ip].requests = [];
+//         requests[ip].timeWindow = now;
+//       }
+//     }
+//   }, time);
+//   return (req, res, next) => {
+//     const ip = req.ip;
+//     const now = Date.now();
+//     requests[ip] = requests[ip] || { requests: [], timeWindow: now };
+//     if (requests[ip].blockUntill && req[ip].blockUntill > now) {
+//       const remainingTime = Math.ceil((requests[ip].blockUntill - now) / 1000);
+//       res.status(429).send(`To many requests, please try again after ${remainingTime} seconds`)
+//     }
+//     else if (requests[ip].requests.length >= limit) {
+      
+//       requests[ip].blockUntill = now + blockedTime;
+//       const remainingTime = Math.ceil(blockedTime / 1000);
+//       res.status(429).send()
+//     } else {
+//       requests[ip].requests.push(now);
+//       next();
+//     }
+//   }
+// };
+// module.exporst={rate}
+
+
+// Throttle to handelthe window resizing
+
+// function throttle(func, delay) {
+//   let timeId;
+//   return function () {
+//     const args = arguments;
+//     const context = this;
+//     if (!timeId) {
+//       timeId = setTimeout(function () {
+//         func.apply(context, args);
+//         timeId = null;
+//       }, delay);
+//     }
+//   }
+// }
+
+// function handleResize() {
+//   console.log('Resized!');
+// }
+// window.addEventListener('resize',throttle(handleResize,1000))
+
+// create a event
+
+const event = new Event('build');
+
+

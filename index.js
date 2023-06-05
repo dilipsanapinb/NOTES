@@ -30,8 +30,8 @@
 // car.fuel();
 // console.log(car)
 
-let even = 0;
-let odd = 0;
-for (let i = 0; i <= 5; i++){
+// let even = 0;
+// let odd = 0;
+// for (let i = 0; i <= 5; i++){
     
-}
+// }
