@@ -459,21 +459,32 @@ response.end();
 }).listen(8080);
 
 ## simple req 
+    
 
-    const http = require('http');
+       const http = require('http');
 
-    const hostname = '127.0.0.1';
-    const port = 3000;
+          const hostname = '127.0.0.1';
+          const port = 3000;
 
-    const server = http.createServer((req, res) => {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('Hello World');
-    });
+      const server = http.createServer((req, res) => {
+          //   res.statusCode = 200;
+          //   res.setHeader('Content-Type', 'text/plain');
 
-    server.listen(port, hostname, () => {
-      console.log(`Server running at http://${hostname}:${port}/`);
-    });
+          res.writeHead(200, { 'Content-Type': 'text/plain' });
+
+          if(req.url=="/"){
+              res.end("Hello")
+          }else if (req.url=="/hello"){
+              res.end("Hello World")
+          } else if (req.url === '/user') {
+              res.end("User Data")
+          }
+          });
+
+          server.listen(port, hostname, () => {
+            console.log(`Server running at http://${hostname}:${port}/`);
+          });
+
 
 ------------------------------------------------
 
@@ -564,7 +575,8 @@ Status code	Reason phrase	Meaning
 
 -----------------------------------------------
 
-##### How to create a web server without express?**********
+##### How to create a web server without express?**
+
 -we can create server without using express by using the http module.
 -We need to follow the steps like,
 1.Require the http module using require('http').
@@ -619,7 +631,7 @@ req.end();
 
 # What is Libuv?
 
-- Libuv is a C library originally written for Node.js to abstract non-blocking I/O operations or to provide cross-platform support for features such as file system, acces, network programming and timers.
+-" Libuv is a C library" "originally written for Node.js to abstract non-blocking I/O operations or to provide cross-platform support for features such as file system, acces, network programming and timers."
 - It is multi-platform support library with a focus on asynchronnus I/O, event driven programming and networking.
 - Libuv was initially developed by Bert Belder, Ryan Dahl, and others as part of the Node.js project to provide a consistent way to handle I/O operations across multiple platforms.
 - Event-driven asynchronous I/O model is integrated.
@@ -675,12 +687,15 @@ When Node.js starts, it initializes the event loop, processes the provided input
 
 - I/O callbacks: In this phase, the callbacks for I/O events such as network requests, file system operations, and other system events are executed.
 
+------------------------------------------------------------
 
+### What are timers in Node.js?
 
-### What are timers in Node.js?***
--In Node.js, timers are a mechanism that allows you to schedule the execution of a function or piece of code at a specified time in the future. 
-Timers module in Node.js contains functions that execute code after a set period of time. Timers do not need to be imported via require(), since all the methods are available globally to emulate the browser JavaScript API.
--There are several types of timers in Node.js:
+-> In Node.js, timers are a mechanism that allows you to schedule the execution of a function or piece of code at a specified time in the future. 
+-> Timers module in Node.js contains functions that execute code after a set period of time.
+-> Timers do not need to be imported via require(), since all the methods are available globally to emulate the browser JavaScript API.
+
+->There are several types of timers in Node.js:
 
 1)setTimeout():->
 -This function is used to execute a piece of code once after a specified delay, measured in milliseconds.
@@ -737,211 +752,252 @@ Node Version Manager(NVM)
 -nvm use <version>
 3)- uninstall a specific version of Node.js using the nvm uninstall command.
 
+--------------------------------------------------------------
 
-#33 What is common.js? how is it different from es modules?**
+## 33 What is common.js? how is it different from es modules?
 
-->CommonJS modules are a popular way to modularize JavaScript code. They allow you to export and import modules using the export and import.
-->ES Modules are a newer way to modularize JavaScript code.
-->CommonJS is a module specification for JavaScript used primarily in Node.js environments. It provides a way to define reusable code modules using a require() function to load dependencies and an exports object to expose functionality to other modules.
-->ES modules are a newer standard for JavaScript modules introduced in ECMAScript 2015 (ES6). ES modules use the import and export statements to load dependencies and expose functionality, respectively. ES modules can be used in both browser and Node.js environments, although some older browsers may not support them.
-CommonJS (also known as CJS) is a module system used in Node.js and other environments that supports synchronous loading of modules. It is a standard for structuring JavaScript code into separate files, each containing a module that can be loaded and reused in other parts of an application.
+-> CommonJS modules are a popular way to modularize JavaScript code. They allow you to export and import modules using the "module export" and "require".
+-> ES Modules are a newer way to modularize JavaScript code.
+-> CommonJS is a module specification for JavaScript used primarily in Node.js environments. It provides a way to define reusable code modules using a require() function to load dependencies and an exports object to expose functionality to other modules.
+-> ES modules are a newer standard for JavaScript modules introduced in ECMAScript 2015 (ES6). ES modules use the import and export statements to load dependencies and expose functionality, respectively. ES modules can be used in both browser and Node.js environments, although some older browsers may not support them.
+-> CommonJS (also known as CJS) is a module system used in Node.js and other environments that supports synchronous loading of modules. It is a standard for structuring JavaScript code into separate files, each containing a module that can be loaded and reused in other parts of an application.
 It is the native module system of modern web browsers and is supported in Node.js since version 13.
 
 It different from es modules :->
 
-- CommonJS modules are loaded synchronously, which means that the entire module is loaded before the code execution continues.
--ES modules, on the other hand, are evaluated asynchronously, which allows for better performance and more efficient loading of dependencies.
+- "CommonJS modules are loaded synchronously", which means that the "entire module is loaded before the code execution continues".
+- "ES modules, on the other hand, are evaluated asynchronously", which allows for better performance and more efficient loading of dependencies.
 
-- CommonJS modules are evaluated at runtime, which means that the code inside the module is executed when it is loaded.
--CommonJS modules are not statically analyzable, which can lead to slower performance and more runtime errors.
--ES modules are statically analyzable, which means that the JavaScript engine can parse and analyze the module structure at compile time, allowing for better optimization and error checking.
+- "CommonJS modules are evaluated at runtime", which means that the code inside the module is executed when it is loaded.
+- "CommonJS modules are not statically analyzable", which can lead to s"lower performance" and 'more runtime errors'.
+- "ES modules are statically analyzable", which means that the 'JavaScript engine can parse and analyze the module structure at compile time', allowing for better optimization and error checking.
 
 - CommonJS is still widely used in Node.js environments due to its familiarity and backwards compatibility with older codebases.
 
--Syntax: CommonJS uses require() and exports to load dependencies and expose functionality, respectively, while ES modules use import and export.
+- Syntax: CommonJS uses require() and exports to load dependencies and expose functionality, respectively, while ES modules use import and export.
 
+---------------------------------------------------------------------
 
+### How does the crypto module work?
 
-### How does the crypto module work?**
-
--The crypto module in Node.js is a set of cryptographic functionality for secure communication and data encryption. It provides a way to perform cryptographic operations such as hashing, encryption, and decryption using a variety of algorithms.
-- crypto allows you to hash plain texts before storing them in the database
-- Work in Node js => What does the crypto module do?
+-> The crypto module in Node.js is a set of cryptographic functionality for secure communication and data encryption. It provides a way to perform cryptographic operations such as hashing, encryption, and decryption using a variety of algorithms.
+-> crypto allows you to hash plain texts before storing them in the database
+-> Work in Node js => What does the crypto module do?
   The crypto module in Node. js provides functionalities such as encrypting, decrypting, and hashing any type of data in a Node. js application.
 - Use -> The crypto module provides a way of handling encrypted data.
-eg.
-const crypto = require('crypto');
--we can generate a cryptographic hash of a string using the createHash() function:
+ -> eg.
+       
+       const crypto = require('crypto');
+
+-> we can generate a cryptographic hash of a string using the createHash() function:
 const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
--to decrypt the data, we can use the createDecipher() function:
-const decipher = crypto.createDecipher('aes192', 'my secret key');
+-> to decrypt the data, we can use the createDecipher() function:
 
+       const decipher = crypto.createDecipher('aes192', 'my secret key');
+
+
+-------------------------------------------------------------------
 
 # What are web sockets?
 
 
-- WebSocket is bidirectional, a full-duplex protocol that is used in the same scenario of client-server communication, unlike HTTP ......
--It provies  real-time, two-way communication channels between a client (such as a web browser) and a server over a single TCP connection.
--Data can be sent and received from both ends at any time, without having to establish a new connection each time.
--They provide a persistent connection that allows for low-latency, high-performance communication between the client and the server, without the overhead of HTTP requests and responses.
--With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply.
--To use WebSockets in a web application, the client and server both need to support the WebSocket protocol. The client typically uses a JavaScript library to create a WebSocket object and establish a connection to the server, while the server uses a WebSocket server library to handle incoming connections and communicate with clients.
-\\ uses
+-> WebSocket is bidirectional, a full-duplex protocol that is used in the same scenario of client-server communication, unlike HTTP ......
+-> It provies  real-time, two-way communication channels between a client (such as a web browser) and a server over a single TCP connection.
+-> Data can be sent and received from both ends at any time, without having to establish a new connection each time.
+-> They provide a persistent connection that allows for low-latency, high-performance communication between the client and the server, without the overhead of HTTP requests and responses.
+-> With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply.
+-> To use WebSockets in a web application, the client and server both need to support the WebSocket protocol. The client typically uses a JavaScript library to create a WebSocket object and establish a connection to the server, while the server uses a WebSocket server library to handle incoming connections and communicate with clients.
+
+  => uses :
 
 - Real-time web application like trading app.
 - Chat application
 - Gaming application
 
+-----------------------------------------------------------------------
 
 # What are microservices?
 
-Microservices are an architectural and organizational approach to software development where software is composed of small independent services that communicate over well-defined APIs.
-- In use of microservices large, monolithic applications are broken down into smaller, independent components that are responsible for a specific business capability and that can be developed, tested, and deployed independently.
--Each microservice runs as a separate process and communicates with other microservices over a network, typically using lightweight protocols such as HTTP or message queues.
-*Benefits of using the microservices
-1)Scalability: Each microservice can be scaled independently, allowing organizations to handle spikes in traffic more easily.
-2)Flexibility: Microservices can be developed and deployed independently, allowing for greater agility and faster time to market.
-3)Resilience: A failure in one microservice does not necessarily affect the entire system, reducing the impact of downtime.
-4)Technology independence: Each microservice can be developed using different technologies and programming languages, allowing teams to use the best tools for each job.
-5)Ease of maintenance: Each microservice is responsible for a specific business capability, making it easier to test, deploy, and maintain the system.
+=> Microservices are an architectural and organizational approach to software development where software is composed of small independent services that communicate over well-defined APIs.
+-> In use of microservices large, monolithic applications are broken down into smaller, independent components that are responsible for a specific business capability and that can be developed, tested, and deployed independently.
+-> Each microservice runs as a separate process and communicates with other microservices over a network, typically using lightweight protocols such as HTTP or message queues.
+
+=> Benefits of using the microservices
+
+    1)Scalability: Each microservice can be scaled independently, allowing organizations to handle spikes in traffic more easily.
+    2)Flexibility: Microservices can be developed and deployed independently, allowing for greater agility and faster time to market.
+    3)Resilience: A failure in one microservice does not necessarily affect the entire system, reducing the impact of downtime.
+    4)Technology independence: Each microservice can be developed using different technologies and programming languages, allowing teams to use the best tools for each job.
+    5)Ease of maintenance: Each microservice is responsible for a specific business capability, making it easier to test, deploy, and maintain the system.
+
 **However, implementing microservices can also introduce new challenges, such as increased complexity in managing the communication between services and the need for strong testing and monitoring practices. As with any development approach, there are trade-offs that need to be carefully considered and managed.
-# How does express work?
 
-### Creating a CLI based app using Node.js and publish it***
-Steps need to follow to create the Command Line Intrface app
-1)create a new directory and initializes the app with npm
--mkdir First-cli-app
-cd First-cli-app
--initialise the app
-npm init
+----------------------------------------------------
 
-2)Install the dependencies
-npm i commander
+## How does express work?
 
-3)Build app using cammander
-const {functionP}=require('commander);
+  => Express is a popular web application framework for Node.js that simplifies the process of building robust and scalable web applications. It provides a set of features and tools that make it easier to handle routing, middleware, request/response handling, and more.
 
-functionP.arguments('<name>)
-.action(name=>{
-  console.log(`Hello,${name}!);
-})
-functionp.parse(process.argv);
+  => At its core, Express is built on top of the Node.js http module, which provides basic functionality for creating an HTTP server. Express enhances and extends the capabilities of the http module by providing a higher-level API and adding features like routing, middleware support, template engines, and error handling.
 
-4) run tha app locally
-node index.js Dilip
-//Hello Dilip
+  => Here's a high-level overview of how Express works:
 
-5)publish the app
-npm publish
+      (1) "Setting up the application":  
+          To use Express, you first need to install it as a dependency in your Node.js project using npm or yarn. Then, you import the Express module into your application using require('express'). You create an instance of the Express application by invoking express() and store it in a variable.
 
-6) Others can Install this app by 
-npm install -g First-cli-app
+      (2) "Defining routes": 
+          Express allows you to define routes to handle different HTTP methods and URLs. You can use the app.get(), app.post(), app.put(), app.delete(), and other similar methods to define routes and specify the callback function that will be executed when a request matches a particular route. These routes can handle dynamic parameters and query parameters as well.
 
-7) To run app globally
-First-cli-app Dilip
-//`Hello Dilip`
+      (3) "Middleware": 
+          Express uses middleware functions to perform various tasks during the request-response cycle. Middleware functions have access to the request and response objects and can modify them, execute additional code, or terminate the request-response cycle. You can use app.use() or specific HTTP method-based middleware functions to add middleware to your application. Express provides a wide range of middleware modules that handle common tasks such as parsing request bodies, handling sessions, authenticating requests, logging, and more. You can also create custom middleware functions as per your application's requirements.
+
+      (4) "Handling requests and generating responses":
+          When a request is received by the Express server, it goes through the defined routes in the order they are declared. If a matching route is found, Express executes the corresponding callback function, also known as a route handler, which has access to the request and response objects. You can use these objects to process the request data, interact with databases, perform calculations, and generate an appropriate response. The response can be in various formats, such as HTML, JSON, or files.
+
+      (5) "Error handling":
+          Express provides mechanisms for handling errors that occur during the request-response cycle. You can define error handling middleware functions that have an additional err parameter, allowing you to catch and handle errors. These middleware functions are typically defined after all the routes and other middleware.
+
+      (6) Starting the server:
+         Once you have defined the routes, middleware, and error handlers, you can start the Express server by calling app.listen() and specifying the port number on which the server should listen for incoming requests.
+
+  => Express is highly flexible and can be extended with additional middleware and modules to suit your specific application needs. Its modular design and large ecosystem of middleware and plugins make it a powerful and widely used framework for building web applications with Node.js.
 
 
-## How does express work?**
+----------------------------------------------------
 
-EXPRESS
-Express is a node js web application framework that provides broad features for building web and mobile applications.
-Works
-Its buld upon the http, and it provides the tools and utilities for creating HTTp servers and handling requests and responses.
+## Creating a CLI based app using Node.js and publish it
 
-const app = require('express')();
-app.get('/',async(req, res) => {
-    try{
-         res.send('Hello, Dilip. How are you? ');
-    }catch(err){
-        throw new Error(err.messsage)
+ => Steps need to follow to create the Command Line Intrface app :
+
+      (1) create a new directory and initializes the app with npm
+
+            -mkdir First-cli-app
+            cd First-cli-app
+            -initialise the app
+            npm init
+
+      (2) Install the dependencies
+
+         npm i commander
+
+      (3)Build app using cammander
+
+         const { program } = require('commander');
+
+        program
+        .version('1.0.0')
+        .description('A Simple CLI app')
+        .option('-n,--name <name>', 'Your name')
+        .option('-a, --age <age>', 'Your age')
+        .action((options) => {
+            console.log(`Hello, ` + options.name + ' !');
+            console.log('Your age, ' + options.age + ' years old.');
+        });
+
+        program.parse(process.argv);
+      
+      (4) run tha app locally
+
+          node index.js --name Dilip --age 26
+
+          // Hello, Dilip !
+          // Your age, 26 years old.
+
+      (5) publish the app
+
+        npm publish
+
+      (6) Others can Install this app by 
+
+      npm install -g First-cli-app
+
+      (7) To run app globally
+
+      First-cli-app Dilip
+      //`Hello Dilip`
+
+--------------------------------------------------------
+
+## What are routes?
+
+ => routes define how the server will handle incoming requests based on the URL path and HTTP method.
+ => Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method GET, POST,DELETE and PATCH .
+
+-> Routing allows targeting different routes or different URLs on our page.
+-> Node.js has several popular frameworks such as Express.js that provide a simple and elegant way of defining and handling routes. Express.js allows you to define routes using its built-in routing system, which provides a clean API for defining and handling HTTP requests.
+-> Express provides a simple and flexible way to create web applications and APIs using Node.js. By using its built-in middleware functions and third-party packages, you can quickly add common functionality to your app and focus on writing your own application logic.
+
+    const express = require('express');
+    const app = express();
+
+      //GET
+      app.get('/', (req, res) => {
+        res.send('Hello chiku!');
+      });
+=> Routes can also include parameters that are specified in the URL path, such as IDs, usernames, or other dynamic data. 
+    eg.
+    app.get('/posts/:id', (req, res) => {
+      // Render the blog post with the specified ID
+    });
+
+        //POST
+        app.post('/submit', (req, res) => {
+          // Process the form data and return a response
+        });
+
+        //PUT
+        app.put('/update/:id',(req,res)=>{
+        //update the data
+        })
+
+        //PATCH
+        app.patch('/update/:id',(req,res)=>{
+        //update the data
+        })
+
+        //DELETE
+        app.delete('/delete/:id',(req,res)=>{
+        //update the data
+        })
+
+    app.listen(6000, () => {
+      console.log('App is live on 1010');
+    });
+
+------------------------------------------
+
+## What are Middlewares?
+
+ =>A middleware is a software component that sits between an application's server and client to intercept, process, and modify incoming and outgoing HTTP requests and responses.
+ => In the Node.js ecosystem, the Express framework uses middleware extensively to handle tasks such as authentication, logging, error handling, and more. 
+=> Middlewares can be added to an Express application using the app.use() method, and they can be either built-in, third-party, or custom functions.
+
+ => This middleware function takes three arguments: req (the request object), res (the response object), and next (a callback function that signals when the middleware has finished processing and the next middleware in the chain should be called). In this case, the middleware adds a timestamp property to the req object and calls next() to continue the request-response cycle.
+
+    eg.
+    function addTimestamp(req, res, next) {
+      req.timestamp = Date.now();
+      next();
     }
-});
-app.listen(3000, () => {
- console.log('Server listening on port 3000');
-});
-
-
-
-# What are routes?
-
--routes define how the server will handle incoming requests based on the URL path and HTTP method.
-Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method GET, POST,DELETE and PATCH .
-
-- Routing allows targeting different routes or different URLs on our page.
-- Node.js has several popular frameworks such as Express.js that provide a simple and elegant way of defining and handling routes. Express.js allows you to define routes using its built-in routing system, which provides a clean API for defining and handling HTTP requests.
--Express provides a simple and flexible way to create web applications and APIs using Node.js. By using its built-in middleware functions and third-party packages, you can quickly add common functionality to your app and focus on writing your own application logic.
-
-const express = require('express');
-const app = express();
-
-//GET
-app.get('/', (req, res) => {
-  res.send('Hello chiku!');
-});
-*Routes can also include parameters that are specified in the URL path, such as IDs, usernames, or other dynamic data. 
-eg.
-app.get('/posts/:id', (req, res) => {
-  // Render the blog post with the specified ID
-});
-
-//POST
-app.post('/submit', (req, res) => {
-  // Process the form data and return a response
-});
-
-//PUT
-app.put('/update/:id',(req,res)=>{
-//update the data
-})
-
-//PATCH
-app.patch('/update/:id',(req,res)=>{
-//update the data
-})
-
-//DELETE
-app.delete('/delete/:id',(req,res)=>{
-//update the data
-})
-
-app.listen(6000, () => {
-  console.log('App is live on 1010');
-});
-
-
-
-# What are Middlewares?
-
--A middleware is a software component that sits between an application's server and client to intercept, process, and modify incoming and outgoing HTTP requests and responses.
--In the Node.js ecosystem, the Express framework uses middleware extensively to handle tasks such as authentication, logging, error handling, and more. 
--Middlewares can be added to an Express application using the app.use() method, and they can be either built-in, third-party, or custom functions.
-
--his middleware function takes three arguments: req (the request object), res (the response object), and next (a callback function that signals when the middleware has finished processing and the next middleware in the chain should be called). In this case, the middleware adds a timestamp property to the req object and calls next() to continue the request-response cycle.
-
-eg.
-function addTimestamp(req, res, next) {
-  req.timestamp = Date.now();
-  next();
-}
 //use the middleware in a express app
-const express = require('express');
-const app = express();
 
-app.use(addTimestamp);
+    const express = require('express');
+    const app = express();
 
-app.get('/', (req, res) => {
-  res.send(`Timestamp: ${req.timestamp}`);
-});
+    app.use(addTimestamp);
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
+    app.get('/', (req, res) => {
+      res.send(`Timestamp: ${req.timestamp}`);
+    });
 
+    app.listen(3000, () => {
+      console.log('Server started on port 3000');
+    });
 
+-----------------------------------------------
 
-# What is MVC framework?
+## What is MVC framework?
 
 The Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
 MVC stands for Model-View-Controller, which is a software design pattern used to develop user interfaces and web applications
