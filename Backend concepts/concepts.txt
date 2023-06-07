@@ -999,130 +999,155 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
 ## What is MVC framework?
 
-The Model-View-Controller (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
-MVC stands for Model-View-Controller, which is a software design pattern used to develop user interfaces and web applications
-In the MVC pattern, the application is divided into three components:
+ 
+ => MVC stands for Model-View-Controller, which is a software design pattern used to develop user interfaces and web applications.
+ => (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.
+ =>In the MVC pattern, the application is divided into three components:
 
-- Model
-  The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data
-- View
-  The View component is used for all the UI logic of the application. For example, the Customer view will include all the UI components such as text boxes, dropdowns, etc. that the final user interacts with.
+    (1) Model:
+      The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data
+    (2) View:
+      The View component is used for all the UI logic of the application. For example, the Customer view will include all the UI components such as text boxes, dropdowns, etc. that the final user interacts with.
 
-- Controller
-  Controllers act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output.
+    (3) Controller:
+      Controllers act as an interface between Model and View components to 'process all the business logic' and incoming requests, manipulate data using the Model component and interact with the Views to render the final output.
 
+----------------------------------------------
 
-# How do you do validations?
+## How do you do validations?
 
 Validations are an essential aspect of any web application to ensure that the user input data is correct and meets the expected format and rules. In web development, validations can be performed on both the client-side and server-side.
 
-To begin, a sample of data is determined. ...
-Next, the dataset needs to be validated to confirm it contains all the required data.
-Finally, the source data's value, structure, format etc. is matched with the schema of the destination.
+(1) To begin, a sample of data is determined. ...
+(2) Next, the dataset needs to be validated to confirm it contains all the required data.
+(3) Finally, the source data's value, structure, format etc. is matched with the schema of the destination.
 In the Node.js ecosystem, there are several libraries and tools available to handle validations in web applications, such as:
-1)Validator: A library that provides a set of pre-built validation methods for strings, numbers, dates, and more.
-2)Joi: A powerful schema validation library that allows you to define complex rules and constraints for your data.
-3)Express-validator: A middleware that provides a set of validation and sanitization methods for incoming data, and integrates with Express.
+    (1) Validator: A library that provides a set of pre-built validation methods for strings, numbers, dates, and more.
+    (2) Joi: A powerful schema validation library that allows you to define complex rules and constraints for your data.
+    (3) Express-validator: A middleware that provides a set of validation and sanitization methods for incoming data, and integrates with Express.
+
+--------------------------------------------------
 
 ### How do you do static routing?**
 
-- Static routing is a form of routing that occurs when a router uses a manually-configured routing entry, rather than information from dynamic routing traffic.
-- Static routing is a technique used in networking and web development to configure a routing table that maps specific URLs or paths to static resources, such as HTML files, images, or scripts, that are stored on the server
-- In Node.js, static routing can be implemented using the express.static() middleware function.
--eg.
-app.use(express.static('public'));
-app.use('/static', express.static(__dirname + '/public'));
+-> Static routing is a form of routing that occurs when a router uses a manually-configured routing entry, rather than information from dynamic routing traffic.
+-> Static routing is a technique used in networking and web development to configure a routing table that maps specific URLs or paths to static resources, such as HTML files, images, or scripts, that are stored on the server.
 
-The route consist of a destination prefix and a next-hop forwarding address. The static route is activated in the routing table and inserted into the forwarding table when the next-hop address is reachable.
+ => In Node.js, static routing can be implemented using the express.static() middleware function.
+  eg.
+    app.use(express.static('public'));
 
+    app.use('/static', express.static(__dirname + '/public'));
+
+-> The route consist of a destination prefix and a next-hop forwarding address. The static route is activated in the routing table and inserted into the forwarding table when the next-hop address is reachable.
+
+--------------------------------------------------------
 
 ### What are some templating engines?***
 
--Template engines are mostly used for server-side applications that are run on only one server and are not built as APIs.
--Template engines are software tools that help developers create dynamic web pages by allowing them to define templates and insert dynamic data into those templates. These engines use a combination of HTML, CSS, and programming logic to generate web pages that can be rendered in a user's web browser.
--Template engines help developers separate the presentation layer (the user interface) from the business logic layer (the programming code that powers the application), making it easier to build scalable and maintainable web applications
 
-EJS is one of the template engines used with Node JS to generate HTML markups with plain Javascript. EJS stands for Embedded JavaScript Templates. It can be used both on the client and the server-side.
-**They also provide features such as:
-1)Conditional statements:->
-   allowing developers to conditionally display content based on certain conditions.
-2)Loops:->
-   enabling developers to iterate over collections of data and display them in a structured way.
-3)Inheritance:->
-   allowing developers to define a base template and extend it in child templates.
-4)Variables and expressions:->
-   allowing developers to define and manipulate variables within templates.
-5)Partials:->
-   allowing developers to define reusable portions of templates and include them in other templates.
+ => Template engines are" software tools that help developers create dynamic web pages by allowing them to define templates and insert dynamic data into those templates".
+ => These engines use a combination of HTML, CSS, and programming logic to generate web pages that can be rendered in a user's web browser.
+ => Template engines are "mostly used for server-side applications that are run on only one server and are not built as APIs."
+ => Template engines help developers separate the presentation layer (the user interface) from the business logic layer (the programming code that powers the application), making it easier to build scalable and maintainable web applications
 
-*Some popular templating engines include:
+ => EJS is one of the template engines used with Node JS to generate HTML markups with plain Javascript. EJS stands for ("Embedded JavaScript Templates"). It can be used both on the client and the server-side.
 
-1)Mustache: A simple and lightweight engine that supports a variety of programming languages.
+    => They also provide features such as:
 
-2)Handlebars: A popular engine that adds more features on top of Mustache, such as helper functions and partials.
-Pug (formerly known as Jade): A powerful engine that uses indentation-based syntax to generate HTML.
+    (1) Conditional statements:
+      allowing developers to conditionally display content based on certain conditions.
+    (2) Loops:->
+      enabling developers to iterate over collections of data and display them in a structured way.
+    (3) Inheritance:->
+      allowing developers to define a base template and extend it in child templates.
+    (4) Variables and expressions:->
+      allowing developers to define and manipulate variables within templates.
+    (5) Partials:->
+      allowing developers to define reusable portions of templates and include them in other templates.
 
-3)EJS (Embedded JavaScript): An engine that allows you to embed JavaScript code directly into your templates.
+=> Some popular templating engines include:
 
-4)Twig: A flexible and extensible engine that is used in the Symfony PHP framework.
+  (1) Mustache: A simple and lightweight engine that supports a variety of programming languages.
 
+  (2) Handlebars: A popular engine that adds more features on top of Mustache, such as helper functions and partials.
+  Pug (formerly known as Jade): A powerful engine that uses indentation-based syntax to generate HTML.
 
-### How do you manage sessions in express?***
+  (3) EJS (Embedded JavaScript): An engine that allows you to embed JavaScript code directly into your templates.
 
-Session management is an important aspect of web application development, as it allows you to keep track of user activity and maintain user state across requests. In Express.js, session management can be implemented using the express-session middleware.
-//npm i express-session
+  (4) Twig: A flexible and extensible engine that is used in the Symfony PHP framework.
 
-app.use(session({
-  secret: 'secret-key',
-  resave: false,
-  saveUninitialized: false
-}));
---In the example above, we are using the MemoryStore as the session store, which stores the session data in the server's memory. secret is used to sign the session ID cookie and should be a long random string. resave and saveUninitialized are optional options that control the behavior of the session middleware.
---//To set a value in the session, use the req.session object.
-app.get('/login', (req, res) => {
-    req.session.username = 'John Doe';
-    res.send('Logged in successfully');
-});
+--------------------------------------------------
 
+## How do you manage sessions in express?***
 
-# How do you manage cookies with express?
+ => Session management is an important aspect of web application development, as it allows you to keep track of user activity and maintain user state across requests. In Express.js, session management can be implemented using the express-session middleware.
+
+    //npm i express-session
+
+    app.use(session({
+      secret: 'secret-key',
+      resave: false,
+      saveUninitialized: false
+    }));
+
+-> In the example above, we are using the MemoryStore as the session store, which stores the session data in the server's memory. secret is used to sign the session ID cookie and should be a long random string. resave and saveUninitialized are optional options that control the behavior of the session middleware.
+
+    //To set a value in the session, use the req.session object.
+
+    app.get('/login', (req, res) => {
+        req.session.username = 'John Doe';
+        res.send('Logged in successfully');
+    });
+
+---------------------------------------------------------------
+
+## How do you manage cookies with express?
 
 Cookies can be managed using the cookie-parser middleware. This middleware parses cookie headers and populates the req.cookies object with cookie values.
-//steps involved
-1)-npm i cookie-parser
 
-2)Initialise the cookie-parser
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var app = express();
-app.use(cookieParser());
+    //steps involved
+    (1)
+       -npm i cookie-parser
 
-3)To set a cookie, use the res.cookie() method.
-app.get('/set-cookie', (req, res) => {
-    res.cookie('username', 'John Doe', { maxAge: 900000, httpOnly: true });
-    res.send('Cookie has been set');
-});
-//The httpOnly option ensures that the cookie cannot be accessed using JavaScript
+    (2)Initialise the cookie-parser
 
-4)To get a cookie, use the req.cookies object.
-app.get('/get-cookie', (req, res) => {
-    const username = req.cookies.username;
-    if (username) {
-        res.send(`Hello, ${username}`);
-    } else {
-        res.send('Cookie not found');
-    }
-});
+    var express = require('express');
+    var cookieParser = require('cookie-parser');
+    var app = express();
+    app.use(cookieParser());
 
-5)To delete a cookie, use the res.clearCookie() method.
-app.get('/clear-cookie', (req, res) => {
-    res.clearCookie('username');
-    res.send('Cookie has been cleared');
-});
+   (3)To set a cookie, use the res.cookie() method.
+
+        app.get('/set-cookie', (req, res) => {
+        res.cookie('username', 'John Doe', { maxAge: 900000, httpOnly: true });
+        res.send('Cookie has been set');
+        });
+
+   //The httpOnly option ensures that the cookie cannot be accessed using JavaScript
+
+  (4) To get a cookie, use the req.cookies object.
+
+        app.get('/get-cookie', (req, res) => {
+        const username = req.cookies.username;
+        if (username) {
+            res.send(`Hello, ${username}`);
+        } else {
+            res.send('Cookie not found');
+        }
+    });
+
+  (5) To delete a cookie, use the res.clearCookie() method.
+  app.get('/clear-cookie', (req, res) => {
+      res.clearCookie('username');
+      res.send('Cookie has been cleared');
+  });
 
 - By default, cookies are stored in the client's browser memory.
 
-### What are common libraries you work with express?***
+-------------------------------------------
+
+## What are common libraries you work with express?***
 
 The common libraries you work with express are as follows :->
 - Gulp
