@@ -530,11 +530,13 @@ Sometimes a client sends something that a server just can’t handle, such as a 
 Many of the client errors are dealt with by your browser, without it ever bothering you. A few, like 404, might still pass through.
 
 Status code	Reason phrase	Meaning
-400	Bad Request	Used to tell the client that it has sent a malformed request.
-401	Unauthorized	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
-402	Payment Required	Currently this status code is not used, but it has been set aside for future use.
-403	Forbidden	Used to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
-404	Not Found	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
+- 400	Bad Request	Used to tell the client that it has sent a malformed request.
+
+- 401	Unauthorized	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
+
+- 402	Payment Required	Currently this status code is not used, but it has been set aside for future use.
+- 403	Forbidden	Used to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
+- 404	Not Found	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
 405	Method Not Allowed	Used when a request is made with a method that is not supported for the requested URL. The Allow header should be included in the response to tell the client what methods are allowed on the requested resource.
 406	Not Acceptable	Clients can specify parameters about what types of entities they are willing to accept. This code is used when the server has no resource matching the URL that is acceptable for the client. Often, servers include headers that allow the client to figure out why the request could not be satisfied.
 407	Proxy Authentication Required	Like the 401 status code, but used for proxy servers that require authentication for a resource.
@@ -595,7 +597,25 @@ req.on('error', (error) => {
 req.end();
 
 
------------------------------------------------------------------------
+---------------------------------------
+
+## What are clusters?
+
+ -> When you run a Node.js program on a system with multiple CPUs, it creates a process that uses only a single CPU to execute by default. Since Node.js uses a single thread to execute your JavaScript code, all the requests to the application have to be handled by that thread running on a single CPU. If the application has CPU-intensive tasks, the operating system has to schedule them to share a single CPU until completion. That can result in a single process getting overwhelmed if it receives too many requests, which can slow down the performance. If the process crashes, users won’t be able to access your application.
+
+-> As a solution, Node.js introduced the cluster module, which creates multiple copies of the same application on the same machine and has them running at the same time. It also comes with a load balancer that evenly distributes the load among the processes using the round-robin algorithm. 
+
+ -> In Node.js , a cluster refer to built-in modules that allows you to create child processes, which are commonly reffered to as worker processes.
+ -> The cluster module enables you to run multiple instances of your Node.js application to take advantage of the multi-core systems commonly found in modern hardware.
+-> By using clusters, you can distribute the incoming network traffic or workload across multiple child processes, thereby improving the overall performance and scalability of your Node.js application. Each child process in a cluster operates in its own single-threaded event loop, utilizing a separate CPU core. This allows the application to handle more requests concurrently and leverage the full power of the underlying hardware. 
+-> It forks multiple instances of the application, and each instance becomes a worker process. The master process acts as a coordinator, distributing incoming connections or tasks among the workers.
+-> Clusters also provide a mechanism for inter-process communication (IPC) between the master and worker processes. This allows them to share information and coordinate activities. For example, the master process can send messages to the workers to instruct them to perform certain tasks or update their state.
+-> Clusters in Node.js can be particularly useful for building scalable web servers, real-time applications, or any application that can benefit from parallel processing. By utilizing multiple cores, you can significantly enhance the performance and responsiveness of your Node.js applications.
+
+
+
+
+----------------------------------------
 
 # What is Libuv?
 
