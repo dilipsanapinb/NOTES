@@ -1,0 +1,51 @@
+/* client/src/index.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form input,
+form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.notice-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.notice-card h3 {
+  margin-top: 0;
+}
+
+.notice-card p:last-child {
+  margin-bottom: 0;
+}
+
+.button-group {
+  margin-top: 10px;
+}
+
+.notice-container {
+  margin-top: 20px;
+}
+

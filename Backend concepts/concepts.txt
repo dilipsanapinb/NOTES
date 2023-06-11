@@ -1079,7 +1079,7 @@ In the Node.js ecosystem, there are several libraries and tools available to han
 
 --------------------------------------------------
 
-## How do you manage sessions in express?***
+## How do you manage sessions in express?
 
  => Session management is an important aspect of web application development, as it allows you to keep track of user activity and maintain user state across requests. In Express.js, session management can be implemented using the express-session middleware.
 
@@ -1099,6 +1099,37 @@ In the Node.js ecosystem, there are several libraries and tools available to han
         req.session.username = 'John Doe';
         res.send('Logged in successfully');
     });
+
+
+    full code snippen;
+         
+          const session = require('express-session');
+
+          const express = require('express');
+          const app = express();
+
+          // app.set('trust proxy', 1)
+
+          app.use(session({
+              secret: 'keyboard',
+              resave: false,
+              saveUninitialized: true,
+              // cookie: { secure: true }
+          }));
+
+          app.get('/login', (req, res) => {
+              req.session.username = 'Dilip';                    
+              res.send('logged in successfully')                 Output   // logged in successfully
+          });
+
+
+          app.get("/profile", (req, res) => {
+            const username = req.session.username;
+            res.send(`Username: ${username}`);                    Output  // Username:Dilip
+          });
+          app.listen(8000, () => {
+              console.log('Server is running on port 8000');
+          })
 
 ---------------------------------------------------------------
 
@@ -1160,7 +1191,6 @@ The common libraries you work with express are as follows :->
 - PM2
 - body-parser
 - Parser
-- body-parser
 - cookie-parser
 - helmet
 - passport
@@ -1168,36 +1198,41 @@ The common libraries you work with express are as follows :->
 - express-validator
 - nodemailer
 
+------------------------------------------------
 
+##   What is cors ?
 
-# Q.  What is cors ?
 - CORS stands for Cross-Origin Resource Sharing. It is a mechanism that allows a web page to make requests to a different domain than the one that served the web page.
 - Web browsers implement a security feature called the "Same-Origin Policy," which restricts web pages from making requests to a different domain than the one that served the web page. This security feature is intended to prevent malicious attacks such as cross-site scripting (XSS) and cross-site request forgery (CSRF).
 - CORS allows web pages to bypass the Same-Origin Policy and make requests to a different domain, but only if the server that receives the request explicitly allows it. CORS works by adding HTTP headers to the response that inform the web browser whether the request is allowed or not.
-   CORS Headers: CORS is implemented through HTTP headers that are sent by the server in the response to a cross-origin request. These headers include:
-  1) Access-Control-Allow-Origin: Specifies the domain(s) that are allowed to make cross-origin requests. This header indicates which domain(s) are allowed to access the requested resources. The value can be a specific domain, "*", which allows any domain to access the resource, or null, which indicates that no domain is allowed to access the resource.
 
-  2) Access-Control-Allow-Methods: Specifies the HTTP methods that are allowed for the cross-origin request. This header indicates which HTTP methods (such as GET, POST, PUT, DELETE, etc.) are allowed for the request.
+   CORS Headers: CORS is implemented through HTTP headers that are sent by the server in the response to a cross-origin request. 
+      
+      These headers include:
 
-  3) Access-Control-Allow-Headers: Specifies the headers that are allowed in the cross-origin request. This header indicates which additional headers (such as Authorization, Content-Type, etc.) are allowed in the request.
+  (1) Access-Control-Allow-Origin: Specifies the domain(s) that are allowed to make cross-origin requests. This header indicates which domain(s) are allowed to access the requested resources. The value can be a specific domain, "*", which allows any domain to access the resource, or null, which indicates that no domain is allowed to access the resource.
 
-  4) Access-Control-Allow-Credentials: Specifies whether the cross-origin request can include credentials (such as cookies, HTTP authentication, and client-side SSL certificates). This header indicates whether the server allows the request to include credentials or not.
+  (2) Access-Control-Allow-Methods: Specifies the HTTP methods that are allowed for the cross-origin request. This header indicates which HTTP methods (such as GET, POST, PUT, DELETE, etc.) are allowed for the request.
 
-  4) Access-Control-Max-Age: Specifies the maximum time (in seconds) that the results of a preflight request can be cached. This header indicates how long the CORS preflight response can be cached by the browser.
+  (3) Access-Control-Allow-Headers: Specifies the headers that are allowed in the cross-origin request. This header indicates which additional headers (such as Authorization, Content-Type, etc.) are allowed in the request.
 
-  6) CORS Types: CORS can be classified into two types: simple requests and preflighted requests.
+  (5) Access-Control-Allow-Credentials: Specifies whether the cross-origin request can include credentials (such as cookies, HTTP authentication, and client-side SSL certificates). This header indicates whether the server allows the request to include credentials or not.
 
-  7) Simple requests: These are HTTP requests that meet certain criteria and do not require a preflight request. Simple requests include HTTP methods like GET, POST, and HEAD, and have certain content types. Simple requests do not trigger a preflight request and are directly handled by the server.
+  (6) Access-Control-Max-Age: Specifies the maximum time (in seconds) that the results of a preflight request can be cached. This header indicates how long the CORS preflight response can be cached by the browser.
 
-  8) Preflighted requests: These are HTTP requests that do not meet the criteria for simple requests and require a preflight request. Preflighted requests are used for more complex requests, such as those that use HTTP methods like PUT, DELETE, or have custom headers. The preflight request is an HTTP OPTIONS request that checks if the server allows the actual request from the domain of the web page, and the actual request is sent only if the preflight request is successful.
+  (7) CORS Types: CORS can be classified into two types: simple requests and preflighted requests.
 
-  9) CORS in Server-side and Client-side: CORS is implemented both on the server-side and the client-side.
+      (i) Simple requests: These are HTTP requests that meet certain criteria and do not require a preflight request. Simple requests include HTTP methods like GET, POST, and HEAD, and have certain content types. Simple requests do not trigger a preflight request and are directly handled by the server.
 
-  10) Server-side: Web developers need to configure their server to include the appropriate CORS headers in the response to cross-origin requests. This involves adding the necessary headers, such as Access-Control-Allow-Origin, Access-Control-Allow-Methods, etc., to the server's HTTP response.
+      (ii) Preflighted requests: These are HTTP requests that do not meet the criteria for simple requests and require a preflight request. Preflighted requests are used for more complex requests, such as those that use HTTP methods like PUT, DELETE, or have custom headers. The preflight request is an HTTP OPTIONS request that checks if the server allows the actual request from the domain of the web page, and the actual request is sent only if the preflight request is successful.
 
-  11) Client-side: Web developers need to make sure that the client-side code, such as JavaScript, that sends cross-origin requests includes the necessary credentials and handles CORS-related errors appropriately. This may involve handling CORS errors, including the appropriate CORS headers in requests, and configuring the client-side code to work with cross-origin resources.
+  (10) CORS in Server-side and Client-side: CORS is implemented both on the server-side and the client-side.
 
-  12) In conclusion, CORS is a security mechanism implemented in web browsers that controls cross-origin requests to prevent unauthorized access to resources. It involves both server-side configuration and client-side handling, and it is an important consideration for web developers when building modern web applications that interact with cross-origin resources.
+      (a) Server-side: Web developers need to configure their server to include the appropriate CORS headers in the response to cross-origin requests. This involves adding the necessary headers, such as Access-Control-Allow-Origin, Access-Control-Allow-Methods, etc., to the server's HTTP response.
+
+      (b) Client-side: Web developers need to make sure that the client-side code, such as JavaScript, that sends cross-origin requests includes the necessary credentials and handles CORS-related errors appropriately. This may involve handling CORS errors, including the appropriate CORS headers in requests, and configuring the client-side code to work with cross-origin resources.
+
+   In conclusion, CORS is a security mechanism implemented in web browsers that controls cross-origin requests to prevent unauthorized access to resources. It involves both server-side configuration and client-side handling, and it is an important consideration for web developers when building modern web applications that interact with cross-origin resources.
 
 ---------------------------------------
 
@@ -1205,56 +1240,66 @@ The common libraries you work with express are as follows :->
   
   HTTP (Hypertext Transfer Protocol) defines several methods or verbs that indicate the desired action to be performed on a resource. Each HTTP method has a specific purpose and behavior. Here are the most common HTTP methods:
 
-    GET: The GET method is used to retrieve a representation of a resource from the server. It requests the server to send back the specified resource in the response. GET should be used for safe and idempotent operations, meaning it should not have any side effects on the server or the resource.
+    (1) GET: The GET method is used to retrieve a representation of a resource from the server. It requests the server to send back the specified resource in the response. "GET should be used for safe and idempotent operations, meaning 'it should not have any side effects on the server or the resource'."
 
-    POST: The POST method is used to submit data to the server to create a new resource. It sends data in the request payload, typically used for form submissions, file uploads, or other actions that result in a change on the server. POST is not idempotent as multiple requests may create multiple resources.
+    (2) POST: The POST method is used to submit data to the server to create a new resource. It sends data in the request payload, typically used for form submissions, file uploads, or other actions that result in a change on the server. "POST is not idempotent as multiple requests may create multiple resources."
 
-    PUT: The PUT method is used to update or replace an existing resource on the server. It sends the entire updated representation of the resource in the request payload. If the resource does not exist, PUT can create a new resource with the specified identifier. PUT is idempotent, meaning that multiple identical requests should have the same result as a single request.
+    (3) PUT: The PUT method is used to update or replace an existing resource on the server. It sends the entire updated representation of the resource in the request payload. If the resource does not exist, PUT can create a new resource with the specified identifier. "PUT is idempotent, meaning that multiple identical requests should have the same result as a single request".
 
-    DELETE: The DELETE method is used to delete a specified resource on the server. It requests the server to remove the resource identified by the URL. DELETE is idempotent, meaning that multiple identical requests should have the same result as a single request.
+    (4) DELETE: The DELETE method is used to delete a specified resource on the server. It requests the server to remove the resource identified by the URL. "DELETE is idempotent, meaning that multiple identical requests should have the same result as a single request".
 
-    PATCH: The PATCH method is used to partially update a resource on the server. It sends a set of changes or instructions to be applied to the existing resource. Unlike PUT, which requires sending the entire updated representation, PATCH allows sending only the modified fields or instructions. PATCH is not guaranteed to be idempotent.
+    (5) PATCH: The PATCH method is used to partially update a resource on the server. It sends a set of changes or instructions to be applied to the existing resource. Unlike PUT, which requires sending the entire updated representation, PATCH allows sending only the modified fields or instructions. "PATCH is not guaranteed to be idempotent."
 
-    HEAD: The HEAD method is similar to GET but only retrieves the response headers, without the response body. It is often used to retrieve metadata or check the status of a resource without downloading its entire contents.
+    (6) HEAD: The HEAD method is similar to GET but only retrieves the response headers, without the response body. It is often used to retrieve metadata or check the status of a resource without downloading its entire contents.
 
-    OPTIONS: The OPTIONS method is used to retrieve the communication options available for a resource or server. It allows the client to determine the supported methods, headers, and other capabilities of the server.
+    (7) OPTIONS: The OPTIONS method is used to retrieve the communication options available for a resource or server. It allows the client to determine the supported methods, headers, and other capabilities of the server.
 
     These are the most commonly used HTTP methods. It's important to note that the usage of these methods should align with their intended purpose and follow the principles of RESTful web services.
 
 ---------------------------------------
 
 ##  What are HTTP headers?
-HTTP headers are additional pieces of information sent along with an HTTP request or response. They provide metadata about the request or response and help in conveying important details and instructions between the client and the server. HTTP headers consist of a key-value pair and are included in the header section of an HTTP message.
+
+HTTP headers "are additional pieces of information sent along with an HTTP request or response". They provide metadata about the request or response and help in conveying important details and instructions between the client and the server. HTTP headers consist of a key-value pair and are included in the header section of an HTTP message.
 
 There are two main types of HTTP headers:
 
-Request Headers: Request headers are included in an HTTP request sent from the client to the server. They provide information about the request itself, the client, and any additional instructions. Some commonly used request headers include:
+    (1) Request Headers: Request headers are included in an HTTP request sent from the client to the server. They provide information about the request itself, the client, and any additional instructions.
+        
+         Some commonly used request headers include:
 
-User-Agent: Specifies the client application or browser making the request.
-Accept: Indicates the media types (MIME types) that the client can handle in the response.
-Content-Type: Specifies the media type of the data sent in the request payload.
-Authorization: Contains credentials or tokens for authentication purposes.
-Cookie: Contains client-side cookies to be sent to the server.
-Response Headers: Response headers are included in an HTTP response sent from the server to the client. They provide information about the response, its status, and any additional instructions. Some commonly used response headers include:
+        (a) User-Agent: Specifies the client application or browser making the request.
+        (b) Accept: Indicates the media types (MIME types) that the client can handle in the response.
+        (c) Content-Type: Specifies the media type of the data sent in the request payload.
+        (d) Authorization: Contains credentials or tokens for authentication purposes.
+        (e) Cookie: Contains client-side cookies to be sent to the server.
 
-Content-Type: Specifies the media type of the response content.
-Content-Length: Indicates the length of the response content in bytes.
-Cache-Control: Provides caching instructions for the client or intermediary caches.
-Location: Used in redirect responses to indicate the new location of a resource.
-Set-Cookie: Sets a cookie on the client-side for future requests.
+    (2) Response Headers: Response headers are included in an HTTP response sent from the server to the client. They provide information about the response, its status, and any additional instructions.
+    
+     Some commonly used response headers include:
+
+      (1) Content-Type: Specifies the media type of the response content.
+      (2) Content-Length: Indicates the length of the response content in bytes.
+      (3) Cache-Control: Provides caching instructions for the client or intermediary caches.
+      (4) Location: Used in redirect responses to indicate the new location of a resource.
+      (5) Set-Cookie: Sets a cookie on the client-side for future requests.
+
 HTTP headers are flexible and can be extended to include custom headers specific to the application or domain. They play a crucial role in various aspects of HTTP communication, such as content negotiation, authentication, caching, and controlling the behavior of clients and servers.
 
 Both clients and servers can include multiple headers in their respective requests or responses to convey specific information and facilitate effective communication between the two parties.
 
 --------------------------------------
 
-### Q.  What is testing?***
+## Q.  What is testing?
+
   - Testing in Node.js backend development involves the process of verifying the correctness, reliability, and functionality of Node.js applications through various types of tests, such as unit testing, integration testing, API testing, performance testing, security testing, and end-to-end testing.
   - Testing is an essential part of the software development lifecycle and helps to identify and fix defects, validate requirements, and ensure that the backend logic and functionalities of a Node.js application are working as expected.
   - There are various testing frameworks and tools available for Node.js backend testing, and it is crucial to ensure the quality and reliability of the application in production.
 
+------------------------------------
 
-### Q What is unit testing?***
+## What is unit testing?
+
   - Unit testing is a crucial practice in software development that involves testing individual units of code in isolation to ensure their correctness and reliability.
   - It includes writing test cases, setting up a test environment, executing tests, and analyzing results.
   - Unit testing catches defects early, improves code quality, speeds up debugging, development, and maintenance, and serves as documentation and a safety net for expected code behavior.
@@ -1262,13 +1307,17 @@ Both clients and servers can include multiple headers in their respective reques
   - Unit tests also aid in easier maintenance of software by acting as documentation of expected behavior and validating code changes.
   - By incorporating unit testing into the development process, software teams can ensure the correctness and reliability of their code, leading to higher quality software and better customer satisfaction.
 
+--------------------------------------------
 
+## Q. What is functional testing?
 
-### Q. What is functional testing?***
   - Functional testing is a type of software testing that focuses on testing the functionality of a software application or system to ensure that it meets the requirements and specifications, performs the expected tasks accurately, and behaves correctly in real-world scenarios.
   - It is essential for ensuring the reliability and quality of software applications and validating that they meet the expectations of end users.
 
-### Q.  What is HTTPS? what is the difference between HTTP and HTTPS?***
+-----------------------------------------------
+
+## Q.  What is HTTPS? what is the difference between HTTP and HTTPS?***
+
   - HTTPS stands for "HyperText Transfer Protocol Secure", and it is a secure version of HTTP.
   - HTTP transmits data in plain text, while HTTPS encrypts data to protect privacy and integrity.
   - HTTPS uses SSL/TLS certificates to establish a secure connection between a client and a server.
@@ -1277,9 +1326,13 @@ Both clients and servers can include multiple headers in their respective reques
   - HTTPS is increasingly required for websites handling sensitive data or conducting online transactions.
   - Main differences between HTTP and HTTPS are encryption, SSL/TLS certificates, and advantages of data protection, trust, and compliance.
 
-### Q. What is SSL/TLS? ***
+--------------------------------------------------
 
-  - SSL ("Secure Socket Layer") is a cryptographic protocol used to establish a secure and encrypted connection between a client and a server over the internet.
+## Q. What is SSL/TLS? ***
+
+  (1)  SSL ("Secure Socket Layer"):
+
+  - SSL is a cryptographic protocol used to establish a secure and encrypted connection between a client and a server over the internet.
   - SSL provides encryption, authentication, and integrity to secure online communication.
   - SSL encrypts data transmitted between the client and the server, ensuring privacy and confidentiality.
   - SSL uses digital certificates for authentication, verifying the identity of the server and preventing man-in-the-middle attacks.
@@ -1288,7 +1341,9 @@ Both clients and servers can include multiple headers in their respective reques
   - SSL has largely been replaced by the more secure TLS (Transport Layer Security) protocol.
   - The term "SSL" is often used colloquially to refer to both SSL and TLS, as they are closely related and share similar features.
 
-  - TLS ("Transport Layer Security") is a cryptographic protocol for secure and encrypted communication.
+   (2) TLS ("Transport Layer Security") :
+
+  - TLS is a cryptographic protocol for secure and encrypted communication.
   - It provides encryption, authentication, and integrity to protect data transmitted over the internet.
   - TLS encrypts data to ensure privacy and confidentiality.
   - It uses digital certificates for server authentication to prevent man-in-the-middle attacks.
@@ -1297,15 +1352,23 @@ Both clients and servers can include multiple headers in their respective reques
   - TLS has different versions, and it is important to use the latest and most secure version.
   - TLS is a crucial technology for ensuring the security of online transactions and communication.
 
-### Q. What is OWASP ***
+--------------------------------------------
+
+### Q. What is OWASP ?
+
   - OWASP stands for the "Open Web Application Security Project".
-  - It is a non-profit organization that focuses on improving the security of web applications and software by providing resources, tools, and best practices to identify, prioritize, and mitigate common web application vulnerabilities.
+
+  - It is a non-profit organization that focuses on improving the security of web applications and softwares by providing resources, tools, and best practices to identify, prioritize, and mitigate common web application vulnerabilities.
   - OWASP is a globally recognized authority on web application security and is widely used by security professionals, developers, and organizations to improve the security of their web applications.
   - One of the key initiatives of OWASP is the "OWASP Top Ten Project", which identifies the top ten most critical web application security risks.
   - This list is updated periodically and serves as a reference for developers and organizations to prioritize and address common web application vulnerabilities, such as cross-site scripting (XSS), SQL injection, and insecure authentication.
 
-### Q.  What is the difference between SQL and NoSQL databases? ***
-  #*SQL databases:
+-------------------------------------------
+
+## Q.  What is the difference between SQL and NoSQL databases ?
+
+  (1) SQL databases:
+
     - SQL Database are relational databases that store data in tables with predefined schema.
     - They use structured query language (SQL) to manage and manipulate data.
     - SQL databases are known for their ability to handle complex queries, transactions, and relationships between tables.
@@ -1313,7 +1376,7 @@ Both clients and servers can include multiple headers in their respective reques
     - SQL databases typically have vertical scalability, which means they can handle increasing amounts of data by adding more hardware resources (e.g., RAM, CPU, disk space). 
     - SQL databases are typically ACID-compliant, which means they provide a high level of data consistency and reliability
 
-  #*NoSQL databases:
+  (2) NoSQL databases:
     - NoSQL databasesare non-relational databases that do not use a fixed schema to store data.
     - They are designed to be highly scalable and flexible, making them useful for applications that require large amounts of unstructured or semi-structured data, such as social media platforms or e-commerce sites.
     - NoSQL databases typically have their own query language, which is optimized for the specific data model they use.
@@ -1346,8 +1409,6 @@ SQL is a powerful language for managing and manipulating relational databases. H
 => JOIN: This is used to combine data from two or more tables based on a related column. There are several types of joins, including INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN. The syntax for an INNER JOIN is:
    SELECT column1, column2, ... FROM table1 INNER JOIN table2 ON table1.column = table2.column;
 
-These are just a few examples of common queries in SQL. There are many other SQL commands and functions that can be used to manipulate and analyze data in a relational database.
-
 -------------------------------------------------------
 
 # Q. How do you do joins in SQL?
@@ -1356,33 +1417,39 @@ These are just a few examples of common queries in SQL. There are many other SQL
 - There are several types of joins that can be used, including INNER JOIN, LEFT JOIN (or LEFT OUTER JOIN), RIGHT JOIN (or RIGHT OUTER JOIN), and FULL OUTER JOIN.
 - Here's an overview of how you can perform joins in SQL:
 
-1) INNER JOIN: An INNER JOIN returns only the rows that have matching values in both tables.
+(1) INNER JOIN: An INNER JOIN returns only the "rows that have matching values in both tables".
+
   - The syntax for an INNER JOIN is as follows:
 
-SELECT column1, column2 FROM table1
-INNER JOIN table2 ON table1.column_name = table2.column_name;
-In this example, table1 and table2 are the names of the tables being joined, and column_name is the common column between them that is used for the join.
+      SELECT column1, column2 FROM table1
+      INNER JOIN table2 ON table1.column_name = table2.column_name;
 
-2) LEFT JOIN (or LEFT OUTER JOIN): A LEFT JOIN returns all the rows from the left table (table1), and the matching rows from the right table (table2).
+    In this example, table1 and table2 are the names of the tables being joined, and column_name is the common column between them that is used for the join.
+
+(2) LEFT JOIN (or LEFT OUTER JOIN): A LEFT JOIN "returns all the rows from the left table (table1), and the matching rows from the right table (table2)."
   - If there are no matching rows in the right table, NULL values are returned. The syntax for a LEFT JOIN is as follows:
 
-SELECT column1, column2 FROM table1
-LEFT JOIN table2 ON table1.column_name = table2.column_name;
-In this example, all the rows from table1 are returned, and the matching rows from table2 are included. If there are no matching rows in table2, NULL values are returned for the columns from table2.
+      SELECT column1, column2 FROM table1
+      LEFT JOIN table2 ON table1.column_name = table2.column_name;
 
-3) RIGHT JOIN (or RIGHT OUTER JOIN): A RIGHT JOIN returns all the rows from the right table (table2), and the matching rows from the left table (table1).
+  - In this example, all the rows from table1 are returned, and the matching rows from table2 are included. If there are no matching rows in table2, NULL values are returned for the columns from table2.
+
+(3) RIGHT JOIN (or RIGHT OUTER JOIN): A RIGHT JOIN returns all the rows from the right table (table2), and the matching rows from the left table (table1).
   - If there are no matching rows in the left table, NULL values are returned. The syntax for a RIGHT JOIN is as follows:
 
-SELECT column1, column2 FROM table1
-RIGHT JOIN table2 ON table1.column_name = table2.column_name;
-In this example, all the rows from table2 are returned, and the matching rows from table1 are included. If there are no matching rows in table1, NULL values are returned for the columns from table1.
+      SELECT column1, column2 FROM table1
+      RIGHT JOIN table2 ON table1.column_name = table2.column_name;
 
-4) FULL OUTER JOIN: A FULL OUTER JOIN returns all the rows from both tables (table1 and table2), including the matching rows as well as the unmatched rows from both tables.
+    In this example, all the rows from table2 are returned, and the matching rows from table1 are included. If there are no matching rows in table1, NULL values are returned for the columns from table1.
+
+(4) FULL OUTER JOIN: A FULL OUTER JOIN returns all the rows from both tables (table1 and table2), including the matching rows as well as the unmatched rows from both tables.
+
   - If there are no matching rows in either table, NULL values are returned. The syntax for a FULL OUTER JOIN depends on the specific SQL database management system being used, as it may vary. Here's an example:
 
-SELECT column1, column2 FROM table1
-FULL OUTER JOIN table2 ON table1.column_name = table2.column_name;
-In this example, all the rows from both table1 and table2 are returned, including the matching rows as well as the unmatched rows from both tables. If there are no matching rows in either table, NULL values are returned for the columns from the respective table.
+      SELECT column1, column2 FROM table1
+      FULL OUTER JOIN table2 ON table1.column_name = table2.column_name;
+     
+  In this example, all the rows from both table1 and table2 are returned, including the matching rows as well as the unmatched rows from both tables. If there are no matching rows in either table, NULL values are returned for the columns from the respective table.
 
 ----------------------------------------------------------
 
@@ -1390,7 +1457,7 @@ In this example, all the rows from both table1 and table2 are returned, includin
 
   - In MongoDB, the $lookup operator is used to perform a left outer join between two collections.
   - The $lookup operator takes two parameters: the name of the collection to join with, and an object that specifies the fields to use for the join.
-  To combine elements from two different collections, use the $unionWith pipeline   stage.
+  To combine elements from two different collections, use the $unionWith pipeline stage.
   
 db.orders.aggregate([
    {
@@ -1411,11 +1478,11 @@ db.orders.aggregate([
 - CAP theorem is a fundamental concept in distributed database systems.
 - CAP stands for Consistency, Availability, and Partition Tolerance.
 
- 1)Consistency: Every read receives the most recent write or an error.
+ (1) Consistency: Every read receives the most recent write or an error.
 
- 2)Availability: Every request receives a response, without guarantee that it contains the most recent version of the information.
+ (2) Availability: Every request receives a response, without guarantee that it contains the most recent version of the information.
 
- 3)Partition tolerance: The system continues to function even when network partitions occur.
+ (3) Partition tolerance: The system continues to function even when network partitions occur.
 
 - According to the CAP theorem, it is impossible to achieve all three guarantees simultaneously in a distributed database system.
 - In a Node.js backend application, the CAP theorem impacts the design and behavior of the database system.
@@ -1427,17 +1494,23 @@ db.orders.aggregate([
 
 -------------------------------------------------
 
-### Q. What is indexing? ***
+### Q. What is indexing ?
 -  Indexing in a database is the process of creating a data structure that allows for faster retrieval of data from a table.
 -  An index is a data structure that is created on one or more columns of a table, which enables the database management system to quickly find and retrieve rows that match a specific search condition.
+- Indexes are special data structures that store a small portion of the collection's data set in an easy to traverse form. The index stores the value of a specific field or set of fields, ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations. In addition, MongoDB can return sorted results by using the ordering in the index.
+
 
 -  Two main types of indexing methods are ;
-   1)Primary Indexing
+
+   (1)Primary Indexing : 
+
    - Primary Index is an ordered file which is fixed length size with two fields.
-   - The primary Indexing is also further divided into two types 1)Dense Index 2)Sparse Index.
+   - The primary Indexing is also further divided into two types (1)Dense Index  & (2)Sparse Index.
    - In a dense index, a record is created for every search key valued in the database.
    - A sparse indexing method helps you to resolve the issues of dense Indexing.
-   2) Secondary Indexing.
+
+   (2) Secondary Indexing.
+   
    - The secondary Index in DBMS is an indexing method whose search key specifies an order different from the sequential order of the file.
 
 - Clustering index is defined as an order data file.
@@ -1445,9 +1518,30 @@ db.orders.aggregate([
 - The biggest benefit of Indexing is that it helps you to reduce the total number of I/O operations needed to retrieve that data.
 - The biggest drawback to performing the indexing database management system, you need a primary key on the table with a unique value.
 
+- Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
+- - MongoDB has default indexing.
+- In a MongoDB we can create index like db.collection.createIndex(key and index specification);
+   
+   eg.
+      db.collection.createIndex({name:-1})
+      // descending index
+
+- You can view index names using the
+
+      db.collection.getIndexes()
+      
+  method. You cannot rename an index once created. Instead, you must drop and re-create the index with a new name.
+
+- For a single-field index and sort operations, the sort order (i.e. ascending or descending) of the index key does not matter because MongoDB can traverse the index in either direction.
+- Compund index,
+         
+      eg.
+
+      db.collection.createIndex({name:-1})
+      // descending index
 ---------------------------------------------
 
-### Q.  What is DB replication? ***
+### Q.  What is DB replication ?
 
 - *Database replication* is the process of copying data from one database server to another, or to multiple servers, in order to maintain a redundant and distributed database system.
 - Replication can provide several benefits, such as improved availability, scalability, and reliability, as well as better disaster recovery and backup options.
@@ -1462,7 +1556,7 @@ Overall, database replication is an important technique for building scalable an
 
 -------------------------------------------------------------------
 
-### What is PACELC? ***
+### What is PACELC ?
 
 - PACELC is a concept related to distributed systems that expands on the CAP theorem (Consistency, Availability, Partition tolerance) to include additional factors that affect the behavior of distributed systems.
 - PACELC stands for:
@@ -1490,15 +1584,18 @@ Overall, database replication is an important technique for building scalable an
 
 -----------------------------------------------------
 
-### What is Normalization / Denormalization? ***
+### What is Normalization / Denormalization ?
+
 - Normalization and denormalization are techniques used in database design to optimize the structure of tables and improve the efficiency and performance of queries.
 
 *Normalization*:
+
   - It's the process of organizing the data in a database into tables that have well-defined relationships, reducing data redundancy and improving data integrity.
   - The goal of normalization is to minimize the amount of duplicate data in a database by breaking up larger tables into smaller ones with more specific purposes.
   - The normalization process typically involves creating multiple tables and establishing relationships between them using foreign keys.
 
 *Denormalization*:
+
   - It's the process of intentionally adding redundancy to a database table in order to improve performance.
   - This can involve combining tables or duplicating data, making it easier to query data without joining multiple tables.
   - By denormalizing a database, queries can be executed faster, but at the cost of increased storage requirements and reduced data consistency.
@@ -1541,24 +1638,25 @@ Overall, database replication is an important technique for building scalable an
 
 ------------------------------------------------------------
 
-###  What is Entity Relationship Model? ( ER Model ) ***
+##  What is Entity Relationship Model? ( ER Model ) 
+
 - The Entity Relationship Model (ER Model) is a conceptual data model used in database design.
 - It describes the relationships between data entities, attributes, and the constraints that govern the relationships.
 - The ER Model provides a graphical representation of the database structure and helps to identify relationships between data entities.
 - The ER Model consists of three main components:
 
-  1) Entities: An entity is a person, place, or thing that is relevant to the database. For example, in a database for a hospital, entities might include patients, doctors, and medical procedures.
+  (1) Entities: An entity is a person, place, or thing that is relevant to the database. For example, in a database for a hospital, entities might include patients, doctors, and medical procedures.
 
-  2) Attributes: An attribute is a characteristic or property of an entity. For example, the attributes of a patient might include their name, date of birth, and medical history.
+  (2) Attributes: An attribute is a characteristic or property of an entity. For example, the attributes of a patient might include their name, date of birth, and medical history.
 
-  3) Relationships: Relationships are connections between entities that describe how they are related to each other. For example, a patient might be related to a doctor through a "treated by" relationship, or a medical procedure might be related to a patient through a "performed on" relationship.
+  (3) Relationships: Relationships are connections between entities that describe how they are related to each other. For example, a patient might be related to a doctor through a "treated by" relationship, or a medical procedure might be related to a patient through a "performed on" relationship.
 
 - The ER Model is typically represented graphically using ER diagrams, which show entities as boxes, attributes as ovals, and relationships as lines connecting the boxes.
 - The ER Model is an important tool for designing and understanding complex databases, and is widely used in database design and development.
 
 ----------------------------------------------------------
 
-## What are Models? **
+## What are Models? 
 
 => Model: Manages data and business logic.The model defines what data the app should contain. If the state of this data changes, then the model will usually notify the view (so the display can change as needed) and sometimes the controller (if different logic is needed to control the updated view).
 =>  - In Node.js 'models' typically refer to data that define the structure and behavior of data in application.
@@ -1570,7 +1668,8 @@ Overall, database replication is an important technique for building scalable an
 
 --------------------------------------------------------------------------
 
-##  Explain why mongoose does not return a promise but has a .then **
+##  Explain why mongoose does not return a promise but has a .then 
+
    => The Mongoose does not return a promise direcly because it was designed to support both the call-back base and promise bases API's. Insted of returning a promise, Mongoose provide a ".then()" methode on queries that allows us to chain promise based operations.
     -> Mongoose queries are executed asynchronously and return a query object that implements the Promise API. The `.then()` method on Query object allows you to chain additional asynchronous operations that will be executed when the query is complete. This is similar to how promise work, where you can chain additional operations using `.then()`.
     -> Mongoose also suppports callback-bases API's, which means we can pass callback function to a queryinsted using a promise.
@@ -1637,6 +1736,7 @@ Overall, database replication is an important technique for building scalable an
    { _id: 2, name: "Pepperoni", size: "large", price: 21,
      quantity: 30, date : ISODate( "2021-03-17T09:22:12Z" ) },
     ]);
+
     -> Calculate the total order quantity:->
 
        db.orders.aggregate( [
@@ -1655,9 +1755,9 @@ Overall, database replication is an important technique for building scalable an
 
        ------------------------------------------------------------------------
 
-       ## I'm using an arrow function for a virtual, middleware, getter/setter, or method and the value of this is wrong. Why? **
+       ## I'm using an arrow function for a virtual, middleware, getter/setter, or method and the value of this is wrong. Why? 
 
-       => Arrow functions in JS are lexically scopped, which means they don't have their own 'this' context like traditional function expressions. Insted, 'this' in  a arrow function is determined by the surrounding lexical scope, which can lead to unexpected behavior when used in certained contects.
+       => Arrow functions in JS are lexically scopped, which means they don't have their own 'this' context like traditional function expressions. Insted, 'this' in  a arrow function is determined by the surrounding lexical scope, which can lead to unexpected behavior when used in certained contexts.
        => In the case of virtual, middleware, getter/setters and methods in Mongoose, the value of `this` is important because it refers to the document being operated on. If we use an arrow function for one of these puurposes, 'this' will refer to surrounding lexical scope , which is undefined in document.
        =>Example:
             const mongoose = require('mongoose');
@@ -1713,78 +1813,99 @@ Overall, database replication is an important technique for building scalable an
        * we can create compund indexes by passing an objects with multiple fields to the 'indexs' method'
        - eg. mySchema.index({name:1,email:1})
 
-       => Types of indexs
-       1) Regular index:
-        var User = new Schema({
-        name: { type: String, index: true }
-        })
-       2) Sparse indexes:
-        var User = new Schema({
-        name: { type: String, sparse: true }
-        })
-       3)Unique indexes:
-       var User = new Schema({
-       name: { type: String, unique: true }
-       })
-         // or
-       var User = new Schema({
-       name: { type: String, index: { unique: true } }
-       });
+       => Types of indexs,
+
+       (1) Regular index:
+
+          var User = new Schema({
+          name: { type: String, index: true }
+          });
+
+       (2) Sparse indexes:
+
+            var User = new Schema({
+            name: { type: String, sparse: true }
+            });
+
+       (3)Unique indexes:
+
+          var User = new Schema({
+          name: { type: String, unique: true }
+          })
+            // or
+          var User = new Schema({
+          name: { type: String, index: { unique: true } }
+          });
 
 -------------------------------------------------------------------------------
 
-## What are pre and post hooks? **
+## What are pre and post hooks? 
+
 -> Pre and post also known as middlewares are the functions which are passes control during execution of asynchronous functions. 
--> middleware is specified on the schema level ans is usefull for writin plugins.
+-> middleware is specified on the schema level and is usefull for writin plugins.
 -> Pre and post are functions that are executed before or after a certain action that we specify.
   -eg. I we want run a function everytime before we save a document in the DB, we use pre-hook and if we want something to be executed after that we use post hooks.
 -> These hooks allow us to add custom logic to a Mongoose schema, such as validating data before it saved to database or updating related document when a document is deleted.
 
 ->Example:
-1) Pre-Hooks;
-    const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String
-   });
-   userSchema.pre('save', function(next) {
-   // Hash the user's password before saving it to the database
-    bcrypt.hash(this.password, 10, (err, hash) => {
-    if (err) return next(err);
-    this.password = hash;
-    next();
-    });
-    });
-2)Post-Hooks:
-     const postSchema = new mongoose.Schema({
-     title: String,
-     content: String
-    });
-    postSchema.post('remove', function(doc, next) {
-    // Remove all comments associated with the deleted post
-    Comment.deleteMany({ post: doc._id }, (err) => {
-    if (err) return next(err);
-    next();
-    });
-    });
+
+    (1) Pre-Hooks:
+
+          const userSchema = new mongoose.Schema({
+              name: String,
+              email: String,
+              password: String
+          });
+        
+        userSchema.pre('save', function(next) {
+
+        // Hash the user's password before saving it to the database
+
+          bcrypt.hash(this.password, 10, (err, hash) => {
+          if (err) return next(err);
+          this.password = hash;
+          next();
+          });
+        });
+
+      (2)Post-Hooks:
+
+          const postSchema = new mongoose.Schema({
+          title: String,
+          content: String
+          });
+
+          postSchema.post('remove', function(doc, next) {
+
+          // Remove all comments associated with the deleted post
+
+          Comment.deleteMany({ post: doc._id }, (err) => {
+          if (err) return next(err);
+          next();
+          });
+          });
 
 ----------------------------------------------------------------------------
 
-##  What is Authentication? **
+##  What is Authentication? 
 
     ->Authentication is a term that refers to the process of proving that some fact or some document is genuine.
     -> In computer science, this term is typically associated with proving a user’s identity. Usually, a user proves their identity by providing their credentials, that is, an agreed piece of information shared between the user and the system.
-    ->Username and password combination is the most popular authentication mechanism, and it is also known as password authentication.
-    ->A specific category of credentials, like username and password, are usually said an authentication factor. Even if password authentication is the most well-known type of authentication, other authentication factors exist. There are three types of authentication factors typically classified as follows:
-      1) password->something you know
-      2) smartphone -> something you have
-      3) biometric authentication -> something you are
+    -> Username and password combination is the most popular authentication mechanism, and it is also known as password authentication.
+    -> A specific category of credentials, like username and password, are usually said an authentication factor. Even if password authentication is the most well-known type of authentication, other authentication factors exist.
+     There are three types of authentication factors typically classified as follows:
+
+      (1) password->something you know
+      (2) smartphone -> something you have
+      (3) biometric authentication -> something you are
+
     -> The process of authentication based on just one factor is called Single-factor authentication.
     -> You can combine multiple authentication factors, further increasing your identity security. In this case, you are using a Multiple-factor authentication (MFA). Of course, 2FA is just a form of MFA.
 
 -----------------------------------------------------------------------------
 
-## What is Authorization? **
+## What is Authorization? 
+
   =>Authorization is the process of granting or denying access to specific resources or actions to specific users or groups of users.
   -> It is a critical component of security in any application or system that requires access control.
   -> It is most usefull at "Roll Based Access Control". 
@@ -1794,9 +1915,32 @@ Overall, database replication is an important technique for building scalable an
 
   =>In many cases, authorization is implemented in conjunction with authentication, which is the process of verifying a user's identity. Together, these two processes provide a secure and reliable mechanism for controlling access to sensitive resources and data in a system.
 
+       eg.
+
+       // we are using cosures here.
+
+          const authorise=(roles_array)=>{
+
+            return (req,res,next)=>{
+              const userrole=req.body.userrole;
+
+              if(roles_array.includes(userrole)){
+
+                next();
+
+              }else{
+
+                res.send({"Message":"User not found"});
+
+              }
+            }
+          }
+
+          module.exports={authorise};
+
 -------------------------------------------------------------------------------
 
-## How do you do role-based authentication? **
+## How do you do role-based authentication? 
 
    => Role-based access control (RBAC) refers to the idea of assigning permissions to users based on their role within an organization. It offers a simple, manageable approach to access management that is less prone to error than assigning permissions to users individually.
    => When using RBAC for Role Management, we analyze the needs of our users and group them into roles based on common responsibilities. 
@@ -1804,57 +1948,68 @@ Overall, database replication is an important technique for building scalable an
    =>The user-role and role-permissions relationships make it simple to perform user assignments since users no longer need to be managed individually, but instead have privileges that conform to the permissions assigned to their role(s).
 
    => Benefits of Rol Bases Access Controll(RBAC):
-     1) Create systematic, repeatable assignment of permissions.
-     2) Easiy audit user privileges an correct indentified      issues.
-     3) Quickly add and changes roles, as well as implement them across API's.
-     4) Cut down on the potential for error when assigning user permissions.
-     5) More effectively comply with regularity and statutory requirements for confidentially and privacy.
+
+     (1) Create systematic, repeatable assignment of permissions.
+     (2) Easiy audit user privileges an correct indentified issues.
+     (3) Quickly add and changes roles, as well as implement them across API's.
+     (4) Cut down on the potential for error when assigning user permissions.
+     (5) More effectively comply with regularity and statutory requirements for confidentially and privacy.
 
 ------------------------------------------------------------------------------
 
-## What is hashing? **
+## What is hashing? 
 
 => Hashing is a technique used in computer science to transform data of any size or format into a fixed size value or key, which represents the original data in a compact and standardized format.
-=> A hash function is a mathematical algorith that takes in data as input and produces a fixed-length output, which is refered to as a hash code, hash value, or simply hash.
+=> A "hash function is a mathematical algorith" that takes in data as input and produces a fixed-length output, which is refered to as a hash code, hash value, or simply hash.
 => Its widely used fields like cryptography, data retrieval, data compression, and digital signatures.
 => It is commonly used to verify the integrity of data and to store passwords security by hashing them before storing them in a database,
 => The hash function is designed in such a way that even a small change in the input data will result in a completely different hash value. This property is referred to as the avalanche effect and is important for ensuring the security and integrity of the data.
 
 => Examples:
-1) Password Storage: 
-    When a user creates an account on a    website, their password is often hashed using a hash function before being stored in a database. When the user logs in, the password they enter is hashed and compared to the stored hash value to verify their identity. If the hash values match, the user is granted access.
 
-2)Data Retrieval:
-     Hashing can also be used for efficient data retrieval in large databases. A hash table is a data structure that uses a hash function to map keys to indices in an array. This allows for quick access to data based on its key value.
+    (1) Password Storage: 
 
-3)Digital Signatures:
-     Hashing is used in digital signatures to ensure that a message has not been tampered with during transmission. A hash of the message is created, and then the hash is encrypted using the sender's private key. The receiver can then decrypt the hash using the sender's public key and verify that the message has not been altered.
+        When a user creates an account on a  website, their password is often hashed using a hash function before being stored in a database. When the user logs in, the password they enter is hashed and compared to the stored hash value to verify their identity. If the hash values match, the user is granted access.
 
-4)File Integrity Checking:
-     Hashing can also be used to verify the integrity of files. A hash of the file is created and stored. Later, when the file is accessed again, a new hash is created and compared to the stored hash. If the two hash values match, the file has not been altered. This technique is commonly used in software distribution to ensure that downloaded files have not been modified.
+    (2) Data Retrieval:
+
+        Hashing can also be used for efficient data retrieval in large databases. A hash table is a data structure that uses a hash function to map keys to indices in an array. This allows for quick access to data based on its key value.
+
+    (3) Digital Signatures:
+
+        Hashing is used in digital signatures to ensure that a message has not been tampered with during transmission. A hash of the message is created, and then the hash is encrypted using the sender's private key. The receiver can then decrypt the hash using the sender's public key and verify that the message has not been altered.
+
+    (4) File Integrity Checking:
+
+        Hashing can also be used to verify the integrity of files. A hash of the file is created and stored. Later, when the file is accessed again, a new hash is created and compared to the stored hash. If the two hash values match, the file has not been altered. This technique is commonly used in software distribution to ensure that downloaded files have not been modified.
 
 --------------------------------------------------------------------------------
 
-## What is encryption? **
+## What is encryption? 
 
     => Encryption is the process of converting plain text or data into a coded format that is unintelligible without a key or a password, making it unreadable to unauthorized users.
     => It is used to protect the confidentiality, integrity, and authenticity of sensitive data during transmission or storage.
     => Encryption uses mathematical algorithms to scramble the original data into ciphertext that can only be decrypted using a specific key or password.
 
     => There are two main types of encryption:
-      1)Symmetric Encryption:
-          -> In symmetric encryption, the same key is used for both encryption and decryption.
-          -> The sender and the receiver must both possess the same secret key to be able to decrypt the ciphertext. ->Examples of symmetric encryption algorithms include AES (Advanced Encryption Standard), DES (Data Encryption Standard), and 3DES (Triple Data Encryption Standard).
 
-      2)Asymmetric Encryption:
+      (1)Symmetric Encryption:
+
+          -> In symmetric encryption, the same key is used for both encryption and decryption.
+          -> The sender and the receiver must both possess the same secret key to be able to decrypt the ciphertext. 
+          ->Examples of symmetric encryption algorithms include AES (Advanced Encryption Standard), DES (Data Encryption Standard), and 3DES (Triple Data Encryption Standard).
+
+      (2)Asymmetric Encryption:
+
           -> In asymmetric encryption, also known as public-key encryption, two different keys are used for encryption and decryption.
-          -> The sender encrypts the message using the receiver's public key, and the receiver decrypts the message using their private key. This allows for secure communication without sharing a secret key. ->Examples of asymmetric encryption algorithms include RSA (Rivest–Shamir–Adleman) and ECC (Elliptic Curve Cryptography).
+          -> The sender encrypts the message using the receiver's public key, and the receiver decrypts the message using their private key. This allows for secure communication without sharing a secret key. 
+          ->Examples of asymmetric encryption algorithms include RSA (Rivest–Shamir–Adleman) and ECC (Elliptic Curve Cryptography).
     
     => Encryption is widely used to secure sensitive data such as credit card information, personal identification numbers, medical records, and government secrets. It is also used to protect communication channels such as email, messaging, and virtual private networks (VPNs).
 
     ----------------------------------------------------
     
-    ## What is Advanced Encryption Standard(AES):-
+    ## What is Advanced Encryption Standard(AES):
 
     => AES encryption, or advanced encryption standard, is a type of cipher that protects the transfer of data online.
 
@@ -1874,7 +2029,8 @@ Overall, database replication is an important technique for building scalable an
 
     => AES requires less memory than many other types of encryption (like DES), which makes it a true winner when it comes to choosing your preferred encryption method.
 
-    => Examples of AES usage
+    => Examples of AES usage, 
+
       Here are a few notable examples of where developers can use the AES encryption:
 
       - VPNs (Virtual Private Networks): As the job of a VPN is to securely connect you to another server online, only the best methods of encryption can be considered so that your data wouldn’t leak. The VPNs that use the advanced encryption standard with 256-bit keys include NordVPN, Surfshark, and ExpressVPN.
@@ -1896,7 +2052,7 @@ Overall, database replication is an important technique for building scalable an
 
     ## How is hashing and encryption different? **
     
-    1) Encryption:
+    (1) Encryption:
         -> Encryption is the process of converting a normal readable message known as plaintext into a garbage message or not readable message known as Ciphertext. 
         -> The ciphertext obtained from the encryption can easily be transformed into plaintext using the encryption key.
         -> The purpose of encryption is to transform data to keep it secret from others.
@@ -1905,7 +2061,8 @@ Overall, database replication is an important technique for building scalable an
         -> It will always generate a new key for each information.
         -> The encrypted information is not of fixed length. It grows with the increase in length of information.
         -> Some of the examples of encryption algorithms are RSA, AES, and Blowfish.
-    2) Hashing:
+
+    (2) Hashing:
         -> Hashing is the process of converting the information into a key using a hash function.
         -> The purpose of hashing is indexing and retrieving items from the database. The process is very fast.
         -> The hash code or key can not be reversed to the original information by any means. It can only be mapped and the hash code is checked if the hash code is the same the information is the same otherwise not. The original information can not be retrieved.
@@ -1931,74 +2088,91 @@ Overall, database replication is an important technique for building scalable an
 
 --------------------------------------------------------------------------------
 
-## What is JWT? **
+## What is JWT? 
+
     => JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
     -> This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
     => JSON Web Tokens can be used in,
+
      -> Authorization: 
         - This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
         - Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
+
      -> Information Exchange:
-     - JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. 
-     - Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
+        - JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. 
+        - Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
      => JSON Web Tokens consist of three parts separated by dots (.), which are:
-        1) Header:
-            -> The header typically consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA.
 
-        2) Payload:
+        (1) Header:
+            -> The header typically consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC, SHA256 or RSA.
+
+        (2) Payload:
             -> It contains the claims. Claims are statements about an entity (typically, the user) and additional data. There are three types of claims: registered, public, and private claims.
-        3) Signature:
+
+        (3) Signature:
             -> To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
     
     => In authentication, when the user successfully logs in using their credentials, a JSON Web Token will be returned. Since tokens are credentials, great care must be taken to prevent security issues. In general, you should not keep tokens longer than required.
 
-    => In authentication, when the user successfully logs in using their credentials, a JSON Web Token will be returned. Since tokens are credentials, great care must be taken to prevent security issues. In general, you should not keep tokens longer than required.
      Authorization: Bearer <token>
 
-     ----------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
-     ## How is JWT different and list the pros and cons of using JWT tokens? **
+## How is JWT different and list the pros and cons of using JWT tokens? **
 
     =>JWT : It is a definitely a clever way to securely get the identity of the client. In simple language there is a secret Key used to encrypt the JSON formatted Data which primarily includes the user-id. Now an encryption of data with the Key generates the token that is sent to the client and used in every request. Every time, the client sends in the request with the token the server tries to decrypt it with the Key, if it can, it gets the user-id from the JSON Data which corresponds to the user.
     =>The actual working of the JWT is not so straight forward : it actually involves Public/Secret Key, where the Payload is signed by the secret.
 
     * Here are some ways that JWT is different from other types of tokens:
-        1) Self-contained: 
+        (1) Self-contained: 
            -> JWT tokens are self-contained, meaning that all the necessary information is included within the token itself. This makes it easy to transmit the token between different systems without needing to reference an external database or lookup system.
-        2) Stateless:
+
+        (2) Stateless:
           -> Because all the necessary information is included within the token, JWT tokens are stateless. This means that the server does not need to store any information about the token on the server side, making it easier to scale horizontally.
-        3) Signed and encrypted:
+
+        (3) Signed and encrypted:
           -> JWT tokens can be signed and encrypted, which provides an additional layer of security. This helps to prevent tampering or unauthorized access to the token.
 
     *=> Pros:
-        1) No Database Table :
+        (1) No Database Table :
          -> This implies fewer DB queries, which implies faster response time. In case you are using paid services like DynamoDb that charge per query basis, JWT might reduce the costs marginally.
-        2) Simpler to use if careful : 
+
+        (2) Simpler to use if careful : 
           ->If your architecture doesn’t user client Sessions and your security basics are clear, the development time in case of JWT is faster using the existing libraries.
-        3) Used across services : 
+
+        (3) Used across services : 
           -> You can have one authorization server that deals with the Login/Registration and generates the token, all the subsequent requests will need not have to go to the authorization server as the only the Auth-server will have have the private key, and rest of the severs will have the public-key to verify the signature.
-        4) Scalability: 
+
+        (4) Scalability: 
           -> Because JWT tokens are stateless and self-contained, they can be easily distributed across multiple servers, making it easier to scale horizontally.
-        5) Flexibility: 
+
+        (5) Flexibility: 
           ->JWT tokens can be used for a variety of purposes, such as authentication, authorization, and data exchange.
     
     *=> Cons:
-        1) Compromised Secret Key : 
+
+        (1) Compromised Secret Key : 
           ->The best and the worst thing about JWT is that it relies on just one Key. Consider that the Key is leaked by a careless or a rogue developer/administrator, the whole system is compromised!
           ->The attacker(who has access to the Key) can easily access all user data if he has the user-id which can be easily acquired.
-        2) Cannot manage client from the server: 
+
+        (2) Cannot manage client from the server: 
           ->We had several cases where we wanted the users at HelpTap to logout by cleaning up the cookies, but we cannot ask them to do so every time.
           ->As well consider the case that a user’s mobile is stolen, and he wants to logout of all existing sessions(e.g. Gmail’s logout other sessions feature). Well its not possible in case of JWT.
-        3) Cannot push Messages to clients (Identifying clients from server) :
+
+        (3) Cannot push Messages to clients (Identifying clients from server) :
           -> As we have no record about the logged-in clients on the DB end, we cannot push messages to all the clients.
-        4) Crypto-algo can be deprecated: 
+
+        (4) Crypto-algo can be deprecated: 
           ->JWT relies completely on the Signing algorithm. Now, though it is not frequent, but in the past many Encryption/Signing algorithms have been deprecated.
-        5) Data Overhead : 
+
+        (5) Data Overhead : 
           ->The size of the JWT token will be more than that of a normal Session token. The more data you add in the JWT token, the longer it gets linearly. Remember, each request needs the token in it for request verification. So say, a 1 KB JWT token implies each request will have 1KB over-head upload which is really bad in cases of low speed net connectivity.
-        6) Complicated to understand: 
-          ->JWT uses cryptographic Signature algorithms to verify the data and get the user-id from the token. Understanding the Signing Algo in itself requires basics of cryptography. So, in case if the developer is not completely educated s/he might introduce security loopholes in the system
-        7) Revocation: 
+
+        (6) Complicated to understand: 
+          ->JWT uses cryptographic Signature algorithms to verify the data and get the user-id from the token. Understanding the Signing Algo in itself requires basics of cryptography. So, in case if the developer is not completely educated s/he might introduce security loopholes in the system.
+
+        (7) Revocation: 
           ->Because JWT tokens are stateless, there is no built-in mechanism for revoking a token. This can be a challenge if you need to revoke a token for security reasons, such as if a user's account is compromised.
 
 -------------------------------------------------------------------------------------
@@ -2009,23 +2183,26 @@ Overall, database replication is an important technique for building scalable an
   => Authentication is purely the means of confirming digital identification, so users have the level of permissions to access or perform a task they are attempting.
 
   =>The ways of Authentication:
-  1) Session-based-authentication:
+  (1) Session-based-authentication:
      - In session based authetication , server creates a session for the user after they log in , and sends a session ID back to the client. The Client then includes this session ID in subsequent requests, allowing the server to identify the user and verify their identity. Sessions are typically stored on the server side and can be used to store user-specific data.
-  2) Token-based authentication:
+
+  (2) Token-based authentication:
      - In token-based authentication, the server generates a token (such as a JWT) after the user logs in, which is then sent back to the client. The client includes this token in subsequent requests, allowing the server to identify the user and verify their identity. Tokens can be stored client-side (in cookies or local storage) or server-side (in a database or cache).
-  3) OAuth2: 
+
+  (3) OAuth2: 
      -> OAuth2 is an open standard for authentication and authorization, used by many large web applications such as Google, Facebook, and Twitter.
      -> OAuth2 allows users to grant third-party applications access to their resources without sharing their login credentials. The third-party application receives an access token, which it can use to access the user's resources.
-  4) OpenID Connect:
+
+  (4) OpenID Connect:
      -> OpenID Connect is a standard built on top of OAuth2 that provides additional features for authentication, such as user profile information and single sign-on (SSO) capabilities. OpenID Connect is widely used by enterprise applications for SSO.
 
   *Authentication methods:
-  1) Single-Factor / Primary Authentication:
+  (1) Single-Factor / Primary Authentication:
       ->Historically the most common form of authentication, Single-Factor Authentication, is also the least secure, as it only requires one factor to gain full system access.
       -> It could be a username and password, pin-number or another simple code.
       -> While user-friendly, Single-Factor authenticated systems are relatively easy to infiltrate by phishing, key logging, or mere guessing. As there is no other authentication gate to get through, this approach is highly vulnerable to attack.
 
-   2) Two-Factor Authentication (2FA):
+   (2) Two-Factor Authentication (2FA):
       ->By adding a second factor for verification, two-factor authentication reinforces security efforts.
       -> It is an added layer that essentially double-checks that a user is, in reality, the user they’re attempting to log in as—making it much harder to break.
       -> With this method, users enter their primary authentication credentials (like the username/password mentioned above) and then must input a secondary piece of identifying information.
@@ -2033,68 +2210,76 @@ Overall, database replication is an important technique for building scalable an
       -> Possible secondary factors are a one-time password from an authenticator app, a phone number, or device that can receive a push notification or SMS code, or a biometric like fingerprint (Touch ID) or facial (Face ID) or voice recognition.
       ->2FA significantly minimizes the risk of system or resource compromise, as it’s unlikely an invalid user would know or have access to both authentication factors. ->While two-factor authentication is now more widely adopted for this reason, it does cause some user inconvenience, which is still something to consider in implementation.
 
-   3) Single Sign-On (SSO):
+   (3) Single Sign-On (SSO):
       ->With SSO, users only have to log in to one application and, in doing so, gain access to many other applications. This method is more convenient for users, as it removes the obligation to retain multiple sets of credentials and creates a more seamless experience during operative sessions.
       -> Organizations can accomplish this by identifying a central domain (most ideally, an IAM system) and then creating secure SSO links between resources. This process allows domain-monitored user authentication and, with single sign-off, can ensure that when valid users end their session, they successfully log out of all linked resources and applications. 
     
-    4) Multi-Factor Authentication (MFA):
+    (4) Multi-Factor Authentication (MFA):
       -> Multi-factor authentication is a high-assurance method, as it uses more system-irrelevant factors to legitimize users.
       -> Like 2FA, MFA uses factors like biometrics, device-based confirmation, additional passwords, and even location or behavior-based information (e.g., keystroke pattern or typing speed) to confirm user identity. 
       ->However, the difference is that while 2FA always utilizes only two factors, MFA could use two or three, with the ability to vary between sessions, adding an elusive element for invalid users.
 
 ---------------------------------------------------------------------------
 
-## What is cookie-based auth? **
+## What is cookie-based auth? 
     
     => Cookies are pieces of data used to identify the user and their preferences. The browser returns the cookie to the server every time the page is requested. Specific cookies like HTTP cookies are used to perform cookie-based authentication to maintain the session for each user.
-    => When a user logs in to a web application, the server creates a unique session ID and stores it in a cookie, which is then sent to the user's browser. The browser will then automatically send this cookie back to the server with each subsequent request, allowing the server to identify the user and maintain their session
+    => When a user logs in to a web application, the server creates a unique session ID and stores it in a cookie, which is then sent to the user's browser. The browser will then automatically send this cookie back to the server with each subsequent request, allowing the server to identify the user and maintain their session.
+
     => The coockie bases authentication work like,
-    1) The user gives a username and password at time of login. Once the user fills the login gorm, the browser(client) sends a login request to the server.
-    2) The server verifies the data by querying the user data. If authenticaton request valid, the server generate the following:
-       a) A session by utilizing the user information.
-       b) A unique ID, known as session ID.
+
+    (1) The user gives a username and password at time of login. Once the user fills the login form, the browser(client) sends a login request to the server.
+    (2) The server verifies the data by querying the user data. If authenticaton request valid, the server generate the following:
+       (a) A session by utilizing the user information.
+       (b) A unique ID, known as session ID.
       The server then passes the session ID to the browser that keeps it. The server also keeps track of the active sessions.
-    3) The browser has to submit this generated session ID while sending a subsequent request. Every time the server validates the session ID. The session ID helps the authentication process identify the user and provides access accordingly.
-    4) When the user logs out of the application, the session gets destroyed from both client (browser) and the server. It discontinues the authentication process from happening again through the respective session ID.
+    (3) The browser has to submit this generated session ID while sending a subsequent request. Every time the server validates the session ID. The session ID helps the authentication process identify the user and provides access accordingly.
+    (4) When the user logs out of the application, the session gets destroyed from both client (browser) and the server. It discontinues the authentication process from happening again through the respective session ID.
 
     => Benefits of Cookie-based Authentication
-       1) Availability:
+       (1) Availability:
           In cookies-based authentication, cookies can be made available for an extended period, maintaining a session for a long time.
-       2) Easy Configuration:
+       (2) Easy Configuration:
           Websites can deliver cookies by configuring them as per requirement. For example, a website can send cookies that will expire as the users close the browser tab. It is also possible to configure cookies for a specified length of time on the client-side.
-       3) User-friendly:
+       (3) User-friendly:
           Cookie-based authentications are simple, and the cookies used in this method are user-friendly. Users can choose what to do with cookie files that have kept user credentials. All modern browsers come with settings to clear the cookies. Users can find cookies in the hard drive and delete them manually.
 
     =>Challenges of Cookie-based Authentication
-        1) Vulnerable to CSRF:
+        (1) Vulnerable to CSRF:
           Cookie-based authentications are prone to Cross-site Request Forgery (CSRF) attacks. Hence, they often require additional security postures for protection.
-        2) Less Mobile-friendly:
+        (2) Less Mobile-friendly:
           Cookie-based authentication does not work well with all native applications.
-        3) Limitations: There are certain limitations and concerns such as size limit (not more than 4KB of information per cookie), browser limitations on cookies, user privacy, etc., come with cookies and cookie-based authentication.
-        4) Less Scalable: Cookie-based authentication is less scalable, and the overhead rises when the user count increases on a particular site.
+        (3) Limitations: There are certain limitations and concerns such as size limit (not more than 4KB of information per cookie), browser limitations on cookies, user privacy, etc., come with cookies and cookie-based authentication.
+        (4) Less Scalable: Cookie-based authentication is less scalable, and the overhead rises when the user count increases on a particular site.
 
 ---------------------------------------------------------------------------------------
 
-## What is session management? **
+## What is session management ?
+
    => Session management manages sessions between the web application and the users. The communication between a web browser and a website is usually done over HTTP or HTTPS. When a user visits a website, a session is made containing multiple requests and responses over HTTP.
    => A session is a period of time in which a user interacts with an application, from the moment they log in to the moment they log out or their session expires. During this time, the application needs to keep track of the user's identity and state in order to provide a personalized experience and maintain security
 
    *=> The Steps involved in session management:
-    1)  Session Creation:
+
+    (1)  Session Creation:
          -> When a user logs in to the application, the server creates a new session fro that user. This typically involves generationg a unique session ID, which is associated with the users account and stored on server.
-    2)  Session tracking:
+
+    (2)  Session tracking:
         As the user interacts with the application, the session ID is used to track their identity and state. This includes the data like preferences or shoping cart contents on server ans associating with users session id.
-    3) Session Expiration:
+
+    (3) Session Expiration:
         To prevent inactive sessions from being used by anauthorised users, sessions typically have an expiration time. This means that after a certain period of inactivity, the user will be required to log in again to create a new session.
-    4)  Session termination: 
+
+    (4)  Session termination: 
         When a user logs out of the application, their session should be terminated to prevent any further access to their account.
+
     => Proper session management is critical for ensuring the security and privacy of user data in a web application. 
     => Without proper session management, an attacker may be able to hijack a user's session and gain access to their account or sensitive data. Common attacks on session management include session fixation, session hijacking, and session replay attacks
     => To prevent these attacks, web applications should use secure session ID generation, implement appropriate session expiration policies, and ensure that session data is properly secured and encrypted.
 
 ---------------------------------------------------------------------------------
 
-## What is OAuth? **
+## What is OAuth? 
 
     => OAuth (short for "Open Authorization") is an open standard for access delegation, commonly used as a way for internet users to grant websites or applications access to their information on other websites but without giving them the passwords
     => OAuth works by allowing a user to grant a third-party application access to their resources (such as profile information, contacts, or photos) by authenticating with the service that owns the resources.
@@ -2108,7 +2293,7 @@ Overall, database replication is an important technique for building scalable an
 
 ------------------------------------------------------------------------------------
 
-##  What is REST api? **
+##  What is REST api? 
 
    => REST stands for the ("Representational State Transfer") API is a web-based architectural style for creating API's.
    => REST APIs allow communication between different systems on the internet.
@@ -2123,29 +2308,47 @@ Overall, database replication is an important technique for building scalable an
 
 ----------------------------------------------------------------------------------
 
-## What is gRPC? **
+## What is gRPC? 
 
-    => gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.
+    => gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment. It "can efficiently "connect services in and across data centers" with pluggable support for load balancing, tracing, health checking and authentication". It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.
     =>RPCs allow you to write code as though it will be run on a local computer, even though it may be executed on another computer. 
     => Remote Procedure Call:
+
        -> A RPC is a form of Client-Server Communication that uses a function call rather than a usual HTTP call.
-       -> A RPC is a form of Client-Server Communication that uses a function call rather than a usual HTTP call.
+
     => gRPC uses Protocol Buffers, a language-agnostic binary  serialization format, to define the structure of messages and APIs, which allows for efficient and compact data transfer. It also supports bidirectional streaming and flow control, enabling efficient communication even in high-volume scenarios.
+
     => Benefits of the gRPC:
        - Abstraction is easy(it's function call)
        - gRPC supports a variety of programming languages, including C++, Java, Python, Go, Ruby, and many more, and provides a wide range of features, such as load balancing, authentication, and encryption.
        - One of the key advantages of gRPC is its performance. Compared to other RPC frameworks such as REST, gRPC typically provides faster communication, lower latency, and better resource utilization. This makes it particularly well-suited for use in large-scale, distributed systems.
-       - HTTP calls sre often confusing, so this makes it  easier.
+       - HTTP calls are often confusing, so this makes it  easier.
        - Additionally, gRPC is also highly scalable and can handle high volume traffic. It also provides a robust and extensible platform for building microservices-based architectures, allowing for easy communication between different services and enabling teams to work independently on different parts of the system.
        - A RPC is a form of Client-Server Communication that uses a function call rather than a usual HTTP call.
        * Microservices will often be running several services in different programming languages. They'll also often have a lot of service to service interactions.
        - This is where gRPC helps out the most by providing the support and capability to solve the typical issues that arise from those situations.
 
+       eg. 
+          
+          syntax = "proto3";
+
+          message Request {
+              string name = 1;
+          }
+
+          message Response {
+              string message = 1;
+          }
+
+          service ExampleService {
+              rpc SayHello(Request) returns (Response) {}
+          }
+
 ----------------------------------------------------------------------------------------
 
 ## What is GraphQL? **
 
-    => GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data developed by Facebook. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+    => GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. 'Developed by Facebook'. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
     => With GraphQL, the client specifies the data it needs and the server returns only the requested data, reducing over-fetching and under-fetching of data. This is achieved through a single endpoint and a strongly typed schema that defines the available data and operations.
     =>  It provides a more efficient, powerful, and flexible way to retrieve and manipulate data from APIs compared to traditional REST APIs.
     => GraphQL is also highly adaptable and can be used with a wide range of programming languages and frameworks. It can also be used alongside existing REST APIs, allowing for a gradual migration to a more efficient and flexible data retrieval system.
@@ -2166,7 +2369,9 @@ Overall, database replication is an important technique for building scalable an
 ----------------------------------------------------------------------------------------
 
 ## What is a web socket? **
+
     =>The WebSocket API (WebSockets):
+
       - The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between the user's browser and a server. With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply.
     => Both the client and server can send messages to each other at any time without the need for a new request.
     => The WebSocket protocol is a TCP-based network protocol that specifies how data is transferred between networks. Almost all clients utilize this network protocol since it is so dependable and efficient. 
@@ -2185,45 +2390,50 @@ Overall, database replication is an important technique for building scalable an
    => Trading off capacity for speed, a cache typically stores a subset of data transiently, in contrast to databases whose data is usually complete and durable.
    => RAM and In-Memory Engines: 
        -> Due to the high request rates or IOPS (Input/Output operations per second) supported by RAM and In-Memory engines, caching results in improved data retrieval performance and reduces cost at scale. To support the same scale with traditional databases and disk-based hardware, additional resources would be required. These additional resources drive up cost and still fail to achieve the low latency performance provided by an In-Memory cache.
+
     => Applications:
        -> Caches can be applied and leveraged throughout various layers of technology including Operating Systems, Networking layers including Content Delivery Networks (CDN) and DNS, web applications, and Databases. You can use caching to significantly reduce latency and improve IOPS for many read-heavy application workloads, such as Q&A portals, gaming, media sharing, and social networking.
        => Cached information can include the results of database queries, computationally intensive calculations, API requests/responses and web artifacts such as HTML, JavaScript, and image files.
+
     => Design Patterns: 
-       -> In a distributed computing environment, a dedicated caching layer enables systems and applications to run independently from the cache with their own lifecycles without the risk of affecting the cache. The cache serves as a central layer that can be accessed from disparate systems with its own lifecycle and architectural topology
+       -> In a distributed computing environment, a dedicated caching layer enables systems and applications to run independently from the cache with their own lifecycles without the risk of affecting the cache. The cache serves as a central layer that can be accessed from disparate systems with its own lifecycle and architectural topology.
+
     => Caching Best Practices:
        ->When implementing a cache layer, it’s important to understand the validity of the data being cached. A successful cache results in a high hit rate which means the data was present when fetched. A cache miss occurs when the data fetched was not present in the cache. Controls such as TTLs (Time to live) can be applied to expire the data accordingly. Another consideration may be whether or not the cache environment needs to be Highly Available, which can be satisfied by In-Memory engines such as Redis
     
     *Benefits of Caching
-     1)Improve Application Performance:
+     (1)Improve Application Performance:
            -> Because memory is orders of magnitude faster than disk (magnetic or SSD), reading data from in-memory cache is extremely fast (sub-millisecond). This significantly faster data access improves the overall performance of the application.
-     2)Reduce Database Cost:
+     (2)Reduce Database Cost:
            -> A single cache instance can provide hundreds of thousands of IOPS (Input/output operations per second), potentially replacing a number of database instances, thus driving the total cost down. This is especially significant if the primary database charges per throughput. In those cases the price savings could be dozens of percentage points.
-     3)Reduce the Load on the Backend:
+     (3)Reduce the Load on the Backend:
            -> By redirecting significant parts of the read load from the backend database to the in-memory layer, caching can reduce the load on your database, and protect it from slower performance under load, or even from crashing at times of spikes.
-     4)Predictable Performance:
+     (4)Predictable Performance:
            -> A common challenge in modern applications is dealing with times of spikes in application usage. Examples include social apps during the Super Bowl or election day, eCommerce websites during Black Friday, etc. Increased load on the database results in higher latencies to get data, making the overall application performance unpredictable. By utilizing a high throughput in-memory cache this issue can be mitigated.
-     5)Eliminate Database Hotspots:
+     (5)Eliminate Database Hotspots:
            -> In many applications, it is likely that a small subset of data, such as a celebrity profile or popular product, will be accessed more frequently than the rest. This can result in hot spots in your database and may require overprovisioning of database resources based on the throughput requirements for the most frequently used data. Storing common keys in an in-memory cache mitigates the need to overprovision while providing fast and predictable performance for the most commonly accessed data.
-     6)Increase Read Throughput (IOPS)
+     (6)Increase Read Throughput (IOPS)
            -> In addition to lower latency, in-memory systems also offer much higher request rates (IOPS) relative to a comparable disk-based database. A single instance used as a distributed side-cache can serve hundreds of thousands of requests per second.
 
 ----------------------------------------------------------------------------------
 
-## What are ways to cache on the backend? **
+## What are ways to cache on the backend?
 
-    => Caching on the backend refers to storing frequently accessed data in cache on server-side to reduce the amount of time and resources requured to regenerate the same data again. 
+    => Caching on the backend refers to storing frequently accessed data in cache on server-side to reduce the amount of time and resources required to regenerate the same data again. 
+
     => Methods/ways to store the cache:
-    1) In-Memmory-Caching:
-     - The cache is stored in servers RAM, making it faster to retrie data. However this method has limitation of storage and cached data is lost if server is restarted.
-    2) File-based caching:
+
+    (1) In-Memmory-Caching:
+     - The cache is stored in servers RAM, making it faster to retrive data. However this method has limitation of storage and cached data is lost if server is restarted.
+    (2) File-based caching:
      - The cache is stored in files on servers hard disk. This provide more storage capacity but slower to retrieve data.
-    3) Database caching:
+    (3) Database caching:
      - Chache is stored in database, providing a balance between storage capacitty and retrieval speed. 
-     - Suitable for the applications which ned to store large amount of cache.
-    4) Distributed Chaching:
+     - Suitable for the applications which need to store large amount of cache.
+    (4) Distributed Chaching:
      - Cache is distributed across the multiple servers, provides the high level of scalability and fault-tolerance.
-     - suitable for large-scale web applications that need to handle high traffic and large amounts of daa.
-    5) Proxy caching: 
+     - suitable for large-scale web applications that need to handle high traffic and large amounts of data.
+    (5) Proxy caching: 
      - Proxy server is placed betwwen the client and the backend server, and the proxy server cache frequently access the data
 
 ----------------------------------------------------------------------------------------
@@ -2234,19 +2444,24 @@ Overall, database replication is an important technique for building scalable an
     => LRU cache is often implemented by pairing a doubly linked list with a hash map.
     =>  In LRU caching, the cache is designed to store a fixed number of items, and whenever a new item is added to the cache, if the cache is already full, the least recently used item in the cache is removed to make space for the new item.
     => The LRU cache keeps track of the usage of items in the cache and sorts them based on the order of their last access time. When the cache is full, the least recently used item is evicted from the cache to make space for the new item. This helps to ensure that the cache contains the most frequently accessed items and reduces the number of cache misses, which can improve the performance of the system.
+
     => Pros:
+
      -> Super fast accessess: LRU caches store items in order from most-recently used to least-recently used. i.e. both can be accessed in O(1) time.
      -> super-fast updates: Each time an item is accessed, updating the cache takes O(1) time.
+
     => Cons:
+
      -> Space heavy: An LRU cache tracking n times requires a linked list of length n,,and a hash map holding n items. Thats O(n) space. But its still two data structures.
     => Overall, LRU caching is a simple and effective technique for managing the cache in a wide range of applications, including databases, web servers, and operating systems.
 
 ---------------------------------------------------------------------------------------
 
-##  What is Redis? Why do we use it? **
+##  What is Redis? Why do we use it? 
 
-    => Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine.  Redis has built-in replication, Lua scripting, LRU eviction, transactions, and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster
-    => Redis also reffered as 'data structure server' because it allows users to store and mannupulate data structure, such as  strings, hashes, lists, sets, and sorted sets, using simple commands.
+    => Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine.  Redis has built-in replication, Lua scripting, LRU eviction, transactions, and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
+
+    => Redis also reffered as 'data structure server' because it allows users to store and manupulate data structure, such as  strings, hashes, lists, sets, and sorted sets, using simple commands.
 
     => Redis is popular for its high performance, scalability and low latency.
 
@@ -2263,15 +2478,16 @@ Overall, database replication is an important technique for building scalable an
        - sorted sets
        - hashes
        - bit arrays
-       - hyperloglogs
+       - hyperlogs
        - streams
 
     => Use cases of Redis:
-      1) Caching: Redis can be used as cache for frequently accesed data, such as web pages, API responses, and session data, to reduce the load on primary data store and improve performance.
-      2) Real-time analytics: Redis can be used to store and process real time data, such as user activity, clickstream data, and sensor readings, to generate real-time insights and alerts.
-      3) Message queuing: Redis can be used as message broker to support asynchronous communication between applications and services, using publish/subscribe or queuing models.
-      4)Leaderboards and rankings: Redis can be used to maintain sorted sets of scores and rankings, such as game leaderboards, stock tickers, and social media trends.
-      5) Session management: Redis can be used to store and manage session data for web applications, such as user login sessions and shopping cart contents.
+
+      (1) Caching: Redis can be used as cache for frequently accesed data, such as web pages, API responses, and session data, to reduce the load on primary data store and improve performance.
+      (2) Real-time analytics: Redis can be used to store and process real time data, such as user activity, clickstream data, and sensor readings, to generate real-time insights and alerts.
+      (3) Message queuing: Redis can be used as message broker to support asynchronous communication between applications and services, using publish/subscribe or queuing models.
+      (4)Leaderboards and rankings: Redis can be used to maintain sorted sets of scores and rankings, such as game leaderboards, stock tickers, and social media trends.
+      (5) Session management: Redis can be used to store and manage session data for web applications, such as user login sessions and shopping cart contents.
 
 ---------------------------------------------------------------------------------------
 
@@ -2975,10 +3191,304 @@ Typically all requests from D would go directly to F, and F would send responses
 
     - SSL encryption - Encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
 
----------------------------------------------------
+--------------------------------------------------
 
-## What is Indexing ? 
+## How does the strict mode affect the hoisting behaviour in js? Are there any diff b/w hoisting in strict mode and non-strict mode?
+     
+    => In JavaScript, hoisting is a behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase, allowing them to be accessed before they are actually declared in the code.
 
+    => The concept of hoisting remains the same in both strict mode and non-strict mode. However, strict mode introduces some changes in the behavior of hoisting. Here are the key differences between hoisting in strict mode and non-strict mode:
+
+      (1) Variable declarations: In non-strict mode, if a variable is "referenced before it is declared, it is automatically assigned a value of undefined" during the hoisting process. "In strict mode, referencing a variable before its declaration results in a ReferenceError".
+
+      (2) Function declarations: In non-strict mode, function declarations are hoisted to the top of the scope, and you can call a function before its declaration. In strict mode, function declarations are also hoisted, but they are not accessible before their declaration. If you try to call a function before its declaration in strict mode, it will result in a TypeError.
+
+      (3) Duplicate parameter names: In non-strict mode, defining a function with duplicate parameter names does not produce an error. The last parameter name takes precedence. In strict mode, defining a function with duplicate parameter names results in a SyntaxError.
+
+      (4) Octal syntax: In non-strict mode, using the legacy octal syntax (e.g., 0123) is allowed, and the number is interpreted as an octal value. In strict mode, using the octal syntax is not allowed, and it results in a SyntaxError.
+
+      (5) this value in functions: In non-strict mode, if a function is invoked without an explicit receiver object, the this value is set to the global object (e.g., window in browsers). In strict mode, invoking a function without an explicit receiver sets the this value to undefined.
+
+      It's important to note that hoisting can lead to confusing code and is generally considered a best practice to declare variables and functions before using them, regardless of whether you are in strict mode or non-strict mode. This helps improve code readability and maintainability.
+        
 
 --------------------------------------------------
 
+(2) Are there any potential pitfalls need to know when we are using destructuring in js?
+
+    Yes, there are a few potential pitfalls to be aware of when using destructuring in JavaScript:
+
+    (1) Variable declaration and assignment: 
+        When using destructuring assignment, be careful with variable declarations and assignments. If you accidentally omit the var, let, or const keyword, JavaScript treats it as a regular assignment expression, potentially causing unintended side effects by modifying an existing variable or creating a global variable.
+
+    (2) Default values and falsy values:
+         When using default values in destructuring assignments, be aware of values that are considered falsy in JavaScript (e.g., 0, '', false, null, undefined). If the destructured value is one of these falsy values, the default value will be used instead. This behavior can sometimes lead to unexpected results if you're not careful.
+
+    (4) Nested destructuring:
+        Destructuring can also be used with nested objects or arrays. When dealing with deeply nested structures, make sure the corresponding nested patterns match the structure correctly. Otherwise, you may encounter unexpected errors or receive undefined values.
+
+    (5) Renaming variables:
+        Destructuring allows you to assign a new variable name during the assignment. While this can be useful for avoiding naming conflicts, be cautious when renaming variables to ensure code readability. Renaming variables excessively or using cryptic names can make the code harder to understand and maintain.
+
+    (6) Destructuring arrays need to fallow index: 
+        When destructuring arrays, keep in mind that the position matters. The destructured variables are assigned values based on their position in the array, rather than matching them by name. If you need to skip values or access specific elements, use commas to indicate the skipped positions.
+
+    (7) Mixing destructuring with rest syntax:
+        The rest syntax (...) allows you to gather remaining elements into a new array or object. Be aware that when using both destructuring and the rest syntax, the rest element must be the last element in the pattern. Placing it anywhere else will result in a syntax error.
+
+    (8) Performance considerations:
+        Destructuring can improve code readability, but it's worth noting that it may have a slight impact on performance compared to traditional assignment. In most cases, the performance difference is negligible, but it's something to consider for performance-critical sections of code.
+
+    By understanding these potential pitfalls and using destructuring with care, you can leverage its benefits while avoiding unexpected issues in your JavaScript code.
+
+---------------------------------------------
+
+(3) Define a simple class myClass.js with a constructor that takes a name paramerer and greet method that returns a greeting message using the name property. Create a test file called myClass.test where we use jests describe and it functions to define two test cases. The First test case checks that a new instance of Mycalss is created with the correct names. The second test case checks that greet method returns the correct greeting message.
+
+    class MyClass{
+        constructor(name) {
+            this.name=name
+        }
+
+        greet() {
+            return (`Hello form ${this.name}`)
+        }
+    }
+
+      let p1 = new MyClass('Dilip');
+      console.log(p1.greet());
+
+      module.exports={MyClass}
+
+      // testing 
+
+            class MyClass{
+          constructor(name) {
+              this.name=name
+          }
+
+          greet() {
+              return (`Hello form ${this.name}`)
+          }
+      }
+
+    let p1 = new MyClass('Dilip');
+    console.log(p1.greet());
+    module.exports = { MyClass };
+---------------------------------------------
+
+(4) Write a program to send a message to a specific cient in Socket.io.
+
+--------------------------------------------
+(5) How do you use cookies in an Express application.
+
+-------------------------------------------
+
+(6) How does middlewares differ from an API gateway ?
+
+    Middlewares and API gateways are both commonly used components in web application architectures, but they serve different purposes and have distinct characteristics:
+
+        (A) Middlewares:
+
+          (1) Functionality: Middlewares are pieces of code that sit between the client and the server/application logic. They intercept and process requests and responses within an application.
+
+          (2) Scope: Middlewares operate at the application level, providing reusable functionality that can be applied to multiple routes or endpoints within the application.
+
+          (3) Function: Middlewares typically focus on a specific task or concern, such as logging, authentication, input validation, error handling, or request/response transformations.
+
+          (4) Modularity: Middlewares can be chained or combined to perform multiple sequential tasks, each middleware building on the previous one.
+
+          (5) Flexibility: Middlewares are often framework-specific and tied closely to the application's programming language and framework.
+
+          (6) Granularity: Middlewares operate at a granular level, allowing for fine-grained control and customization of request/response processing within an application.
+          
+          
+        (B) API Gateways:
+
+          (1) Functionality: An API gateway is a 'specialized server that acts as an entry point for client requests', providing a centralized access point to a collection of backend services or microservices.
+
+          (2) Aggregation: API gateways can aggregate multiple backend services, allowing clients to interact with a single entry point instead of making multiple requests to different services.
+
+          (3) Routing and Load Balancing: API gateways handle request routing and load balancing across multiple instances of backend services, distributing the traffic efficiently.
+
+          (4) Security: API gateways often include security features like authentication, authorization, rate limiting, and request validation to ensure the security and integrity of the API.
+
+          (5) Protocol Translation: API gateways can handle protocol translation, allowing clients to use different protocols (e.g., HTTP, WebSocket, gRPC) while communicating with the backend services.
+
+          (6) Scalability and Performance: API gateways help improve scalability and performance by caching responses, aggregating requests, and handling traffic spikes.
+
+          (7) Cross-cutting Concerns: API gateways address cross-cutting concerns like monitoring, analytics, and logging at the API level, providing centralized visibility into the API traffic.
+
+          In summary, middlewares focus on enhancing and customizing the functionality of an application at a granular level, while API gateways act as a centralized entry point, providing routing, aggregation, security, and scalability capabilities for a collection of backend services or microservices.
+
+------------------------------------------
+
+(7) How to handle error in Socket.io?
+
+    Socket.IO is a real-time communication library for web applications. It allows you to send and receive data between clients and servers in a bi-directional manner.
+
+   While Socket.IO is a powerful library, it can also be prone to errors. Here are some tips on how to handle errors in Socket.IO:
+
+    (1) Use error events. Socket.IO emits error events whenever an error occurs. You can listen for these events and handle them accordingly.
+
+          eg. 
+              
+                 onst io = require('socket.io')(server);
+
+                  io.on('connection', (socket) => {
+
+                    // Error handling within event handler
+
+                    socket.on('customEvent', (data) => {
+
+                      try {
+
+                        // Your event handling logic here
+
+                      } catch (error) {
+
+                        // Handle the error
+
+                        console.error('An error occurred:', error.message);
+                        socket.emit('error', { message: 'An error occurred' });
+                      }
+                    });
+
+                    // Error handling using the 'error' event
+                    socket.on('error', (error) => {
+                      console.error('Socket error:', error);
+                    });
+                  });
+
+    (2) Use try/catch blocks. You can also use try/catch blocks to handle errors. This is a good way to catch errors that may not be emitted as events.
+
+    (3) Log errors. It is always a good idea to log errors so that you can track them down and fix them.
+
+    (4) Display error messages to users / Cliet Side Error handling. If an error occurs that prevents your application from working properly, you should display an error message to the user. This will help them understand what went wrong and what they can do to fix it.
+
+      eg.
+
+          var socket = io();
+
+          socket.on('error', function(error) {
+
+            console.log(error);
+
+            // Display an error message to the user
+            alert('An error occurred: ' + error);
+          });
+
+        This code will listen for error events emitted by the socket instance. When an error event is emitted, the error will be logged and an error message will be displayed to the user.
+
+By following these tips, you can help to ensure that your Socket.IO applications are robust and handle errors gracefully.
+
+----------------------------------------------
+
+(8) Can an object methos access and modify the objects properties in Js?
+
+    => Yes, an object's method in JavaScript can access and modify the object's properties. When a method is invoked on an object, it has access to the object's properties through the this keyword. The this keyword refers to the current instance of the object that the method is being called on.
+
+    Here's an example to illustrate how an object method can access and modify object properties:
+
+     eg.
+         
+         const person = {
+            name: 'Alice',
+            age: 30,
+
+            // method to greeting
+
+            greet() {
+              
+              console.log(`Hello, my name is ${this.name}.`);
+          },
+
+            celebrateBirthday() {
+              this.age++;
+              console.log(`Happy birthday! Now I am ${this.age} years old.`);
+            }
+          };
+
+         person.greet(); // Output: Hello, my name is Alice.
+         person.celebrateBirthday(); // Output: Happy birthday! Now I am 31 years old.
+
+
+         eg.(2)
+
+          // Define an object
+
+                const person = {
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  age: 30,
+
+          // Method to get full name
+
+                  getFullName() {
+                    return `${this.firstName} ${this.lastName}`;
+                  },
+
+          // Method to update age
+
+                  updateAge(newAge) {
+                    this.age = newAge;
+                  }
+                };
+
+          // Accessing object properties
+
+                console.log(person.firstName); // Output: John
+
+                console.log(person.age); // Output: 30
+
+          // Calling object methods
+
+                console.log(person.getFullName()); // Output: John Doe
+
+          // Modifying object properties using methods
+
+                person.updateAge(35);
+                console.log(person.age); // Output: 35
+
+---------------------------------------------
+
+(9) What is purpose of ZADD and SADD commands in redis ?
+
+       In Redis, the ZADD and SADD commands are used to add elements to sorted sets and sets, respectively.
+       Here's a brief explanation of each command:
+
+      (1) ZADD:
+         -> This command is used to add one or more members to a sorted set in Redis.
+         -> A sorted set is a data structure that stores a collection of unique elements, each associated with a score. 
+         -> The elements in a sorted set are ordered based on their scores, allowing efficient retrieval of elements based on their position in the sorted set. The ZADD command takes the following form:
+
+                ZADD key score member [score member ...]
+                  
+        key: The key of the sorted set.
+        score: The score associated with the member. The score is used to determine the ordering of elements in the sorted set.
+        member: The element to be added to the sorted set.
+
+          Example usage:
+
+            ZADD myset 1 "member1"
+            ZADD myset 2 "member2"
+            ZADD myset 3 "member3"
+
+
+
+     (2) SADD: This command is used to add one or more members to a set in Redis. A set is an unordered collection of unique elements. The SADD command takes the following form:
+
+         SADD key member [member ...]
+
+    key: The key of the set.
+    member: The element to be added to the set.
+
+        Example usage:
+
+        SADD myset "member1"
+        SADD myset "member2"
+        SADD myset "member3"
+
+    Both ZADD and SADD commands are useful for storing and managing collections of elements in Redis. They allow you to add elements to sorted sets and sets, respectively, enabling efficient retrieval, membership checks, and set operations on the stored data.
+
+--------------------------------------------
