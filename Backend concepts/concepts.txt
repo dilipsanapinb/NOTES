@@ -1202,7 +1202,7 @@ The common libraries you work with express are as follows :->
 
 ##   What is cors ?
 
-- CORS stands for Cross-Origin Resource Sharing. It is a mechanism that allows a web page to make requests to a different domain than the one that served the web page.
+- CORS stands for Cross-Origin Resource Sharing. It is a mechanism that 'allows a web page to make requests to a different domain than the one that served the web page'.
 - Web browsers implement a security feature called the "Same-Origin Policy," which restricts web pages from making requests to a different domain than the one that served the web page. This security feature is intended to prevent malicious attacks such as cross-site scripting (XSS) and cross-site request forgery (CSRF).
 - CORS allows web pages to bypass the Same-Origin Policy and make requests to a different domain, but only if the server that receives the request explicitly allows it. CORS works by adding HTTP headers to the response that inform the web browser whether the request is allowed or not.
 
@@ -1230,7 +1230,38 @@ The common libraries you work with express are as follows :->
 
       (a) Server-side: Web developers need to configure their server to include the appropriate CORS headers in the response to cross-origin requests. This involves adding the necessary headers, such as Access-Control-Allow-Origin, Access-Control-Allow-Methods, etc., to the server's HTTP response.
 
+         eg. 
+            
+             const express = require('express');
+
+              const cors = require('cors');
+
+              const app = express();
+
+              app.use(cors());
+
+              // Your routes and other middleware
+
+              app.listen(3000, () => {
+                console.log('Server is running on port 3000');
+              });
+
       (b) Client-side: Web developers need to make sure that the client-side code, such as JavaScript, that sends cross-origin requests includes the necessary credentials and handles CORS-related errors appropriately. This may involve handling CORS errors, including the appropriate CORS headers in requests, and configuring the client-side code to work with cross-origin resources.
+
+            eg. 
+               
+               fetch('http://localhost:3000/api/data', {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Access-Control-Allow-Origin': 'http://localhost:3000'
+                }
+              })
+                .then(response => {
+                  // Process the response
+                })
+                .catch(error => {
+                  // Handle the error
+                });
 
    In conclusion, CORS is a security mechanism implemented in web browsers that controls cross-origin requests to prevent unauthorized access to resources. It involves both server-side configuration and client-side handling, and it is an important consideration for web developers when building modern web applications that interact with cross-origin resources.
 
@@ -1374,9 +1405,10 @@ Both clients and servers can include multiple headers in their respective reques
     - SQL databases are known for their ability to handle complex queries, transactions, and relationships between tables.
     - They are often used for applications that require a high degree of data consistency, such as financial systems or inventory management systems.
     - SQL databases typically have vertical scalability, which means they can handle increasing amounts of data by adding more hardware resources (e.g., RAM, CPU, disk space). 
-    - SQL databases are typically ACID-compliant, which means they provide a high level of data consistency and reliability
+    - SQL databases are typically ACID (Availability, Consistency, Isolation and Durability)-compliant, which means they provide a high level of data consistency and reliability
 
   (2) NoSQL databases:
+
     - NoSQL databasesare non-relational databases that do not use a fixed schema to store data.
     - They are designed to be highly scalable and flexible, making them useful for applications that require large amounts of unstructured or semi-structured data, such as social media platforms or e-commerce sites.
     - NoSQL databases typically have their own query language, which is optimized for the specific data model they use.
@@ -1427,6 +1459,7 @@ SQL is a powerful language for managing and manipulating relational databases. H
     In this example, table1 and table2 are the names of the tables being joined, and column_name is the common column between them that is used for the join.
 
 (2) LEFT JOIN (or LEFT OUTER JOIN): A LEFT JOIN "returns all the rows from the left table (table1), and the matching rows from the right table (table2)."
+
   - If there are no matching rows in the right table, NULL values are returned. The syntax for a LEFT JOIN is as follows:
 
       SELECT column1, column2 FROM table1
@@ -1495,6 +1528,7 @@ db.orders.aggregate([
 -------------------------------------------------
 
 ### Q. What is indexing ?
+
 -  Indexing in a database is the process of creating a data structure that allows for faster retrieval of data from a table.
 -  An index is a data structure that is created on one or more columns of a table, which enables the database management system to quickly find and retrieve rows that match a specific search condition.
 - Indexes are special data structures that store a small portion of the collection's data set in an easy to traverse form. The index stores the value of a specific field or set of fields, ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations. In addition, MongoDB can return sorted results by using the ordering in the index.
@@ -1533,6 +1567,8 @@ db.orders.aggregate([
   method. You cannot rename an index once created. Instead, you must drop and re-create the index with a new name.
 
 - For a single-field index and sort operations, the sort order (i.e. ascending or descending) of the index key does not matter because MongoDB can traverse the index in either direction.
+
+
 - Compund index,
          
       eg.
@@ -1559,23 +1595,25 @@ Overall, database replication is an important technique for building scalable an
 ### What is PACELC ?
 
 - PACELC is a concept related to distributed systems that expands on the CAP theorem (Consistency, Availability, Partition tolerance) to include additional factors that affect the behavior of distributed systems.
+
 - PACELC stands for:
- 1) Partition tolerance (P):
+
+ (1) Partition tolerance (P):
     - The system must continue to function despite network partitions, which can occur when a network failure causes a group of nodes to become separated from the rest of the network.
 
- 2) Availability (A):
+ (2) Availability (A):
     - Every request received by a non-failing node must receive a response, although the response may not contain the most recent data.
 
- 3) Consistency (C): 
+ (3) Consistency (C): 
     - All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
 
- 4) Else (E):
+ (4) Else (E):
     - In the presence of a network partition, the system can choose to either prioritize Availability or Consistency.
 
- 5) Latency (L):
+ (5) Latency (L):
     - The time it takes for a request to be processed.
 
- 6) Consistency (C): 
+ (6) Consistency (C): 
     - All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
 
 - The PACELC theorem suggests that, in the presence of a network partition, a distributed system must choose between availability and consistency.
@@ -1588,13 +1626,13 @@ Overall, database replication is an important technique for building scalable an
 
 - Normalization and denormalization are techniques used in database design to optimize the structure of tables and improve the efficiency and performance of queries.
 
-*Normalization*:
+Normalization:
 
   - It's the process of organizing the data in a database into tables that have well-defined relationships, reducing data redundancy and improving data integrity.
   - The goal of normalization is to minimize the amount of duplicate data in a database by breaking up larger tables into smaller ones with more specific purposes.
   - The normalization process typically involves creating multiple tables and establishing relationships between them using foreign keys.
 
-*Denormalization*:
+Denormalization:
 
   - It's the process of intentionally adding redundancy to a database table in order to improve performance.
   - This can involve combining tables or duplicating data, making it easier to query data without joining multiple tables.
@@ -1638,11 +1676,14 @@ Overall, database replication is an important technique for building scalable an
 
 ------------------------------------------------------------
 
-##  What is Entity Relationship Model? ( ER Model ) 
+##  What is Entity Relationship Model? ( ER Model ) : 
 
 - The Entity Relationship Model (ER Model) is a conceptual data model used in database design.
+
 - It describes the relationships between data entities, attributes, and the constraints that govern the relationships.
+
 - The ER Model provides a graphical representation of the database structure and helps to identify relationships between data entities.
+
 - The ER Model consists of three main components:
 
   (1) Entities: An entity is a person, place, or thing that is relevant to the database. For example, in a database for a hospital, entities might include patients, doctors, and medical procedures.
@@ -1780,13 +1821,13 @@ Overall, database replication is an important technique for building scalable an
 
 ---------------------------------------------------------------------------------
 
-## Should I create/destroy a new connection for each database operation? **
+## Should I create/destroy a new connection for each database operation ?
     
     => NO. Open the connection when our application starts ups and leave open untill the application shuts down.
 
 ------------------------------------------------------------------------------------
 
-## My query/update seems to execute twice. Why is this happening? **
+## My query/update seems to execute twice. Why is this happening? 
    
    => This can be hapen by not handling the asynchronous function properly, because Mongoose queries and upadates are asynchronous i.e. they dont block the event loop. Thats why the query/update is being executed twice.
    => It can also happen due to to midleware function executed before/ after the function.If a middleware function that is executing the query/update, it can cause the operation to be executed twice.
@@ -1844,7 +1885,7 @@ Overall, database replication is an important technique for building scalable an
 -> Pre and post also known as middlewares are the functions which are passes control during execution of asynchronous functions. 
 -> middleware is specified on the schema level and is usefull for writin plugins.
 -> Pre and post are functions that are executed before or after a certain action that we specify.
-  -eg. I we want run a function everytime before we save a document in the DB, we use pre-hook and if we want something to be executed after that we use post hooks.
+  -eg. We want run a function everytime before we save a document in the DB, we use pre-hook and if we want something to be executed after that we use post hooks.
 -> These hooks allow us to add custom logic to a Mongoose schema, such as validating data before it saved to database or updating related document when a document is deleted.
 
 ->Example:
@@ -1909,7 +1950,7 @@ Overall, database replication is an important technique for building scalable an
   =>Authorization is the process of granting or denying access to specific resources or actions to specific users or groups of users.
   -> It is a critical component of security in any application or system that requires access control.
   -> It is most usefull at "Roll Based Access Control". 
-  ->Authentication generally involves granting or denying access to specific route or pages based on user's role or permissins.
+  -> Authentication generally involves granting or denying access to specific route or pages based on user's role or permissins.
        eg. an e-commerce application allow only authenticated person to checkout page or an HR management sysyem might allow HR administrator to view or modify employees records.
   -> Authorization is ussually implemented by checking the user's credentials against a set of predefined rules or policies that specify what resources or actions they are alloiwed to access.
 
@@ -2125,6 +2166,7 @@ Overall, database replication is an important technique for building scalable an
     =>The actual working of the JWT is not so straight forward : it actually involves Public/Secret Key, where the Payload is signed by the secret.
 
     * Here are some ways that JWT is different from other types of tokens:
+
         (1) Self-contained: 
            -> JWT tokens are self-contained, meaning that all the necessary information is included within the token itself. This makes it easy to transmit the token between different systems without needing to reference an external database or lookup system.
 
@@ -2153,21 +2195,22 @@ Overall, database replication is an important technique for building scalable an
     *=> Cons:
 
         (1) Compromised Secret Key : 
-          ->The best and the worst thing about JWT is that it relies on just one Key. Consider that the Key is leaked by a careless or a rogue developer/administrator, the whole system is compromised!
-          ->The attacker(who has access to the Key) can easily access all user data if he has the user-id which can be easily acquired.
+          -> The best and the worst thing about JWT is that it relies on just one Key. Consider that the Key is leaked by a careless or a rogue developer/administrator, the whole system is compromised!
+          -> The attacker(who has access to the Key) can easily access all user data if he has the user-id which can be easily acquired.
 
         (2) Cannot manage client from the server: 
-          ->We had several cases where we wanted the users at HelpTap to logout by cleaning up the cookies, but we cannot ask them to do so every time.
-          ->As well consider the case that a user’s mobile is stolen, and he wants to logout of all existing sessions(e.g. Gmail’s logout other sessions feature). Well its not possible in case of JWT.
+
+          -> We had several cases where we wanted the users at HelpTap to logout by cleaning up the cookies, but we cannot ask them to do so every time.
+          -> As well consider the case that a user’s mobile is stolen, and he wants to logout of all existing sessions(e.g. Gmail’s logout other sessions feature). Well its not possible in case of JWT.
 
         (3) Cannot push Messages to clients (Identifying clients from server) :
           -> As we have no record about the logged-in clients on the DB end, we cannot push messages to all the clients.
 
         (4) Crypto-algo can be deprecated: 
-          ->JWT relies completely on the Signing algorithm. Now, though it is not frequent, but in the past many Encryption/Signing algorithms have been deprecated.
+          -> JWT relies completely on the Signing algorithm. Now, though it is not frequent, but in the past many Encryption/Signing algorithms have been deprecated.
 
         (5) Data Overhead : 
-          ->The size of the JWT token will be more than that of a normal Session token. The more data you add in the JWT token, the longer it gets linearly. Remember, each request needs the token in it for request verification. So say, a 1 KB JWT token implies each request will have 1KB over-head upload which is really bad in cases of low speed net connectivity.
+          -> The size of the JWT token will be more than that of a normal Session token. The more data you add in the JWT token, the longer it gets linearly. Remember, each request needs the token in it for request verification. So say, a 1 KB JWT token implies each request will have 1KB over-head upload which is really bad in cases of low speed net connectivity.
 
         (6) Complicated to understand: 
           ->JWT uses cryptographic Signature algorithms to verify the data and get the user-id from the token. Understanding the Signing Algo in itself requires basics of cryptography. So, in case if the developer is not completely educated s/he might introduce security loopholes in the system.
@@ -2177,7 +2220,7 @@ Overall, database replication is an important technique for building scalable an
 
 -------------------------------------------------------------------------------------
 
-## What are the different ways to manage authentication? **
+## What are the different ways to manage authentication? 
 
   => Authentication methods are the first line of defence.
   => Authentication is purely the means of confirming digital identification, so users have the level of permissions to access or perform a task they are attempting.
@@ -2196,13 +2239,16 @@ Overall, database replication is an important technique for building scalable an
   (4) OpenID Connect:
      -> OpenID Connect is a standard built on top of OAuth2 that provides additional features for authentication, such as user profile information and single sign-on (SSO) capabilities. OpenID Connect is widely used by enterprise applications for SSO.
 
-  *Authentication methods:
+  => Authentication methods:
+
   (1) Single-Factor / Primary Authentication:
-      ->Historically the most common form of authentication, Single-Factor Authentication, is also the least secure, as it only requires one factor to gain full system access.
+
+      -> Historically the most common form of authentication, Single-Factor Authentication, is also the least secure, as it only requires one factor to gain full system access.
       -> It could be a username and password, pin-number or another simple code.
       -> While user-friendly, Single-Factor authenticated systems are relatively easy to infiltrate by phishing, key logging, or mere guessing. As there is no other authentication gate to get through, this approach is highly vulnerable to attack.
 
    (2) Two-Factor Authentication (2FA):
+
       ->By adding a second factor for verification, two-factor authentication reinforces security efforts.
       -> It is an added layer that essentially double-checks that a user is, in reality, the user they’re attempting to log in as—making it much harder to break.
       -> With this method, users enter their primary authentication credentials (like the username/password mentioned above) and then must input a secondary piece of identifying information.
@@ -2211,13 +2257,14 @@ Overall, database replication is an important technique for building scalable an
       ->2FA significantly minimizes the risk of system or resource compromise, as it’s unlikely an invalid user would know or have access to both authentication factors. ->While two-factor authentication is now more widely adopted for this reason, it does cause some user inconvenience, which is still something to consider in implementation.
 
    (3) Single Sign-On (SSO):
+
       ->With SSO, users only have to log in to one application and, in doing so, gain access to many other applications. This method is more convenient for users, as it removes the obligation to retain multiple sets of credentials and creates a more seamless experience during operative sessions.
       -> Organizations can accomplish this by identifying a central domain (most ideally, an IAM system) and then creating secure SSO links between resources. This process allows domain-monitored user authentication and, with single sign-off, can ensure that when valid users end their session, they successfully log out of all linked resources and applications. 
     
     (4) Multi-Factor Authentication (MFA):
       -> Multi-factor authentication is a high-assurance method, as it uses more system-irrelevant factors to legitimize users.
       -> Like 2FA, MFA uses factors like biometrics, device-based confirmation, additional passwords, and even location or behavior-based information (e.g., keystroke pattern or typing speed) to confirm user identity. 
-      ->However, the difference is that while 2FA always utilizes only two factors, MFA could use two or three, with the ability to vary between sessions, adding an elusive element for invalid users.
+      -> However, the difference is that while 2FA always utilizes only two factors, MFA could use two or three, with the ability to vary between sessions, adding an elusive element for invalid users.
 
 ---------------------------------------------------------------------------
 
