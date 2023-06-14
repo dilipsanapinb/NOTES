@@ -2292,6 +2292,7 @@ Denormalization:
           Cookie-based authentications are simple, and the cookies used in this method are user-friendly. Users can choose what to do with cookie files that have kept user credentials. All modern browsers come with settings to clear the cookies. Users can find cookies in the hard drive and delete them manually.
 
     =>Challenges of Cookie-based Authentication
+
         (1) Vulnerable to CSRF:
           Cookie-based authentications are prone to Cross-site Request Forgery (CSRF) attacks. Hence, they often require additional security postures for protection.
         (2) Less Mobile-friendly:
@@ -2306,16 +2307,16 @@ Denormalization:
    => Session management manages sessions between the web application and the users. The communication between a web browser and a website is usually done over HTTP or HTTPS. When a user visits a website, a session is made containing multiple requests and responses over HTTP.
    => A session is a period of time in which a user interacts with an application, from the moment they log in to the moment they log out or their session expires. During this time, the application needs to keep track of the user's identity and state in order to provide a personalized experience and maintain security
 
-   *=> The Steps involved in session management:
+   => The Steps involved in session management:
 
     (1)  Session Creation:
-         -> When a user logs in to the application, the server creates a new session fro that user. This typically involves generationg a unique session ID, which is associated with the users account and stored on server.
+         -> When a user logs in to the application, the server creates a new session for that user. This typically involves generationg a unique session ID, which is associated with the users account and stored on server.
 
     (2)  Session tracking:
-        As the user interacts with the application, the session ID is used to track their identity and state. This includes the data like preferences or shoping cart contents on server ans associating with users session id.
+        As the user interacts with the application, the session ID is used to track their identity and state. This includes the data like preferences or shoping cart contents on server and associating with users session id.
 
     (3) Session Expiration:
-        To prevent inactive sessions from being used by anauthorised users, sessions typically have an expiration time. This means that after a certain period of inactivity, the user will be required to log in again to create a new session.
+        To prevent inactive sessions from being used by unauthorised users, sessions typically have an expiration time. This means that after a certain period of inactivity, the user will be required to log in again to create a new session.
 
     (4)  Session termination: 
         When a user logs out of the application, their session should be terminated to prevent any further access to their account.
@@ -2358,10 +2359,10 @@ Denormalization:
 ## What is gRPC? 
 
     => gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment. It "can efficiently "connect services in and across data centers" with pluggable support for load balancing, tracing, health checking and authentication". It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.
-    =>RPCs allow you to write code as though it will be run on a local computer, even though it may be executed on another computer. 
+    => RPCs allow you to write code as though it will be run on a local computer, even though it may be executed on another computer. 
     => Remote Procedure Call:
 
-       -> A RPC is a form of Client-Server Communication that uses a function call rather than a usual HTTP call.
+       -> A 'RPC is a form of Client-Server Communication' that uses a function call rather than a usual HTTP call.
 
     => gRPC uses Protocol Buffers, a language-agnostic binary  serialization format, to define the structure of messages and APIs, which allows for efficient and compact data transfer. It also supports bidirectional streaming and flow control, enabling efficient communication even in high-volume scenarios.
 
@@ -2403,10 +2404,10 @@ Denormalization:
 
 ---------------------------------------------------------------------------------------
 
-## What is HTTP? **
+## What is HTTP ? 
    
    => HTTP stands for the ("Hypertext Transfer Protocol");
-   =>HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
+   => HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
    => It is the foundation of data communication on the World Wide Web and is used to transfer data and files over the internet.
    => HTTP is a stateless protocol, which means that each request and response is independent of any previous request or response. A client sends an HTTP request to a server, which responds with an HTTP response. The client and server can communicate multiple times, but each time, the client must include all necessary information in the request.
    => HTTP requests and responses are typically made up of a set of headers and an optional message body. The headers contain information about the request or response, such as the method (GET, POST, etc.), the content type, and the length of the message body. The message body contains the actual data being transmitted, such as an HTML document or an image file.
@@ -2415,11 +2416,12 @@ Denormalization:
 
 ----------------------------------------------------------------------------------------
 
-## What is a web socket? **
+## What is a web socket ? 
 
     =>The WebSocket API (WebSockets):
 
-      - The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between the user's browser and a server. With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply.
+      - The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between the user's browser and a server.
+      => With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply.
     => Both the client and server can send messages to each other at any time without the need for a new request.
     => The WebSocket protocol is a TCP-based network protocol that specifies how data is transferred between networks. Almost all clients utilize this network protocol since it is so dependable and efficient. 
     => TCP is a protocol that establishes communication between two endpoints, often known as sockets. 
@@ -2427,6 +2429,26 @@ Denormalization:
     => WebSocket, in particular, allows a web application to communicate directly with a WebSocket server. To put it another way, you can bring up a web page and have it shown in “real-time.”
     => WebSockets are particularly useful for applications that require real-time data updates or frequent data exchange, such as chat applications, online gaming, and financial trading platforms. With WebSockets, updates can be pushed to clients immediately, without the need for polling or long-polling techniques, reducing latency and improving performance.
     => WebSockets can be used alongside other web technologies, such as REST APIs, to provide a full-featured, real-time web application. They are supported by most modern web browsers and can also be used with mobile and desktop applications.
+
+-----------------------------------------------------------------------------------------
+
+## Polling in node.js :
+
+ => In the context of Node.js, polling refers to a 'technique used to periodically check for changes or updates in a particular resource or data source'. It 'involves repeatedly sending requests or queries to the resource at predefined intervals to determine if any new information is available'.
+
+  Polling can be implemented in various scenarios, such as:
+
+  (1) File System Monitoring: Polling can be used to check if a file or directory has been modified, created, or deleted. By periodically querying the file system, you can detect changes and trigger appropriate actions.
+
+  (2) Database Updates: In a database-driven application, polling can be employed to check for new records or updates in a database table. This can be useful for real-time data synchronization or triggering events based on database changes.
+
+  (3) API Integration: When integrating with external APIs, polling can be used to fetch updates or changes from the API endpoints. For example, if you're building a weather application, you might periodically poll the weather API to fetch the latest forecast data.
+
+  => Long Polling: 
+     Long polling is a variant of polling where the client sends a request to the server, and the server keeps the connection open until new data or an event is available. This technique reduces the frequency of requests and provides near-real-time updates.
+
+  It's worth noting that polling can be resource-intensive, as it involves constantly sending requests, even if there are no updates. To mitigate this, alternative techniques such as webhooks or event-driven architectures are often preferred, where the server or data source notifies clients of updates instead of the clients polling for them.
+
 
 -----------------------------------------------------------------------------------------
 
@@ -2439,6 +2461,7 @@ Denormalization:
        -> Due to the high request rates or IOPS (Input/Output operations per second) supported by RAM and In-Memory engines, caching results in improved data retrieval performance and reduces cost at scale. To support the same scale with traditional databases and disk-based hardware, additional resources would be required. These additional resources drive up cost and still fail to achieve the low latency performance provided by an In-Memory cache.
 
     => Applications:
+
        -> Caches can be applied and leveraged throughout various layers of technology including Operating Systems, Networking layers including Content Delivery Networks (CDN) and DNS, web applications, and Databases. You can use caching to significantly reduce latency and improve IOPS for many read-heavy application workloads, such as Q&A portals, gaming, media sharing, and social networking.
        => Cached information can include the results of database queries, computationally intensive calculations, API requests/responses and web artifacts such as HTML, JavaScript, and image files.
 
@@ -2446,12 +2469,13 @@ Denormalization:
        -> In a distributed computing environment, a dedicated caching layer enables systems and applications to run independently from the cache with their own lifecycles without the risk of affecting the cache. The cache serves as a central layer that can be accessed from disparate systems with its own lifecycle and architectural topology.
 
     => Caching Best Practices:
-       ->When implementing a cache layer, it’s important to understand the validity of the data being cached. A successful cache results in a high hit rate which means the data was present when fetched. A cache miss occurs when the data fetched was not present in the cache. Controls such as TTLs (Time to live) can be applied to expire the data accordingly. Another consideration may be whether or not the cache environment needs to be Highly Available, which can be satisfied by In-Memory engines such as Redis
+       -> When implementing a cache layer, it’s important to understand the validity of the data being cached. A successful cache results in a high hit rate which means the data was present when fetched. A cache miss occurs when the data fetched was not present in the cache. Controls such as TTLs (Time to live) can be applied to expire the data accordingly. Another consideration may be whether or not the cache environment needs to be Highly Available, which can be satisfied by In-Memory engines such as Redis
     
-    *Benefits of Caching
-     (1)Improve Application Performance:
+    *Benefits of Caching, 
+
+     (1) Improve Application Performance:
            -> Because memory is orders of magnitude faster than disk (magnetic or SSD), reading data from in-memory cache is extremely fast (sub-millisecond). This significantly faster data access improves the overall performance of the application.
-     (2)Reduce Database Cost:
+     (2) Reduce Database Cost:
            -> A single cache instance can provide hundreds of thousands of IOPS (Input/output operations per second), potentially replacing a number of database instances, thus driving the total cost down. This is especially significant if the primary database charges per throughput. In those cases the price savings could be dozens of percentage points.
      (3)Reduce the Load on the Backend:
            -> By redirecting significant parts of the read load from the backend database to the in-memory layer, caching can reduce the load on your database, and protect it from slower performance under load, or even from crashing at times of spikes.
@@ -2524,7 +2548,7 @@ Denormalization:
        - sets
        - sorted sets
        - hashes
-       - bit arrays
+       - bit arrays 
        - hyperlogs
        - streams
 
@@ -2559,19 +2583,19 @@ Denormalization:
 
 ----------------------------------------------------------------------------------
 
-## What is a CDN? **
+## What is a CDN ? 
 
     => A Content Delivery Network is a geographically disributed group of servers that caches content close to end users. A CDN allows for the quick transfer of assets needed for loading internet content, including HTML pages, JS files, stylesheets, images, and videos. CDN is becoming popular now and today the majority of web raffic is served throug CDN's, including the major siltes like Netflix, Amazon and Facebook.
     => Properly configured CDN may help to protect website from some common malicious attacks, such as Distributed Denial of Service(DDOS) attacks.
     =>Benefits of using the CDN:
-     1) Reduce the latency:
+     (1) Reduce the latency:
         -> By distributing content closer to website visitors by using a nearby CDN server (among other optimizations), visitors experience faster page loading times.
         -> Faster the webisite people spends more time of site
-     2) Reduce the bandwidth cost:
+     (2) Reduce the bandwidth cost:
         -> Bandwidth consupmtion costs for website is primary expenses for websites. Through caching and other optimizations, CDN is able to reduce the amount of data an origin server must provide, thus it will reduce the cost to site owners.
-     3) High availability and redundancy: 
+     (3) High availability and redundancy: 
         -> Large amounts of traffic or hardware failures can interrupt normal website function. Thanks to their distributed nature, a CDN can handle more traffic and withstand hardware failure better than many origin servers.
-     4) Improve Security: 
+     (4) Improve Security: 
         -> A CDN may improve security by providing DDoS mitigation, improvements to security certificates, and other optimizations.
 
     =>t its core, a CDN is a network of servers linked together with the goal of delivering content as quickly, cheaply, reliably, and securely as possible. In order to improve speed and connectivity, a CDN will place servers at the exchange points between different networks.
@@ -2589,7 +2613,7 @@ Denormalization:
     => we access the information online through internet Protocol(IP) address. 
     => DNS translates domain names to IP addresses so browsers can load Internet resources.
     => Each device connected to Internet has unique IP address which other machines use to find the device.
-    => DNS servers eliminate the need fro human to memmorise IP addresses.
+    => DNS servers eliminate the need for human to memmorise IP addresses.
     => DNS converts the hostname (eg.www,google.com) into computer friendly IP address. BY that IP addess comouter can find the rigth device.
 
 ----------------------------------------------------------------------------------------
@@ -2598,17 +2622,17 @@ Denormalization:
    
     => Internet is backbone of Web, its technical infrastructure the makes the Web possible.
     => Internet is large network of computers which communicate all together.
-    => internet works by usibg the packate routing network the follows Internet Protocol(IP) ans Transport Control Protocol(TCP).
+    => internet works by usibg the packate routing network the follows Internet Protocol(IP) and Transport Control Protocol(TCP).
     => Data sent over the internet is called , message. Before messages get sent they're broken up into tiny parts called packets
     => IP: Rules that govern how info is sent from one computer to another computer over an internet. Its numerical address consist four digits (eg.192.168.2.10).
     => TCP works with IP to ensure transfer of data is dependable and reliable.
     => The device is connected to web through a modem or router, which allows it to connect to each other networks around the globe.
     => Router allows for multipe computers to join the same network while a modem connects to your Internet Servive Provider(ISP).
     => Client computer connected to internet through ISP.
-    => Servers are the computer direcly connected to internet.
+    => Servers are the computer directly connected to internet.
     => URL (Uniform Resource Locator) enter into browser this query is processed and pushed to ISP.
     => ISP has multiple servers which store and send data like NAP SERVER(Network Access Protection) and DNS(Domain Name Server).
-    => DNS Translate the text based domain name n=into number-based IP address.(eg Google.com becomes 64.233.191.255)
+    => DNS Translate the text based domain name into number-based IP address.(eg Google.com becomes 64.233.191.255)
     => Browser sends a HTTP request to the target server to send a copy of page to client using TCP/IP.
     => HTTP is the language for internet communication.
     =>server approves the request and sends a "200 ok" message to client computer. Then server sends web page files to browser in the form of data packets.
@@ -2616,31 +2640,31 @@ Denormalization:
 
 ---------------------------------------------------------------------------------------
 
-## How do Browsers work? **
+## How do Browsers work ?
  
    => Browsers are software applications that allow users to access and view content on the internet. 
    => Steps that browser takes to get data:
-   1) User Input: The user types a URL or a search term into the browser's address bar.
+   (1) User Input: The user types a URL or a search term into the browser's address bar.
 
-   2)Domain Name System (DNS) Lookup: The browser sends a request to a DNS server to translate the domain name into an IP address. The DNS server responds with the IP address of the server that hosts the website.
+   (2)Domain Name System (DNS) Lookup: The browser sends a request to a DNS server to translate the domain name into an IP address. The DNS server responds with the IP address of the server that hosts the website.
 
-   3)Establishing a Connection: The browser opens a connection to the server using the HTTP or HTTPS protocol.
+   (3)Establishing a Connection: The browser opens a connection to the server using the HTTP or HTTPS protocol.
 
-   4)Sending a Request: The browser sends a request to the server for the webpage or resource that the user requested.
+   (4)Sending a Request: The browser sends a request to the server for the webpage or resource that the user requested.
 
-   6)Server Response: The server sends a response to the browser with the requested webpage or resource.
+   (6)Server Response: The server sends a response to the browser with the requested webpage or resource.
 
-   7)Rendering the Page: The browser processes the HTML, CSS, and JavaScript code to render the webpage. This involves parsing the HTML to create a Document Object Model (DOM) and interpreting the CSS to create a Render Object Model (ROM). The browser then uses these models to create a visual representation of the webpage.
+   (7)Rendering the Page: The browser processes the HTML, CSS, and JavaScript code to render the webpage. This involves parsing the HTML to create a Document Object Model (DOM) and interpreting the CSS to create a Render Object Model (ROM). The browser then uses these models to create a visual representation of the webpage.
 
-   8)Displaying the Page: The browser displays the rendered webpage on the user's screen.
+   (8)Displaying the Page: The browser displays the rendered webpage on the user's screen.
 
-   9)Handling User Interaction: The browser listens for user interaction, such as clicks or scrolls, and responds accordingly by updating the DOM and ROM and redrawing the page.
+   (9)Handling User Interaction: The browser listens for user interaction, such as clicks or scrolls, and responds accordingly by updating the DOM and ROM and redrawing the page.
 
-   10)Caching: The browser may cache certain resources, such as images or scripts, to improve performance and reduce the number of requests to the server.
+   (10)Caching: The browser may cache certain resources, such as images or scripts, to improve performance and reduce the number of requests to the server.
 
-   11)Security: The browser may perform security checks, such as checking for SSL/TLS certificates and verifying that the webpage is not known to be malicious.
+   (11)Security: The browser may perform security checks, such as checking for SSL/TLS certificates and verifying that the webpage is not known to be malicious.
 
-   12)Overall, browsers use a combination of network protocols, markup languages, scripting languages, and rendering engines to provide a seamless user experience when browsing the web.
+   (12)Overall, browsers use a combination of network protocols, markup languages, scripting languages, and rendering engines to provide a seamless user experience when browsing the web.
 
 ---------------------------------------------------------------------------------
 
@@ -2650,69 +2674,112 @@ URL stands for Uniform Resource Locator. It is a standardized address used to id
 
 A URL consists of four main parts:
 
-Protocol: The protocol indicates the method or protocol that the client uses to communicate with the server and retrieve the resource. The most common protocol is "http://" or "https://" for web pages, but there are other protocols like "ftp://" for file transfer, "mailto://" for email, and "file://" for local files.
+  (1) Protocol: The protocol indicates the method or protocol that the client uses to communicate with the server and retrieve the resource. The most common protocol is "http://" or "https://" for web pages, but there are other protocols like "ftp://" for file transfer, "mailto://" for email, and "file://" for local files.
 
-Hostname: The hostname represents the domain name or IP address of the server that hosts the resource. It identifies the location where the resource is stored. For example, in the URL "https://www.example.com", "www.example.com" is the hostname.
+  (2) Hostname: The hostname represents the domain name or IP address of the server that hosts the resource. It identifies the location where the resource is stored. For example, in the URL "https://www.example.com", "www.example.com" is the hostname.
 
-File Path: The file path specifies the location of the specific file or resource on the server. It includes the directory structure leading to the file. For example, in the URL "https://www.example.com/images/pic.jpg", "/images/pic.jpg" is the file path.
+  (3) File Path: The file path specifies the location of the specific file or resource on the server. It includes the directory structure leading to the file. For example, in the URL "https://www.example.com/images/pic.jpg", "/images/pic.jpg" is the file path.
 
-Query Parameters: Query parameters, also known as arguments or query strings, are optional parts of a URL that provide additional information or data to the server. They are appended to the end of the URL and separated by a question mark (?) from the rest of the URL. Query parameters are in the form of key-value pairs, with each pair separated by an ampersand (&). For example, in the URL "https://www.example.com/search?q=keyword&page=1", the query parameters are "q=keyword" and "page=1".
+  (4) Query Parameters: Query parameters, also known as arguments or query strings, are optional parts of a URL that provide additional information or data to the server. They are appended to the end of the URL and separated by a question mark (?) from the rest of the URL. Query parameters are in the form of key-value pairs, with each pair separated by an ampers and (&). For example, in the URL "https://www.example.com/search?q=keyword&page=1", the query parameters are "q=keyword" and "page=1".
 
 Together, these four parts form a complete URL that allows the client to communicate with the server, specify the desired resource, and provide any necessary additional information.
 
 Note: It's important to mention that URLs can have additional components such as fragments (indicated by a hash sign #) for specifying a specific section within a webpage and port numbers for non-standard port usage. However, the four parts mentioned above are the fundamental components of a URL.
 --------------------------------------------------
 
-## What is Stateless Backend? **
+## What is Stateless Backend ? 
 
    => As the name suggests, the stateless server has no state with regard to the user’s information.
-   => It means when the user access any web resource, the server does not keep a track of the user’s identity or actions performed on the page. So every time, the user has to prove the identity to gain access.
-   => It is opposite the statefull server in which ervers store users’ state information in the form of sessions. It stores information like profile, preference, user’s action and gives personalized experience on next visit. The user does not need credentials every time during the valid session.  
+   => It means when the u'ser access any web resource, the server does not keep a track of the user’s identity or actions performed on the page'. 'So every time, the user has to prove the identity to gain access'.
+   => It is opposite the statefull server in which servers store users’ state information in the form of sessions. It stores information like profile, preference, user’s action and gives personalized experience on next visit. The user does not need credentials every time during the valid session.  
    => While stateless server treats each request as independent and demand user credentials. It requires no knowledge of previous interactions and stores no session information. So, there’s no difference between previous, current, and next requests.
    => Features of Stateless Server:
 
-         1)Performance: The server is not bound to maintain and synchronize any session data.  So it can serve any number of requests to the user. It helps in achieving a better response time with experience.  
+         (1) Performance: The server is not bound to maintain and synchronize any session data.  So it can serve any number of requests to the user. It helps in achieving a better response time with experience.  
 
-         2) Design: This is regarded as an advantage for developers as the stateless servers are easy to design and code because there is no need to dynamically maintain storage units in the backend. Stateless authentication uses REST (Representational State Transfer) to design the web APIs.  
+         (2) Design: This is regarded as an advantage for developers as the stateless servers are easy to design and code because there is no need to dynamically maintain storage units in the backend. Stateless authentication uses REST (Representational State Transfer) to design the web APIs.  
 
-         3) Data Crash: Since no data is stored on the server, there is nil impact of a system crash on the performance of the web resource. The user can simply recover the access by reauthenticating. Stateless uses a different server on each request. So there’s a scope of horizontal expansion.
+         (3) Data Crash: Since no data is stored on the server, there is nill impact of a system crash on the performance of the web resource. The user can simply recover the access by reauthenticating. Stateless uses a different server on each request. So there’s a scope of horizontal expansion.
 
-         4)Technology: The stateless servers can identify users based on a unique ID called Tokens. Tokens accommodate essential information of the user grants access after receiving the secret token. The validity of the token depends either on session duration or it gets destroyed once the user logs out of resource. This technology is known as cryptography which is going to be a major driver of future security mechanisms.
+         (4)Technology: The stateless servers can identify users based on a unique ID called Tokens. Tokens accommodate essential information of the user grants access after receiving the secret token. The validity of the token depends either on session duration or it gets destroyed once the user logs out of resource. This technology is known as cryptography which is going to be a major driver of future security mechanisms.
 
 ----------------------------------------------------------------------------------
 
-## What is the client server model? **
+## What is the client server model ?
     
     => Client-server model is distributed application structure that partition tasks or worload between the providers of resource or service called servers and service requesers called clients.
     => In the client-server architecture, when the client computer sends a request for data to the server through the internet, the server accepts the requested process and deliver the data packets requested back to the client.
     => Clients do not share any of their resources. Examples of Client-Server Model are Email, World Wide Web, etc.
     
     * How the Client-Server Model works ?
+
     -> Client: When we talk the word Client, it mean to talk of a person or an organization using a particular service. Similarly in the digital world a Client is a computer (Host) i.e. capable of receiving information or using a particular service from the service providers (Servers).
     -> Servers: Similarly, when we talk the word Servers, It mean a person or medium that serves something. Similarly in this digital world a Server is a remote computer which provides information (data) or access to particular services.
     -> So, its basically the Client requesting something and the Server serving it as long as its present in the database.
 
 => Advantages of Client-Server model:
-    1) Centralized system with all data in a single place.
-    2) Cost efficient requires less maintenance cost and Data recovery is possible.
-    3)The capacity of the Client and Servers can be changed separately.
+
+    (1) Centralized system with all data in a single place.
+    (2) Cost efficient requires less maintenance cost and Data recovery is possible.
+    (3) The capacity of the Client and Servers can be changed separately.
+
 => Disadvantages of Client-Server model:
-    1) Clients are prone to viruses, Trojans and worms if present in the Server or uploaded into the Server.
-    2) Server are prone to Denial of Service (DOS) attacks.
-    3) Data packets may be spoofed or modified during transmission.
-    4) Phishing or capturing login credentials or other useful information of the user are common and MITM(Man in the Middle) attacks are common.
+
+    (1) Clients are prone to viruses, Trojans and worms if present in the Server or uploaded into the Server.
+    (2) Server are prone to Denial of Service (DOS) attacks.
+    (3) Data packets may be spoofed or modified during transmission.
+    (4) Phishing or capturing login credentials or other useful information of the user are common and MITM(Man in the Middle) attacks are common.
+
+         
 
 -----------------------------------------------------------------------------------------
 
-## What is HTTP vs HTTPS? **
-   - HTTPS stands for "HyperText Transfer Protocol Secure", and it is a secure version of HTTP.
+## What is HTTP vs HTTPS? 
+
+  - HTTPS stands for "HyperText Transfer Protocol Secure", and it is a secure version of HTTP.
   - HTTP transmits data in plain text, while HTTPS encrypts data to protect privacy and integrity.
   - HTTPS uses SSL/TLS certificates to establish a secure connection between a client and a server.
   - HTTPS provides data privacy, integrity, and authentication, preventing data breaches and unauthorized access.
   - Websites using HTTPS display a padlock icon, building trust with users.
   - HTTPS is increasingly required for websites handling sensitive data or conducting online transactions.
   - Main differences between HTTP and HTTPS are encryption, SSL/TLS certificates, and advantages of data protection, trust, and compliance.
+       
 
+       eg. 
+            
+            const https = require('https');
+
+            // Define the options for your HTTPS request, including the URL, method, headers, and any other necessary parameters:
+
+            const options = {
+              hostname: 'api.example.com',
+              path: '/endpoint',
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+        
+        // callback 
+        
+            const req = https.request(options, (res) => {
+            // Handle the response here
+            let data = '';
+
+            res.on('data', (chunk) => {
+              data += chunk;
+            });
+
+            res.on('end', () => {
+              console.log(data);
+              // Process the received data
+            });
+          });
+
+          // Handle any errors that occur during the request
+          req.on('error', (error) => {
+            console.error(error);
+          });
 --------------------------------------------------------
 
 ## What is a cluster?
@@ -2723,30 +2790,33 @@ Note: It's important to mention that URLs can have additional components such as
 
 --------------------------------------------------------
 
-## What is throughput? **
+## What is throughput? 
       
       Defination:-Throughput refers to the amount of data or work that can be processed by a system or component within a given period of time. It is a measure of the efficiency and capacity of a system to handle a certain workload or traffic.
       -It can understood by number of transactions or operations that can be processed by a system or application in a given period of time. For example, a database system may have a high throughput if it can handle a large number of transactions per second.
       In the context of Node.js backend development, throughput refers to the rate or volume of work that a Node.js server can handle within a given timeframe. It is a measure of the server's ability to process incoming requests and respond to them efficiently.
 
       Throughput in a Node.js backend can be influenced by several factors, including processing power of the system, available memory, network bandwidth, and software architecture.
-    => Techniques can used to high throughput
-       =>Event-driven, non-blocking I/O: Node.js uses an event-driven, non-blocking I/O model, which allows it to handle multiple concurrent connections without blocking the main event loop. This enables high concurrency and efficient handling of incoming requests, leading to higher throughput.
 
-       Asynchronous programming: Node.js encourages the use of asynchronous programming techniques, such as callbacks, Promises, and async/await, which allow for efficient handling of I/O-bound operations. This prevents the server from blocking while waiting for I/O operations to complete, resulting in higher throughput.
+    => Techniques can used to high throughput,
 
-       Scalability: Node.js applications can be designed to scale horizontally, meaning they can be distributed across multiple instances or nodes to handle increased load. This can be achieved using techniques such as clustering or load balancing, which allow for better utilization of resources and increased throughput.
+       => Event-driven, non-blocking I/O: Node.js uses an event-driven, non-blocking I/O model, which allows it to handle multiple concurrent connections without blocking the main event loop. This enables high concurrency and efficient handling of incoming requests, leading to higher throughput.
 
-       Performance optimizations: Properly optimizing the performance of a Node.js application can significantly impact its throughput. This may involve techniques such as optimizing database queries, caching, minimizing unnecessary computations, and optimizing resource utilization.
+       => Asynchronous programming: Node.js encourages the use of asynchronous programming techniques, such as callbacks, Promises, and async/await, which allow for efficient handling of I/O-bound operations. This prevents the server from blocking while waiting for I/O operations to complete, resulting in higher throughput.
 
-       Hardware resources: The hardware resources available to the Node.js server, such as CPU, memory, and network bandwidth, can also impact throughput. Higher hardware resources generally allow for higher throughput, as the server has more capacity to handle incoming requests.
+       => Scalability: Node.js applications can be designed to scale horizontally, meaning they can be distributed across multiple instances or nodes to handle increased load. This can be achieved using techniques such as clustering or load balancing, which allow for better utilization of resources and increased throughput.
 
-       Application design: The design of the Node.js application, including its architecture, code organization, and efficiency, can also impact throughput. Well-structured and optimized code, along with efficient handling of requests and responses, can contribute to higher throughput.
+       => Performance optimizations: Properly optimizing the performance of a Node.js application can significantly impact its throughput. This may involve techniques such as optimizing database queries, caching, minimizing unnecessary computations, and optimizing resource utilization.
+
+       => Hardware resources: The hardware resources available to the Node.js server, such as CPU, memory, and network bandwidth, can also impact throughput. Higher hardware resources generally allow for higher throughput, as the server has more capacity to handle incoming requests.
+
+       => Application design: The design of the Node.js application, including its architecture, code organization, and efficiency, can also impact throughput. Well-structured and optimized code, along with efficient handling of requests and responses, can contribute to higher throughput.
 
        It's important to note that throughput is not the only consideration in evaluating the performance of a Node.js backend. Response time, latency, and resource utilization are also important factors to consider. A well-optimized Node.js backend should aim for a balance between high throughput, low latency, and efficient resource utilization to provide optimal performance for the specific requirements of the application.
 
 --------------------------------------------------------------------------------------
-## What is availability? **
+
+## What is availability ?
    
     => Availability refers to the ability of a system or service to be operational and accessible when it is needed. In other words, availability is the measure of the percentage of time that a system or service is available and usable by users.
     =>Example: if an online store has an availability of 99%, it means that the store is accessible and operational for 99% of the time and inaccessible for the remaining 1%.
@@ -2757,7 +2827,7 @@ Note: It's important to mention that URLs can have additional components such as
 
 -----------------------------------------------------------------------------------
 
-## What is latency? **
+## What is latency ?
     
     => Latency is the time it takes for data to pass from one point on a network to another.
     => Suppose Server A in New York sends a data packet to Server B in London. Server A sends the packet at 04:38:00.000 GMT and Server B receives it at 04:38:00.145 GMT. The amount of latency on this path is the difference between these two times: 0.145 seconds or 145 milliseconds.
@@ -2765,8 +2835,8 @@ Note: It's important to mention that URLs can have additional components such as
     => Low latency is particularly important for financial trading, where a few milliseconds can make a significant difference in the outcome of a trade. High-frequency trading systems often use specialized networks and hardware to reduce latency and gain an advantage over competitors.
     => Most often, latency is measured between a user's device (the "client" device) and a data center. This measurement helps developers understand how quickly a webpage or application will load for users.
     => Factors responsible for latency:
-       1) Distance between client and server.
-       2) Internet speed
+       (1) Distance between client and server.
+       (~2) Internet speed
     =>Reducing latency involves optimizing the network infrastructure, reducing the number of network devices the data packet has to pass through, and reducing the processing time at each device. This can be achieved through various techniques, such as using faster hardware, reducing the distance between the source and destination, and implementing data compression and caching(CDN).
 
 ----------------------------------------------------------------------------------
