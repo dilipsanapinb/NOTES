@@ -166,7 +166,9 @@ By using BEM, you can create clear and structured class names that help identify
 ## Difference between display none and display hidden.
 
 -> display:none and visibility:hidden are two style declarations you can use to hide elements on the screen with CSS.
+
 -> With a none value for this property, the display for the element is turned off. This means the element – as well as its children – will not be displayed. The document is rendered without the element like it did not exist.
+
 -> With a hidden value for this property, the element it is applied to becomes "invisible". The space required by the element's box model stays but the element itself is hidden.
 
 --------------------------------------
