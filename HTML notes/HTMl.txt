@@ -191,15 +191,15 @@ By using BEM, you can create clear and structured class names that help identify
     <sup> - Superscript text;
       
       eg. Like denoting the square of number;
-      
 
+------------------------------------------------------------------
 
-HTML Attributes:
+## HTML Attributes:
  
  - it provide additional info abt HTML element.
  - All HTML elements can have attribute.
  - attribute are always specified in the start tag.
- - attributes are usually caome in name/value pairs like: name="value";
+ - attributes are usually came in name/value pairs like: name="value";
 
  eg. id, class, style, src, href, alt, title, value, type, name, placeholder, disabled, selected, checked, maxlength.
 
@@ -209,7 +209,7 @@ HTML Attributes:
        src-> absolute url eg:httts://example.jpg
           -> relative /images/example.jpg
   
- -> width and heigth attributes.
+ -> width and height attributes.
 
  -> style attributes
 
@@ -230,7 +230,7 @@ HTML Attributes:
 
     A browser does not display the HTML tags, but uses them to determine how to display the document:
   
-
+---------------------------------------------------------------------
 
 ## Z-index 
   
@@ -274,22 +274,49 @@ Understanding the stacking context and its rules is important for managing the v
 
 ## Header, article, section, footer
 
- 1) <header> 
+ (1) <header> 
      => used to introductory and navigational information about a section of page.
      -> authors name
      -> time and date of  publication
      -> table of contents
      -> navigational information
+
+         eg. 
+             
+             <header>
+              <h1>Website Title</h1>
+              <nav>
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </nav>
+            </header>
   
-  2) <article>
+  (2) <article>
       => is ment to house a self-contained composition the can loggically be independently recreated out of the pagewithout loosing its mening.
       =>Examples ;
         -> individual blog post or news stories.
+
+                eg. 
+                   
+                   <article>
+                    <h2>Article Title</h2>
+                    <p>Article content goes here.</p>
+                  </article>
   
-  3) <section>
+  (3) <section>
      =>is a flexible container for holding content that shares a common information themes or purpose.
+
+     eg. 
+        
+        <section>
+          <h2>Section Title</h2>
+          <p>Section content goes here.</p>
+        </section>
   
-  4) <footer>
+  (4) <footer>
     => used to hold the information that should appear at the end of section of content and contain additional information about the section.
     =>Authors name, copyright information,and related links like contacts.
 
