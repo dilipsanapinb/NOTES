@@ -2904,7 +2904,7 @@ Note: It's important to mention that URLs can have additional components such as
                 // We return a middleware function which takes three arguments: `req`, `res`, and `next`.
 
                 const ip = req.ip;
-                
+
                 // We get the IP address of the client making the request.
 
                 const now = Date.now();
@@ -2972,6 +2972,25 @@ module.exports={rate}
 ## Describe how you design an API? **
     
     => What is pupose of API?
+
+        The purpose of an API (Application Programming Interface) in the backend of a system is to define a set of rules and protocols that allow different software applications to communicate with each other. It acts as an intermediary that enables interaction between different software components, systems, or services.
+
+        Here are some key purposes of an API in the backend:
+
+            (1) Data exchange: APIs facilitate the exchange of data between different applications or systems. They define a structured way for requesting and delivering data, allowing applications to access and manipulate data stored in a backend system.
+
+            (2) Integration: APIs enable the integration of various software components, services, or systems. By exposing specific functionalities through an API, developers can build applications that utilize the capabilities of other software components without having to understand the underlying implementation details.
+
+            (3) Interoperability: APIs promote interoperability by providing a standard interface that allows different software applications to communicate and work together. APIs abstract the complexities of different systems, enabling them to interact seamlessly regardless of the programming language, platform, or architecture they use.
+            Modularity and scalability: APIs enable the development of modular and scalable systems. By exposing specific functionalities through APIs, backend systems can be built as a collection of smaller, reusable components. This modular approach allows for easier maintenance, updates, and the ability to scale individual components independently.
+
+            (4) Enabling third-party access: APIs are commonly used to enable third-party developers or external systems to access certain functionalities or data of a backend system. This allows for the creation of ecosystem ecosystems, where developers can build applications, integrations, or extensions on top of existing platforms or services.
+
+            (5) Security and control: APIs provide a controlled and secure way to expose functionalities or data from a backend system. APIs can enforce authentication, authorization, and rate limiting mechanisms, ensuring that only authorized entities can access the exposed resources.
+
+            Overall, the purpose of an API in the backend is to enable seamless communication, integration, and data exchange between different software components, systems, or services, promoting interoperability, modularity, and extensibility.
+
+-------------------------------------------------------------
     => What are requirements?
     => What are technologies can be used in system?
     => define the endppoints including  path, query parameters, request headers, and response body
@@ -2989,25 +3008,27 @@ module.exports={rate}
      => Scaling alters the size of a system. In the scaling process, we either compress or expand the system to meet the expected needs
      => Scaling can be categorized into 2 types: 
 
-    1) Vertical Scaling:
-           -> When new resources are added to the existing system to meet the expectation, it is known as vertical scaling. 
-           -> Consider a rack of servers and resources that comprises the existing system. (as shown in the figure). Now when the existing system fails to meet the expected needs, and the expected needs can be met by just adding resources, this is considered vertical scaling. Vertical scaling is based on the idea of adding more power(CPU, RAM) to existing systems, basically adding more resources.
-           -> Vertical scaling is not only easy but also cheaper than Horizontal Scaling. It also requires less time to be fixed.
-           1) When new resources are added in the existing system to meet the expectation, it is known as vertical scaling
-           2) It expands the size of the existing system vertically.
-           3) It is harder to upgrade and may involve downtime.
-           4) It is easy to implement
-           5) It is cheaper as we need to just add new resources
-           6) It takes less time to be done
-           7) Single point of failure
-           8) Examples  of databases that can be easily scaled- MySQL, Amazon RDS
+    (1) Vertical Scaling:
 
-    2) Horizontal Scaling: 
+           -> When new resources are added to the existing system to meet the expectation, it is known as vertical scaling. 
+           -> Consider a rack of servers and resources that comprises the existing system. Now when the existing system fails to meet the expected needs, and the expected needs can be met by just adding resources, this is considered vertical scaling. Vertical scaling is based on the idea of adding more power(CPU, RAM) to existing systems, basically adding more resources.
+           -> Vertical scaling is not only easy but also cheaper than Horizontal Scaling. It also requires less time to be fixed.
+           (1) When new resources are added in the existing system to meet the expectation, it is known as vertical scaling
+           (2) It expands the size of the existing system vertically.
+           (3) It is harder to upgrade and may involve downtime.
+           (4) It is easy to implement
+           (5) It is cheaper as we need to just add new resources
+           (6) It takes less time to be done
+           (7) Single point of failure
+           (8) Examples  of databases that can be easily scaled- MySQL, Amazon RDS
+
+    (2) Horizontal Scaling: 
+
            When new server racks are added to the existing system to meet the higher expectation, it is known as horizontal scaling.
-           1) When new server racks are added to the existing system to meet the higher expectation, it is known as horizontal scaling.
-           2) It expands the size of the existing system horizontally.
-           3) It is easier to upgrade.
-           4) It is difficult to implement
+           (1) When new server racks are added to the existing system to meet the higher expectation, it is known as horizontal scaling.
+           (2) It expands the size of the existing system horizontally.
+           (3) It is easier to upgrade.
+           (4) It is difficult to implement
            5) It is costlier, as new server racks comprise a lot of resources
            6) It takes more time to be done
            7) High resilience and fault tolerance
@@ -3154,7 +3175,7 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
   => A webhook is an HTTP request, triggered by an event in a source system and sent to a destination system, often with a payload of data.
   => Webhooks are automated, in other words, they are automatically sent out when their event is fired in the source system.
   => This provides a way for one system (the source) to “speak” (HTTP request) to another system (the destination) when an event occurs, and share information (request payload) about the event that occurred.
-  => Webhooks are userd for,
+  => Webhooks are used for,
     - Let’s say you subscribe to a streaming service. At the beginning of each month, your credit card is charged and your bank needs to communicate this to you via SMS or email. The banking system (the source) can use a webhook to call a mailing or SMS service (the destination) to immediately send you a debit notification each time your card is charged.
 
   => For a system to send webhooks, the system has to be able to support the process. You can build your system to send webhooks by triggering HTTP requests for different types of events, however, webhooks are most common in SaaS platforms like GitHub, Shopify, Stripe, Twilio, and Slack.
@@ -3332,7 +3353,7 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
 
 ------------------------------------------------------------
 
-## What is ELB(Elastic Load Balancing) in AWS?
+## What is ELB (Elastic Load Balancing) in AWS?
  
  => Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones.
  =>  It monitors the health of its registered targets, and routes traffic only to the healthy targets.

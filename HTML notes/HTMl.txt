@@ -1,3 +1,19 @@
+## How do you add CSS and HTML webpage?
+    
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Your Page Title</title>
+          <!-- Add CSS link or styles here -->
+           <link rel="stylesheet" type="text/css" href="styles.css">
+           // <style></style>
+           // we can add inline style
+      </head>
+      <body>
+          <!-- Add HTML content here -->
+      </body>
+      </html>
+-----------------------------------------------
 
 ## What is HTML?
   - HTML stands for 'Hyper Text Markup Language'
@@ -7,7 +23,7 @@
   - HTML elements tell the browser how to display the content
   - HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link", etc.
 
-  <!DOCTYPE html> // it declares that this document is a HTML5 document. Andd helps browsers to display web pages correctly.
+  <!DOCTYPE html> // it declares that this document is a HTML5 document. And helps browsers to display web pages correctly.
   
   //It must only appear once, at the top of the page (before any HTML tags).
 
@@ -26,6 +42,70 @@
 </html>
 
 -------------------------------------
+
+## What are features of HTML5? 
+
+    HTML5, the latest version of the Hypertext Markup Language, introduced several new features and improvements over its predecessor, HTML4. Some key features of HTML5 include:
+
+    (1) Semantic Elements: HTML5 introduced new semantic elements that provide better structuring and meaning to the content, making it easier for search engines and assistive technologies to understand the page. Examples of semantic elements include <header>, <nav>, <article>, <section>, <footer>, etc.
+
+    (2) Multimedia Support: HTML5 added native support for multimedia elements without the need for third-party plugins like Flash. It introduced the <video> and <audio> elements, allowing developers to embed videos and audio directly into web pages.
+
+    (3) Canvas: The <canvas> element allows dynamic, scriptable rendering of 2D graphics and bitmap images. It provides a powerful API for drawing shapes, applying transformations, and handling user interactions.
+
+    (4) Geolocation: HTML5 introduced the Geolocation API, which enables websites to access the user's geographical location information (with user permission). This feature has applications in location-based services, mapping, and personalized content.
+
+    (5) Offline Web Applications: HTML5 introduced technologies like the Application Cache and Web Storage (localStorage and sessionStorage) that allow web applications to work offline. The offline web application feature enables users to continue using the application even when they don't have an internet connection.
+
+    (6) Form Enhancements: HTML5 introduced several new input types and attributes for form elements, making form handling more powerful and user-friendly. New input types include email, url, number, date, range, color, etc. Additionally, HTML5 introduced form validation APIs to perform client-side form validation without the need for JavaScript.
+
+    (7) Drag and Drop: HTML5 introduced the Drag and Drop API, allowing developers to implement drag-and-drop functionality without resorting to JavaScript libraries or plugins. This feature makes it easier to create interactive and intuitive interfaces.
+
+    (8) Improved Accessibility: HTML5 includes several features and attributes that enhance accessibility for users with disabilities. These features include better support for semantic structure, ARIA (Accessible Rich Internet Applications) attributes, and audio/video captioning and description.
+
+    (9) Web Workers: HTML5 introduced the Web Workers API, which allows the execution of scripts in the background, separate from the main browser thread. Web Workers enable multitasking and better performance by offloading computationally intensive tasks to separate threads.
+
+    (10) Web Storage: HTML5 introduced Web Storage, which provides a simple key-value storage mechanism in the user's browser. It allows websites to store data locally, improving performance and providing a way to persist user preferences and application state.
+
+    These are just some of the notable features of HTML5. Overall, HTML5 brought significant advancements to web development by providing new capabilities, better semantics, improved multimedia support, and enhanced user experience.
+
+---------------------------------------
+
+## What are different types of storages in HTML5?
+    
+        HTML5 introduced two types of storage mechanisms:
+
+        (1) Local Storage (localStorage): Local storage provides a way to store key-value pairs in the user's web browser with no expiration date. The data stored in local storage remains available even if the browser is closed and reopened. It is a persistent storage solution that can hold a larger amount of data (typically up to 5MB or more) compared to cookies. Local storage is accessed through the localStorage object in JavaScript.
+        Example usage:
+
+        
+                  // Storing data in local storage
+                  localStorage.setItem('key', 'value');
+
+                  // Retrieving data from local storage
+                  var value = localStorage.getItem('key');
+
+                  // Removing data from local storage
+                  localStorage.removeItem('key');
+
+
+        (2) Session Storage (sessionStorage): Session storage is similar to local storage but has a different lifespan. It allows storing data that is specific to a particular browsing session. The data stored in session storage is available only as long as the browser tab or window remains open. Once the tab or window is closed, the session storage data is cleared. Like local storage, session storage also uses key-value pairs and can be accessed through the sessionStorage object in JavaScript.
+        Example usage:
+
+        javascript
+        Copy code
+        // Storing data in session storage
+        sessionStorage.setItem('key', 'value');
+
+        // Retrieving data from session storage
+        var value = sessionStorage.getItem('key');
+
+        // Removing data from session storage
+        sessionStorage.removeItem('key');
+        
+        Both local storage and session storage provide a convenient way to store data on the client-side, reducing the need for server-side storage or frequent server requests. They are commonly used for caching data, persisting user preferences, or storing application state. However, it's important to note that the data stored in these mechanisms is specific to the user's browser and device and is not accessible across different browsers or devices.
+
+------------------------------------------
 
 ## What is an HTML Element?
 
@@ -82,6 +162,7 @@ By using BEM, you can create clear and structured class names that help identify
 ---------------------------------------
 
 ## Difference between display none and display hidden.
+
 -> display:none and visibility:hidden are two style declarations you can use to hide elements on the screen with CSS.
 -> With a none value for this property, the display for the element is turned off. This means the element – as well as its children – will not be displayed. The document is rendered without the element like it did not exist.
 -> With a hidden value for this property, the element it is applied to becomes "invisible". The space required by the element's box model stays but the element itself is hidden.
