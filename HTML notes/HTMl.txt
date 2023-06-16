@@ -102,7 +102,7 @@
 
         // Removing data from session storage
         sessionStorage.removeItem('key');
-        
+
         Both local storage and session storage provide a convenient way to store data on the client-side, reducing the need for server-side storage or frequent server requests. They are commonly used for caching data, persisting user preferences, or storing application state. However, it's important to note that the data stored in these mechanisms is specific to the user's browser and device and is not accessible across different browsers or devices.
 
 ------------------------------------------
@@ -132,6 +132,7 @@ An HTML element is defined by a start tag, some content, and an end tag:
 ----------------------------------------
 
 # BEM(Block,Element,Modifier);
+
  BEM methodology is popular naming convention for classes in css.
  BEM, which stands for Block, Element, Modifier, is a methodology for organizing and naming CSS classes in order to create more maintainable and modular stylesheets. It provides a structured approach to writing CSS and helps in avoiding style conflicts and increasing code reusability.
 
@@ -140,6 +141,7 @@ Here's a brief explanation of the three main components in BEM:
 (1) Block: A block represents a standalone component or a higher-level module on a web page. It can be thought of as a reusable, self-contained unit. Blocks are usually defined by a class name that describes their purpose or function. For example, a navigation bar could be a block with the class name "navbar".
 
 (2) Element: Elements are the components that make up a block. They are dependent on the block they belong to and have no standalone meaning. Elements are typically denoted by two underscores (__) followed by a name within the context of the block. For instance, within the "navbar" block, there could be elements such as "logo" and "menu" with class names like "navbar__logo" and "navbar__menu".
+
 (3) Modifier: Modifiers are used to modify the appearance or behavior of blocks or elements. They allow for variations of a block or element without duplicating code. Modifiers are denoted by two hyphens (--) followed by a name. For example, if you have a "button" block, you might have modifiers like "button--primary" and "button--large" to indicate a primary button or a larger button size.
 
 By using BEM, you can create clear and structured class names that help identify the purpose and relationships of different components in your CSS. This methodology promotes code maintainability, reusability, and reduces the chances of style conflicts, especially in larger projects with many developers working together.
