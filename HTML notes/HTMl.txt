@@ -182,12 +182,16 @@ By using BEM, you can create clear and structured class names that help identify
     <mark> - Marked text
     <small> - Smaller text
     <del> - Deleted text
-    <ins> - Inserted text  // 
+    <ins> - Inserted text  
 <p>My favorite color is <del>blue</del> <ins>red</ins>.</p>
     <sub> - Subscript text
           ->The HTML <sub> element defines subscript text. Subscript text appears half a character below the normal line, and is sometimes rendered in a smaller font. Subscript text can be used for chemical formulas, like H2O:
           <p>This is <sub>subscripted</sub> text.</p>
+
     <sup> - Superscript text;
+      
+      eg. Like denoting the square of number;
+      
 
 
 HTML Attributes:
