@@ -338,14 +338,14 @@ Here are some examples of semantic tags:
 
 Using semantic tags can make your HTML code more readable and understandable, both for human developers and for automated tools like search engines and screen readers. It can also help you structure your content more effectively, making it easier to maintain and update over time.
 
-1) Semantics: allowing you to describe more precisely what your content is.
-2) Connectivity: allowing you to communicate with the server in new and innovative ways.
-3) Offline and storage: allowing web pages to store data on the client-side locally and operate offline more efficiently.
-4) Multimedia: making video and audio first-class citizens in the Open Web.
-5) 2D/3D graphics and effects: allowing a much more diverse range of presentation options.
-6) Performance and integration: providing greater speed optimization and better usage of computer hardware.
-7) Device access: allowing for the usage of various input and output devices.
-Styling: letting authors write more sophisticated themes
+    (1) Semantics: allowing you to describe more precisely what your content is.
+    (2) Connectivity: allowing you to communicate with the server in new and innovative ways.
+    (3) Offline and storage: allowing web pages to store data on the client-side locally and operate offline more efficiently.
+    (4) Multimedia: making video and audio first-class citizens in the Open Web.
+    (5) 2D/3D graphics and effects: allowing a much more diverse range of presentation options.
+    (6) Performance and integration: providing greater speed optimization and better usage of computer hardware.
+    (7) Device access: allowing for the usage of various input and output devices.
+    (8) Styling: letting authors write more sophisticated themes
 
 ------------------------------------------------------
 
