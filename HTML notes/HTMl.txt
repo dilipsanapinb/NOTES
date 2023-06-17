@@ -349,26 +349,48 @@ Using semantic tags can make your HTML code more readable and understandable, bo
 
 ------------------------------------------------------
 
+
+## Why you would like to use semantic tag?
+
+Search Engine Optimization, accessibility, repurposing, light code.
+
+Many visually impaired person rely on browser speech and semantic tag helps to interpret page content clearly.
+
+Search engine needs to understand page content to rank and semantic tag helps.
+
+Semantic code aids accessibility. Specially, many people whose eyes are not good rely on speech browsers to read pages to them. These programs cannot interpret pages very well unless they are clearly explained.
+
+Help Search engines to better understand pages. Search engine need to understand what your content is about when rank you properly on search engines. Semantic code tends to improve your placement on search engines, as it is easier for the "search engine spiders" to understand.
+
+
+It’s easier to read and edit, which saves time and money during maintenance.
+
+---------------------------------
+
 ## Responsive web
   => Add viewport
   -> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+--------------------------------------------------------
 
 ## Show different Images depending on Browser Width
 
 The HTML <picture> element allows you to define different images for different browser window sizes.
 
+------------------------------------------------------
+
 ## Responsive Text Size
 
 The text size can be set with a "vw" unit, which means the "viewport width". That way the text size will follow the size of the browser window.
 
-----------------------
+-----------------------------------------------------
 
 ## Can you name the four types of @media properties?
 
-1) all, which applies to all media type devices
-2) print, which only applies to printers
-3) screen, which only applies to screens (desktops, tablets, mobile etc.)
-4) speech, which only applies to screen readers
+(1) all, which applies to all media type devices
+(2) print, which only applies to printers
+(3) screen, which only applies to screens (desktops, tablets, mobile etc.)
+(4) speech, which only applies to screen readers
 
 
 ## media query
@@ -390,29 +412,15 @@ The text size can be set with a "vw" unit, which means the "viewport width". Tha
 
  }
 
+ ------------------------------------------------------------
+
  ## What are optional closing tag?
 
 <p>, <li>, <td>, <tr>, <th>, <html>, <body>, etc. don't have to provide end tag. Whenever browser hits a new tag it automatically ends the previous tag.
 
+
 ----------------------------------------
 
-
-## Why you would like to use semantic tag?
-
-Search Engine Optimization, accessibility, repurposing, light code.
-
-Many visually impaired person rely on browser speech and semantic tag helps to interpret page content clearly.
-
-Search engine needs to understand page content to rank and semantic tag helps.
-
-Semantic code aids accessibility. Specially, many people whose eyes are not good rely on speech browsers to read pages to them. These programs cannot interpret pages very well unless they are clearly explained.
-
-Help Search engines to better understand pages. Search engine need to understand what your content is about when rank you properly on search engines. Semantic code tends to improve your placement on search engines, as it is easier for the "search engine spiders" to understand.
-
-
-It’s easier to read and edit, which saves time and money during maintenance.
-
----------------------------------
 
 ## Inline-Block Elements
 
@@ -443,6 +451,9 @@ One common use for using inline-block is for creating navigation links horizonta
 => Every <a> element whose href attribute value contains the substring “css”.
   a[href*="css"]
 
+
+---------------------------------------
+
 ## How to create a zebra striped table with CSS?
 
 To create a zebra-striped table, use the nth-child() selector and add a background-color to all even (or odd) table rows:
@@ -451,6 +462,7 @@ tr:nth-child(even) {
     background-color: #f2f2f2
 }
 
+-------------------------------------------
 
 ## RGB, HEX(Hexadecimal color values), HSLa(Hue Saturation Lightness alpha)
 
@@ -468,13 +480,12 @@ tr:nth-child(even) {
 
 => The main purpose of a CSS preprocessor is to simplify the process of creating and managing CSS stylesheets by adding features that are not available in standard CSS, such as:
 
-1) Variables: allowing you to define and reuse values throughout your CSS code.
-2) Nesting: allowing you to nest CSS selectors inside one another, making your code more readable and easier to manage.
-3) Mixins: allowing you to group together sets of CSS declarations that can be reused throughout your code.
-4) Functions: allowing you to define and reuse custom functions within your CSS code.
-5) Importing: allowing you to split your CSS code into multiple files and import them into a single stylesheet,  but doing so will require an HTTP request to download each CSS file
-
-6) Popular CSS preprocessors include Sass, Less, and Stylus,
+(1) Variables: allowing you to define and reuse values throughout your CSS code.
+(2) Nesting: allowing you to nest CSS selectors inside one another, making your code more readable and easier to manage.
+(3) Mixins: allowing you to group together sets of CSS declarations that can be reused throughout your code.
+(4) Functions: allowing you to define and reuse custom functions within your CSS code.
+(5) Importing: allowing you to split your CSS code into multiple files and import them into a single stylesheet,  but doing so will require an HTTP request to download each CSS file
+(6) Popular CSS preprocessors include Sass, Less, and Stylus,
 PostCSS each with their own syntax and features. These preprocessors are compiled into standard CSS code that can be used in web pages and applications.
 
 Using a CSS preprocessor can help you to write cleaner, more maintainable, and more efficient CSS code, and can save you time and effort in the long run.
@@ -483,9 +494,9 @@ Using a CSS preprocessor can help you to write cleaner, more maintainable, and m
 
 ## What is the difference between "resetting" and "normalizing" CSS?
 
-1) 1. Resetting: CSS resets aim to remove all built-in browser styling. For example margins, paddings, font-sizes of all elements are reset to be the same. You will have to redeclare styling for common typographic elements.
+1. Resetting: CSS resets aim to remove all built-in browser styling. For example margins, paddings, font-sizes of all elements are reset to be the same. You will have to redeclare styling for common typographic elements.
 
-2) 2. Normalizing: Normalize CSS aims to make built-in browser styling consistent across browsers. It also corrects bugs for common browser dependencies.
+2. Normalizing: Normalize CSS aims to make built-in browser styling consistent across browsers. It also corrects bugs for common browser dependencies.
 
 --------------------------------------------------------------------------
 
