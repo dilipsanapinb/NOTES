@@ -660,6 +660,7 @@ let arr = [1, 2, 3, 4, 5];
 
 // create a event
 
-const event = new Event('build');
+// const event = new Event('build');
 
 
+console.log("20" - "10");
