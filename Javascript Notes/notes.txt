@@ -263,8 +263,8 @@ In summary, Sets are designed for storing unique values, while Maps are designed
             }
 
       (2) let:
-      
-          => Variables declared with let are block-scoped.
+
+          => Variables declared with let are "block-scoped".
           => This means that they are accessible only within the block where they are declared, including nested blocks.
           => let variables "cannot be re-declared within the same block, but they can be updated".
           => function example() {
@@ -276,8 +276,9 @@ In summary, Sets are designed for storing unique values, while Maps are designed
               console.log(x); // outputs 10
               }
 
-      3) const:
-          => Variables declared with const are also "block-scoped", but they are read-only.
+      (3) const:
+
+          => Variables declared with const are also "block-scoped", but they are 'read-only'.
           => This means that once a variable is assigned with const, its value "cannot be changed".
           => const variables must be assigned a value when they are declared.
           => function example() {
@@ -289,27 +290,28 @@ In summary, Sets are designed for storing unique values, while Maps are designed
               console.log(x); // outputs 10
               }
 
---------------------------
+----------------------------------------------------------------------
 
 ## Hoisting :
 
-    => Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their respective scopes, before the code is executed.
+    => Hoisting is a JavaScript mechanism where "variable and function declarations are moved to the top of their respective scopes, before the code is executed".
     => This means that you can use a variable or function before it is declared.
     => However, it's important to note that only the declarations are hoisted, not the assignments. In other words, the value of a variable is not hoisted, only the variable name.
     => Hoisting can only possible with var , let and const variables not allow the hoisting.
     => Example:
-       1) x = 10; // assign a value to x
+
+       (1) x = 10; // assign a value to x
        console.log(x); // outputs 10
 
       var x; // declare the variable after it's been used
-       
-       2) example(); // call the function before it's been declared
+      
+       (2) example(); // call the function before it's been declared
 
-           function example() {
+          function example() {
             console.log('Hello, world!');
           }
           
-         Here's an example of hoisting in JavaScript:
+          Here's an example of hoisting in JavaScript:
 
          x = 10; // assign a value to x
          console.log(x); // outputs 10
@@ -330,7 +332,7 @@ In summary, Sets are designed for storing unique values, while Maps are designed
 ## Shadowing:
 
 In programming, shadowing occurs when a variable declared in a certain scope (e.g. a local variable) has the same name as a variable in an outer scope (e.g. a global variable). When this happens, the outer variable is said to be shadowed by the inner variable.
-=> n JavaScript, variables can be shadowed in both the global and function scope. Global variables can be shadowed by function-scoped variables, and function-scoped variables can be shadowed by block-scoped variables declared with the let or const keyword.
+=> In JavaScript, variables can be shadowed in both the global and function scope. Global variables can be shadowed by function-scoped variables, and function-scoped variables can be shadowed by block-scoped variables declared with the let or const keyword.
 
 => Variable Shadowing in the Global Scope
  var x = "global";
@@ -503,16 +505,167 @@ for (var i = 0; i < arr.length; i++){
     => Lexical scope is important for writing maintainable and modular code, because it allows you to control the visibility of variables and avoid naming collisions between different parts of your program. By keeping variables in their appropriate lexical scope, you can reduce the risk of unexpected behavior and make your code more predictable and reliable.
 
 
-----------------------------------
+---------------------------------------------
+
+## Bigint
+
+    In JavaScript, the bigint data type is used to represent integers with arbitrary precision. It was introduced in ECMAScript 2020 to provide a way to work with numbers beyond the limitations of the standard number data type, which is a 64-bit floating-point number.
+
+    BigInts allow you to perform mathematical operations on integers of any size without the risk of losing precision or encountering overflow/underflow errors. Here's an example of creating and working with BigInts:
+      
+      let bigNum = BigInt(9007199254740991); // Creating a BigInt using the BigInt() constructor or by appending "n" to the number literal
+      console.log(bigNum); // Output: 9007199254740991n
+
+      let bigNum2 = BigInt("123456789012345678901234567890"); // Creating a BigInt from a string
+      console.log(bigNum2); // Output: 123456789012345678901234567890n
+
+      let result = bigNum + bigNum2; // Performing arithmetic operations with BigInts
+      console.log(result); // Output: 123456789012345678910242766781n
+
+      console.log(typeof result); // Output: bigint
+
+      Note the use of the 'n' suffix when assigning a value directly to a BigInt variable. This ensures that the number is treated as a bigint literal rather than a regular number.
+
+      BigInts can be used with all standard arithmetic operators (+, -, *, /, %, **) and comparison operators (<, <=, >, >=, ==, !=) just like regular numbers.
+
+      ** However, it's important to note that mixing bigint with number in arithmetic operations will result in a TypeError. To perform operations between bigint and number, you need to explicitly convert one of them to match the other type using the BigInt() constructor or the Number() function.
+
+
+              let bigNum = BigInt(10);
+              let regularNum = 5;
+
+              let result = bigNum + BigInt(regularNum); // Convert regularNum to a BigInt before performing the operation
+
+            console.log(result); // Output: 15n
+      
+      BigInts also have several built-in methods, such as toString(), valueOf(), and toLocaleString(), which can be used to convert BigInts to strings or regular numbers for display or other purposes.
+    
+      ** It's worth noting that regular arithmetic operations between bigint and number can be less performant compared to operations involving only regular numbers, as bigint calculations require additional computation. Therefore, it's recommended to use bigint only when necessary for large integers or cases that require precise calculations.
+
+---------------------------------------------
+
+## Object methods defineProperty, hasOwnProperty :
+
+    Object.defineProperty() and Object.hasOwnProperty() are two methods provided by the Object global object in JavaScript for working with objects.
+
+    (A) Object.defineProperty(): This method allows you to define a new property on an object or modify an existing property with more control over its behavior. It provides fine-grained control over property attributes such as configurability, writability, and enumerability.
+    The syntax for Object.defineProperty() is as follows:
+
+    Object.defineProperty(object, propertyname, descriptor);
+    object: The object on which to define or modify the property.
+    propertyname: The name or symbol of the property.
+    descriptor: An object that specifies the attributes and behavior of the property using various properties like value, writable, enumerable, and configurable.
+    Here's an example that demonstrates the usage of Object.defineProperty():
+
+    eg.
+        const obj = {};
+
+        Object.defineProperty(obj, 'name', {
+          value: 'John',
+          writable: false,
+          enumerable: true,
+          configurable: true
+        });
+
+        console.log(obj.name); // Output: John
+
+      // Trying to change the value of the property (which is not allowed due to writable:false)
+
+        obj.name = 'Mike';
+        console.log(obj.name); // Output: John (value remains unchanged)
+
+      // Enumerating the object's properties
+      for (let key in obj) {
+        console.log(key); // Output: name
+      }
+
+      // Deleting the property (which is allowed due to configurable:true)
+      delete obj.name;
+      console.log(obj.name); // Output: undefined
+
+In the above example, we define a new property name on the obj object using Object.defineProperty(). We set the value to 'John', make it non-writable by setting writable to false, make it enumerable by setting enumerable to true, and make it configurable by setting configurable to true. This allows us to access the property, prevent modification, enumerate it in a loop, and delete it.
+
+  (B) Object.hasOwnProperty():
+    This method is used to determine whether an object has a specific property as its own property (not inherited from its prototype chain).
+
+    The syntax for Object.hasOwnProperty() is as follows:
+
+        object.hasOwnProperty(propertyname);
+
+    object: The object on which to check the property.
+    propertyname: The name or symbol of the property to check.
+    Here's an example that demonstrates the usage of Object.hasOwnProperty():
+
+
+        const person = {
+          name: 'John',
+          age: 30
+        };
+
+console.log(person.hasOwnProperty('name')); // Output: true
+console.log(person.hasOwnProperty('gender')); // Output: false
+
+In the above example, we have an object person with properties name and age. By calling person.hasOwnProperty('name'), we check if the person object has the property 'name'. Since 'name' is a property directly defined on person, hasOwnProperty() returns true. However, when we check 'gender', which is not a property of person, hasOwnProperty() returns false.
+
+Object.hasOwnProperty() is useful when you want to check if an object has a specific property without considering properties inherited from its prototype chain.
+
+---------------------------------------------
+
+## Recursion vs Iterative approach problem
+
+When solving a problem or implementing an algorithm, you often have the choice between using a recursive approach or an iterative approach. Both approaches have their advantages and considerations, and the choice depends on the problem at hand and the specific requirements.
+
+Recursive Approach:
+
+In the recursive approach, a function calls itself to break down a problem into smaller subproblems until a base case is reached.
+Recursive solutions can be elegant, concise, and easier to understand for certain problems, especially those that exhibit a recursive structure or can be naturally divided into smaller instances of the same problem.
+Recursive solutions are often shorter and more expressive, as they rely on the function's ability to call itself.
+However, recursive solutions can sometimes lead to performance issues, particularly if the recursion depth becomes too large, leading to excessive memory usage or stack overflow errors.
+Here's an example of a recursive function to calculate the factorial of a number:
+
+
+function factorialRecursive(n) {
+  if (n <= 1) {
+    return 1; // Base case
+  } else {
+    return n * factorialRecursive(n - 1); // Recursive call
+  }
+}
+
+console.log(factorialRecursive(5)); // Output: 120
+Iterative Approach:
+
+In the iterative approach, a loop or iteration construct is used to repeatedly execute a block of code until a condition is met or a fixed number of iterations are performed.
+Iterative solutions can be more efficient in terms of memory usage and performance, especially for problems that can be solved by performing a series of repetitive steps or operations.
+Iterative solutions can be more suitable for handling large input sizes without causing stack overflow errors or excessive memory consumption.
+However, iterative solutions can sometimes be more complex, involve more lines of code, and require careful management of loop variables and termination conditions.
+Here's an example of an iterative function to calculate the factorial of a number:
+
+function factorialIterative(n) {
+  let result = 1;
+  for (let i = 2; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+console.log(factorialIterative(5)); // Output: 120;
+
+In summary, the choice between a recursive or iterative approach depends on factors such as the problem's nature, the input size, the desired performance, and the readability and maintainability of the code. Recursive solutions are often more elegant but can be less efficient for large inputs, while iterative solutions tend to be more efficient but can be more complex to implement and understand.
+
+------------------------------------------
+
 ## Strict Mode:
 
 To invoke strict mode for an entire script, put the exact statement "use strict"; (or 'use strict';) before any other statements.
 
 // Whole-script strict mode syntax
+
 "use strict";
 const v = "Hi! I'm a strict mode script!";
 
-=> Strict mode for functions
+=> Strict mode for functions:
+
 Likewise, to invoke strict mode for a function, put the exact statement "use strict"; (or 'use strict';) in the function's body before any other statements.
 
 function myStrictFunction() {

@@ -663,4 +663,15 @@ let arr = [1, 2, 3, 4, 5];
 // const event = new Event('build');
 
 
-console.log("20" - "10");
+// console.log("20" - "10");
+
+x = 20;
+console.log(x);
+
+var x;
+
+sum(10, 20)
+
+function sum(a, b) {
+    console.log(a+b);
+}
