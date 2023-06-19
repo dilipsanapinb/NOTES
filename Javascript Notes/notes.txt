@@ -701,7 +701,7 @@ When strict mode is enabled, the following changes take effect:
 
 (5) The "this" value inside functions is undefined in strict mode if the function is not called as a method or constructor. In non-strict mode, this refers to the global object (window in a browser or global in Node.js) when not explicitly bound.
 
-"use strinct"
+"use strict"
 function test(){
   console.log(this)
 }
@@ -719,6 +719,7 @@ These are just a few examples of the changes enforced by strict mode. By using s
 ** limitations:
 
   - "use strict" not allowed in function with default parameter
+
     function sum(a = 1, b = 2) {
       // SyntaxError: "use strict" not allowed in function with default parameter
       "use strict";
@@ -755,7 +756,7 @@ Despite its advantages, strict mode also has some potential disadvantages:
 
 ## Phases of the event:
 
-In js when event occurs it goes through the three phases known as event phases pr event propagation.
+In js when event occurs it goes through the three phases known as event phases or event propagation.
 
 (1) Capture Phase:
     In this phase, the event is captured or detected at the highest level of the DOM hierarchy (the root element) and then propagates throughthe DOM tree, moving from the outermost parent down to the target element. During the capture phase, event listeners with the capture option set to 'true' are triggered.
@@ -854,6 +855,7 @@ Promises provide a way to write more concise and maintainable asynchronous code 
 
 
 -----------------------------------
+
 ## Different methods to call API?
 
 There are several methods to call APIs in JavaScript. Here are some of the commonly used methods:
@@ -946,7 +948,34 @@ These are just a few of the methods available to call APIs in JavaScript. Each m
     It's important to note that both Fetch and Axios are capable libraries for making HTTP requests in JavaScript. The choice between them depends on your project requirements, browser compatibility needs, and personal preferences in terms of syntax and features.
 
 
-------------------------------
+--------------------------------------------------
+
+## Difference between framework and library :
+
+Library and framework are two diff conceptsin software devlopment.
+
+(A) Library :
+
+      -- Library is a collection of precompiled and reusable modules or functions that provide specific functionality to be used by an application.
+      -- It consists of a set of files that developers can include in their projects to perform certain tasks or operations. 
+      -- Libraries are designed to be used as tools to accomplish specific programming tasks, such as handling file operations, performing mathematical calculations, or interacting with a network.
+      -- When using a library, developers have more control over the flow of their application. They can choose which parts of the library they want to use and integrate them into their code as needed.
+      
+      - Examples of popular libraries include the React library for building user interfaces in JavaScript, the NumPy library for numerical computing in Python, and the jQuery library for simplifying JavaScript coding.
+      
+
+    (B) Framework : 
+
+        --A framework, on the other hand, is a more extensive and comprehensive set of tools, libraries, and guidelines that provide a structured way to build applications.
+        -- It offers a foundation for developing software by providing a predefined structure, architecture, and a set of rules and conventions.
+        -- Frameworks typically dictate the overall design of an application and provide a scaffolding that developers can build upon. They often include libraries and provide additional features such as database access, user authentication, and routing mechanisms.
+
+        - Some popular frameworks include Ruby on Rails for web development, Django for Python web development, and Angular for building web applications using TypeScript.
+
+    -- In summary, libraries are focused on providing specific functionality or tools that developers can use in their projects, while frameworks provide a more comprehensive structure and guidelines for building applications, including libraries as part of their offerings.
+
+
+--------------------------------------------------
 
 ## Execution Context
 
