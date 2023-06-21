@@ -1681,68 +1681,68 @@ This will return detailed information about the query execution, including the c
 
 ### Q.  What is DB replication ?
 
-- *Database replication* is the process of copying data from one database server to another, or to multiple servers, in order to maintain a redundant and distributed database system.
-- Replication can provide several benefits, such as improved availability, scalability, and reliability, as well as better disaster recovery and backup options.
-- In a replicated database system, changes made to the data on one server are automatically propagated to the other servers, ensuring that all servers have consistent and up-to-date data.
-- Replication can be performed at different levels, such as at the transaction level, statement level, or even the data block level, depending on the specific database management system being used.
-- There are several different replication topologies that can be used, such as master-slave replication, master-master replication, and multi-master replication.
-- Each topology has its own advantages and trade-offs, and the choice of topology depends on the specific requirements of the application and the database system.
-- Database replication can be implemented in different ways, such as using built-in replication features provided by the database management system, or using third-party tools and services.
-- Some popular database management systems that support replication include MySQL, PostgreSQL, Oracle, and SQL Server.
+-- "Database replication" is the process of copying data from one database server to another, or to multiple servers, in order to maintain a redundant and distributed database system.
+-- Replication can provide several benefits, such as improved availability, scalability, and reliability, as well as better disaster recovery and backup options.
+-- In a replicated database system, changes made to the data on one server are automatically propagated to the other servers, ensuring that all servers have consistent and up-to-date data.
+-- Replication can be performed at different levels, such as at the transaction level, statement level, or even the data block level, depending on the specific database management system being used.
+-- There are several different replication topologies that can be used, such as master-slave replication, master-master replication, and multi-master replication.
+-- Each topology has its own advantages and trade-offs, and the choice of topology depends on the specific requirements of the application and the database system.
+-- Database replication can be implemented in different ways, such as using built-in replication features provided by the database management system, or using third-party tools and services.
+-- Some popular database management systems that support replication include MySQL, PostgreSQL, Oracle, and SQL Server.
 
-Overall, database replication is an important technique for building scalable and reliable database systems, and it is commonly used in modern web applications, e-commerce sites, and other large-scale systems that require high availability and performance.
+Overall, database replication is an important technique for building scalable and reliable database systems, and it is commonly used in modern web applications, e-commerce sites, and other large-scale systems that require high availability and performance.
 
 -------------------------------------------------------------------
 
 ### What is PACELC ?
 
-- PACELC is a concept related to distributed systems that expands on the CAP theorem (Consistency, Availability, Partition tolerance) to include additional factors that affect the behavior of distributed systems.
+-- PACELC is a concept related to distributed systems that expands on the CAP theorem (Consistency, Availability, Partition tolerance) to include additional factors that affect the behavior of distributed systems.
 
-- PACELC stands for:
+-- PACELC stands for:
 
  (1) Partition tolerance (P):
-    - The system must continue to function despite network partitions, which can occur when a network failure causes a group of nodes to become separated from the rest of the network.
+    -- The system must continue to function despite network partitions, which can occur when a network failure causes a group of nodes to become separated from the rest of the network.
 
  (2) Availability (A):
-    - Every request received by a non-failing node must receive a response, although the response may not contain the most recent data.
+    -- Every request received by a non-failing node must receive a response, although the response may not contain the most recent data.
 
  (3) Consistency (C): 
-    - All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
+    -- All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
 
  (4) Else (E):
-    - In the presence of a network partition, the system can choose to either prioritize Availability or Consistency.
+    -- In the presence of a network partition, the system can choose to either prioritize Availability or Consistency.
 
  (5) Latency (L):
-    - The time it takes for a request to be processed.
+    -- The time it takes for a request to be processed.
 
  (6) Consistency (C): 
-    - All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
+    -- All nodes in the system see the same data at the same time, although this may require slowing down or blocking requests in order to maintain consistency.
 
-- The PACELC theorem suggests that, in the presence of a network partition, a distributed system must choose between availability and consistency.
-- In particular, the system can provide both consistency and partition tolerance (CP), availability and partition tolerance (AP), or consistency and availability (CA), but not all three simultaneously.
-- The PACELC theorem provides a useful framework for designing distributed systems that must operate in the presence of network partitions, helping architects to make trade-offs between consistency, availability, and partition tolerance based on the specific needs of their application.
+-- The PACELC theorem suggests that, in the presence of a network partition, a distributed system must choose between availability and consistency.
+-- In particular, the system can provide both consistency and partition tolerance (CP), availability and partition tolerance (AP), or consistency and availability (CA), but not all three simultaneously.
+-- The PACELC theorem provides a useful framework for designing distributed systems that must operate in the presence of network partitions, helping architects to make trade-offs between consistency, availability, and partition tolerance based on the specific needs of their application.
 
 -----------------------------------------------------
 
 ### What is Normalization / Denormalization ?
 
-- Normalization and denormalization are techniques used in database design to optimize the structure of tables and improve the efficiency and performance of queries.
+-- Normalization and denormalization are techniques used in database design to optimize the structure of tables and improve the efficiency and performance of queries.
 
 Normalization:
 
-  - It's the process of organizing the data in a database into tables that have well-defined relationships, reducing data redundancy and improving data integrity.
-  - The goal of normalization is to minimize the amount of duplicate data in a database by breaking up larger tables into smaller ones with more specific purposes.
-  - The normalization process typically involves creating multiple tables and establishing relationships between them using foreign keys.
+  -- It's the process of organizing the data in a database into tables that have well-defined relationships, reducing data redundancy and improving data integrity.
+  -- The goal of normalization is to minimize the amount of duplicate data in a database by breaking up larger tables into smaller ones with more specific purposes.
+  -- The normalization process typically involves creating multiple tables and establishing relationships between them using foreign keys.
 
 Denormalization:
 
-  - It's the process of intentionally adding redundancy to a database table in order to improve performance.
-  - This can involve combining tables or duplicating data, making it easier to query data without joining multiple tables.
-  - By denormalizing a database, queries can be executed faster, but at the cost of increased storage requirements and reduced data consistency.
+  -- It's the process of intentionally adding redundancy to a database table in order to improve performance.
+  -- This can involve combining tables or duplicating data, making it easier to query data without joining multiple tables.
+  -- By denormalizing a database, queries can be executed faster, but at the cost of increased storage requirements and reduced data consistency.
 
-- Both normalization and denormalization have their uses in database design, and choosing which technique to use depends on the specific requirements of the application.
-- Normalization is generally preferred for databases that require a high level of data integrity,
-- while denormalization is often used in data warehousing or reporting applications where fast query performance is more important than data consistency.
+-- Both normalization and denormalization have their uses in database design, and choosing which technique to use depends on the specific requirements of the application.
+-- Normalization is generally preferred for databases that require a high level of data integrity,
+-- while denormalization is often used in data warehousing or reporting applications where fast query performance is more important than data consistency.
 
 -------------------------------------------------------------------------------------------------------
 
@@ -1752,15 +1752,15 @@ Denormalization:
 
   => Real World Use Case :
 
-        - Think of a popular microblogging site deployed across the world in different geographical regions like Asia, America, and Europe. Moreover, each geographical region has multiple data center zones: North, East, West, and South. 
-        - Furthermore, each zone has multiple clusters which have multiple server nodes running. So, we have many datastore nodes spread across the world that micro-blogging site uses for persisting data. Since there are so many nodes running, there is no single point of failure.
-        - The data store service is highly available. Even if a few nodes go down persistence service is still up. Let’s say a celebrity makes a post on the website that everybody starts liking around the world. 
-        - At a point in time, a user in Japan likes a post which increases the “Like” count of the post from say 100 to 101. At the same point in time, a user in America, in a different geographical zone, clicks on the post, and he sees “Like” count as 100, not 101.
+        -- Think of a popular microblogging site deployed across the world in different geographical regions like Asia, America, and Europe. Moreover, each geographical region has multiple data center zones: North, East, West, and South. 
+        -- Furthermore, each zone has multiple clusters which have multiple server nodes running. So, we have many datastore nodes spread across the world that micro-blogging site uses for persisting data. Since there are so many nodes running, there is no single point of failure.
+        -- The data store service is highly available. Even if a few nodes go down persistence service is still up. Lets say a celebrity makes a post on the website that everybody starts liking around the world. 
+        -- At a point in time, a user in Japan likes a post which increases the “Like” count of the post from say 100 to 101. At the same point in time, a user in America, in a different geographical zone, clicks on the post, and he sees “Like” count as 100, not 101.
 
         # Reason for the above Use case :
 
-         - Simply, because the new updated value of the Post “Like” counter needs some time to move from Japan to America and update server nodes running there. Though the value of the counter at that point in time was 101, the user in America sees old inconsistent values. 
-         - But when he refreshes his web page after a few seconds “Like” counter value shows as 101. So, data was initially inconsistent but eventually got consistent across server nodes deployed around the world. This is what eventual consistency is.
+         -- Simply, because the new updated value of the Post “Like” counter needs some time to move from Japan to America and update server nodes running there. Though the value of the counter at that point in time was 101, the user in America sees old inconsistent values. 
+         -- But when he refreshes his web page after a few seconds “Like” counter value shows as 101. So, data was initially inconsistent but eventually got consistent across server nodes deployed around the world. This is what eventual consistency is.
 
 
 -----------------------------------------------------------
@@ -1771,22 +1771,22 @@ Denormalization:
 
 => Real World Use Case : 
 
-    - Let’s continue the same Eventual Consistency example from the previous lesson. To ensure Strong Consistency in the system, when a user in Japan likes posts, all nodes across different geographical zones must be locked down to prevent any concurrent updates. 
-    - This means at one point in time, only one user can update the post “Like” counter value. So, once a user in Japan updates the “Like” counter from 100 to 101. The value gets replicated globally across all nodes. Once all nodes reach consensus, locks get lifted. Now, other users can Like posts. 
-    - If the nodes take a while to reach a consensus, they must wait until then. Well, this is surely not desired in the case of social applications. But think of a stock market application where the users are seeing different prices of the same stock at one point in time and updating it concurrently. This would create chaos. Therefore, to avoid this confusion we need our systems to be Strongly Consistent. 
-    - The nodes must be locked down for updates. Queuing all requests is one good way of making a system Strongly Consistent. The strong Consistency model hits the capability of the system to be Highly Available & perform concurrent updates. This is how strongly consistent ACID transactions are implemented.
+    -- Let's continue the same Eventual Consistency example from the previous lesson. To ensure Strong Consistency in the system, when a user in Japan likes posts, all nodes across different geographical zones must be locked down to prevent any concurrent updates. 
+    -- This means at one point in time, only one user can update the post “Like” counter value. So, once a user in Japan updates the “Like” counter from 100 to 101. The value gets replicated globally across all nodes. Once all nodes reach consensus, locks get lifted. Now, other users can Like posts. 
+    -- If the nodes take a while to reach a consensus, they must wait until then. Well, this is surely not desired in the case of social applications. But think of a stock market application where the users are seeing different prices of the same stock at one point in time and updating it concurrently. This would create chaos. Therefore, to avoid this confusion we need our systems to be Strongly Consistent. 
+    -- The nodes must be locked down for updates. Queuing all requests is one good way of making a system Strongly Consistent. The strong Consistency model hits the capability of the system to be Highly Available & perform concurrent updates. This is how strongly consistent ACID transactions are implemented.
 
 ------------------------------------------------------------
 
 ##  What is Entity Relationship Model? ( ER Model ) : 
 
-- The Entity Relationship Model (ER Model) is a conceptual data model used in database design.
+-- The Entity Relationship Model (ER Model) is a conceptual data model used in database design.
 
-- It describes the relationships between data entities, attributes, and the constraints that govern the relationships.
+-- It describes the relationships between data entities, attributes, and the constraints that govern the relationships.
 
-- The ER Model provides a graphical representation of the database structure and helps to identify relationships between data entities.
+-- The ER Model provides a graphical representation of the database structure and helps to identify relationships between data entities.
 
-- The ER Model consists of three main components:
+-- The ER Model consists of three main components:
 
   (1) Entities: An entity is a person, place, or thing that is relevant to the database. For example, in a database for a hospital, entities might include patients, doctors, and medical procedures.
 
@@ -1794,20 +1794,20 @@ Denormalization:
 
   (3) Relationships: Relationships are connections between entities that describe how they are related to each other. For example, a patient might be related to a doctor through a "treated by" relationship, or a medical procedure might be related to a patient through a "performed on" relationship.
 
-- The ER Model is typically represented graphically using ER diagrams, which show entities as boxes, attributes as ovals, and relationships as lines connecting the boxes.
-- The ER Model is an important tool for designing and understanding complex databases, and is widely used in database design and development.
+-- The ER Model is typically represented graphically using ER diagrams, which show entities as boxes, attributes as ovals, and relationships as lines connecting the boxes.
+-- The ER Model is an important tool for designing and understanding complex databases, and is widely used in database design and development.
 
 ----------------------------------------------------------
 
 ## What are Models? 
 
 => Model: Manages data and business logic.The model defines what data the app should contain. If the state of this data changes, then the model will usually notify the view (so the display can change as needed) and sometimes the controller (if different logic is needed to control the updated view).
-=>  - In Node.js 'models' typically refer to data that define the structure and behavior of data in application.
-    - A models is a representation of particular data entity, such as a user, a post, or a product.
-    - It defines the fields or properties that the entity contains, as well as any validation rules or methods associated with it.
-    -> Node.js offers various libraries and frameworks for creating data models, such as Mongoose, Sequelize,and TypeORM.
-      - These libraries allow developers to define models using JS code, and provide features such as schema validation, data queying, and database migration.
-    -> Using the models in Node.js can help make it easier to manage and manipulate data in an application, as well as provide a consistent interface for accesing and interactiong with data throughout the application.
+    -- In Node.js 'models' typically refer to data that define the structure and behavior of data in application.
+    -- A models is a representation of particular data entity, such as a user, a post, or a product.
+    -- It defines the fields or properties that the entity contains, as well as any validation rules or methods associated with it.
+    -- Node.js offers various libraries and frameworks for creating data models, such as Mongoose, Sequelize,and TypeORM.
+    -- These libraries allow developers to define models using JS code, and provide features such as schema validation, data queying, and database migration.
+    -- Using the models in Node.js can help make it easier to manage and manipulate data in an application, as well as provide a consistent interface for accesing and interacting with data throughout the application.
 
 --------------------------------------------------------------------------
 
@@ -1815,7 +1815,7 @@ Denormalization:
 
    => The Mongoose does not return a promise direcly because it was designed to support both the call-back base and promise bases API's. Insted of returning a promise, Mongoose provide a ".then()" methode on queries that allows us to chain promise based operations.
     -> Mongoose queries are executed asynchronously and return a query object that implements the Promise API. The `.then()` method on Query object allows you to chain additional asynchronous operations that will be executed when the query is complete. This is similar to how promise work, where you can chain additional operations using `.then()`.
-    -> Mongoose also suppports callback-bases API's, which means we can pass callback function to a queryinsted using a promise.
+    -> Mongoose also suppports callback-bases API's, which means we can pass callback function to a query insted using a promise.
     ->".then()" is provided to developers convinience who prefer to use promises, but Mongoose queries can be used with callback as well.
 
     *Example-1: Find operation with .then():
@@ -1855,20 +1855,20 @@ Denormalization:
 
    ## What are aggregation pipelines with mongoose? **
 
-   => An aggregation pipeline consists of one or more stages that process documents:
+  => An aggregation pipeline consists of one or more stages that process documents:
 
-   -> Each stage performs an operation on the input documents.  For example, a stage can filter documents, group documents, and calculate values.
+  -> Each stage performs an operation on the input documents.  For example, a stage can filter documents, group documents, and calculate values.
 
-   -> The documents that are output from a stage are passed to the next stage.
+  -> The documents that are output from a stage are passed to the next stage.
 
-   -> An aggregation pipeline can return results for groups of documents. For example, return the total, average, maximum, and minimum values.
+  -> An aggregation pipeline can return results for groups of documents. For example, return the total, average, maximum, and minimum values.
 
-   -> we can update documents with an aggregation pipeline if you use the stages shown in Updates with Aggregation Pipeline.
+  -> we can update documents with an aggregation pipeline if you use the stages shown in Updates with Aggregation Pipeline.
 
-   => Aggregation pipelines in Mongoose are a way to perform advanced data processing and transformation on collections of documents in MongoDB.
-   => An aggregation pipeline is a series of stages that documents pass through, each stage applying a transformation or computation to the data.
-   => Mongoose provides a powerful API for building aggregation pipelines using its aggregate() method.
-    - The aggregate() method takes an array of pipeline stages as its argument and returns a Aggregate object that can be used to execute the pipeline.
+  => Aggregation pipelines in Mongoose are a way to perform advanced data processing and transformation on collections of documents in MongoDB.
+  => An aggregation pipeline is a series of stages that documents pass through, each stage applying a transformation or computation to the data.
+  => Mongoose provides a powerful API for building aggregation pipelines using its aggregate() method.
+    -- The aggregate() method takes an array of pipeline stages as its argument and returns a Aggregate object that can be used to execute the pipeline.
 
    =>Example:
     db.orders.insertMany( [
@@ -1890,21 +1890,20 @@ Denormalization:
       // Stage 2: Group remaining documents by pizza name and calculate total quantity
       {
       $group: { _id: "$name", totalQuantity: { $sum: "$quantity" } }
-       }
-       ] )
+      }
+      ] )
 
-       => The result of the aggregation pipeline will be an array of objects that contains the computed filterd by size and total quantity.
-       => Mongoose's aggregation pipelines provide a powerful way to perform complex data processing and transformation in MongoDB. The API is flexible and expressive, allowing you to compose pipelines with multiple stages and operators to compute exactly the data you need.
+      => The result of the aggregation pipeline will be an array of objects that contains the computed filterd by size and total quantity.
+      => Mongoose's aggregation pipelines provide a powerful way to perform complex data processing and transformation in MongoDB. The API is flexible and expressive, allowing you to compose pipelines with multiple stages and operators to compute exactly the data you need.
 
-       ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-       ## I'm using an arrow function for a virtual, middleware, getter/setter, or method and the value of this is wrong. Why? 
+## I'm using an arrow function for a virtual, middleware, getter/setter, or method and the value of this is wrong. Why? 
 
-       => Arrow functions in JS are lexically scopped, which means they don't have their own 'this' context like traditional function expressions. Insted, 'this' in  a arrow function is determined by the surrounding lexical scope, which can lead to unexpected behavior when used in certained contexts.
-       => In the case of virtual, middleware, getter/setters and methods in Mongoose, the value of `this` is important because it refers to the document being operated on. If we use an arrow function for one of these puurposes, 'this' will refer to surrounding lexical scope , which is undefined in document.
-       =>Example:
-            const mongoose = require('mongoose');
-
+=> Arrow functions in JS are lexically scopped, which means they don't have their own 'this' context like traditional function expressions. Insted, 'this' in  a arrow function is determined by the surrounding lexical scope, which can lead to unexpected behavior when used in certained contexts.
+=> In the case of virtual, middleware, getter/setters and methods in Mongoose, the value of `this` is important because it refers to the document being operated on. If we use an arrow function for one of these purposes, 'this' will refer to surrounding lexical scope , which is undefined in document.
+  =>Example:
+        const mongoose = require('mongoose');
         const UserSchema = new mongoose.Schema({
         firstName: String,
         lastName: String
@@ -1929,53 +1928,59 @@ Denormalization:
 
 ------------------------------------------------------------------------------------
 
-## My query/update seems to execute twice. Why is this happening? 
-   
-   => This can be hapen by not handling the asynchronous function properly, because Mongoose queries and upadates are asynchronous i.e. they dont block the event loop. Thats why the query/update is being executed twice.
-   => It can also happen due to to midleware function executed before/ after the function.If a middleware function that is executing the query/update, it can cause the operation to be executed twice.
-   
+## My query/update seems to execute twice. Why is this happening?
+
+=> This can be hapen by not handling the asynchronous function properly, because Mongoose queries and upadates are asynchronous i.e. they dont block the event loop. Thats why the query/update is being executed twice.
+=> It can also happen due to to midleware function executed before/ after the function.If a middleware function that is executing the query/update, it can cause the operation to be executed twice.
+
 -----------------------------------------------------------------------------------
 
 ## How we can create indexes with mongoose **
 
-   =>In Mongoose we can create indexes on collection using the "index" method in schema defination
+  =>In Mongoose we can create indexes on collection using the "index" method in schema defination
+
    *Example:-
-         const mongoose = require('mongoose');
-         const mySchema = mongoose.Schema({
-                 name: String,
-                 age: Number,
-                 email: String
+        const mongoose = require('mongoose');
+        const mySchema = mongoose.Schema({
+                name: String,
+                age: Number,
+                email: String
             });
+
         // create an index on the 'name' field
+
         mySchema.index({ name: 1 });
 
         const MyModel = mongoose.model('MyModel', mySchema);
-       
-       -> The value of 1 indicates that the index should be created in ascending order. You can also use -1 to indicate descending order.
-       -> Once we defined the indexes, Mongoose create the index automatically when the model is first used.
+
+      -- The value of 1 indicates that the index should be created in ascending order. You can also use -1 to indicate descending order.
+      -- Once we defined the indexes, Mongoose create the index automatically when the model is first used.
+
        * we can create compund indexes by passing an objects with multiple fields to the 'indexs' method'
-       - eg. mySchema.index({name:1,email:1})
+      
+      -- eg. mySchema.index({name:1,email:1})
 
-       => Types of indexs,
+      => Types of indexs,
 
-       (1) Regular index:
+      (1) Regular index:
 
           var User = new Schema({
           name: { type: String, index: true }
           });
 
-       (2) Sparse indexes:
+      (2) Sparse indexes:
 
             var User = new Schema({
             name: { type: String, sparse: true }
             });
 
-       (3)Unique indexes:
+      (3)Unique indexes:
 
           var User = new Schema({
           name: { type: String, unique: true }
           })
             // or
+
           var User = new Schema({
           name: { type: String, index: { unique: true } }
           });
@@ -2032,11 +2037,11 @@ Denormalization:
 
 ##  What is Authentication? 
 
-    ->Authentication is a term that refers to the process of proving that some fact or some document is genuine.
-    -> In computer science, this term is typically associated with proving a user’s identity. Usually, a user proves their identity by providing their credentials, that is, an agreed piece of information shared between the user and the system.
+    -> Authentication is a term that refers to the process of proving that some fact or some document is genuine.
+    -> In computer science, this term is typically associated with proving a user's identity. Usually, a user proves their identity by providing their credentials, that is, an agreed piece of information shared between the user and the system.
     -> Username and password combination is the most popular authentication mechanism, and it is also known as password authentication.
     -> A specific category of credentials, like username and password, are usually said an authentication factor. Even if password authentication is the most well-known type of authentication, other authentication factors exist.
-     There are three types of authentication factors typically classified as follows:
+    There are three types of authentication factors typically classified as follows:
 
       (1) password->something you know
       (2) smartphone -> something you have
@@ -2053,14 +2058,14 @@ Denormalization:
   -> It is a critical component of security in any application or system that requires access control.
   -> It is most usefull at "Roll Based Access Control". 
   -> Authentication generally involves granting or denying access to specific route or pages based on user's role or permissins.
-       eg. an e-commerce application allow only authenticated person to checkout page or an HR management sysyem might allow HR administrator to view or modify employees records.
+      eg. an e-commerce application allow only authenticated person to checkout page or an HR management sysyem might allow HR administrator to view or modify employees records.
   -> Authorization is ussually implemented by checking the user's credentials against a set of predefined rules or policies that specify what resources or actions they are alloiwed to access.
 
-  =>In many cases, authorization is implemented in conjunction with authentication, which is the process of verifying a user's identity. Together, these two processes provide a secure and reliable mechanism for controlling access to sensitive resources and data in a system.
+  => In many cases, authorization is implemented in conjunction with authentication, which is the process of verifying a user's identity. Together, these two processes provide a secure and reliable mechanism for controlling access to sensitive resources and data in a system.
 
-       eg.
+      eg.
 
-       // we are using cosures here.
+       // we are using closures here.
 
           const authorise=(roles_array)=>{
 
@@ -2073,7 +2078,7 @@ Denormalization:
 
               }else{
 
-                res.send({"Message":"User not found"});
+                res.send({"Message":"You are not authorised to this action"});
 
               }
             }
@@ -2085,18 +2090,18 @@ Denormalization:
 
 ## How do you do role-based authentication? 
 
-   => Role-based access control (RBAC) refers to the idea of assigning permissions to users based on their role within an organization. It offers a simple, manageable approach to access management that is less prone to error than assigning permissions to users individually.
-   => When using RBAC for Role Management, we analyze the needs of our users and group them into roles based on common responsibilities. 
-   => we can assign one or more roles to each user and one or more permissions to each role.
-   =>The user-role and role-permissions relationships make it simple to perform user assignments since users no longer need to be managed individually, but instead have privileges that conform to the permissions assigned to their role(s).
+=> Role-based access control (RBAC) refers to the idea of assigning permissions to users based on their role within an organization. It offers a simple, manageable approach to access management that is less prone to error than assigning permissions to users individually.
+=> When using RBAC for Role Management, we analyze the needs of our users and group them into roles based on common responsibilities. 
+=> we can assign one or more roles to each user and one or more permissions to each role.
+=>The user-role and role-permissions relationships make it simple to perform user assignments since users no longer need to be managed individually, but instead have privileges that conform to the permissions assigned to their role(s).
 
-   => Benefits of Rol Bases Access Controll(RBAC):
+=> Benefits of Rol Bases Access Controll(RBAC):
 
-     (1) Create systematic, repeatable assignment of permissions.
-     (2) Easiy audit user privileges an correct indentified issues.
-     (3) Quickly add and changes roles, as well as implement them across API's.
-     (4) Cut down on the potential for error when assigning user permissions.
-     (5) More effectively comply with regularity and statutory requirements for confidentially and privacy.
+    (1) Create systematic, repeatable assignment of permissions.
+    (2) Easiy audit user privileges an correct indentified issues.
+    (3) Quickly add and changes roles, as well as implement them across API's.
+    (4) Cut down on the potential for error when assigning user permissions.
+    (5) More effectively comply with regularity and statutory requirements for confidentially and privacy.
 
 ------------------------------------------------------------------------------
 
@@ -2106,7 +2111,7 @@ Denormalization:
 => A "hash function is a mathematical algorith" that takes in data as input and produces a fixed-length output, which is refered to as a hash code, hash value, or simply hash.
 => Its widely used fields like cryptography, data retrieval, data compression, and digital signatures.
 => It is commonly used to verify the integrity of data and to store passwords security by hashing them before storing them in a database,
-=> The hash function is designed in such a way that even a small change in the input data will result in a completely different hash value. This property is referred to as the avalanche effect and is important for ensuring the security and integrity of the data.
+=> The hash function is designed in such a way that even a small change in the input data will result in a completely different hash value. This property is referred to as the "avalanche effect" and is important for ensuring the security and integrity of the data.
 
 => Examples:
 
@@ -2164,9 +2169,9 @@ Denormalization:
 
     => here are three lengths of AES encryption keys. Each key length has a different number of possible key combinations:
 
-         - 128-bit key length: 3.4 x 1038
-         - 192-bit key length: 6.2 x 1057
-         - 256-bit key length: 1.1 x 1077 
+        -- 128-bit key length: 3.4 x 1038
+        -- 192-bit key length: 6.2 x 1057
+        -- 256-bit key length: 1.1 x 1077 
 
     => AES encryption is very appealing to those who work with it, Because the encryption process of AES is relatively easy to understand. This allows for easy implementation, as well as really fast encryption and decryption times.
 
@@ -2176,19 +2181,19 @@ Denormalization:
 
       Here are a few notable examples of where developers can use the AES encryption:
 
-      - VPNs (Virtual Private Networks): As the job of a VPN is to securely connect you to another server online, only the best methods of encryption can be considered so that your data wouldn’t leak. The VPNs that use the advanced encryption standard with 256-bit keys include NordVPN, Surfshark, and ExpressVPN.
+      -- VPNs (Virtual Private Networks): As the job of a VPN is to securely connect you to another server online, only the best methods of encryption can be considered so that your data wouldn't leak. The VPNs that use the advanced encryption standard with 256-bit keys include NordVPN, Surfshark, and ExpressVPN.
 
-      - Wi-Fi:  That’s right - wireless networks also use AES encryption (usually, together with WPA2). This is not the only type of encryption Wi-Fi networks can use, however, most of the other encryption methods are far less safe.
+      -- Wi-Fi:  That's right - wireless networks also use AES encryption (usually, together with WPA2). This is not the only type of encryption Wi-Fi networks can use, however, most of the other encryption methods are far less safe.
 
-      - Mobile applications: Many popular apps (like Snapchat and Facebook Messenger) use AES encryption in order to safely send info like photos and messages.
+      -- Mobile applications: Many popular apps (like Snapchat and Facebook Messenger) use AES encryption in order to safely send info like photos and messages.
 
-      - Archive and compression tools: All major file compression programs use AES to prevent data from leaking. These tools include 7z, WinZip, and RAR.
+      -- Archive and compression tools: All major file compression programs use AES to prevent data from leaking. These tools include 7z, WinZip, and RAR.
 
-      - OS system components: Some operating system components (like file systems) use the advanced encryption standard for an extra layer of safety.
+      -- OS system components: Some operating system components (like file systems) use the advanced encryption standard for an extra layer of safety.
 
-      - Programming language libraries: The libraries of such coding languages like Java, Python, and C++ implement AES encryption.
+      -- Programming language libraries: The libraries of such coding languages like Java, Python, and C++ implement AES encryption.
 
-      - Password managers. These are the programs that carry a lot of sensitive information. That’s why password managers like LastPass and Dashlane don’t skip the important step of AES implementation.
+      -- Password managers. These are the programs that carry a lot of sensitive information. That’s why password managers like LastPass and Dashlane don't skip the important step of AES implementation.
 
 
     ------------------------------------------
@@ -2196,37 +2201,37 @@ Denormalization:
     ## How is hashing and encryption different? **
     
     (1) Encryption:
-        -> Encryption is the process of converting a normal readable message known as plaintext into a garbage message or not readable message known as Ciphertext. 
+        -> Encryption is the process of converting a normal readable message known as 'plaintext' into a garbage message or not readable message known as 'ciphertext'. 
         -> The ciphertext obtained from the encryption can easily be transformed into plaintext using the encryption key.
         -> The purpose of encryption is to transform data to keep it secret from others.
         -> The original information can be easily retrieved if we know the encryption key and algorithm used for encryption. 
-        -> It is less secure in comparison to hashing.
+        -> It is "less secure in comparison to hashing".
         -> It will always generate a new key for each information.
-        -> The encrypted information is not of fixed length. It grows with the increase in length of information.
+        -> The "encrypted information is not of fixed length". It "grows" with the increase in length of information.
         -> Some of the examples of encryption algorithms are RSA, AES, and Blowfish.
 
     (2) Hashing:
         -> Hashing is the process of converting the information into a key using a hash function.
-        -> The purpose of hashing is indexing and retrieving items from the database. The process is very fast.
-        -> The hash code or key can not be reversed to the original information by any means. It can only be mapped and the hash code is checked if the hash code is the same the information is the same otherwise not. The original information can not be retrieved.
-        -> It is more secure in comparison to encryption.
+        -> The purpose of hashing is indexing and retrieving items from the database. The "process is very fast".
+        -> The "hash code or key can not be reversed to the original information by any means". It can only be mapped and the hash code is checked if the hash code is the same the information is the same otherwise not. "The original information can not be retrieved."
+        -> It is "more secure" in comparison to encryption.
         -> The original information cannot be retrieved from the hash key by any means.
         -> Generally, the hash keys are stored in the database and they are compared to check whether the original information matches or not.
-        -> Generally, it tries to generate a new key for each information passed to the hash function but on rare occasions, it might generate the same key popularly known as a collision.
+        -> Generally, it tries to generate a new key for each information passed to the hash function but on rare occasions, it might generate the same key popularly known as a 'collision'.
         -> They are generally used to store the passwords for login.
-        -> The hashed information is generally of small and fixed length. It does not grow with the increase in the information length of information.
+        -> The "hashed information is generally of small and fixed length". It does "not grow" with the increase in the information length of information.
         -> Some of the examples of a hashing algorithm are MD5, SHA256.
 
 ---------------------------------------------------------------------------------
 
 ## what is salt in encryption? **
 
-   => In the context of encryption, a salt is a random or pseudo-random string that is added to the plaintext before it is hashed or encrypted.
+   => In the context of encryption, a "salt is a random or pseudo-random string that is added to the plaintext before it is hashed or encrypted".
    -> The purpose of the salt is to make the resulting hash or ciphertext more secure by introducing additional randomness to the process.
    -> Salt is commonly used in password hashing to make it more difficult for attackers to guess or crack passwords.
    -> When a user creates a password, a salt is generated and appended to the password before it is hashed.
    -> This ensures that even if two users have the same password, their hashed passwords will be different because they have different salts.
-   -> Without salt, attackers can use pre-computed hash tables, known as rainbow tables, to quickly match the hashed password with a corresponding plain text password.
+   -> Without salt, attackers can use "pre-computed hash tables, known as rainbow tables", to quickly match the hashed password with a corresponding plain text password.
    -> By adding salt, the pre-computed hash tables are no longer effective because each salt produces a unique hash value, which makes it much harder for attackers to crack the passwords.
 
 --------------------------------------------------------------------------------
@@ -2238,12 +2243,12 @@ Denormalization:
     => JSON Web Tokens can be used in,
 
      -> Authorization: 
-        - This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
-        - Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
+        -- This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
+        -- Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
 
      -> Information Exchange:
-        - JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. 
-        - Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
+        -- JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. 
+        -- Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
      => JSON Web Tokens consist of three parts separated by dots (.), which are:
 
@@ -2258,7 +2263,7 @@ Denormalization:
     
     => In authentication, when the user successfully logs in using their credentials, a JSON Web Token will be returned. Since tokens are credentials, great care must be taken to prevent security issues. In general, you should not keep tokens longer than required.
 
-     Authorization: Bearer <token>
+    Authorization: Bearer <token>
 
 ----------------------------------------------------------------------------
 
@@ -2270,7 +2275,7 @@ Denormalization:
     * Here are some ways that JWT is different from other types of tokens:
 
         (1) Self-contained: 
-           -> JWT tokens are self-contained, meaning that all the necessary information is included within the token itself. This makes it easy to transmit the token between different systems without needing to reference an external database or lookup system.
+          => JWT tokens are self-contained, meaning that all the necessary information is included within the token itself. This makes it easy to transmit the token between different systems without needing to reference an external database or lookup system.
 
         (2) Stateless:
           -> Because all the necessary information is included within the token, JWT tokens are stateless. This means that the server does not need to store any information about the token on the server side, making it easier to scale horizontally.
@@ -2283,7 +2288,7 @@ Denormalization:
          -> This implies fewer DB queries, which implies faster response time. In case you are using paid services like DynamoDb that charge per query basis, JWT might reduce the costs marginally.
 
         (2) Simpler to use if careful : 
-          ->If your architecture doesn’t user client Sessions and your security basics are clear, the development time in case of JWT is faster using the existing libraries.
+          ->If your architecture doesn't user client Sessions and your security basics are clear, the development time in case of JWT is faster using the existing libraries.
 
         (3) Used across services : 
           -> You can have one authorization server that deals with the Login/Registration and generates the token, all the subsequent requests will need not have to go to the authorization server as the only the Auth-server will have have the private key, and rest of the severs will have the public-key to verify the signature.
@@ -2303,7 +2308,7 @@ Denormalization:
         (2) Cannot manage client from the server: 
 
           -> We had several cases where we wanted the users at HelpTap to logout by cleaning up the cookies, but we cannot ask them to do so every time.
-          -> As well consider the case that a user’s mobile is stolen, and he wants to logout of all existing sessions(e.g. Gmail’s logout other sessions feature). Well its not possible in case of JWT.
+          -> As well consider the case that a user’s mobile is stolen, and he wants to logout of all existing sessions(e.g. Gmail's logout other sessions feature). Well its not possible in case of JWT.
 
         (3) Cannot push Messages to clients (Identifying clients from server) :
           -> As we have no record about the logged-in clients on the DB end, we cannot push messages to all the clients.
@@ -2328,18 +2333,19 @@ Denormalization:
   => Authentication is purely the means of confirming digital identification, so users have the level of permissions to access or perform a task they are attempting.
 
   =>The ways of Authentication:
+
   (1) Session-based-authentication:
-     - In session based authetication , server creates a session for the user after they log in , and sends a session ID back to the client. The Client then includes this session ID in subsequent requests, allowing the server to identify the user and verify their identity. Sessions are typically stored on the server side and can be used to store user-specific data.
+    -- In session based authetication , server creates a session for the user after they log in , and sends a session ID back to the client. The Client then includes this session ID in subsequent requests, allowing the server to identify the user and verify their identity. Sessions are typically stored on the server side and can be used to store user-specific data.
 
   (2) Token-based authentication:
-     - In token-based authentication, the server generates a token (such as a JWT) after the user logs in, which is then sent back to the client. The client includes this token in subsequent requests, allowing the server to identify the user and verify their identity. Tokens can be stored client-side (in cookies or local storage) or server-side (in a database or cache).
+    -- In token-based authentication, the server generates a token (such as a JWT) after the user logs in, which is then sent back to the client. The client includes this token in subsequent requests, allowing the server to identify the user and verify their identity. Tokens can be stored client-side (in cookies or local storage) or server-side (in a database or cache).
 
   (3) OAuth2: 
-     -> OAuth2 is an open standard for authentication and authorization, used by many large web applications such as Google, Facebook, and Twitter.
-     -> OAuth2 allows users to grant third-party applications access to their resources without sharing their login credentials. The third-party application receives an access token, which it can use to access the user's resources.
+    --> OAuth2 is an open standard for authentication and authorization, used by many large web applications such as Google, Facebook, and Twitter.
+    --> OAuth2 allows users to grant third-party applications access to their resources without sharing their login credentials. The third-party application receives an access token, which it can use to access the user's resources.
 
   (4) OpenID Connect:
-     -> OpenID Connect is a standard built on top of OAuth2 that provides additional features for authentication, such as user profile information and single sign-on (SSO) capabilities. OpenID Connect is widely used by enterprise applications for SSO.
+    --> OpenID Connect is a standard built on top of OAuth2 that provides additional features for authentication, such as user profile information and single sign-on (SSO) capabilities. OpenID Connect is widely used by enterprise applications for SSO.
 
   => Authentication methods:
 
@@ -2352,7 +2358,7 @@ Denormalization:
    (2) Two-Factor Authentication (2FA):
 
       ->By adding a second factor for verification, two-factor authentication reinforces security efforts.
-      -> It is an added layer that essentially double-checks that a user is, in reality, the user they’re attempting to log in as—making it much harder to break.
+      -> It is an added layer that essentially double-checks that a user is, in reality, the user they're attempting to log in as—making it much harder to break.
       -> With this method, users enter their primary authentication credentials (like the username/password mentioned above) and then must input a secondary piece of identifying information.
       -> The secondary factor is usually more difficult, as it often requires something the valid user would have access to, unrelated to the given system.
       -> Possible secondary factors are a one-time password from an authenticator app, a phone number, or device that can receive a push notification or SMS code, or a biometric like fingerprint (Touch ID) or facial (Face ID) or voice recognition.
@@ -2379,8 +2385,8 @@ Denormalization:
 
     (1) The user gives a username and password at time of login. Once the user fills the login form, the browser(client) sends a login request to the server.
     (2) The server verifies the data by querying the user data. If authenticaton request valid, the server generate the following:
-       (a) A session by utilizing the user information.
-       (b) A unique ID, known as session ID.
+      (a) A session by utilizing the user information.
+      (b) A unique ID, known as session ID.
       The server then passes the session ID to the browser that keeps it. The server also keeps track of the active sessions.
     (3) The browser has to submit this generated session ID while sending a subsequent request. Every time the server validates the session ID. The session ID helps the authentication process identify the user and provides access accordingly.
     (4) When the user logs out of the application, the session gets destroyed from both client (browser) and the server. It discontinues the authentication process from happening again through the respective session ID.
@@ -2406,13 +2412,13 @@ Denormalization:
 
 ## What is session management ?
 
-   => Session management manages sessions between the web application and the users. The communication between a web browser and a website is usually done over HTTP or HTTPS. When a user visits a website, a session is made containing multiple requests and responses over HTTP.
-   => A session is a period of time in which a user interacts with an application, from the moment they log in to the moment they log out or their session expires. During this time, the application needs to keep track of the user's identity and state in order to provide a personalized experience and maintain security
+  => Session management manages sessions between the web application and the users. The communication between a web browser and a website is usually done over HTTP or HTTPS. When a user visits a website, a session is made containing multiple requests and responses over HTTP.
+  => A session is a period of time in which a user interacts with an application, from the moment they log in to the moment they log out or their session expires. During this time, the application needs to keep track of the user's identity and state in order to provide a personalized experience and maintain security
 
-   => The Steps involved in session management:
+  => The Steps involved in session management:
 
     (1)  Session Creation:
-         -> When a user logs in to the application, the server creates a new session for that user. This typically involves generationg a unique session ID, which is associated with the users account and stored on server.
+        When a user logs in to the application, the server creates a new session for that user. This typically involves generationg a unique session ID, which is associated with the users account and stored on server.
 
     (2)  Session tracking:
         As the user interacts with the application, the session ID is used to track their identity and state. This includes the data like preferences or shoping cart contents on server and associating with users session id.
@@ -2445,16 +2451,16 @@ Denormalization:
 
 ##  What is REST api? 
 
-   => REST stands for the ("Representational State Transfer") API is a web-based architectural style for creating API's.
-   => REST APIs allow communication between different systems on the internet.
-   => REST API's allows data to be exchanged between systems using HTTP and other standard web protocols.
-   => A REST API is designed around resources, which are identified by unique URLs.
-   => Data can be any type of object, such as a user, a blog post, or a product. Each data is represented as a collection of properties or attributes, which can be manipulated using a standardized set of HTTP methods, such as GET (to retrieve a data), POST (to create a new data), PUT (to update an existing data), and DELETE (to remove a data).
-   => REST API is a stateless architecture, which means that the server does not store any information about the client's state between requests. Instead, each request contains all the information necessary for the server to understand and process the request.
-   => REST API's  allows developers to create flexible and scalable APIs that can be used by a variety of different applications and systems.
-   => REST API's are easy to implement, as it uses standard web protocols and HTTP methods, and can be used with a wide range of programming languages and frameworks.
-   => Advantages of REST API include its scalability, flexibility, and compatibility with a wide range of systems and devices.
-   => However, designing and implementing a REST API can be complex, as it requires careful consideration of resource design, URL structure, and HTTP method usage. Additionally, security is also a concern, and proper authentication and authorization mechanisms must be implemented to prevent unauthorized access to resources.
+  => REST stands for the ("Representational State Transfer") API is a web-based architectural style for creating API's.
+  => REST APIs allow communication between different systems on the internet.
+  => REST API's allows data to be exchanged between systems using HTTP and other standard web protocols.
+  => A REST API is designed around resources, which are identified by unique URLs.
+  => Data can be any type of object, such as a user, a blog post, or a product. Each data is represented as a collection of properties or attributes, which can be manipulated using a standardized set of HTTP methods, such as GET (to retrieve a data), POST (to create a new data), PUT (to update an existing data), and DELETE (to remove a data).
+  => REST API is a stateless architecture, which means that the server does not store any information about the client's state between requests. Instead, each request contains all the information necessary for the server to understand and process the request.
+  => REST API's  allows developers to create flexible and scalable APIs that can be used by a variety of different applications and systems.
+  => REST API's are easy to implement, as it uses standard web protocols and HTTP methods, and can be used with a wide range of programming languages and frameworks.
+  => Advantages of REST API include its scalability, flexibility, and compatibility with a wide range of systems and devices.
+  => However, designing and implementing a REST API can be complex, as it requires careful consideration of resource design, URL structure, and HTTP method usage. Additionally, security is also a concern, and proper authentication and authorization mechanisms must be implemented to prevent unauthorized access to resources.
 
 ----------------------------------------------------------------------------------
 
