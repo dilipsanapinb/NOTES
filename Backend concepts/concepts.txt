@@ -1453,12 +1453,12 @@ Both clients and servers can include multiple headers in their respective reques
 
 ### Q. What is OWASP ?
 
-  - OWASP stands for the "Open Web Application Security Project".
+  -- OWASP stands for the "Open Web Application Security Project".
 
-  - It is a non-profit organization that focuses on improving the security of web applications and softwares by providing resources, tools, and best practices to identify, prioritize, and mitigate common web application vulnerabilities.
-  - OWASP is a globally recognized authority on web application security and is widely used by security professionals, developers, and organizations to improve the security of their web applications.
-  - One of the key initiatives of OWASP is the "OWASP Top Ten Project", which identifies the top ten most critical web application security risks.
-  - This list is updated periodically and serves as a reference for developers and organizations to prioritize and address common web application vulnerabilities, such as cross-site scripting (XSS), SQL injection, and insecure authentication.
+  -- It is a non-profit organization that focuses on improving the security of web applications and softwares by providing resources, tools, and best practices to identify, prioritize, and mitigate common web application vulnerabilities.
+  -- OWASP is a globally recognized authority on web application security and is widely used by security professionals, developers, and organizations to improve the security of their web applications.
+  -- One of the key initiatives of OWASP is the "OWASP Top Ten Project", which identifies the top ten most critical web application security risks.
+  -- This list is updated periodically and serves as a reference for developers and organizations to prioritize and address common web application vulnerabilities, such as cross-site scripting (XSS), SQL injection, and insecure authentication.
 
 -------------------------------------------
 
@@ -1466,21 +1466,21 @@ Both clients and servers can include multiple headers in their respective reques
 
   (1) SQL databases:
 
-    - SQL Database are relational databases that store data in tables with predefined schema.
-    - They use structured query language (SQL) to manage and manipulate data.
-    - SQL databases are known for their ability to handle complex queries, transactions, and relationships between tables.
-    - They are often used for applications that require a high degree of data consistency, such as financial systems or inventory management systems.
-    - SQL databases typically have vertical scalability, which means they can handle increasing amounts of data by adding more hardware resources (e.g., RAM, CPU, disk space). 
-    - SQL databases are typically ACID (Availability, Consistency, Isolation and Durability)-compliant, which means they provide a high level of data consistency and reliability
+    -- SQL Database are relational databases that store data in tables with predefined schema.
+    -- They use structured query language (SQL) to manage and manipulate data.
+    -- SQL databases are known for their ability to handle complex queries, transactions, and relationships between tables.
+    -- They are often used for applications that require a high degree of data consistency, such as financial systems or inventory management systems.
+    -- SQL databases typically have vertical scalability, which means they can handle increasing amounts of data by adding more hardware resources (e.g., RAM, CPU, disk space). 
+    -- SQL databases are typically ACID (Availability, Consistency, Isolation and Durability)-compliant, which means they provide a high level of data consistency and reliability
 
   (2) NoSQL databases:
 
-    - NoSQL databasesare non-relational databases that do not use a fixed schema to store data.
-    - They are designed to be highly scalable and flexible, making them useful for applications that require large amounts of unstructured or semi-structured data, such as social media platforms or e-commerce sites.
-    - NoSQL databases typically have their own query language, which is optimized for the specific data model they use.
-    - NoSQL databases can handle different types of data models, such as key-value, document-based, or graph-based, and are often used for distributed systems or cloud-based applications.
-    - NoSQL databses are typically have horizontal scalability, which means they can handle increasing amounts of data by adding more servers to a cluster.
-    - NoSQL databases are often designed to sacrifice some level of consistency and reliability for the sake of scalability and performance.
+    -- NoSQL databasesare non-relational databases that do not use a fixed schema to store data.
+    -- They are designed to be highly scalable and flexible, making them useful for applications that require large amounts of unstructured or semi-structured data, such as social media platforms or e-commerce sites.
+    -- NoSQL databases typically have their own query language, which is optimized for the specific data model they use.
+    -- NoSQL databases can handle different types of data models, such as key-value, document-based, or graph-based, and are often used for distributed systems or cloud-based applications.
+    -- NoSQL databses are typically have horizontal scalability, which means they can handle increasing amounts of data by adding more servers to a cluster.
+    -- NoSQL databases are often designed to sacrifice some level of consistency and reliability for the sake of scalability and performance.
 
   The choice between SQL and NoSQL databases depends on the specific requirements of the application. SQL databases are best suited for applications that require data consistency and a fixed schema, while NoSQL databases are ideal for applications that require scalability, flexibility, and the ability to handle unstructured data. In some cases, a combination of both SQL and NoSQL databases may be used to take advantage of their respective strengths.
 
@@ -1492,32 +1492,32 @@ SQL is a powerful language for managing and manipulating relational databases. H
 
 => SELECT: This is the most basic query in SQL, used to retrieve data from one or more tables. The syntax is:
 
-   SELECT column1, column2, ... FROM table_name;
+  SELECT column1, column2, ... FROM table_name;
 
 
 => WHERE: This is used to filter data based on a condition. The syntax is:
-   SELECT column1, column2, ... FROM table_name WHERE condition;
+  SELECT column1, column2, ... FROM table_name WHERE condition;
 
 => ORDER BY: This is used to sort the results of a query by one or more columns. The syntax is:
-   SELECT column1, column2, ... FROM table_name ORDER BY column1 ASC/DESC, column2 ASC/DESC, ...;
+  SELECT column1, column2, ... FROM table_name ORDER BY column1 ASC/DESC, column2 ASC/DESC, ...;
 
 => GROUP BY: This is used to group the results of a query by one or more columns. The syntax is:
-   SELECT column1, column2, ... FROM table_name GROUP BY column1, column2, ...;
+  SELECT column1, column2, ... FROM table_name GROUP BY column1, column2, ...;
 
 => JOIN: This is used to combine data from two or more tables based on a related column. There are several types of joins, including INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN. The syntax for an INNER JOIN is:
-   SELECT column1, column2, ... FROM table1 INNER JOIN table2 ON table1.column = table2.column;
+  SELECT column1, column2, ... FROM table1 INNER JOIN table2 ON table1.column = table2.column;
 
 -------------------------------------------------------
 
 # Q. How do you do joins in SQL?
 
 -In SQL, joins are used to combine data from two or more tables based on a related column between them.
-- There are several types of joins that can be used, including INNER JOIN, LEFT JOIN (or LEFT OUTER JOIN), RIGHT JOIN (or RIGHT OUTER JOIN), and FULL OUTER JOIN.
-- Here's an overview of how you can perform joins in SQL:
+-- There are several types of joins that can be used, including INNER JOIN, LEFT JOIN (or LEFT OUTER JOIN), RIGHT JOIN (or RIGHT OUTER JOIN), and FULL OUTER JOIN.
+-- Here's an overview of how you can perform joins in SQL:
 
 (1) INNER JOIN: An INNER JOIN returns only the "rows that have matching values in both tables".
 
-  - The syntax for an INNER JOIN is as follows:
+  -- The syntax for an INNER JOIN is as follows:
 
       SELECT column1, column2 FROM table1
       INNER JOIN table2 ON table1.column_name = table2.column_name;
@@ -1526,15 +1526,15 @@ SQL is a powerful language for managing and manipulating relational databases. H
 
 (2) LEFT JOIN (or LEFT OUTER JOIN): A LEFT JOIN "returns all the rows from the left table (table1), and the matching rows from the right table (table2)."
 
-  - If there are no matching rows in the right table, NULL values are returned. The syntax for a LEFT JOIN is as follows:
+  -- If there are no matching rows in the right table, NULL values are returned. The syntax for a LEFT JOIN is as follows:
 
       SELECT column1, column2 FROM table1
       LEFT JOIN table2 ON table1.column_name = table2.column_name;
 
-  - In this example, all the rows from table1 are returned, and the matching rows from table2 are included. If there are no matching rows in table2, NULL values are returned for the columns from table2.
+  -- In this example, all the rows from table1 are returned, and the matching rows from table2 are included. If there are no matching rows in table2, NULL values are returned for the columns from table2.
 
 (3) RIGHT JOIN (or RIGHT OUTER JOIN): A RIGHT JOIN returns all the rows from the right table (table2), and the matching rows from the left table (table1).
-  - If there are no matching rows in the left table, NULL values are returned. The syntax for a RIGHT JOIN is as follows:
+  -- If there are no matching rows in the left table, NULL values are returned. The syntax for a RIGHT JOIN is as follows:
 
       SELECT column1, column2 FROM table1
       RIGHT JOIN table2 ON table1.column_name = table2.column_name;
@@ -1543,53 +1543,58 @@ SQL is a powerful language for managing and manipulating relational databases. H
 
 (4) FULL OUTER JOIN: A FULL OUTER JOIN returns all the rows from both tables (table1 and table2), including the matching rows as well as the unmatched rows from both tables.
 
-  - If there are no matching rows in either table, NULL values are returned. The syntax for a FULL OUTER JOIN depends on the specific SQL database management system being used, as it may vary. Here's an example:
+  -- If there are no matching rows in either table, NULL values are returned. The syntax for a FULL OUTER JOIN depends on the specific SQL database management system being used, as it may vary. Here's an example:
 
       SELECT column1, column2 FROM table1
       FULL OUTER JOIN table2 ON table1.column_name = table2.column_name;
-     
+
   In this example, all the rows from both table1 and table2 are returned, including the matching rows as well as the unmatched rows from both tables. If there are no matching rows in either table, NULL values are returned for the columns from the respective table.
 
 ----------------------------------------------------------
 
 ### Q. How do you use lookup in mongodb? *** 
 
-  - In MongoDB, the $lookup operator is used to perform a left outer join between two collections.
-  - The $lookup operator takes two parameters: the name of the collection to join with, and an object that specifies the fields to use for the join.
+  -- In MongoDB, the $lookup operator is used to perform a left outer join between two collections.
+  -- The $lookup operator takes two parameters: the name of the collection to join with, and an object that specifies the fields to use for the join.
   To combine elements from two different collections, use the $unionWith pipeline stage.
   
 db.orders.aggregate([
-   {
+  {
       $lookup:
-         {
-           from: "customers",
-           localField: "customer_id",
-           foreignField: "_id",
-           as: "customer_info"
-         }
-   }
+        {
+          from: "customers",
+          localField: "customer_id",
+          foreignField: "_id",
+          as: "customer_info"
+        }
+  }
 ])
 
 -------------------------------------------
 
 ### Q. What is CAP theorem? ***
 
-- CAP theorem is a fundamental concept in distributed database systems.
-- CAP stands for Consistency, Availability, and Partition Tolerance.
+-- CAP theorem is a fundamental concept in distributed database systems.
+-- It is also known as Brewer's theorem.
+-- CAP stands for Consistency, Availability, and Partition Tolerance.
 
- (1) Consistency: Every read receives the most recent write or an error.
+(1) Consistency: Every read receives the most recent write or an error.
+    --  when a write operation occurs, all subsequent read operations should return the most recent write value. Achieving consistency ensures that all clients see a single, up-to-date version of the data
 
- (2) Availability: Every request receives a response, without guarantee that it contains the most recent version of the information.
+(2) Availability: Every request receives a response, without guarantee that it contains the most recent version of the information.
+    --  the system remains operational and responsive even in the presence of failures. High availability ensures that the system is accessible to users at all times.
 
- (3) Partition tolerance: The system continues to function even when network partitions occur.
+(3) Partition tolerance: The system continues to function even when network partitions occur.
+    --  the system remains operational and responsive even in the presence of failures. High availability ensures that the system is accessible to users at all times.
+    -- Partitioning refers to the concept of splitting a distributed system into multiple parts that can operate independently. Partition tolerance ensures that the system can handle network partitions without complete failure.
 
-- According to the CAP theorem, it is impossible to achieve all three guarantees simultaneously in a distributed database system.
-- In a Node.js backend application, the CAP theorem impacts the design and behavior of the database system.
-- According to the CAP theorem, a distributed system can provide at most two of these guarantees at the same time.
-  - This means that if a system provides consistency and availability, it will not be able to tolerate network partitions.
-  - If it provides availability and partition tolerance, it will sacrifice consistency, and
-  - If it provides consistency and partition tolerance, it will sacrifice availability.
-- You may need to prioritize and make trade-offs between consistency, availability, and partition tolerance based on your application requirements.
+-- According to the CAP theorem, it is impossible to achieve all three guarantees simultaneously in a distributed database system.
+-- In a Node.js backend application, the CAP theorem impacts the design and behavior of the database system.
+-- According to the CAP theorem, a distributed system can provide at most two of these guarantees at the same time.
+  -- This means that if a system provides consistency and availability, it will not be able to tolerate network partitions.
+  -- If it provides availability and partition tolerance, it will sacrifice consistency, and
+  -- If it provides consistency and partition tolerance, it will sacrifice availability.
+-- You may need to prioritize and make trade-offs between consistency, availability, and partition tolerance based on your application requirements.
 
 -------------------------------------------------
 
