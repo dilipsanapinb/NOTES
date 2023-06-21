@@ -72,11 +72,64 @@
 //     // Output:"Hello from myEvent"
 // })
 
-const myEventTarget = new EventTarget();
+// const myEventTarget = new EventTarget();
 
-const myEvent = new Event('myEvent');
+// const myEvent = new Event('myEvent');
 
-myEventTarget.addEventListener('myEvent', function (event) {
-    console.log('Custom event triggered');
+// myEventTarget.addEventListener('myEvent', function (event) {
+//     console.log('Custom event triggered');
+// })
+// myEventTarget.dispatchEvent(myEvent);
+
+const express = require('express');
+
+// const session=require('express-session')
+
+const cookieparser = require("cookie-parser");
+
+const app = express();
+
+app.use(cookieparser());
+
+// app.use(session({
+//     secret: 'secretKey',
+//     resave: false,
+//     saveUninitialized:false
+// }));
+
+app.get('/', (req, res) => {
+    res.send('Welcome')
 })
-myEventTarget.dispatchEvent(myEvent);
+
+// app.get('/login', (req, res) => {
+//     req.session.username = 'Dilip';
+//     res.send("Logged in successfully")
+// });
+
+// app.get('/profile', (req, res) => {
+//     let username = req.session.username;
+//     res.send(`Username:${username}`)
+// })
+
+app.get('/set', (req, res) => {
+    res.cookie('Username', "Dilip Sanap", { maxAge: 20 * 1000, httpOnly: true });
+    res.send('Cookie set successfully');
+})
+
+app.get('/get', (req, res) => {
+    const username = req.cookies.Username;
+    if (username) {
+        res.send(`Hello,  ${username}`)
+    } else {
+        res.send(`Cookie not found`)
+    }
+    
+});
+
+app.get("/clear", (req, res) => {
+  res.clearCookie("username");
+  res.send("Cookie has been cleared");
+});
+app.listen(8080, () => {
+    console.log('server is running on port 8080');
+})

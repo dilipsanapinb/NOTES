@@ -1,6 +1,6 @@
 ## Explain in brief what is node.js?
 
-=>Node.js is an open-source, cross-platform, server-side JavaScript runtime environment built on the V8 engine of Google Chrome.
+=> Node.js is an open-source, cross-platform, server-side JavaScript runtime environment built on the V8 engine of Google Chrome.
 => It enables developers to use JavaScript for both server-side and client-side scripting. Node.js was created to provide a more efficient way to build scalable network applications, as it allows developers to write JavaScript code that runs outside of a web browser, which makes it ideal for developing high-performance and event-driven applications such as web servers, real-time chat applications, and APIs.
 => Node.js is built on top of JavaScript and provides a rich set of built-in modules that make it easy to build scalable and reliable applications.
 => Some popular frameworks that are built on top of Node.js include Express.js, Koa.js, and Nest.js.
@@ -10,7 +10,7 @@
 
 ## What is non-blocking vs blocking?
 
-Blocking and non-blocing are the terms used in CS and refer to how the system/process behaves when waiting for a particular event or resource.
+Blocking and non-blocing are the terms used in CS and refer to how the system / process behaves when waiting for a particular event or resource.
 
 #BLOCKING:-
 
@@ -22,8 +22,8 @@ especially when the server is handling multiple requests simultaneously.
 -In Node.js, JavaScript that exhibits poor performance due to being CPU intensive rather than waiting on a non-JavaScript operation, such as I/O, isn't typically referred to as blocking.
 -All of the I/O methods in the Node.js standard library provide asynchronous versions, which are non-blocking, and accept callback functions. Some methods also have blocking counterparts, which have names that end with Sync.
   eg.
-`const fs = require("fs");
-const data = fs.readFileSync("./data.txt");`
+const fs = require("fs");
+const data = fs.readFileSync("./data.txt");
 
 #NON-BLOCKING
 
@@ -31,10 +31,12 @@ const data = fs.readFileSync("./data.txt");`
 Non-blocking code can help improve server performance and responsiveness. By using non-blocking techniques such as asynchronous programming, the server can handle multiple requests simultaneously without being blocked by long-running code.
 -In non-blocking i/o operations allow the calling thread to continue executing while the I/O operation is in progress. This can be seen in scenarios such as web servers, where a request can be handled asynchronously without blocking the thread.
 eg.
-`const fs = require("fs");
+
+const fs = require("fs");
 fs.readFile("/file.md", (err, data) => {
   if (err) throw err;
-});`
+  console.log(data)
+});
 
 --------------------------------------------------
 
@@ -72,16 +74,16 @@ It's important to note that throughput is not the only consideration in evaluati
 
 => Examples of CPU-intensive tasks include:
 
-- Video encoding or rendering
-- Image processing or editing
-- Machine learning or data analysis
-- Cryptography or encryption
-- Large-scale data processing or batch jobs
-- Audio or video transcoding
-- Simulation or modeling
-- 3D rendering or animation
-- Game development or graphics processing
-- Virtualization or containerization
+-- Video encoding or rendering
+-- Image processing or editing
+-- Machine learning or data analysis
+-- Cryptography or encryption
+-- Large-scale data processing or batch jobs
+-- Audio or video transcoding
+-- Simulation or modeling
+-- 3D rendering or animation
+-- Game development or graphics processing
+-- Virtualization or containerization
 
 => In general, any task that involves manipulating large amounts of data or performing complex calculations can be CPU-intensive and may require specialized hardware or software optimizations to run efficiently.
 
@@ -93,23 +95,25 @@ It's important to note that throughput is not the only consideration in evaluati
 
 =>Here are some common ways in which the main thread can be blocked in Node.js:
 
-    - "Synchronous I/O operations": If you use synchronous versions of I/O operations like fs.readFileSync or process.stdin.readSync, they will block the main thread until the operation is completed, causing the event loop to stall and become unresponsive.
+    -- "Synchronous I/O operations": If you use synchronous versions of I/O operations like fs.readFileSync or process.stdin.readSync, they will block the main thread until the operation is completed, causing the event loop to stall and become unresponsive.
 
-    - "Long-running computations": If you have computationally intensive tasks that take a long time to execute, such as complex mathematical calculations or data processing, these tasks can block the main thread and cause the event loop to become unresponsive.
+    -- "Long-running computations": If you have computationally intensive tasks that take a long time to execute, such as complex mathematical calculations or data processing, these tasks can block the main thread and cause the event loop to become unresponsive.
 
-    - "Infinite loops": If you have an infinite loop in your code that runs continuously without yielding control back to the event loop, this can block the main thread and cause the application to become unresponsive.
+    -- "Infinite loops": If you have an infinite loop in your code that runs continuously without yielding control back to the event loop, this can block the main thread and cause the application to become unresponsive.
 
-    - "Recursive functions": If you have a recursive function that calls itself repeatedly without returning control to the event loop, this can cause the call stack to grow indefinitely and eventually lead to a stack overflow error, blocking the main thread.
+    -- "Recursive functions": If you have a recursive function that calls itself repeatedly without returning control to the event loop, this can cause the call stack to grow indefinitely and eventually lead to a stack overflow error, blocking the main thread.
 
 =>To avoid blocking the main thread in Node.js, it's important to use asynchronous I/O operations, break up long-running computations into smaller chunks, and avoid infinite loops or recursive functions that don't return control to the event loop. You can also use worker threads or child processes to offload CPU-intensive tasks to separate threads or processes and keep the main thread free to process I/O operations and events.
 
 ----------------------------------------------------
 
 ## What is rate limiting?
+
 => Rate limiting is a technique used to control the amount of traffic that is sent or received by a network or application.
 => It is a way of limiting the number of requests that can be made over a certain period of time to prevent overload and ensure fair usage of resources.
 
 => In web development, rate limiting is often used to control the amount of traffic sent to a web server by limiting the number of requests that can be made by a client or IP address within a certain period of time.
+
 => This helps prevent denial-of-service attacks and ensures that resources are used efficiently.
 
 => For example, a rate limit of 100 requests per minute could be set for a particular API endpoint. Once the client has made 100 requests within a minute, any further requests would be blocked or throttled until the next minute begins. This can be done using techniques such as token bucket, leaky bucket, or sliding window algorithms.
@@ -254,6 +258,7 @@ It's the way we can tell the JS engine to process a function asynchronously (aft
         Running at next tick => number 2
         Running before the timeout => number 3
         The timeout running last => number 4
+
 -----------------------------------------------------
 
 ## When can process.tick starve your event loop?
@@ -285,16 +290,19 @@ myEventTarget.addEventListener('myEvent', function(event) {
 });
 
 // Dispatch the custom event
+
 myEventTarget.dispatchEvent(myEvent);
 
 
 Example-2
 
     const event = new CustomEvent("build", { detail: elem.dataset.time });
-     
-     function eventHandler(e) {
+    
+    function eventHandler(e) {
   console.log(`The time is: ${e.detail}`);
 }
+
+------------------------------------------------------
 
 ## Creating and dispatching events dynamically:=>
 
@@ -312,7 +320,8 @@ form.addEventListener("awesome", (e) => console.log(e.detail.text()));
 
 textarea.addEventListener("input", function () {
   // Create and dispatch/trigger an event on the fly
-  // Note: Optionally, we've also leveraged the "function expression" (instead of the "arrow function expression") so "this" will represent the element
+  // Note: Optionally, we've also leveraged the "function expression" (instead of the "arrow function expression") so "this" will represent the element.
+
   this.dispatchEvent(
     new CustomEvent("awesome", {
       bubbles: true,
@@ -330,16 +339,19 @@ textarea.addEventListener("input", function () {
 Reading a file is a common thing in every progrmming languages and every language has its own way of reading files. here.., in node we have File system module (fs) which allows us to work with files.
 
 => both readFile() and readFileSync() reads the file at once and then delivers the content.
-=>In fs.readFile() method, we can read a file in a non-blocking asynchronous way, but in fs.readFileSync() method, we can read files in a synchronous way, i.e. we are telling node.js to block other parallel process and do the current file reading process. 
-- The difference is that ,
+=> In fs.readFile() method, we can read a file in a non-blocking asynchronous way, but in fs.readFileSync() method, we can read files in a synchronous way, i.e. we are telling node.js to block other parallel process and do the current file reading process. 
+-- The difference is that ,
 
 readFile is non-blocking async.
 readFileSync is blocking sync.
 
-`const fs=require('fs'); // imports file system module in variable fs`
+const fs=require('fs'); // imports file system module in variable fs
+
 ##readFile()
+
 =>readFile() method uses a callback function. Due to its non-blocking nature, the program wont wait for the file to be read completely. So that the -->The end<-- message will be printed in first or in between the file content.
-`const fs=require('fs');
+
+const fs=require('fs');
  fs.readFile('test.txt','utf-8',(err,data)=>{  //utf decoding to avoid binary code output.
         if(err){
             console.log(err);
@@ -348,14 +360,15 @@ readFileSync is blocking sync.
             console.log(data);
         }
     });
-    console.log('-------the end------)`
+    console.log('-------the end------)
 
 ## readFileSync()
 =>readFileSync() method uses a variable to store the file content and then delivers it. Due to its blocking nature, the program waits till the file is read completely. So that the -->The end<-- message will be printed only after the content is delivered.
-  `const fs=require('fs');
+
+  const fs=require('fs');
 var contents = fs.readFileSync('test.txt', 'utf-8'); //utf decoding to avoid binary code output.
 console.log(contents);
-console.log(" -->The end<-- ");`
+console.log(" -->The end<-- ");
 
 
 ### Conclusion
@@ -366,33 +379,33 @@ console.log(" -->The end<-- ");`
 | Uses callback uses   | variable to store content |
 | Asynchronous nature  | Synchronous nature        |
 
+----------------------------------------------------------------
 
+##  How can you make a network request using http module?
 
-## 4. How can you make a network request using http module?
-
-- Create the Server
+-- Create the Server
 
 1.Require the http module using require('http').
 
-      `const http = require('http');
+      const http = require('http');
 
 2.Create an instance of the http.ClientRequest class using http.request(options, callback), where options is an object containing information about the request, and callback is a function that will be called when the response is received.
 
      const server = http.createServer((request, response) => {
-      });`
+      });
 
-3.
-      The function that's passed in to createServer is called once for every HTTP request that's made against that server, so it's called the request handler. In fact, the Server object returned by createServer is an EventEmitter, and what we have here is just shorthand for creating a server object and then adding the listener later.
+
+(3)The function that's passed in to createServer is called once for every HTTP request that's made against that server, so it's called the request handler. In fact, the Server object returned by createServer is an EventEmitter, and what we have here is just shorthand for creating a server object and then adding the listener later.
       When an HTTP request hits the server, node calls the request handler function with a few handy objects for dealing with the transaction, request and response.
 
       In order to actually serve requests, the listen method needs to be called on the server object. In most cases, we need to pass to listen is the port number you want the server to listen on. There are some other options too, so consult the API reference.
 
-- Method, URL and Headers
+-- Method, URL and Headers
 
   When handling a request, the first thing we probably want to do is look at the method and URL, so that appropriate actions can be taken. Node.js makes this relatively painless by putting handy properties onto the request object.
 
-  `const { headers } = request;
-const userAgent = headers['user-agent'];`
+  const { headers } = request;
+const userAgent = headers['user-agent'];
 
   When receiving a POST or PUT request, the request body might be important to our application. Getting at the body data is a little more involved than accessing request headers. The request object that's passed in to a handler implements the ReadableStream interface. This stream can be listened to or piped elsewhere just like any other stream. We can grab the data right out of the stream by listening to the stream's 'data' and 'end' events.
 
@@ -406,20 +419,20 @@ const userAgent = headers['user-agent'];`
 
   Headers are set through a convenient method called setHeader.
 
-  `response.setHeader('Content-Type', 'application/json');
-response.setHeader('X-Powered-By', 'bacon');`
+  response.setHeader('Content-Type', 'application/json');
+response.setHeader('X-Powered-By', 'bacon');
 
   When setting the headers on a response, the case is insensitive on their names. If you set a header repeatedly, the last value you set is the value that gets sent.
 
 - Sending Response Body
 
-  `response.write('<html>');
+  response.write('<html>');
 response.write('<body>');
 response.write('<h1>Hello, World!</h1>');
 response.write('</body>');
 response.write('</html>');
 response.end();
-`
+
 
   It's important to set the status and headers before you start writing chunks of data to the body. This makes sense, since headers come before the body in HTTP responses.
 
@@ -494,7 +507,7 @@ HTTP status codes are classified into 5 broad categories. The status codes provi
 
 As methods tell the server what to do, status codes tell the client what happened. Status codes live in the start lines of responses. For example, in the line “HTTP/1.1 200 OK” the status code is 200.
 
-When clients send request messages to an HTTP server, many things can happen. If you are fortunate, the request will complete successfully. You might not always be so lucky. The server may tell you that the resource you requested could not be found, that you don’t have permission to access the resource, or perhaps that the resource has moved someplace else.
+When clients send request messages to an HTTP server, many things can happen. If you are fortunate, the request will complete successfully. You might not always be so lucky. The server may tell you that the resource you requested could not be found, that you don't have permission to access the resource, or perhaps that the resource has moved someplace else.
 
 Status codes are returned in the start line of each response message. Both a numeric and a human readable status are returned. The numeric code makes error processing easy for programs, while the reason phrase is easily understood by humans.
 
@@ -507,6 +520,7 @@ Overall range	Defined range	Category
 400-499	400-415	Client error
 500-599	500-505	Server error
 100-199: Informational Status Codes
+
 HTTP/1.1 introduced the informational status codes to the protocol. They are relatively new and subject to a bit of controversy about their complexity and perceived value.
 
 Status code	Reason phrase	Meaning
@@ -541,13 +555,13 @@ Sometimes a client sends something that a server just can’t handle, such as a 
 Many of the client errors are dealt with by your browser, without it ever bothering you. A few, like 404, might still pass through.
 
 Status code	Reason phrase	Meaning
-- 400	Bad Request	Used to tell the client that it has sent a malformed request.
+-- 400	Bad Request	Used to tell the client that it has sent a malformed request.
 
-- 401	Unauthorized	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
+-- 401	Unauthorized	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
 
-- 402	Payment Required	Currently this status code is not used, but it has been set aside for future use.
-- 403	Forbidden	Used to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
-- 404	Not Found	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
+-- 402	Payment Required	Currently this status code is not used, but it has been set aside for future use.
+-- 403	Forbidden	Used to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
+-- 404	Not Found	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
 405	Method Not Allowed	Used when a request is made with a method that is not supported for the requested URL. The Allow header should be included in the response to tell the client what methods are allowed on the requested resource.
 406	Not Acceptable	Clients can specify parameters about what types of entities they are willing to accept. This code is used when the server has no resource matching the URL that is acceptable for the client. Often, servers include headers that allow the client to figure out why the request could not be satisfied.
 407	Proxy Authentication Required	Like the 401 status code, but used for proxy servers that require authentication for a resource.
@@ -575,7 +589,7 @@ Status code	Reason phrase	Meaning
 
 -----------------------------------------------
 
-##### How to create a web server without express?**
+## How to create a web server without express?**
 
 -we can create server without using express by using the http module.
 -We need to follow the steps like,
@@ -613,7 +627,7 @@ req.end();
 
 ## What are clusters?
 
- -> When you run a Node.js program on a system with multiple CPUs, it creates a process that uses only a single CPU to execute by default. Since Node.js uses a single thread to execute your JavaScript code, all the requests to the application have to be handled by that thread running on a single CPU. If the application has CPU-intensive tasks, the operating system has to schedule them to share a single CPU until completion. That can result in a single process getting overwhelmed if it receives too many requests, which can slow down the performance. If the process crashes, users won’t be able to access your application.
+-- When you run a Node.js program on a system with multiple CPUs, it creates a process that uses only a single CPU to execute by default. Since Node.js uses a single thread to execute your JavaScript code, all the requests to the application have to be handled by that thread running on a single CPU. If the application has CPU-intensive tasks, the operating system has to schedule them to share a single CPU until completion. That can result in a single process getting overwhelmed if it receives too many requests, which can slow down the performance. If the process crashes, users won’t be able to access your application.
 
 -> As a solution, Node.js introduced the cluster module, which creates multiple copies of the same application on the same machine and has them running at the same time. It also comes with a load balancer that evenly distributes the load among the processes using the round-robin algorithm. 
 
@@ -624,39 +638,38 @@ req.end();
 -> Clusters also provide a mechanism for inter-process communication (IPC) between the master and worker processes. This allows them to share information and coordinate activities. For example, the master process can send messages to the workers to instruct them to perform certain tasks or update their state.
 -> Clusters in Node.js can be particularly useful for building scalable web servers, real-time applications, or any application that can benefit from parallel processing. By utilizing multiple cores, you can significantly enhance the performance and responsiveness of your Node.js applications.
 
-
-
-
 ----------------------------------------
 
 # What is Libuv?
 
--" Libuv is a C library" "originally written for Node.js to abstract non-blocking I/O operations or to provide cross-platform support for features such as file system, acces, network programming and timers."
-- It is multi-platform support library with a focus on asynchronnus I/O, event driven programming and networking.
-- Libuv was initially developed by Bert Belder, Ryan Dahl, and others as part of the Node.js project to provide a consistent way to handle I/O operations across multiple platforms.
-- Event-driven asynchronous I/O model is integrated.
+-- "Libuv is a C library". 
+-- "originally written for Node.js to abstract non-blocking I/O operations or to provide cross-platform support for features such as file system, acces, network programming and timers."
+-- It is multi-platform support library with a focus on asynchronnus I/O, event driven programming and networking.
+-- Libuv was initially developed by Bert Belder, Ryan Dahl, and others as part of the Node.js project to provide a consistent way to handle I/O operations across multiple platforms.
+-- Event-driven asynchronous I/O model is integrated.
   It allows the CPU and other resources to be used simultaneously while still performing I/O operations, thereby resulting in efficient use of resources and network.
   It facilitates an event-driven approach wherein I/O and other activities are performed using callback-based notifications.
 
-- Libuv is a multi-platform library that provides asynchronous I/O operations, event loop, thread pool, and other low-level functionalities for building network and system applications. It was originally developed for the Node.js runtime and now serves as a core part of it.
+-- Libuv is a multi-platform library that provides asynchronous I/O operations, event loop, thread pool, and other low-level functionalities for building network and system applications. It was originally developed for the Node.js runtime and now serves as a core part of it.
 -In addition to I/O operations, libuv also provides support for timers, signals, child processes, thread pool, and other features. It is licensed under the MIT license and is widely used in many projects, including Node.js, MongoDB, and Chromium.
 
+-------------------------------------------------------------
 
-### What are the different phases involved in event loop ?****
+### What are the different phases involved in event loop?
 
-=> The event loop is a fundamental concept in Node.js that allows for non-blocking I/O operations and event-driven programming. It is a mechanism that Node.js uses to handle I/O operations asynchronously, without blocking the execution of other code in the application.
+=> The event loop is a fundamental concept in Node.js that "allows for non-blocking I/O operations and event-driven programming". It is a mechanism that Node.js uses to handle I/O operations asynchronously, without blocking the execution of other code in the application.
 
 => The event loop runs in the main thread of the Node.js process and continuously monitors the event queue for incoming events. An event is simply a notification that a certain operation has completed or a certain condition has been met, such as a network request completing or a timer firing. When an event occurs, the event loop triggers the corresponding callback function and continues to process other events.
 
 => The event loop consists of several components:
 
-    - Event Queue: This is a queue of events waiting to be processed by the event loop. When an event is triggered, it is added to the end of the event queue.
+    -- Event Queue: This is a queue of events waiting to be processed by the event loop. When an event is triggered, it is added to the end of the event queue.
 
-    - Event Loop: This is the core component of the event loop, which continuously checks the event queue for new events to process.
+    -- Event Loop: This is the core component of the event loop, which continuously checks the event queue for new events to process.
 
-    - Callback Queue: This is a queue of callback functions waiting to be executed. When an event is processed, its corresponding callback function is added to the callback queue.
+    -- Callback Queue: This is a queue of callback functions waiting to be executed. When an event is processed, its corresponding callback function is added to the callback queue.
 
-    - Call Stack: This is a stack of function calls that are currently being executed by the event loop. When a callback function is added to the callback queue, it is executed when the call stack is empty.
+    -- Call Stack: This is a stack of function calls that are currently being executed by the event loop. When a callback function is added to the callback queue, it is executed when the call stack is empty.
 
 The event loop in Node.js enables asynchronous programming, which allows developers to write scalable and efficient applications that can handle a large number of I/O operations without blocking the main thread. By leveraging the event loop, Node.js applications can be built to handle high traffic, real-time applications such as web servers, chat applications, and APIs.
 
@@ -679,11 +692,12 @@ The event loop in Node.js enables asynchronous programming, which allows develop
  If there are no I/O events to process, the poll phase will wait for events to occur.
 Once the event loop completes all the phases, it will check if the setImmediate() queue has any pending callbacks to execute. If there are, the event loop will start over again from the first phase, otherwise, it will exit and wait for new events to occur.
 
-**How the event loop perform in Node.js
-When Node.js starts, it initializes the event loop, processes the provided input script which may make async API calls, schedule timers, or call process.nextTick(), then begins processing the event loop.
-- Event loop in Node.js consists of several phases that are executed sequentially in a loop to process incoming events and execute callbacks
+#How the event loop perform in Node.js
 
-- Timers: In this phase, the callbacks of scheduled timers are executed. These timers can be set using the setTimeout() and setInterval() functions.
+When Node.js starts, it initializes the event loop, processes the provided input script which may make async API calls, schedule timers, or call process.nextTick(), then begins processing the event loop.
+-- Event loop in Node.js consists of several phases that are executed sequentially in a loop to process incoming events and execute callbacks
+
+-- Timers: In this phase, the callbacks of scheduled timers are executed. These timers can be set using the setTimeout() and setInterval() functions.
 
 - I/O callbacks: In this phase, the callbacks for I/O events such as network requests, file system operations, and other system events are executed.
 
@@ -699,8 +713,8 @@ When Node.js starts, it initializes the event loop, processes the provided input
 
 1)setTimeout():->
 -This function is used to execute a piece of code once after a specified delay, measured in milliseconds.
-- setTimeout(), the delay cannot be guaranteed because of operations that may hold on to the event loop.
-- setTimeout(), additional arguments can be added beyond the delay, and these will be passed on to the function call
+-- setTimeout(), the delay cannot be guaranteed because of operations that may hold on to the event loop.
+-- setTimeout(), additional arguments can be added beyond the delay, and these will be passed on to the function call
 eg.
 function sayHello() {
   console.log('Hello, World!');
@@ -716,7 +730,7 @@ function doSomething() {
   console.log('Doing something...');
 }
 
-setInterval(doSomething, 500);
+setInterval(doSomething, 5000);
 
 3)setImmediate():->
  This function is used to execute a piece of code immediately after the current event loop has finished.
@@ -733,13 +747,13 @@ function doSomething() {
 }
 process.nextTick(doSomething);
 
+----------------------------------------------------
 
-
-# What is NVM? how do you use it?
+## What is NVM? how do you use it?
 
 Node Version Manager(NVM)
 
-- " It is a tool that allows you to install and manage multiple versions of Node.js on your computer."
+-- "It is a tool that allows you to install and manage multiple versions of Node.js on your computer."
 -Different projects on your device may be using different versions of Node. Using only one version (the one installed by npm) for these different projects may not give you accurate execution results.
 -NVM allows you to switch between different Node.js versions and install new ones without affecting your existing setup.
 -We can install NVM by following the instructions on the official NVM GitHub page. This will depend on your operating system.
@@ -756,7 +770,7 @@ Node Version Manager(NVM)
 
 ## 33 What is common.js? how is it different from es modules?
 
--> CommonJS modules are a popular way to modularize JavaScript code. They allow you to export and import modules using the "module export" and "require".
+-> CommonJS modules are a popular way to modularize JavaScript code. They allow you to export and import modules using the "module.export" and "require".
 -> ES Modules are a newer way to modularize JavaScript code.
 -> CommonJS is a module specification for JavaScript used primarily in Node.js environments. It provides a way to define reusable code modules using a require() function to load dependencies and an exports object to expose functionality to other modules.
 -> ES modules are a newer standard for JavaScript modules introduced in ECMAScript 2015 (ES6). ES modules use the import and export statements to load dependencies and expose functionality, respectively. ES modules can be used in both browser and Node.js environments, although some older browsers may not support them.
@@ -765,16 +779,19 @@ It is the native module system of modern web browsers and is supported in Node.j
 
 It different from es modules :->
 
-- "CommonJS modules are loaded synchronously", which means that the "entire module is loaded before the code execution continues".
-- "ES modules, on the other hand, are evaluated asynchronously", which allows for better performance and more efficient loading of dependencies.
+-- "CommonJS modules are loaded synchronously", which means that the "entire module is loaded before the code execution continues".
 
-- "CommonJS modules are evaluated at runtime", which means that the code inside the module is executed when it is loaded.
-- "CommonJS modules are not statically analyzable", which can lead to s"lower performance" and 'more runtime errors'.
-- "ES modules are statically analyzable", which means that the 'JavaScript engine can parse and analyze the module structure at compile time', allowing for better optimization and error checking.
+-- "ES modules, on the other hand, are evaluated asynchronously", which allows for better performance and more efficient loading of dependencies.
 
-- CommonJS is still widely used in Node.js environments due to its familiarity and backwards compatibility with older codebases.
+-- "CommonJS modules are evaluated at runtime", which means that the code inside the module is executed when it is loaded.
 
-- Syntax: CommonJS uses require() and exports to load dependencies and expose functionality, respectively, while ES modules use import and export.
+-- "CommonJS modules are not statically analyzable", which can lead to s"lower performance" and 'more runtime errors'.
+
+-- "ES modules are statically analyzable", which means that the 'JavaScript engine can parse and analyze the module structure at compile time', allowing for better optimization and error checking.
+
+-- CommonJS is still widely used in Node.js environments due to its familiarity and backwards compatibility with older codebases.
+
+-- Syntax: CommonJS uses require() and exports to load dependencies and expose functionality, respectively, while ES modules use import and export.
 
 ---------------------------------------------------------------------
 
@@ -784,7 +801,7 @@ It different from es modules :->
 -> crypto allows you to hash plain texts before storing them in the database
 -> Work in Node js => What does the crypto module do?
   The crypto module in Node. js provides functionalities such as encrypting, decrypting, and hashing any type of data in a Node. js application.
-- Use -> The crypto module provides a way of handling encrypted data.
+-- Use -> The crypto module provides a way of handling encrypted data.
  -> eg.
        
        const crypto = require('crypto');
@@ -811,9 +828,9 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
   => uses :
 
-- Real-time web application like trading app.
-- Chat application
-- Gaming application
+-- Real-time web application like trading app.
+-- Chat application
+-- Gaming application
 
 -----------------------------------------------------------------------
 
@@ -823,15 +840,15 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 -> In use of microservices large, monolithic applications are broken down into smaller, independent components that are responsible for a specific business capability and that can be developed, tested, and deployed independently.
 -> Each microservice runs as a separate process and communicates with other microservices over a network, typically using lightweight protocols such as HTTP or message queues.
 
-=> Benefits of using the microservices
+=> Benefits of using the microservices,
 
-    1)Scalability: Each microservice can be scaled independently, allowing organizations to handle spikes in traffic more easily.
-    2)Flexibility: Microservices can be developed and deployed independently, allowing for greater agility and faster time to market.
-    3)Resilience: A failure in one microservice does not necessarily affect the entire system, reducing the impact of downtime.
-    4)Technology independence: Each microservice can be developed using different technologies and programming languages, allowing teams to use the best tools for each job.
-    5)Ease of maintenance: Each microservice is responsible for a specific business capability, making it easier to test, deploy, and maintain the system.
+    (1) Scalability: Each microservice can be scaled independently, allowing organizations to handle spikes in traffic more easily.
+    (2) Flexibility: Microservices can be developed and deployed independently, allowing for greater agility and faster time to market.
+    (3) Resilience: A failure in one microservice does not necessarily affect the entire system, reducing the impact of downtime.
+    (4)Technology independence: Each microservice can be developed using different technologies and programming languages, allowing teams to use the best tools for each job.
+    (5) Ease of maintenance: Each microservice is responsible for a specific business capability, making it easier to test, deploy, and maintain the system.
 
-**However, implementing microservices can also introduce new challenges, such as increased complexity in managing the communication between services and the need for strong testing and monitoring practices. As with any development approach, there are trade-offs that need to be carefully considered and managed.
+** However, implementing microservices can also introduce new challenges, such as increased complexity in managing the communication between services and the need for strong testing and monitoring practices. As with any development approach, there are trade-offs that need to be carefully considered and managed.
 
 ----------------------------------------------------
 
@@ -897,14 +914,18 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
         program.parse(process.argv);
       
-      (4) run tha app locally
+      (4) run the app locally
 
           node index.js --name Dilip --age 26
 
           // Hello, Dilip !
           // Your age, 26 years old.
+      
+      (5) to pusblish app we need to login the npm
 
-      (5) publish the app
+      npm login
+
+      (6) publish the app
 
         npm publish
 
@@ -970,7 +991,15 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 ## What are Middlewares?
 
  =>A middleware is a software component that sits between an application's server and client to intercept, process, and modify incoming and outgoing HTTP requests and responses.
+ => - Middlewares are the functions that get executed before the request reaches the route handler and after the response is sent to the client.
+=> It seats between request and response.
  => In the Node.js ecosystem, the Express framework uses middleware extensively to handle tasks such as authentication, logging, error handling, and more. 
+=> - Because of the middleware, we get the chance to perform modification, updation, or deletion on request and response objects.
+=> Using middlewares, we can :
+    -- change the object
+    -- check for security
+    -- check for validation
+    -- calculate the time taken etc.
 => Middlewares can be added to an Express application using the app.use() method, and they can be either built-in, third-party, or custom functions.
 
  => This middleware function takes three arguments: req (the request object), res (the response object), and next (a callback function that signals when the middleware has finished processing and the next middleware in the chain should be called). In this case, the middleware adds a timestamp property to the req object and calls next() to continue the request-response cycle.
@@ -994,6 +1023,10 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
     app.listen(3000, () => {
       console.log('Server started on port 3000');
     });
+
+=> There are `express inbuilt middlewares` :
+    -- `express.json()` ⇒ it just basically parses the JSON. If we use it we don't need to parse it manually.
+    -- `express.text()` ⇒ If we need to parse a text only.
 
 -----------------------------------------------
 
@@ -1071,11 +1104,11 @@ In the Node.js ecosystem, there are several libraries and tools available to han
   (1) Mustache: A simple and lightweight engine that supports a variety of programming languages.
 
   (2) Handlebars: A popular engine that adds more features on top of Mustache, such as helper functions and partials.
-  Pug (formerly known as Jade): A powerful engine that uses indentation-based syntax to generate HTML.
+  (3) Pug (formerly known as Jade): A powerful engine that uses indentation-based syntax to generate HTML.
 
-  (3) EJS (Embedded JavaScript): An engine that allows you to embed JavaScript code directly into your templates.
+  (4) EJS (Embedded JavaScript): An engine that allows you to embed JavaScript code directly into your templates.
 
-  (4) Twig: A flexible and extensible engine that is used in the Symfony PHP framework.
+  (5) Twig: A flexible and extensible engine that is used in the Symfony PHP framework.
 
 --------------------------------------------------
 
@@ -1101,7 +1134,7 @@ In the Node.js ecosystem, there are several libraries and tools available to han
     });
 
 
-    full code snippen;
+    full code snippet;
          
           const session = require('express-session');
 
@@ -1174,37 +1207,43 @@ Cookies can be managed using the cookie-parser middleware. This middleware parse
       res.send('Cookie has been cleared');
   });
 
-- By default, cookies are stored in the client's browser memory.
+-- By default, cookies are stored in the client's browser memory.
 
 -------------------------------------------
 
 ## What are common libraries you work with express?***
 
 The common libraries you work with express are as follows :->
-- Gulp
-- Async.Js
-- Async
-- morgon
-- mongoose
-- Request.
-- Browserify
-- PM2
-- body-parser
-- Parser
-- cookie-parser
-- helmet
-- passport
-- multer
-- express-validator
-- nodemailer
+-- Gulp
+-- Async.Js
+-- Async
+
+-- morgon: 
+          Morgan is an HTTP request level Middleware. It is a great tool that logs the requests along with some other information depending upon its configuration and the preset used. It proves to be very helpful while debugging and also if you want to create Log files.
+              
+          // npm i morgan
+              const logger = require('morgan');
+              app.use(logger('dev'));
+-- mongoose
+-- Request.
+-- Browserify
+-- PM2
+-- body-parser
+-- Parser
+-- cookie-parser
+-- helmet
+-- passport
+-- multer
+-- express-validator
+-- nodemailer
 
 ------------------------------------------------
 
 ##   What is cors ?
 
-- CORS stands for Cross-Origin Resource Sharing. It is a mechanism that 'allows a web page to make requests to a different domain than the one that served the web page'.
-- Web browsers implement a security feature called the "Same-Origin Policy," which restricts web pages from making requests to a different domain than the one that served the web page. This security feature is intended to prevent malicious attacks such as cross-site scripting (XSS) and cross-site request forgery (CSRF).
-- CORS allows web pages to bypass the Same-Origin Policy and make requests to a different domain, but only if the server that receives the request explicitly allows it. CORS works by adding HTTP headers to the response that inform the web browser whether the request is allowed or not.
+-- CORS stands for Cross-Origin Resource Sharing. It is a mechanism that 'allows a web page to make requests to a different domain than the one that served the web page'.
+-- Web browsers implement a security feature called the "Same-Origin Policy," which restricts web pages from making requests to a different domain than the one that served the web page. This security feature is intended to prevent malicious attacks such as cross-site scripting (XSS) and cross-site request forgery (CSRF).
+-- CORS allows web pages to bypass the Same-Origin Policy and make requests to a different domain, but only if the server that receives the request explicitly allows it. CORS works by adding HTTP headers to the response that inform the web browser whether the request is allowed or not.
 
    CORS Headers: CORS is implemented through HTTP headers that are sent by the server in the response to a cross-origin request. 
       
@@ -1323,39 +1362,39 @@ Both clients and servers can include multiple headers in their respective reques
 
 ## Q.  What is testing?
 
-  - Testing in Node.js backend development involves the process of verifying the correctness, reliability, and functionality of Node.js applications through various types of tests, such as unit testing, integration testing, API testing, performance testing, security testing, and end-to-end testing.
-  - Testing is an essential part of the software development lifecycle and helps to identify and fix defects, validate requirements, and ensure that the backend logic and functionalities of a Node.js application are working as expected.
-  - There are various testing frameworks and tools available for Node.js backend testing, and it is crucial to ensure the quality and reliability of the application in production.
+  -- Testing in Node.js backend development involves the process of verifying the correctness, reliability, and functionality of Node.js applications through various types of tests, such as unit testing, integration testing, API testing, performance testing, security testing, and end-to-end testing.
+  -- Testing is an essential part of the software development lifecycle and helps to identify and fix defects, validate requirements, and ensure that the backend logic and functionalities of a Node.js application are working as expected.
+  -- There are various testing frameworks and tools available for Node.js backend testing, and it is crucial to ensure the quality and reliability of the application in production.
 
 ------------------------------------
 
 ## What is unit testing?
 
-  - Unit testing is a crucial practice in software development that involves testing individual units of code in isolation to ensure their correctness and reliability.
-  - It includes writing test cases, setting up a test environment, executing tests, and analyzing results.
-  - Unit testing catches defects early, improves code quality, speeds up debugging, development, and maintenance, and serves as documentation and a safety net for expected code behavior.
-  - It helps identify and fix issues promptly, leading to faster development cycles and shorter time-to-market for software products.
-  - Unit tests also aid in easier maintenance of software by acting as documentation of expected behavior and validating code changes.
-  - By incorporating unit testing into the development process, software teams can ensure the correctness and reliability of their code, leading to higher quality software and better customer satisfaction.
+  -- Unit testing is a crucial practice in software development that involves testing individual units of code in isolation to ensure their correctness and reliability.
+  -- It includes writing test cases, setting up a test environment, executing tests, and analyzing results.
+  -- Unit testing catches defects early, improves code quality, speeds up debugging, development, and maintenance, and serves as documentation and a safety net for expected code behavior.
+  -- It helps identify and fix issues promptly, leading to faster development cycles and shorter time-to-market for software products.
+  -- Unit tests also aid in easier maintenance of software by acting as documentation of expected behavior and validating code changes.
+  -- By incorporating unit testing into the development process, software teams can ensure the correctness and reliability of their code, leading to higher quality software and better customer satisfaction.
 
 --------------------------------------------
 
 ## Q. What is functional testing?
 
-  - Functional testing is a type of software testing that focuses on testing the functionality of a software application or system to ensure that it meets the requirements and specifications, performs the expected tasks accurately, and behaves correctly in real-world scenarios.
-  - It is essential for ensuring the reliability and quality of software applications and validating that they meet the expectations of end users.
+  -- Functional testing is a type of software testing that focuses on testing the functionality of a software application or system to ensure that it meets the requirements and specifications, performs the expected tasks accurately, and behaves correctly in real-world scenarios.
+  -- It is essential for ensuring the reliability and quality of software applications and validating that they meet the expectations of end users.
 
 -----------------------------------------------
 
 ## Q.  What is HTTPS? what is the difference between HTTP and HTTPS?***
 
-  - HTTPS stands for "HyperText Transfer Protocol Secure", and it is a secure version of HTTP.
-  - HTTP transmits data in plain text, while HTTPS encrypts data to protect privacy and integrity.
-  - HTTPS uses SSL/TLS certificates to establish a secure connection between a client and a server.
-  - HTTPS provides data privacy, integrity, and authentication, preventing data breaches and unauthorized access.
-  - Websites using HTTPS display a padlock icon, building trust with users.
-  - HTTPS is increasingly required for websites handling sensitive data or conducting online transactions.
-  - Main differences between HTTP and HTTPS are encryption, SSL/TLS certificates, and advantages of data protection, trust, and compliance.
+  -- HTTPS stands for "HyperText Transfer Protocol Secure", and it is a secure version of HTTP.
+  -- HTTP transmits data in plain text, while HTTPS encrypts data to protect privacy and integrity.
+  -- HTTPS uses SSL/TLS certificates to establish a secure connection between a client and a server.
+  -- HTTPS provides data privacy, integrity, and authentication, preventing data breaches and unauthorized access.
+  -- Websites using HTTPS display a padlock icon, building trust with users.
+  -- HTTPS is increasingly required for websites handling sensitive data or conducting online transactions.
+  -- Main differences between HTTP and HTTPS are encryption, SSL/TLS certificates, and advantages of data protection, trust, and compliance.
 
 --------------------------------------------------
 
@@ -1363,25 +1402,52 @@ Both clients and servers can include multiple headers in their respective reques
 
   (1)  SSL ("Secure Socket Layer"):
 
-  - SSL is a cryptographic protocol used to establish a secure and encrypted connection between a client and a server over the internet.
-  - SSL provides encryption, authentication, and integrity to secure online communication.
-  - SSL encrypts data transmitted between the client and the server, ensuring privacy and confidentiality.
-  - SSL uses digital certificates for authentication, verifying the identity of the server and preventing man-in-the-middle attacks.
-  - SSL ensures data integrity through message digests and digital signatures.
-  - SSL has been widely used for securing web browsing, email, file transfer, and other data transmission.
-  - SSL has largely been replaced by the more secure TLS (Transport Layer Security) protocol.
-  - The term "SSL" is often used colloquially to refer to both SSL and TLS, as they are closely related and share similar features.
+  -- SSL is a cryptographic protocol used to establish a secure and encrypted connection between a client and a server over the internet.
+  -- SSL provides encryption, authentication, and integrity to secure online communication.
+  -- SSL encrypts data transmitted between the client and the server, ensuring privacy and confidentiality.
+  -- SSL uses digital certificates for authentication, verifying the identity of the server and preventing man-in-the-middle attacks.
+  -- SSL ensures data integrity through message digests and digital signatures.
+  -- SSL has been widely used for securing web browsing, email, file transfer, and other data transmission.
+  -- SSL has largely been replaced by the more secure TLS (Transport Layer Security) protocol.
+  -- The term "SSL" is often used colloquially to refer to both SSL and TLS, as they are closely related and share similar features.
 
    (2) TLS ("Transport Layer Security") :
 
-  - TLS is a cryptographic protocol for secure and encrypted communication.
-  - It provides encryption, authentication, and integrity to protect data transmitted over the internet.
-  - TLS encrypts data to ensure privacy and confidentiality.
-  - It uses digital certificates for server authentication to prevent man-in-the-middle attacks.
-  - TLS ensures data integrity through message digests and digital signatures.
-  - It is widely used for securing web browsing, email, file transfer, and other data transmission.
-  - TLS has different versions, and it is important to use the latest and most secure version.
-  - TLS is a crucial technology for ensuring the security of online transactions and communication.
+  -- TLS is a cryptographic protocol for secure and encrypted communication.
+  -- It provides encryption, authentication, and integrity to protect data transmitted over the internet.
+  -- TLS encrypts data to ensure privacy and confidentiality.
+  -- It uses digital certificates for server authentication to prevent man-in-the-middle attacks.
+  -- TLS ensures data integrity through message digests and digital signatures.
+  -- It is widely used for securing web browsing, email, file transfer, and other data transmission.
+  -- TLS has different versions, and it is important to use the latest and most secure version.
+  -- TLS is a crucial technology for ensuring the security of online transactions and communication.
+
+
+  *** How we can use SSL/TLS in Node.js
+      
+      1. Generate SSL/TLS certificates:
+          We need to obtain SSL/TLS certificates, including a private key and public key certificate, either by generating self-signed certificates or obtaining them from a trusted certificate authority.  For testing and development purposes, you can generate self-signed certificates using tools like OpenSSL.
+      
+      2. Set up a Node.js server with HTTPS:
+          Start by requiring the https module and creating an instance of the server:
+
+          const https=require('https');
+          const fs=require('fs');
+
+          const options={
+            key:fs.readFileSync('path/to/private/ket.pem'),
+            cart:fs.readFileSync(path/to/public/certificates.pem)
+          };
+
+          const server=https.createServer(options,(req,res)=>{
+            //handle requests
+             res.writeHead(200, { 'Content-Type': 'text/plain' });
+            res.end('Hello, world!');
+          });
+
+          server.listen(8000,()=>{
+            console.log('Server is running on port 8000')
+          })
 
 --------------------------------------------
 

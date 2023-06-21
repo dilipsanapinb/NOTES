@@ -665,13 +665,98 @@ let arr = [1, 2, 3, 4, 5];
 
 // console.log("20" - "10");
 
-x = 20;
-console.log(x);
+// x = 20;
+// console.log(x);
 
-var x;
+// var x;
 
-sum(10, 20)
+// sum(10, 20)
 
-function sum(a, b) {
-    console.log(a+b);
+// function sum(a, b) {
+//     console.log(a+b);
+// }
+
+// let family = {
+//     father: "barku",
+//     myFather() {
+//         console.log(this.father);
+//     }
+// }
+
+// let son = Object.create(family);
+// console.log(son.father);
+// son.myFather()
+// console.log(son);
+
+        // class Rectangle {
+        //   constructor(height, width) {
+        //     this.height = height;
+        //     this.width = width;
+        //   }
+
+        //   area() {
+        //     return this.height * this.width;
+        //   }
+        // }
+
+        // let box = new Rectangle(12, 13);
+        // box.area();
+
+// function greet(greeting,city) {
+//     console.log(`${greeting}, ${this.name} from ${city}`,)
+// }
+
+// const person = {
+//     name:"Dilip"
+// }
+
+// greet.call(person, 'Hi', "Nashik");
+// greet.apply(person, ['Hi', 'Nashik'])
+
+// // .bind
+
+// const greetPerson = greet.bind(person, 'hi', 'New York');
+
+// greetPerson()
+
+// (function () {
+//   var privateVariable = "I am private";
+
+//   function privateFunction() {
+//     console.log("This is a private function");
+//   }
+
+//   // Public API
+//   return {
+//     publicMethod: function () {
+//       console.log("This is a public method");
+//     },
+//   };
+// })();
+
+// module.publicMethod();
+// console.log(privteVar);
+// privateFunc();
+
+
+// Throttle
+
+function throttle(fn, delay) {
+    let id;
+    return function () {
+        const args = arguments;
+        const context = this;
+        if (!id) {
+            id = setTimeout(function () {
+                fn.apply(context, args);
+                id=null
+            },delay)
+        }
+    }
 }
+
+function handleResize() {
+    console.log('resized');
+};
+
+window.addEventListener('resize',throttle(handleResize,1000))

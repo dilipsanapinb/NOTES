@@ -1018,7 +1018,7 @@ The code parameter is a string representing the JavaScript code you want to exec
 Here's an example of using eval():
 
     var x = 10;
-    var code = 'console.log(x + 5);';
+    var code = 'console.log(x + 5)';
     eval(code); // Output: 15
 
 In this example, the code variable contains a string with a JavaScript expression. The eval() function evaluates the code within the current execution context, and the result of the expression is printed to the console.
@@ -1097,11 +1097,14 @@ var son = Object.create(family);
    console.log(p1);
    // p1:Person{name:'Dilip',age:26,city:'Nashik',eat:'Veg'}
    console.log(p2)
-   //   // p1:Person{name:'Kalpesh',age:26,city:'Sinnar',eat:'Veg'}
+   //   // p2:Person{name:'Kalpesh',age:26,city:'Sinnar',eat:'Non-veg'}
 
   => "Using prototypes can help reduce memory usage "and "make code more efficient" by allowing objects to share common properties and methods. It also makes it easier to add new properties and methods to a group of related objects by modifying the prototype instead of each individual object.
 
- ## What is inheritance?
+-------------------------------------------------------------------------------
+
+## What is inheritance?
+
 In simple terms, inheritance is the concept of one thing gaining the properties or behaviors of something else.
 
 To say A inherits from B, is saying that A is a type of B.
@@ -1118,6 +1121,8 @@ more reusable code
 
 => How Js keeps track of what to run and when to run?
 
+There are three steps in event loop,
+
 ## Call Stack
 
     When you call a function in JavaScript all the instructions within that function get loaded into a Stack.
@@ -1126,7 +1131,7 @@ more reusable code
 
 ## Callback queue
 
-    It’s a one more data structure that Js to add next code to execute.
+    It's a one more data structure that Js to add next code to execute.
 
     Such code are called tasks, since they need more time to execute.
 
@@ -1159,8 +1164,10 @@ more reusable code
 ## Class:
 
     Classes are syntactical sugar over the existing object/prototype oriented model in JavaScript. This means that it does not introduced any new features but improves upon old features.
+    
+    Classes also support inheritance which means they can take properties and functions from other classes.
 
-      They are similar to function constructors , but give you much more functionality with less code.
+    They are similar to function constructors , but give you much more functionality with less code.
 
         Example:
 
@@ -1190,12 +1197,16 @@ more reusable code
 
         let box = new Rectangle(12, 13);
         box.area();
+        // 156
 
 ----------------------------------
 
 ## Inheritance:
 
-Classes also support inheritance which means they can take properties and functions from other classes.
+
+=> The property of acquiring all the properties and behaviors of the parent object by an child object is termed as inheritance.
+=> This is a unique feature in object oriented programming languages which facilitates re-usability of the code of the parent class by the derived class.
+
 
 For example, let's say we have two classes Car and Sedan.
 
@@ -1221,13 +1232,16 @@ console.log(myCar);
 
 ## super: 
 
-    Now what if we need to access the parent class's properties or functions in the child class?
+    Now what if we need to access the parent class's properties or functions in the child class.
 
     Also what if we want to declare a constructor for our child class?
 
     The super keyword is used to access and call functions on an object's parent.
 
     Lets update our above example with the super keyword.
+
+    => In JavaScript, extends keyword is used to serve the purpose of inheritance.
+
 
     class Car{
       constructor(horsePower, name){
@@ -1259,30 +1273,33 @@ console.log(myCar);
 
     mySedan.updateHorsePower(300);
 
-    // let car = new Sedan(1000, 'abc', 4);
-// console.log(car);
-// console.log(car.printName());
-// car.updateHorsePower(1500);
-// console.log(car)
-// Sedan { color: 150, name: 'Civic', fuel: 100 }
+let car = new Sedan(1000, 'abc', 4);
+console.log(car);
+console.log(car.printName());
+car.updateHorsePower(1500);
+console.log(car)
+Sedan { color: 150, name: 'Civic', fuel: 100 }
 
 
-    It is important to note that when used in a constructor, the super keyword appears alone and must be used before the this keyword is used.
+It is important to note that when used in a constructor, the super keyword appears alone and must be used before the this keyword is used.
 
 ----------------------------------
 
-## OOPS:
+## OOPS (Object Orinted Programming);
   
-  Inheritance
-=> The property of acquiring all the properties and behaviors of the parent object by an child object is termed as inheritance.
-=> This is a unique feature in object oriented programming languages which facilitates re-usability of the code of the parent class by the derived class.
-=> In JavaScript, extends keyword is used to serve the purpose of inheritance.
+It is a programming paradigm (patten/example) that allows you to organize your code by creating objects that have properties (variables) and methods (functions). The main concepts in OOP are:
 
-Unlike old-school constructor functions where the new operator does the initialization of this to a newly-allocated object, this isn't automatically initialized for a class defined by the extends keyword, i.e the sub-classes.
+(1) Objects: Objects are the basic building blocks of OOP. They represent real-world entities and encapsulate data (properties) and behavior (methods) related to those entities.
 
-Therefore running the above code will give an error:
+(2) Classes: Classes are like blueprints or templates for creating objects. They define the properties and methods that objects of that class will have. In JavaScript, classes were introduced in ECMAScript 2015 (ES6).
 
-Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor.
+(3) Inheritance: Inheritance allows you to create new classes based on existing ones, inheriting their properties and methods. This promotes code reuse and allows for the creation of more specialized classes.
+
+(4) Encapsulation: Encapsulation refers to bundling data and methods together within an object, hiding the internal implementation details and exposing only necessary interfaces. This helps in creating modular and more maintainable code.
+
+(5) Polymorphism: Polymorphism means the ability of objects to take on different forms. In the context of OOP, it allows objects of different classes to be treated as if they belong to a common superclass, providing a consistent interface.
+
+JavaScript, being a prototype-based language, implements OOP using prototype-based inheritance rather than traditional class-based inheritance. However, with the introduction of classes in ECMAScript 2015, JavaScript gained syntax support for defining classes and simulating class-based inheritance.
 
 -----------------------------
 
@@ -1292,13 +1309,13 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
   => OOPs restrict direct access to its methods and variables by encapsulating the code and data together. There are two ways of encapsulation in Javascript:
 
-   1) Class fields are public by default, but "private class members can be created by using a hash # prefix". The privacy encapsulation of these class features is enforced by JavaScript itself.
+  (1) Class fields are public by default, but "private class members can be created by using a hash # prefix". The privacy encapsulation of these class features is enforced by JavaScript itself.
 
-   2) Private instance fields Private instance fields are declared with # names (pronounced "hash names"), which are identifiers prefixed with #. The # is a part of the name itself. Private fields are accessible on the class constructor from inside the class declaration itself. They are used for declaration of field names as well as for accessing a field's value.
+  (2) Private instance fields are declared with '#' names (pronounced "hash names"), which are identifiers prefixed with '#'. The '#' is a part of the name itself. Private fields are accessible on the class constructor from inside the class declaration itself. They are used for declaration of field names as well as for accessing a field's value.
 
-   It is a syntax error to refer to # names from out of scope. It is also a syntax error to refer to private fields that were not declared before they were called, or to attempt to remove declared fields with delete.
+  It is a syntax error to refer to '#' names from out of scope. It is also a syntax error to refer to private fields that were not declared before they were called, or to attempt to remove declared fields with delete.
 
-   Making data members private using var keyword. Set the data using setter methods and get that data using getter methods. We can manage read and write access of object’s properties by using encapsulation.
+  Making data members private using var keyword. Set the data using setter methods and get that data using getter methods. We can manage read and write access of object's properties by using encapsulation.
 
   Read Only Access : If we declare getter methods only then it facilitates the read only access.
   
@@ -1308,16 +1325,15 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
 ## Why should Encapsulation to be used ?
 
-  Flexibility: It’s more flexible and easy to change the encapsulated code with new set of requirements. For example, if the requirement for adding/removing the project of a employee changes, we can easily update the logic in the setter method () or provided methods.
+  Flexibility: It's more flexible and easy to change the encapsulated code with new set of requirements. For example, if the requirement for adding/removing the project of a employee changes, we can easily update the logic in the setter method () or provided methods.
 
   Reusability: Encapsulated code can be reused throughout the application or across multiple applications.
 
-  Maintainability: When application code is encapsulated in separate units (classes, interfaces, methods, getters/setters etc) so it’s easy to change or update a part of the application without affecting other parts, thus reducing the effort and time of the developer.
+  Maintainability: When application code is encapsulated in separate units (classes, interfaces, methods, getters/setters etc) so it's easy to change or update a part of the application without affecting other parts, thus reducing the effort and time of the developer.
 
   Testability: For an encapsulated class writing unit tests are easier as the member variables are not scattered all around, thus reducing the time and effort of the tester as well.
 
   Data Hiding: The caller of the methods will have no idea about the internal logic of the class as the member variables are not visible to the caller function. Caller only knows the parameters which are to be passed to the setter method (or any method) for getting initialized with that value. For e.g
-
 
   class ClassWithPrivateField {
     #privateField;
@@ -1339,7 +1355,7 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
   let x = new ClassWithPrivateField();
   console.log('x:', x.privateField);
 
-  Example 2)
+  Example (2)
 
             class Car {
 
@@ -1383,7 +1399,7 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
           console.log(myCar.getModel());
           console.log(myCar.getYear());
 
-  ** Example 3) 
+  ** Example (3) 
         
         class Slot{
             #timeSlots
@@ -1414,11 +1430,11 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
     => In JavaScript, abstraction can be achieved through various techniques such as:
 
-    - "Encapsulation": This involves bundling related data and functions together and exposing only the necessary functions to the outside world. This helps to keep the internal details of an object hidden and maintain data integrity.
+    -- "Encapsulation": This involves bundling related data and functions together and exposing only the necessary functions to the outside world. This helps to keep the internal details of an object hidden and maintain data integrity.
 
-    - "Inheritance": This allows objects to inherit properties and methods from other objects, reducing the amount of redundant code in a program.
+    -- "Inheritance": This allows objects to inherit properties and methods from other objects, reducing the amount of redundant code in a program.
 
-   - "Polymorphism": This refers to the ability of objects to take on multiple forms, allowing them to behave differently in different contexts.
+   -- "Polymorphism": This refers to the ability of objects to take on multiple forms, allowing them to behave differently in different contexts.
 
     By using these techniques, developers can create code that is easier to understand, maintain, and extend over time. Abstraction is a crucial concept in object-oriented programming and is widely used in JavaScript frameworks such as React and Angular.
 
@@ -1514,15 +1530,15 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 
     => Here are some cases where arrow functions should not be used:
 
-    1) "As methods of an object": Arrow functions "do not have their own this binding", so they cannot be used as methods of an object. In other words, if you need to access the object's properties or methods within the function, you should use a traditional function expression instead.
+    (1) "As methods of an object": Arrow functions "do not have their own this binding", so they cannot be used as methods of an object. In other words, if you need to access the object's properties or methods within the function, you should use a traditional function expression instead.
 
-    2) "In constructors": Arrow functions cannot be used as constructors because "they do not have a prototype property", which is required for creating new objects. If you need to create new objects based on a blueprint, you should use a traditional function expression instead.
+    (2) "In constructors": Arrow functions cannot be used as constructors because "they do not have a prototype property", which is required for creating new objects. If you need to create new objects based on a blueprint, you should use a traditional function expression instead.
 
-    3) "With the arguments object": Arrow functions "do not have their own arguments object", so they cannot be used to access the arguments passed to the function. If you need to access the arguments, you should use a traditional function expression instead.
+    (3) "With the arguments object": Arrow functions "do not have their own arguments object", so they cannot be used to access the arguments passed to the function. If you need to access the arguments, you should use a traditional function expression instead.
 
-    4) "With yield keyword": Arrow functions cannot be used with the yield keyword in a generator function, because "they do not have their own this binding".
+    (4) "With yield keyword": Arrow functions cannot be used with the 'yield' keyword in a generator function, because "they do not have their own this binding".
 
-    6) When you need to bind this to a different value: Arrow functions have a lexical this binding, which means that the value of this is determined by the surrounding context. If you need to bind this to a different value, you should use a traditional function expression instead.
+    (5) "When you need to bind this to a different value": Arrow functions have a lexical this binding, which means that the value of this is determined by the surrounding context. If you need to bind this to a different value, you should use a traditional function expression instead.
 
     => In summary, arrow functions are a powerful and useful feature in JavaScript, but they have some limitations and may not be suitable for all scenarios. It's important to understand when to use arrow functions and when to use traditional function expressions to write clean, maintainable, and bug-free code
 
@@ -1535,8 +1551,8 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 => Here's the difference between them:
 
 1) .call():
-   -> call: The call() method is a function method that allows you "to call a function with a given this value" and "arguments provided individually".
-   -> With call(), you can pass arguments to the function one by one, separated by commas.
+   -> call: The .call() method is a function method that allows you "to call a function with a given this value" and "arguments provided individually".
+   -> With .call(), you can pass arguments to the function one by one, separated by commas.
 
    -> Example:
 
@@ -1566,7 +1582,7 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 ----------------------------
 
 
-2)  .apply():
+(2)  .apply():
    -> The apply() method is similar to call(), but it "takes arguments as an array instead of individual arguments".
    -> The first argument passed to apply() is the this value, and the second argument is an array of arguments to be passed to the function.
    -> Example-1:
@@ -1648,7 +1664,6 @@ function outer() {
   function inner() {
     console.log(message);
   }
-  
   return inner;
 }
 
@@ -1693,13 +1708,13 @@ Closures are used in JavaScript to create private variables and functions, as we
 
         In this updated code, we wrap the setTimeout callback function in an immediately invoked function expression (IIFE) that creates a new scope for each iteration of the loop. This new scope has its own copy of the i variable, which is passed as an argument to the IIFE. This ensures that each invocation of the callback function logs the correct value of arr[i] and i.
 
-       Note that you could also use let instead of var to declare i, which would create a block-scoped variable that is automatically scoped to each iteration of the loop. In this case, you would not need to use an IIFE or a closure to create a new scope for each iteration of the loop.
+      We could also use 'let' instead of 'var' to declare i, which would create a block-scoped variable that is automatically scoped to each iteration of the loop. In this case, you would not need to use an IIFE or a closure to create a new scope for each iteration of the loop.
 
        function display(i) {
       setTimeout(()=>console.log(this[i],i),i*1000)
         }
         for (let i = 0; i < arr.length; i++){
-          display.call(arr,i);
+          display.call(arr[i],i);
         }
         // 1 0
         // 2 1
@@ -1765,15 +1780,19 @@ IIFEs are commonly used in JavaScript for various purposes, including creating l
 
   => Strict mode makes several changes to normal JavaScript semantics:
 
-    1) Eliminates some JavaScript silent errors by changing them to throw errors.
-    2) Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that's not strict mode.
-    3) Prohibits some syntax likely to be defined in future versions of ECMAScript.
+    (1) Eliminates some JavaScript silent errors by changing them to throw errors.
+    (2) Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that's not strict mode.
+    (3) Prohibits some syntax likely to be defined in future versions of ECMAScript.
 
 ---------------------------------------------------
 
 ## API Event:
   => An event API is a set of interfaces and methods that enable developers to create and manage events in their applications.
   => It provides a way to respond to user actions or system events such as a mouse click, a keypress, or a network request completion.
+
+## Event Capturing:
+  => Event capturing is the opposite of event bubbling, in which an event that is triggered on an element is first captured by the outermost element and then propagated down the DOM tree until it reaches the innermost element.
+  => This allows event listeners to be triggered in a specific order, starting from the outermost element and moving inwards.
 
 ## Event Listener:
   => An event listener is a function or a piece of code that is called when a specific event occurs in an application.
@@ -1783,9 +1802,7 @@ IIFEs are commonly used in JavaScript for various purposes, including creating l
   => Event bubbling is a phenomenon in which an event that is triggered on an element is also propagated up the DOM tree, from the innermost element to the outermost element, until it reaches the document object.
   => This allows multiple event listeners to be triggered in a specific order, starting from the innermost element and moving outwards.
 
-## Event Capturing:
-  => Event capturing is the opposite of event bubbling, in which an event that is triggered on an element is first captured by the outermost element and then propagated down the DOM tree until it reaches the innermost element.
-  => This allows event listeners to be triggered in a specific order, starting from the outermost element and moving inwards.
+
 
 Together, event bubbling and capturing are called "event propagation", and they can be used to handle events in a specific order or to prevent events from propagating further up or down the
 
@@ -1795,13 +1812,13 @@ Together, event bubbling and capturing are called "event propagation", and they 
 ## How to re-render the view when browser is resized? show it in code.
 
   => Debounce monitors the time delay between user actions and only executes the callback function if the delay exceeds the time delay defined by the developer.
-  - So, continuous user actions can significantly delay the callback function’s execution if we use debounce.
+  - So, continuous user actions can significantly delay the callback function's execution if we use debounce.
   - Debounce is most suitable for control events like typing or button clicks.
   
-  =>Throttle uses the time delay to execute the callback function at regular intervals until the event trigger is active.
+  => Throttle uses the time delay to execute the callback function at regular intervals until the event trigger is active.
   - So, it does not delay the callback function execution for a significant period like debounce.
   - Throttle is most suitable for continuous user events like resizing and scrolling.
-  - Throttling is a technique in JavaScript that limits the frequency of a function call, typically in response to some event, such as scrolling, resizing, or input events. This is done to prevent the function from being called too frequently and overloading the browser or server with too many requests.
+  -- Throttling is a technique in JavaScript that "limits the frequency of a function call", typically in response to some event, such as scrolling, resizing, or input events. This is done to "prevent the function from being called too frequently and overloading the browser or server with too many requests".
 
   Example: 
         
