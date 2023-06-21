@@ -2470,21 +2470,21 @@ Denormalization:
     => RPCs allow you to write code as though it will be run on a local computer, even though it may be executed on another computer. 
     => Remote Procedure Call:
 
-       -> A 'RPC is a form of Client-Server Communication' that uses a function call rather than a usual HTTP call.
+      -> A 'RPC is a form of Client-Server Communication' that uses a function call rather than a usual HTTP call.
 
     => gRPC uses Protocol Buffers, a language-agnostic binary  serialization format, to define the structure of messages and APIs, which allows for efficient and compact data transfer. It also supports bidirectional streaming and flow control, enabling efficient communication even in high-volume scenarios.
 
     => Benefits of the gRPC:
-       - Abstraction is easy(it's function call)
-       - gRPC supports a variety of programming languages, including C++, Java, Python, Go, Ruby, and many more, and provides a wide range of features, such as load balancing, authentication, and encryption.
-       - One of the key advantages of gRPC is its performance. Compared to other RPC frameworks such as REST, gRPC typically provides faster communication, lower latency, and better resource utilization. This makes it particularly well-suited for use in large-scale, distributed systems.
-       - HTTP calls are often confusing, so this makes it  easier.
-       - Additionally, gRPC is also highly scalable and can handle high volume traffic. It also provides a robust and extensible platform for building microservices-based architectures, allowing for easy communication between different services and enabling teams to work independently on different parts of the system.
-       - A RPC is a form of Client-Server Communication that uses a function call rather than a usual HTTP call.
+      -- Abstraction is easy(it's function call)
+      -- gRPC supports a variety of programming languages, including C++, Java, Python, Go, Ruby, and many more, and provides a wide range of features, such as load balancing, authentication, and encryption.
+      =- One of the key advantages of gRPC is its performance. Compared to other RPC frameworks such as REST, gRPC typically provides faster communication, lower latency, and better resource utilization. This makes it particularly well-suited for use in large-scale, distributed systems.
+      -- HTTP calls are often confusing, so this makes it  easier.
+      =- Additionally, gRPC is also highly scalable and can handle high volume traffic. It also provides a robust and extensible platform for building microservices-based architectures, allowing for easy communication between different services and enabling teams to work independently on different parts of the system.
+      -- A RPC is a form of Client-Server Communication that uses a function call rather than a usual HTTP call.
        * Microservices will often be running several services in different programming languages. They'll also often have a lot of service to service interactions.
-       - This is where gRPC helps out the most by providing the support and capability to solve the typical issues that arise from those situations.
+      -- This is where gRPC helps out the most by providing the support and capability to solve the typical issues that arise from those situations.
 
-       eg. 
+        eg. 
           
           syntax = "proto3";
 
@@ -2528,7 +2528,7 @@ Denormalization:
 
     =>The WebSocket API (WebSockets):
 
-      - The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between the user's browser and a server.
+      -- The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between the user's browser and a server.
       => With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply.
     => Both the client and server can send messages to each other at any time without the need for a new request.
     => The WebSocket protocol is a TCP-based network protocol that specifies how data is transferred between networks. Almost all clients utilize this network protocol since it is so dependable and efficient. 
@@ -2542,7 +2542,7 @@ Denormalization:
 
 ## Polling in node.js :
 
- => In the context of Node.js, polling refers to a 'technique used to periodically check for changes or updates in a particular resource or data source'. It 'involves repeatedly sending requests or queries to the resource at predefined intervals to determine if any new information is available'.
+=> In the context of Node.js, polling refers to a "technique used to periodically check for changes or updates in a particular resource or data source". It "involves repeatedly sending requests or queries to the resource at predefined intervals to determine if any new information is available".
 
   Polling can be implemented in various scenarios, such as:
 
@@ -2553,7 +2553,7 @@ Denormalization:
   (3) API Integration: When integrating with external APIs, polling can be used to fetch updates or changes from the API endpoints. For example, if you're building a weather application, you might periodically poll the weather API to fetch the latest forecast data.
 
   => Long Polling: 
-     Long polling is a variant of polling where the client sends a request to the server, and the server keeps the connection open until new data or an event is available. This technique reduces the frequency of requests and provides near-real-time updates.
+    Long polling is a variant of polling where the client sends a request to the server, and the server keeps the connection open until new data or an event is available. This technique reduces the frequency of requests and provides near-real-time updates.
 
   It's worth noting that polling can be resource-intensive, as it involves constantly sending requests, even if there are no updates. To mitigate this, alternative techniques such as webhooks or event-driven architectures are often preferred, where the server or data source notifies clients of updates instead of the clients polling for them.
 
@@ -2561,38 +2561,38 @@ Denormalization:
 -----------------------------------------------------------------------------------------
 
 ## What is Caching? **
-   
-   => In computing, a cache is a high-speed data storage layer which stores a subset of data, typically transient in nature, so that future requests for that data are served up faster than is possible by accessing the data’s primary storage location. Caching allows you to efficiently reuse previously retrieved or computed data.
-   => The data in a cache is generally stored in fast access hardware such as RAM (Random-access memory) and may also be used in correlation with a software component. A cache's primary purpose is to increase data retrieval performance by reducing the need to access the underlying slower storage layer.
-   => Trading off capacity for speed, a cache typically stores a subset of data transiently, in contrast to databases whose data is usually complete and durable.
-   => RAM and In-Memory Engines: 
-       -> Due to the high request rates or IOPS (Input/Output operations per second) supported by RAM and In-Memory engines, caching results in improved data retrieval performance and reduces cost at scale. To support the same scale with traditional databases and disk-based hardware, additional resources would be required. These additional resources drive up cost and still fail to achieve the low latency performance provided by an In-Memory cache.
+
+  => In computing, a "cache is a high-speed data storage layer which stores a subset of data", typically transient in nature, so that future requests for that data are served up faster than is possible by accessing the data's primary storage location. "Caching allows you to efficiently reuse previously retrieved or computed data".
+  => The data in a cache is generally "stored in fast access hardware such as RAM" (Random-access memory) and may also be used in correlation with a software component. A cache's primary purpose is to "increase data retrieval performance by reducing the need to access the underlying slower storage layer".
+  => Trading off capacity for speed, a cache typically stores a subset of data transiently, in contrast to databases whose data is usually complete and durable.
+  => RAM and In-Memory Engines: 
+      -> Due to the high request rates or IOPS (Input/Output operations per second) supported by RAM and In-Memory engines, caching results in improved data retrieval performance and reduces cost at scale. To support the same scale with traditional databases and disk-based hardware, additional resources would be required. These additional resources drive up cost and still fail to achieve the low latency performance provided by an In-Memory cache.
 
     => Applications:
 
-       -> Caches can be applied and leveraged throughout various layers of technology including Operating Systems, Networking layers including Content Delivery Networks (CDN) and DNS, web applications, and Databases. You can use caching to significantly reduce latency and improve IOPS for many read-heavy application workloads, such as Q&A portals, gaming, media sharing, and social networking.
-       => Cached information can include the results of database queries, computationally intensive calculations, API requests/responses and web artifacts such as HTML, JavaScript, and image files.
+      -> Caches can be applied and leveraged throughout various layers of technology including Operating Systems, Networking layers including Content Delivery Networks (CDN) and DNS, web applications, and Databases. You can use caching to significantly reduce latency and improve IOPS for many read-heavy application workloads, such as Q&A portals, gaming, media sharing, and social networking.
+      => Cached information can include the results of database queries, computationally intensive calculations, API requests/responses and web artifacts such as HTML, JavaScript, and image files.
 
     => Design Patterns: 
-       -> In a distributed computing environment, a dedicated caching layer enables systems and applications to run independently from the cache with their own lifecycles without the risk of affecting the cache. The cache serves as a central layer that can be accessed from disparate systems with its own lifecycle and architectural topology.
+      -> In a distributed computing environment, a dedicated caching layer enables systems and applications to run independently from the cache with their own lifecycles without the risk of affecting the cache. The cache serves as a central layer that can be accessed from disparate systems with its own lifecycle and architectural topology.
 
     => Caching Best Practices:
-       -> When implementing a cache layer, it’s important to understand the validity of the data being cached. A successful cache results in a high hit rate which means the data was present when fetched. A cache miss occurs when the data fetched was not present in the cache. Controls such as TTLs (Time to live) can be applied to expire the data accordingly. Another consideration may be whether or not the cache environment needs to be Highly Available, which can be satisfied by In-Memory engines such as Redis
+      -> When implementing a cache layer, it's important to understand the validity of the data being cached. A successful cache results in a high hit rate which means the data was present when fetched. A cache miss occurs when the data fetched was not present in the cache. Controls such as TTLs (Time to live) can be applied to expire the data accordingly. Another consideration may be whether or not the cache environment needs to be Highly Available, which can be satisfied by In-Memory engines such as Redis
     
     *Benefits of Caching, 
 
-     (1) Improve Application Performance:
-           -> Because memory is orders of magnitude faster than disk (magnetic or SSD), reading data from in-memory cache is extremely fast (sub-millisecond). This significantly faster data access improves the overall performance of the application.
-     (2) Reduce Database Cost:
-           -> A single cache instance can provide hundreds of thousands of IOPS (Input/output operations per second), potentially replacing a number of database instances, thus driving the total cost down. This is especially significant if the primary database charges per throughput. In those cases the price savings could be dozens of percentage points.
-     (3)Reduce the Load on the Backend:
-           -> By redirecting significant parts of the read load from the backend database to the in-memory layer, caching can reduce the load on your database, and protect it from slower performance under load, or even from crashing at times of spikes.
-     (4)Predictable Performance:
-           -> A common challenge in modern applications is dealing with times of spikes in application usage. Examples include social apps during the Super Bowl or election day, eCommerce websites during Black Friday, etc. Increased load on the database results in higher latencies to get data, making the overall application performance unpredictable. By utilizing a high throughput in-memory cache this issue can be mitigated.
-     (5)Eliminate Database Hotspots:
-           -> In many applications, it is likely that a small subset of data, such as a celebrity profile or popular product, will be accessed more frequently than the rest. This can result in hot spots in your database and may require overprovisioning of database resources based on the throughput requirements for the most frequently used data. Storing common keys in an in-memory cache mitigates the need to overprovision while providing fast and predictable performance for the most commonly accessed data.
-     (6)Increase Read Throughput (IOPS)
-           -> In addition to lower latency, in-memory systems also offer much higher request rates (IOPS) relative to a comparable disk-based database. A single instance used as a distributed side-cache can serve hundreds of thousands of requests per second.
+    (1) Improve Application Performance:
+          -> Because memory is orders of magnitude faster than disk (magnetic or SSD), reading data from in-memory cache is extremely fast (sub-millisecond). This significantly faster data access improves the overall performance of the application.
+    (2) Reduce Database Cost:
+          -> A single cache instance can provide hundreds of thousands of IOPS (Input/output operations per second), potentially replacing a number of database instances, thus driving the total cost down. This is especially significant if the primary database charges per throughput. In those cases the price savings could be dozens of percentage points.
+    (3)Reduce the Load on the Backend:
+          -> By redirecting significant parts of the read load from the backend database to the in-memory layer, caching can reduce the load on your database, and protect it from slower performance under load, or even from crashing at times of spikes.
+    (4)Predictable Performance:
+          -> A common challenge in modern applications is dealing with times of spikes in application usage. Examples include social apps during the Super Bowl or election day, eCommerce websites during Black Friday, etc. Increased load on the database results in higher latencies to get data, making the overall application performance unpredictable. By utilizing a high throughput in-memory cache this issue can be mitigated.
+    (5)Eliminate Database Hotspots:
+          -> In many applications, it is likely that a small subset of data, such as a celebrity profile or popular product, will be accessed more frequently than the rest. This can result in hot spots in your database and may require overprovisioning of database resources based on the throughput requirements for the most frequently used data. Storing common keys in an in-memory cache mitigates the need to overprovision while providing fast and predictable performance for the most commonly accessed data.
+    (6)Increase Read Throughput (IOPS)
+          -> In addition to lower latency, in-memory systems also offer much higher request rates (IOPS) relative to a comparable disk-based database. A single instance used as a distributed side-cache can serve hundreds of thousands of requests per second.
 
 ----------------------------------------------------------------------------------
 
@@ -2603,17 +2603,17 @@ Denormalization:
     => Methods/ways to store the cache:
 
     (1) In-Memmory-Caching:
-     - The cache is stored in servers RAM, making it faster to retrive data. However this method has limitation of storage and cached data is lost if server is restarted.
+    -- The cache is stored in servers RAM, making it faster to retrive data. However this method has limitation of storage and cached data is lost if server is restarted.
     (2) File-based caching:
-     - The cache is stored in files on servers hard disk. This provide more storage capacity but slower to retrieve data.
+    -- The cache is stored in files on servers hard disk. This provide more storage capacity but slower to retrieve data.
     (3) Database caching:
-     - Chache is stored in database, providing a balance between storage capacitty and retrieval speed. 
-     - Suitable for the applications which need to store large amount of cache.
+    -- Chache is stored in database, providing a balance between storage capacitty and retrieval speed. 
+    -- Suitable for the applications which need to store large amount of cache.
     (4) Distributed Chaching:
-     - Cache is distributed across the multiple servers, provides the high level of scalability and fault-tolerance.
-     - suitable for large-scale web applications that need to handle high traffic and large amounts of data.
+    -- Cache is distributed across the multiple servers, provides the high level of scalability and fault-tolerance.
+    -- suitable for large-scale web applications that need to handle high traffic and large amounts of data.
     (5) Proxy caching: 
-     - Proxy server is placed betwwen the client and the backend server, and the proxy server cache frequently access the data
+    -- Proxy server is placed betwwen the client and the backend server, and the proxy server cache frequently access the data
 
 ----------------------------------------------------------------------------------------
 
@@ -2626,12 +2626,12 @@ Denormalization:
 
     => Pros:
 
-     -> Super fast accessess: LRU caches store items in order from most-recently used to least-recently used. i.e. both can be accessed in O(1) time.
-     -> super-fast updates: Each time an item is accessed, updating the cache takes O(1) time.
+    -> Super fast accessess: LRU caches store items in order from most-recently used to least-recently used. i.e. both can be accessed in O(1) time.
+    -> super-fast updates: Each time an item is accessed, updating the cache takes O(1) time.
 
     => Cons:
 
-     -> Space heavy: An LRU cache tracking n times requires a linked list of length n,,and a hash map holding n items. Thats O(n) space. But its still two data structures.
+    -> Space heavy: An LRU cache tracking n times requires a linked list of length n,,and a hash map holding n items. Thats O(n) space. But its still two data structures.
     => Overall, LRU caching is a simple and effective technique for managing the cache in a wide range of applications, including databases, web servers, and operating systems.
 
 ---------------------------------------------------------------------------------------
@@ -2651,14 +2651,14 @@ Denormalization:
     => Redis also supports persistence, which means that data can be saved to disk for long-term storage.
 
     => Redis-store the data in key-value pair and has ability to store the data using a variety of data structures like:
-       - strings
-       - lists
-       - sets
-       - sorted sets
-       - hashes
-       - bit arrays 
-       - hyperlogs
-       - streams
+      -- strings
+      -- lists
+      -- sets
+      -- sorted sets
+      -- hashes
+      -- bit arrays 
+      -- hyperlogs
+      -- streams
 
     => Use cases of Redis:
 
@@ -2681,10 +2681,10 @@ Denormalization:
       -> Service workers are the JS files that run in background and can intercept network requests made by browser.
       -> By using the cache API, service workers can store responses from the server in cache and serve them directly from the cache on subsequent requests, reducing the amount of network traffic and improving performence.
     3) In-memmory caching: 
-      -> Frontend frameworks like react have a built in support for in-memmory caching using a technique called memorization.
+      -> Frontend frameworks like "react have a built in support for in-memmory caching" using a "technique called memorization".
       -> This involves caching the result of a function or component based on its input parameters, so that it can be reused without re-executing the function or rendering the component.
     4) Local storage caching:
-       -> By using the local storage we can cache data that needs to persist across the page loads, such as user prefeerences or authentication tokens.
+      -> By using the local storage we can cache data that needs to persist across the page loads, such as user prefeerences or authentication tokens.
     5) CDN Caching: 
     ->Content Delivery Networks(CDN) can cache static assets and dynamic content at edge locations around the world, allowing users to acces the content from a server closer to their locationa and reducing the latency.
     -> By using the CDN we can offload the caching and delivery of content to third-party provider and improve performence for users.
@@ -2693,7 +2693,7 @@ Denormalization:
 
 ## What is a CDN ? 
 
-    => A Content Delivery Network is a geographically disributed group of servers that caches content close to end users. A CDN allows for the quick transfer of assets needed for loading internet content, including HTML pages, JS files, stylesheets, images, and videos. CDN is becoming popular now and today the majority of web raffic is served throug CDN's, including the major siltes like Netflix, Amazon and Facebook.
+    => A Content Delivery Network is a "geographically disributed group of servers" that 'caches' content "close to end users". A CDN allows for the "quick transfer of assets needed for loading internet content", including HTML pages, JS files, stylesheets, images, and videos. CDN is becoming popular now and today the majority of web traffic is served throug CDN's, including the major sites like Netflix, Amazon and Facebook.
     => Properly configured CDN may help to protect website from some common malicious attacks, such as Distributed Denial of Service(DDOS) attacks.
     =>Benefits of using the CDN:
      (1) Reduce the latency:
@@ -2722,12 +2722,12 @@ Denormalization:
     => DNS translates domain names to IP addresses so browsers can load Internet resources.
     => Each device connected to Internet has unique IP address which other machines use to find the device.
     => DNS servers eliminate the need for human to memmorise IP addresses.
-    => DNS converts the hostname (eg.www,google.com) into computer friendly IP address. BY that IP addess comouter can find the rigth device.
+    => DNS converts the hostname (eg.www,google.com) into computer friendly IP address. BY that IP addess computer can find the right device.
 
 ----------------------------------------------------------------------------------------
 
 ## How does the internet work? **
-   
+
     => Internet is backbone of Web, its technical infrastructure the makes the Web possible.
     => Internet is large network of computers which communicate all together.
     => internet works by usibg the packate routing network the follows Internet Protocol(IP) and Transport Control Protocol(TCP).
@@ -3795,13 +3795,13 @@ By following these tips, you can help to ensure that your Socket.IO applications
 
 (9) What is purpose of ZADD and SADD commands in redis ?
 
-       In Redis, the ZADD and SADD commands are used to add elements to sorted sets and sets, respectively.
-       Here's a brief explanation of each command:
+      In Redis, the ZADD and SADD commands are used to add elements to sorted sets and sets, respectively.
+      Here's a brief explanation of each command:
 
       (1) ZADD:
-         -> This command is used to add one or more members to a sorted set in Redis.
-         -> A sorted set is a data structure that stores a collection of unique elements, each associated with a score. 
-         -> The elements in a sorted set are ordered based on their scores, allowing efficient retrieval of elements based on their position in the sorted set. The ZADD command takes the following form:
+        -> This command is used to add one or more members to a sorted set in Redis.
+        -> A sorted set is a data structure that stores a collection of unique elements, each associated with a score. 
+        -> The elements in a sorted set are ordered based on their scores, allowing efficient retrieval of elements based on their position in the sorted set. The ZADD command takes the following form:
 
                 ZADD key score member [score member ...]
                   
@@ -3833,3 +3833,43 @@ By following these tips, you can help to ensure that your Socket.IO applications
     Both ZADD and SADD commands are useful for storing and managing collections of elements in Redis. They allow you to add elements to sorted sets and sets, respectively, enabling efficient retrieval, membership checks, and set operations on the stored data.
 
 --------------------------------------------
+
+(1) Can an object method access and modify the objects's properties in Js?
+(2) What is JWT authentication and how does it works?
+(3) Can you explain middleware concept in Express using an example?
+(4) Write a simple implementation of Watchman middleware that checks if the user is authenticated before allowing access to protected route.
+(5) How can you limit the number of messages that can be sent to a client from the server in socket.io? Demonstrate one such way througth working code.
+(6) Write a function query records in a one to many relationship in Node.js and MongoDb. Write the code using the user and post example. Assume the relevant structure/schema wherever applicable.
+(7) What is impact of schema on SQl and NoSQL database?
+(8) What is difference between seerver side caching and clite side caching?
+(9) What is react? It is library or framework?
+(10) How can we handle browser window resize events using useEffect in react?
+(11) How does the 'this' keyword relate to lexical scope in Js?
+(12) In strict mode the value of 'this' inside a module is 'undefined' by default.
+(13) How does destructuring work with nested object or arrrays in Js, ans what syntax is used to access deeply nested values?
+(14) Can you use object shorthand syntax to declare a methode in an object? If so how?
+(15) How can you use socket.io to create a chat app?
+  Write socket.io server using Node.js and socket.io package and aslo create a client side HTML page that includes the socket.io client library.
+(16) Create a node.js app that uses the 'Chalk' module to display a coloured text message in the console.
+(17) What is diff b/w required and import statements in Node.js?
+(18) Write a jest test case to ckeck if the given array has milk in it.
+    const shopList=['diapers','trash bags','milk'];
+(19) Whai is RESTful API?
+(20) What are HTTP methods?
+(21) Difference between PUT and PATCH?
+(22) How to handle array in websockets/socket.io?
+(23) How does Redis pub/sub work and what are some use cases for it?
+(24) How can you optimise the performance of a loop in Js, and what are some best practices to loop in mind?
+(25) If you given an integer value, how can you create buttons for pagination using the same? use example to demonstrate it.
+(26) Write a program to send a message to specific client.
+(27) What is the difference b/w redis set and sorted sets?
+(28) What are advantages of using redis as a data strucure?
+(29) What is room in socket.io?
+(30) What is the value of 'this' in a callback function passed at an event listener/
+(31) diff bw require and import?
+(32) Create an error handling middleware.
+(33) How can you delete the MongoDB shell?
+(34) What are advantages and Disadvantages of MongoDB referencing in relationships?
+(35) How does react differ other Js frameworks?
+(36) How you will use useeffect to clean up resources when an components 
+
