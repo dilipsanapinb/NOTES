@@ -81,55 +81,140 @@
 // })
 // myEventTarget.dispatchEvent(myEvent);
 
-const express = require('express');
+// const express = require('express');
 
-// const session=require('express-session')
+// // const session=require('express-session')
 
-const cookieparser = require("cookie-parser");
+// const cookieparser = require("cookie-parser");
 
-const app = express();
+// const app = express();
 
-app.use(cookieparser());
+// app.use(cookieparser());
 
-// app.use(session({
-//     secret: 'secretKey',
-//     resave: false,
-//     saveUninitialized:false
-// }));
+// // app.use(session({
+// //     secret: 'secretKey',
+// //     resave: false,
+// //     saveUninitialized:false
+// // }));
 
-app.get('/', (req, res) => {
-    res.send('Welcome')
-})
-
-// app.get('/login', (req, res) => {
-//     req.session.username = 'Dilip';
-//     res.send("Logged in successfully")
-// });
-
-// app.get('/profile', (req, res) => {
-//     let username = req.session.username;
-//     res.send(`Username:${username}`)
+// app.get('/', (req, res) => {
+//     res.send('Welcome')
 // })
 
-app.get('/set', (req, res) => {
-    res.cookie('Username', "Dilip Sanap", { maxAge: 20 * 1000, httpOnly: true });
-    res.send('Cookie set successfully');
-})
+// // app.get('/login', (req, res) => {
+// //     req.session.username = 'Dilip';
+// //     res.send("Logged in successfully")
+// // });
 
-app.get('/get', (req, res) => {
-    const username = req.cookies.Username;
-    if (username) {
-        res.send(`Hello,  ${username}`)
-    } else {
-        res.send(`Cookie not found`)
-    }
+// // app.get('/profile', (req, res) => {
+// //     let username = req.session.username;
+// //     res.send(`Username:${username}`)
+// // })
+
+// app.get('/set', (req, res) => {
+//     res.cookie('Username', "Dilip Sanap", { maxAge: 20 * 1000, httpOnly: true });
+//     res.send('Cookie set successfully');
+// })
+
+// app.get('/get', (req, res) => {
+//     const username = req.cookies.Username;
+//     if (username) {
+//         res.send(`Hello,  ${username}`)
+//     } else {
+//         res.send(`Cookie not found`)
+//     }
     
-});
+// });
 
-app.get("/clear", (req, res) => {
-  res.clearCookie("username");
-  res.send("Cookie has been cleared");
-});
-app.listen(8080, () => {
-    console.log('server is running on port 8080');
-})
+// app.get("/clear", (req, res) => {
+//   res.clearCookie("username");
+//   res.send("Cookie has been cleared");
+// });
+// app.listen(8080, () => {
+//     console.log('server is running on port 8080');
+// })
+
+// const http = require('http');
+
+// const options = {
+//     hostname: 'api.example.com',
+//     path: '/user/register',
+//     method: 'POST',
+//     headers: {
+//         'content-Type': "application/json"
+//     }
+// };
+
+// const req = http.request(options, (res) => {
+//     let data = "";
+//     res.on('data', (chunk) => {
+//         data += chunk
+//     });
+//     res.on('end', () => {
+//         console.log(data);
+//     });
+//     res.on('error', (error) => {
+//         console.log(error);
+//     })
+// })
+
+const rateLimit = (limit, time, blockedTime) => {
+    
+    const requests = {};
+
+    setInterval(() => {
+        
+        for (let ip in requests) {
+            
+            const now = Date.now();
+
+            const timeWindow = requests[ip].timeWindow;
+
+            const blockedUntill = requests[ip].blockedUntill;
+
+            requests[ip].requests = requests[ip].requests.filter((time) => {
+                return time > now - timeWindow;
+            });
+
+            if (requests[ip].requests.length === 0) {
+                requests[ip].timeWindow = now;
+            }
+
+            if (blockedUntill && blockedUntill <= now) {
+                requests[ip].blockedUntill = null;
+
+                requests[ip].requests = [];
+                requests[ip].timeWindow = now
+            }
+        }
+
+    }, time);
+
+    return (req, res, next) => {
+        
+        const ip = req.ip;
+
+        const now = Date.now();
+
+        requests[ip] = requests[ip] || {
+            requests: [], timeWindow: now
+        };
+
+        if (requests[ip].blockedUntill && requests[ip].blockedUntill > now) {
+            const remainingTime = Math.ceil((requests[ip].blockedUntill - now) / 1000);
+
+            res.status(429).send(`Too many requests , please try again after ${remainingTime} seconds`)
+        } else if (requests[ip].length >= limit) {
+            requests[ip].blockedUntill = now + blockedTime;
+
+            const remainingTime = Math.ceil((blockedTime) / 1000);
+
+            res.status(429).send(`Too many requests , please try again after ${remainingTime} seconds`)
+        } else {
+            requests[ip].requests.push(now);
+            next();
+        }
+    }
+};
+
+module.exports={rateLimit}

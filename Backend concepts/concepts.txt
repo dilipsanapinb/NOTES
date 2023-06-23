@@ -2749,30 +2749,30 @@ Denormalization:
 ---------------------------------------------------------------------------------------
 
 ## How do Browsers work ?
- 
-   => Browsers are software applications that allow users to access and view content on the internet. 
-   => Steps that browser takes to get data:
-   (1) User Input: The user types a URL or a search term into the browser's address bar.
 
-   (2)Domain Name System (DNS) Lookup: The browser sends a request to a DNS server to translate the domain name into an IP address. The DNS server responds with the IP address of the server that hosts the website.
+  => Browsers are software applications that allow users to access and view content on the internet. 
+  => Steps that browser takes to get data:
+  (1) User Input: The user types a URL or a search term into the browser's address bar.
 
-   (3)Establishing a Connection: The browser opens a connection to the server using the HTTP or HTTPS protocol.
+  (2)Domain Name System (DNS) Lookup: The browser sends a request to a DNS server to translate the domain name into an IP address. The DNS server responds with the IP address of the server that hosts the website.
 
-   (4)Sending a Request: The browser sends a request to the server for the webpage or resource that the user requested.
+  (3)Establishing a Connection: The browser opens a connection to the server using the HTTP or HTTPS protocol.
 
-   (6)Server Response: The server sends a response to the browser with the requested webpage or resource.
+  (4)Sending a Request: The browser sends a request to the server for the webpage or resource that the user requested.
 
-   (7)Rendering the Page: The browser processes the HTML, CSS, and JavaScript code to render the webpage. This involves parsing the HTML to create a Document Object Model (DOM) and interpreting the CSS to create a Render Object Model (ROM). The browser then uses these models to create a visual representation of the webpage.
+  (6)Server Response: The server sends a response to the browser with the requested webpage or resource.
 
-   (8)Displaying the Page: The browser displays the rendered webpage on the user's screen.
+  (7)Rendering the Page: The browser processes the HTML, CSS, and JavaScript code to render the webpage. This involves parsing the HTML to create a Document Object Model (DOM) and interpreting the CSS to create a Render Object Model (ROM). The browser then uses these models to create a visual representation of the webpage.
 
-   (9)Handling User Interaction: The browser listens for user interaction, such as clicks or scrolls, and responds accordingly by updating the DOM and ROM and redrawing the page.
+  (8)Displaying the Page: The browser displays the rendered webpage on the user's screen.
 
-   (10)Caching: The browser may cache certain resources, such as images or scripts, to improve performance and reduce the number of requests to the server.
+  (9)Handling User Interaction: The browser listens for user interaction, such as clicks or scrolls, and responds accordingly by updating the DOM and ROM and redrawing the page.
 
-   (11)Security: The browser may perform security checks, such as checking for SSL/TLS certificates and verifying that the webpage is not known to be malicious.
+  (10)Caching: The browser may cache certain resources, such as images or scripts, to improve performance and reduce the number of requests to the server.
 
-   (12)Overall, browsers use a combination of network protocols, markup languages, scripting languages, and rendering engines to provide a seamless user experience when browsing the web.
+  (11)Security: The browser may perform security checks, such as checking for SSL/TLS certificates and verifying that the webpage is not known to be malicious.
+
+  (12)Overall, browsers use a combination of network protocols, markup languages, scripting languages, and rendering engines to provide a seamless user experience when browsing the web.
 
 ---------------------------------------------------------------------------------
 
@@ -2797,25 +2797,25 @@ Note: It's important to mention that URLs can have additional components such as
 
 ## What is Stateless Backend ? 
 
-   => As the name suggests, the stateless server has no state with regard to the user’s information.
-   => It means when the u'ser access any web resource, the server does not keep a track of the user’s identity or actions performed on the page'. 'So every time, the user has to prove the identity to gain access'.
-   => It is opposite the statefull server in which servers store users’ state information in the form of sessions. It stores information like profile, preference, user’s action and gives personalized experience on next visit. The user does not need credentials every time during the valid session.  
-   => While stateless server treats each request as independent and demand user credentials. It requires no knowledge of previous interactions and stores no session information. So, there’s no difference between previous, current, and next requests.
-   => Features of Stateless Server:
+  => As the name suggests, the stateless server has "no state with regard to the user's information".
+  => It means when the "user access any web resource, the server does not keep a track of the user's identity or actions performed on the page". So "every time, the user has to prove the identity to gain access".
+  => It is opposite the statefull server in which servers store user's state information in the form of sessions. It stores information like profile, preference, user’s action and gives personalized experience on next visit. The user does not need credentials every time during the valid session.  
+  => While "stateless server treats each request as independent" and "demand user credentials". It requires no knowledge of previous interactions and stores no session information. So, there’s no difference between previous, current, and next requests.
+  => Features of Stateless Server:
 
-         (1) Performance: The server is not bound to maintain and synchronize any session data.  So it can serve any number of requests to the user. It helps in achieving a better response time with experience.  
+        (1) Performance: The server is not bound to maintain and synchronize any session data.  So it can serve any number of requests to the user. It helps in achieving a "better response time with experience".  
 
-         (2) Design: This is regarded as an advantage for developers as the stateless servers are easy to design and code because there is no need to dynamically maintain storage units in the backend. Stateless authentication uses REST (Representational State Transfer) to design the web APIs.  
+        (2) Design: This is regarded as an advantage for developers as the stateless servers" are easy to design and code" because there is "no need to dynamically maintain storage units in the backend". Stateless authentication uses REST (Representational State Transfer) to design the web APIs.  
 
-         (3) Data Crash: Since no data is stored on the server, there is nill impact of a system crash on the performance of the web resource. The user can simply recover the access by reauthenticating. Stateless uses a different server on each request. So there’s a scope of horizontal expansion.
+        (3) Data Crash: Since no data is stored on the server, there is nill impact of a system crash on the performance of the web resource. The user can simply recover the access by reauthenticating. "Stateless uses a different server on each request. So there's a scope of horizontal expansion".
 
-         (4)Technology: The stateless servers can identify users based on a unique ID called Tokens. Tokens accommodate essential information of the user grants access after receiving the secret token. The validity of the token depends either on session duration or it gets destroyed once the user logs out of resource. This technology is known as cryptography which is going to be a major driver of future security mechanisms.
+        (4)Technology: The stateless servers can identify users based on a unique ID called Tokens. Tokens accommodate essential information of the user grants access after receiving the secret token. The validity of the token depends either on session duration or it gets destroyed once the user logs out of resource. This technology is known as cryptography which is going to be a major driver of future security mechanisms.
 
 ----------------------------------------------------------------------------------
 
 ## What is the client server model ?
     
-    => Client-server model is distributed application structure that partition tasks or worload between the providers of resource or service called servers and service requesers called clients.
+    => Client-server model is distributed application structure that partition tasks or workload between the providers of resource or service called servers and service requesters called clients.
     => In the client-server architecture, when the client computer sends a request for data to the server through the internet, the server accepts the requested process and deliver the data packets requested back to the client.
     => Clients do not share any of their resources. Examples of Client-Server Model are Email, World Wide Web, etc.
     
@@ -2838,27 +2838,24 @@ Note: It's important to mention that URLs can have additional components such as
     (3) Data packets may be spoofed or modified during transmission.
     (4) Phishing or capturing login credentials or other useful information of the user are common and MITM(Man in the Middle) attacks are common.
 
-         
+
 
 -----------------------------------------------------------------------------------------
 
 ## What is HTTP vs HTTPS? 
 
-  - HTTPS stands for "HyperText Transfer Protocol Secure", and it is a secure version of HTTP.
-  - HTTP transmits data in plain text, while HTTPS encrypts data to protect privacy and integrity.
-  - HTTPS uses SSL/TLS certificates to establish a secure connection between a client and a server.
-  - HTTPS provides data privacy, integrity, and authentication, preventing data breaches and unauthorized access.
-  - Websites using HTTPS display a padlock icon, building trust with users.
-  - HTTPS is increasingly required for websites handling sensitive data or conducting online transactions.
-  - Main differences between HTTP and HTTPS are encryption, SSL/TLS certificates, and advantages of data protection, trust, and compliance.
-       
-
-       eg. 
-            
+  -- HTTPS stands for "HyperText Transfer Protocol Secure", and it is a secure version of HTTP.
+  -- HTTP transmits data in plain text, while HTTPS encrypts data to protect privacy and integrity.
+  -- HTTPS uses SSL / TLS certificates to establish a secure connection between a client and a server.
+  -- HTTPS provides data privacy, integrity, and authentication, preventing data breaches and unauthorized access.
+  -- Websites using HTTPS display a padlock icon, building trust with users.
+  -- HTTPS is increasingly required for websites handling sensitive data or conducting online transactions.
+  -- Main differences between HTTP and HTTPS are encryption, SSL/TLS certificates, and advantages of data protection, trust, and compliance.
+      eg. 
             const https = require('https');
 
             // Define the options for your HTTPS request, including the URL, method, headers, and any other necessary parameters:
-
+            
             const options = {
               hostname: 'api.example.com',
               path: '/endpoint',
@@ -2892,9 +2889,9 @@ Note: It's important to mention that URLs can have additional components such as
 
 ## What is a cluster?
 
-=>At a high level, a computer cluster is a group of two or more computers, or nodes, that run in parallel to achieve a common goal. This allows workloads consisting of a high number of individual, parallelizable tasks to be distributed among the nodes in the cluster. As a result, these tasks can leverage the combined memory and processing power of each computer to increase overall performance.
+=>At a high level, a computer cluster is a "group of two or more computers", or nodes, that "run in parallel to achieve a common goal". This allows workloads consisting of a high number of individual, parallelizable tasks to be distributed among the nodes in the cluster. As a result, these tasks can leverage the combined memory and processing power of each computer to increase overall performance.
 
-1. Enterprise computing. In a computer system, a cluster is a group of servers and other resources that act like a single system and enable high availability, load balancing and parallel processing. These systems can range from a two-node system of two personal computers (PCs) to a supercomputer that has a cluster architecture.
+-- Enterprise computing. In a computer system, a cluster is a group of servers and other resources that act like a single system and enable high availability, load balancing and parallel processing. These systems can range from a two-node system of two personal computers (PCs) to a supercomputer that has a cluster architecture.
 
 --------------------------------------------------------
 
@@ -2906,21 +2903,21 @@ Note: It's important to mention that URLs can have additional components such as
 
       Throughput in a Node.js backend can be influenced by several factors, including processing power of the system, available memory, network bandwidth, and software architecture.
 
-    => Techniques can used to high throughput,
+      => Techniques can used to high throughput,
 
-       => Event-driven, non-blocking I/O: Node.js uses an event-driven, non-blocking I/O model, which allows it to handle multiple concurrent connections without blocking the main event loop. This enables high concurrency and efficient handling of incoming requests, leading to higher throughput.
+      => Event-driven, non-blocking I/O: Node.js uses an event-driven, non-blocking I/O model, which allows it to handle multiple concurrent connections without blocking the main event loop. This enables high concurrency and efficient handling of incoming requests, leading to higher throughput.
 
-       => Asynchronous programming: Node.js encourages the use of asynchronous programming techniques, such as callbacks, Promises, and async/await, which allow for efficient handling of I/O-bound operations. This prevents the server from blocking while waiting for I/O operations to complete, resulting in higher throughput.
+      => Asynchronous programming: Node.js encourages the use of asynchronous programming techniques, such as callbacks, Promises, and async/await, which allow for efficient handling of I/O-bound operations. This prevents the server from blocking while waiting for I/O operations to complete, resulting in higher throughput.
 
-       => Scalability: Node.js applications can be designed to scale horizontally, meaning they can be distributed across multiple instances or nodes to handle increased load. This can be achieved using techniques such as clustering or load balancing, which allow for better utilization of resources and increased throughput.
+      => Scalability: Node.js applications can be designed to scale horizontally, meaning they can be distributed across multiple instances or nodes to handle increased load. This can be achieved using techniques such as clustering or load balancing, which allow for better utilization of resources and increased throughput.
 
-       => Performance optimizations: Properly optimizing the performance of a Node.js application can significantly impact its throughput. This may involve techniques such as optimizing database queries, caching, minimizing unnecessary computations, and optimizing resource utilization.
+      => Performance optimizations: Properly optimizing the performance of a Node.js application can significantly impact its throughput. This may involve techniques such as optimizing database queries, caching, minimizing unnecessary computations, and optimizing resource utilization.
 
-       => Hardware resources: The hardware resources available to the Node.js server, such as CPU, memory, and network bandwidth, can also impact throughput. Higher hardware resources generally allow for higher throughput, as the server has more capacity to handle incoming requests.
+      => Hardware resources: The hardware resources available to the Node.js server, such as CPU, memory, and network bandwidth, can also impact throughput. Higher hardware resources generally allow for higher throughput, as the server has more capacity to handle incoming requests.
 
-       => Application design: The design of the Node.js application, including its architecture, code organization, and efficiency, can also impact throughput. Well-structured and optimized code, along with efficient handling of requests and responses, can contribute to higher throughput.
+      => Application design: The design of the Node.js application, including its architecture, code organization, and efficiency, can also impact throughput. Well-structured and optimized code, along with efficient handling of requests and responses, can contribute to higher throughput.
 
-       It's important to note that throughput is not the only consideration in evaluating the performance of a Node.js backend. Response time, latency, and resource utilization are also important factors to consider. A well-optimized Node.js backend should aim for a balance between high throughput, low latency, and efficient resource utilization to provide optimal performance for the specific requirements of the application.
+      It's important to note that throughput is not the only consideration in evaluating the performance of a Node.js backend. Response time, latency, and resource utilization are also important factors to consider. A well-optimized Node.js backend should aim for a balance between high throughput, low latency, and efficient resource utilization to provide optimal performance for the specific requirements of the application.
 
 --------------------------------------------------------------------------------------
 
@@ -2930,7 +2927,7 @@ Note: It's important to mention that URLs can have additional components such as
     =>Example: if an online store has an availability of 99%, it means that the store is accessible and operational for 99% of the time and inaccessible for the remaining 1%.
     =>Availability is often measured in terms of uptime, which is the amount of time that a system or service is operational and available to users. Uptime is typically expressed as a percentage of total time, such as 99.9% uptime, which means that the system or service is operational and accessible for 99.9% of the time.
     =>Availability is an important metric for businesses and organizations that rely on systems and services to operate, as downtime can result in lost revenue, decreased productivity, and damage to reputation. Therefore, it is important for these organizations to ensure that their systems and services are designed with availability in mind and that appropriate measures are taken to minimize downtime and maximize uptime.
-    => A service level agreement (SLA) is a contract between a service provider and a customer that states the amount of time the service will be available for use. Big cloud providers such as Amazon, Google, and Microsoft promise an availability rate of 99.9% or higher.
+    => A "service level agreement" (SLA) is a "contract between a service provider and a customer that states the amount of time the service will be available for use". Big cloud providers such as Amazon, Google, and Microsoft promise an availability rate of 99.9% or higher.
     => The availability rate is often described using "nines," with more nines meaning a higher level of availability.
 
 -----------------------------------------------------------------------------------
@@ -2943,8 +2940,8 @@ Note: It's important to mention that URLs can have additional components such as
     => Low latency is particularly important for financial trading, where a few milliseconds can make a significant difference in the outcome of a trade. High-frequency trading systems often use specialized networks and hardware to reduce latency and gain an advantage over competitors.
     => Most often, latency is measured between a user's device (the "client" device) and a data center. This measurement helps developers understand how quickly a webpage or application will load for users.
     => Factors responsible for latency:
-       (1) Distance between client and server.
-       (2) Internet speed
+      (1) Distance between client and server.
+      (2) Internet speed
     =>Reducing latency involves optimizing the network infrastructure, reducing the number of network devices the data packet has to pass through, and reducing the processing time at each device. This can be achieved through various techniques, such as using faster hardware, reducing the distance between the source and destination, and implementing data compression and caching(CDN).
 
 ----------------------------------------------------------------------------------
@@ -3055,17 +3052,17 @@ module.exports={rate}
     
     Strategies to rate a limit:
 
-    (1) Token Bucket: In this method, a token bucket is used to store tokens that represent the number of requests that can be made within a given time period. Each request consumes a token from the bucket, and if the bucket is empty, the request is denied until new tokens are added. This method provides a constant rate of requests over time.
+    (1) "Token Bucket": In this method, a token bucket is used to store tokens that represent the number of requests that can be made within a given time period. Each request consumes a token from the bucket, and if the bucket is empty, the request is denied until new tokens are added. This method provides a constant rate of requests over time.
 
-    (2) Fixed Window: In this method, the number of requests allowed within a fixed time window, such as a minute or an hour, is limited. Once the limit is reached, further requests are denied until the window resets.
+    (2) "Fixed Window": In this method, the number of requests allowed within a fixed time window, such as a minute or an hour, is limited. Once the limit is reached, further requests are denied until the window resets.
 
-    (3) Rolling Window: In this method, the number of requests allowed is limited within a sliding time window. The window moves forward with each request, and requests outside of the window are ignored.
+    (3) "Rolling Window": In this method, the number of requests allowed is limited within a sliding time window. The window moves forward with each request, and requests outside of the window are ignored.
 
-    (4) Adaptive Rate Limiting: In this method, the rate limit is dynamically adjusted based on the current load and usage patterns. For example, if the server is under heavy load, the rate limit can be reduced to prevent overload, while during periods of low load, the rate limit can be increased to allow more requests.
+    (4) "Adaptive Rate Limiting": In this method, the rate limit is dynamically adjusted based on the current load and usage patterns. For example, if the server is under heavy load, the rate limit can be reduced to prevent overload, while during periods of low load, the rate limit can be increased to allow more requests.
 
-    (5) Token Bucket with Bursting: In this method, the token bucket has a burst capacity that allows a certain number of requests to be made at once, even if the bucket is empty. This allows for short bursts of requests to be made, while still maintaining a consistent rate over time.
+    (5) "Token Bucket with Bursting": In this method, the token bucket has a burst capacity that allows a certain number of requests to be made at once, even if the bucket is empty. This allows for short bursts of requests to be made, while still maintaining a consistent rate over time.
 
-    (6) IP-based Rate Limiting: In this method, rate limits are applied based on the IP address of the requester. This can be useful in preventing abuse and ensuring fair usage of the service.
+    (6) "IP-based Rate Limiting": In this method, rate limits are applied based on the IP address of the requester. This can be useful in preventing abuse and ensuring fair usage of the service.
 
 ------------------------------------------------------------------------------------
 
@@ -3112,73 +3109,72 @@ module.exports={rate}
 ------------------------------------------------------------------------------------
 
 ## What is a horizontal and vertical scaling? **
-     
-     => Scaling alters the size of a system. In the scaling process, we either compress or expand the system to meet the expected needs
-     => Scaling can be categorized into 2 types: 
+=> Scaling alters the size of a system. In the scaling process, we either compress or expand the system to meet the expected needs
+    => Scaling can be categorized into 2 types: 
 
     (1) Vertical Scaling:
 
-           -> When new resources are added to the existing system to meet the expectation, it is known as vertical scaling. 
-           -> Consider a rack of servers and resources that comprises the existing system. Now when the existing system fails to meet the expected needs, and the expected needs can be met by just adding resources, this is considered vertical scaling. Vertical scaling is based on the idea of adding more power(CPU, RAM) to existing systems, basically adding more resources.
-           -> Vertical scaling is not only easy but also cheaper than Horizontal Scaling. It also requires less time to be fixed.
-           (1) When new resources are added in the existing system to meet the expectation, it is known as vertical scaling
-           (2) It expands the size of the existing system vertically.
-           (3) It is harder to upgrade and may involve downtime.
-           (4) It is easy to implement
-           (5) It is cheaper as we need to just add new resources
-           (6) It takes less time to be done
-           (7) Single point of failure
-           (8) Examples  of databases that can be easily scaled- MySQL, Amazon RDS
+          -> When new resources are added to the existing system to meet the expectation, it is known as vertical scaling. 
+          -> Consider a rack of servers and resources that comprises the existing system. Now when the existing system fails to meet the expected needs, and the expected needs can be met by just adding resources, this is considered vertical scaling. Vertical scaling is based on the idea of adding more power(CPU, RAM) to existing systems, basically adding more resources.
+          -> Vertical scaling is not only easy but also cheaper than Horizontal Scaling. It also requires less time to be fixed.
+          (1) When new resources are added in the existing system to meet the expectation, it is known as vertical scaling
+          (2) It expands the size of the existing system vertically.
+          (3) It is harder to upgrade and may involve downtime.
+          (4) It is easy to implement
+          (5) It is cheaper as we need to just add new resources
+          (6) It takes less time to be done
+          (7) Single point of failure
+          (8) Examples  of databases that can be easily scaled- MySQL, Amazon RDS
 
     (2) Horizontal Scaling: 
 
-           When new server racks are added to the existing system to meet the higher expectation, it is known as horizontal scaling.
-           (1) When new server racks are added to the existing system to meet the higher expectation, it is known as horizontal scaling.
-           (2) It expands the size of the existing system horizontally.
-           (3) It is easier to upgrade.
-           (4) It is difficult to implement
-           5) It is costlier, as new server racks comprise a lot of resources
-           6) It takes more time to be done
-           7) High resilience and fault tolerance
-           8) Examples of databases that can be easily scaled- Cassandra, MongoDB, Google Cloud Spanner
+          When new server racks are added to the existing system to meet the higher expectation, it is known as horizontal scaling.
+          (1) When new server racks are added to the existing system to meet the higher expectation, it is known as horizontal scaling.
+          (2) It expands the size of the existing system horizontally.
+          (3) It is easier to upgrade.
+          (4) It is difficult to implement
+          (5) It is costlier, as new server racks comprise a lot of resources
+          (6) It takes more time to be done
+          (7) High resilience and fault tolerance
+          (8) Examples of databases that can be easily scaled- Cassandra, MongoDB, Google Cloud Spanner
 
 ------------------------------------------------------------------------------------
 
 ## How do you build a system which is reliable? **
 
-     Building a reliable system involves designing and implementing various components that work together to ensure that the system performs as expected and meets the desired level of reliability. Here are some key steps that can be taken to build a reliable system:
+    Building a reliable system involves designing and implementing various components that work together to ensure that the system performs as expected and meets the desired level of reliability. Here are some key steps that can be taken to build a reliable system:
 
       => Define the requirements:
-           -> Start by defining the reliability requirements of the system.
-           -> This includes factors such as availability, fault tolerance, scalability, and performance. The requirements should be clearly defined and measurable.
+          -> Start by defining the reliability requirements of the system.
+          -> This includes factors such as availability, fault tolerance, scalability, and performance. The requirements should be clearly defined and measurable.
 
-     => Identify potential failure points:
-           -> Identify potential points of failure in the system, such as hardware failures, software bugs, network disruptions, and human errors.
-           -> Analyze the impact of these failures on the system and determine the criticality of each component.
+    => Identify potential failure points:
+          -> Identify potential points of failure in the system, such as hardware failures, software bugs, network disruptions, and human errors.
+          -> Analyze the impact of these failures on the system and determine the criticality of each component.
 
-     => Implement redundancy:
-           -> Implement redundancy in critical components to ensure that the system can continue to function even if one or more components fail.
-           -> This can be done by using multiple servers, data centers, network connections, or storage devices.
+    => Implement redundancy:
+          -> Implement redundancy in critical components to ensure that the system can continue to function even if one or more components fail.
+          -> This can be done by using multiple servers, data centers, network connections, or storage devices.
 
-     => Use monitoring and alerting:
+    => Use monitoring and alerting:
           -> Implement monitoring and alerting systems to detect and respond to failures in the system.
           -> This includes monitoring performance metrics, error rates, and system logs, and setting up alerts to notify the team in case of issues.
 
-     => Implement backups and disaster recovery:
+    => Implement backups and disaster recovery:
           -> Implement backups and disaster recovery plans to ensure that data and systems can be restored in case of a major failure or disaster.
           -> This includes backing up data regularly, testing backups, and implementing recovery procedures.
 
-     => Use automation:
+    => Use automation:
           -> Use automation to reduce the risk of human errors and increase the reliability of the system.
           -> This includes automated testing, deployment, scaling, and recovery procedures.
 
-     => Perform regular maintenance:
-           -> Perform regular maintenance to ensure that the system is up-to-date, secure, and performing optimally.
-           -> This includes updating software, applying patches, and testing system changes before deployment.
+    => Perform regular maintenance:
+          -> Perform regular maintenance to ensure that the system is up-to-date, secure, and performing optimally.
+          -> This includes updating software, applying patches, and testing system changes before deployment.
 
-     => Test and validate the system: 
-           -> Test and validate the system to ensure that it meets the reliability requirements and performs as expected.
-           -> This includes unit testing, integration testing, and load testing.
+    => Test and validate the system: 
+          -> Test and validate the system to ensure that it meets the reliability requirements and performs as expected.
+          -> This includes unit testing, integration testing, and load testing.
 
       =>By following these steps, a system can be built that is reliable, resilient, and able to meet the desired level of availability and performance.
 
@@ -3215,7 +3211,7 @@ Another difference is in the way modules are handled. On the browser, JavaScript
 
 Additionally, JavaScript code running in a browser has limited access to system resources, such as the file system and network interfaces, due to security restrictions enforced by the browser. In contrast, Node.js allows JavaScript code to access system resources directly, enabling it to perform tasks such as file I/O and network communication.
 
- Another difference is that you can control the version of node you use to run your application, while you cannot control the version of the browser your visitors use. This means that you can use more modern JavaScript features in node without worrying about compatibility issues. However, node supports both CommonJS and ES modules for importing and exporting code, while the browser only supports ES modules.
+Another difference is that you can control the version of node you use to run your application, while you cannot control the version of the browser your visitors use. This means that you can use more modern JavaScript features in node without worrying about compatibility issues. However, node supports both CommonJS and ES modules for importing and exporting code, while the browser only supports ES modules.
 
 Overall, while JavaScript syntax and core features are the same whether it is running in a browser or in Node.js, the environment and available APIs can differ significantly, affecting how the code is written and what it can do.
 
@@ -3266,7 +3262,7 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
   => In a pub/sub model, any message published to a topic is immediately received by all of the subscribers to the topic.
   => Pub/sub messaging can be used to enable event-driven architectures, or to decouple applications in order to increase performance, reliability and scalability.
   => Publish/Subscribe (Pub/Sub) messaging provides instant event notifications for these distributed applications.  
-  => The Publish Subscribe model allows messages to be broadcast to different parts of a system asynchronously.
+  => The Publish / Subscribe model allows messages to be broadcast to different parts of a system asynchronously.
   => A sibling to a message queue, a message topic provides a lightweight mechanism to broadcast asynchronous event notifications, and endpoints that allow software components to connect to the topic in order to send and receive those messages.
   => To broadcast a message, a component called a publisher simply pushes a message to the topic.
   => Unlike message queues, which batch messages until they are retrieved, message topics transfer messages with no or very little queuing, and push them out immediately to all subscribers.
@@ -3284,7 +3280,7 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
   => Webhooks are automated, in other words, they are automatically sent out when their event is fired in the source system.
   => This provides a way for one system (the source) to “speak” (HTTP request) to another system (the destination) when an event occurs, and share information (request payload) about the event that occurred.
   => Webhooks are used for,
-    - Let’s say you subscribe to a streaming service. At the beginning of each month, your credit card is charged and your bank needs to communicate this to you via SMS or email. The banking system (the source) can use a webhook to call a mailing or SMS service (the destination) to immediately send you a debit notification each time your card is charged.
+  -- Let’s say you subscribe to a streaming service. At the beginning of each month, your credit card is charged and your bank needs to communicate this to you via SMS or email. The banking system (the source) can use a webhook to call a mailing or SMS service (the destination) to immediately send you a debit notification each time your card is charged.
 
   => For a system to send webhooks, the system has to be able to support the process. You can build your system to send webhooks by triggering HTTP requests for different types of events, however, webhooks are most common in SaaS platforms like GitHub, Shopify, Stripe, Twilio, and Slack.
 
@@ -3351,8 +3347,8 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
 
 ## What is AWS S3?
 
- => Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. 
- => Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics. Amazon S3 provides management features so that you can optimize, organize, and configure access to your data to meet your specific business, organizational, and compliance requirements.
+=> Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. 
+=> Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics. Amazon S3 provides management features so that you can optimize, organize, and configure access to your data to meet your specific business, organizational, and compliance requirements.
 
 -------------------------------------------------------
 
@@ -3365,37 +3361,37 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
 
   => Amazon EC2 provides the following features:
 
-      - Virtual computing environments, known as instances
+      -- Virtual computing environments, known as instances
 
-      - Preconfigured templates for your instances, known as Amazon Machine Images (AMIs), that package the bits you need for your server (including the operating system and additional software)
+      -- Preconfigured templates for your instances, known as Amazon Machine Images (AMIs), that package the bits you need for your server (including the operating system and additional software)
 
-      - Various configurations of CPU, memory, storage, and networking capacity for your instances, known as instance types
+      -- Various configurations of CPU, memory, storage, and networking capacity for your instances, known as instance types
 
-      - Secure login information for your instances using key pairs (AWS stores the public key, and you store the private key in a secure place)
+      -- Secure login information for your instances using key pairs (AWS stores the public key, and you store the private key in a secure place)
 
-      - Storage volumes for temporary data that's deleted when you stop, hibernate, or terminate your instance, known as instance store volumes
+      -- Storage volumes for temporary data that's deleted when you stop, hibernate, or terminate your instance, known as instance store volumes
 
-      - Persistent storage volumes for your data using Amazon Elastic Block Store (Amazon EBS), known as Amazon EBS volumes
+      -- Persistent storage volumes for your data using Amazon Elastic Block Store (Amazon EBS), known as Amazon EBS volumes
 
-      - Multiple physical locations for your resources, such as instances and Amazon EBS volumes, known as Regions and Availability Zones
+      -- Multiple physical locations for your resources, such as instances and Amazon EBS volumes, known as Regions and Availability Zones
 
-      - A firewall that enables you to specify the protocols, ports, and source IP ranges that can reach your instances using security groups
+      -- A firewall that enables you to specify the protocols, ports, and source IP ranges that can reach your instances using security groups
 
-      - Static IPv4 addresses for dynamic cloud computing, known as Elastic IP addresses
+      -- Static IPv4 addresses for dynamic cloud computing, known as Elastic IP addresses
 
-      - Metadata, known as tags, that you can create and assign to your Amazon EC2 resources
+      -- Metadata, known as tags, that you can create and assign to your Amazon EC2 resources
 
-      - Virtual networks you can create that are logically isolated from the rest of the AWS Cloud, and that you can optionally connect to your own network, known as virtual private clouds (VPCs)
+      -- Virtual networks you can create that are logically isolated from the rest of the AWS Cloud, and that you can optionally connect to your own network, known as virtual private clouds (VPCs)
 
 ------------------------------------------------------
 
 ## What is Cloudfront in AWS?
 
-   => Amazon CloudFront is a web service that 'speeds up distribution of your static and dynamic web content', such as .html, .css, .js, and image files, to your users.
-   => CloudFront delivers your content through a worldwide network of data centers called edge locations.
-   => When a user requests content that you're serving with CloudFront, the request is routed to the edge location that provides the lowest latency (time delay), so that content is delivered with the best possible performance.
-   => If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately.
-   => If the content is not in that edge location, CloudFront retrieves it from an origin that you've defined—such as an Amazon S3 bucket, a MediaPackage channel, or an HTTP server (for example, a web server) that you have identified as the source for the definitive version of your content.
+  => Amazon CloudFront is a web service that "speeds up distribution of your static and dynamic web content", such as ".html, .css, .js, and image files, to your users".
+  => CloudFront delivers your content through a "worldwide network of data centers" called "edge locations".
+  => When a user requests content that you're serving with CloudFront, the request is routed to the edge location that provides the lowest latency (time delay), so that content is delivered with the best possible performance.
+  => If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately.
+  => If the content is not in that edge location, CloudFront retrieves it from an origin that you've defined—such as an Amazon S3 bucket, a MediaPackage channel, or an HTTP server (for example, a web server) that you have identified as the source for the definitive version of your content.
 
     => As an example, suppose that you're serving an image from a traditional web server, not from CloudFront. For example, you might serve an image, sunsetphoto.png, using the URL https://example.com/sunsetphoto.png.
 
@@ -3417,28 +3413,28 @@ Overall, while JavaScript syntax and core features are the same whether it is ru
 
   => Functions of Route53:
 
-      - If a web application requires a domain name, Route53 service helps to register the name for the website (i.e domain name).
+      -- If a web application requires a domain name, Route53 service helps to register the name for the website (i.e domain name).
       Whenever a user enters the domain name, Route53 helps to connect the user to the website.
 
-      - If any failure is detected at any level, it automatically routes the user to a healthy resource.
+      -- If any failure is detected at any level, it automatically routes the user to a healthy resource.
 
-      - Amazon Route 53 is cost effective, secure and scalable.
-      - Amazon Route 53 is flexible, highly available and reliable.
+      -- Amazon Route 53 is cost effective, secure and scalable.
+      -- Amazon Route 53 is flexible, highly available and reliable.
 
   => Methodologies related to Route53: 
 
-      - Records: Records are created to route internet traffic to the resources. They are the objects present in the hosted zone which determines how the internet traffic has to be routed for a domain name so that it finally reaches the resources. The name of each record in a hosted zone must end with the name of the hosted zone.
-      - Hosted zone: When the domain name is registered, Route53 creates a public hosted zone that has the same name as the domain name. It is a collection of records that contains information about how to route traffic of its domains and all of its subdomains.
-      - DNS query: It is a request for information sent from DNS client to the DNS server.
-      - Alias records: Alias records helps in routing internet traffic to AWS resources like S3 bucket, Amazon CloudFront, etc. It is created at the top node of the DNS namespace.
-      - Name servers: They are the servers in the DNS that translates the domain name into IP address so that internet traffic can be routed to the resources.
-      - DNS failover: A method for routing the traffic from unhealthy resources to healthy resources, whenever a failure is detected.
-      - Routing policy: Routing policy determines how Amazon Route53 responds to queries.
+      -- Records: Records are created to route internet traffic to the resources. They are the objects present in the hosted zone which determines how the internet traffic has to be routed for a domain name so that it finally reaches the resources. The name of each record in a hosted zone must end with the name of the hosted zone.
+      -- Hosted zone: When the domain name is registered, Route53 creates a public hosted zone that has the same name as the domain name. It is a collection of records that contains information about how to route traffic of its domains and all of its subdomains.
+      -- DNS query: It is a request for information sent from DNS client to the DNS server.
+      -- Alias records: Alias records helps in routing internet traffic to AWS resources like S3 bucket, Amazon CloudFront, etc. It is created at the top node of the DNS namespace.
+      -- Name servers: They are the servers in the DNS that translates the domain name into IP address so that internet traffic can be routed to the resources.
+      -- DNS failover: A method for routing the traffic from unhealthy resources to healthy resources, whenever a failure is detected.
+      -- Routing policy: Routing policy determines how Amazon Route53 responds to queries.
 
     => Types of Routing Policy :4
 
-      - Simple routing policy: It is a simple Route53 routing technique that can be used to route internet traffic to a single resource. For example; Web server to a website. Using this, routing multiple records with the same name cannot be created but multiple values ( such as multiple IP addresses ) can be specified in the same record.
-      - Failover routing policy: Whenever a resource goes unhealthy, this policy allows to route the traffic from unhealthy resource to healthy resource.
+      -- Simple routing policy: It is a simple Route53 routing technique that can be used to route internet traffic to a single resource. For example; Web server to a website. Using this, routing multiple records with the same name cannot be created but multiple values ( such as multiple IP addresses ) can be specified in the same record.
+      -- Failover routing policy: Whenever a resource goes unhealthy, this policy allows to route the traffic from unhealthy resource to healthy resource.
       - Geolocation routing policy: This routing policy routes the traffic to resources on the basis of the geographic location of the user. Geographic locations can be specified by continent, country, or state.  For example; A person residing in France will be redirected to the website in the French language while a person from the US will be redirected to the website in the English language.
       - Geoproximity routing policy: It routes traffic on the basis of the geographical location of the user and the type of content user wants to access. The user can optionally shift traffic from resources at one location to resource at another location. Using this policy, a user can shift more traffic to one location compared to another location by specifying a value known as bias.
       Latency routing policy: If a website has to be hosted in multiple regions then a latency based routing policy is used. To improve performance for the users, this policy helps in serving requests from the AWS region that provides the lowest latency. To use this policy the latency records for the resources are created in multiple AWS regions.
@@ -3493,9 +3489,9 @@ C: This is a website’s origin server (where the website data is stored)
 
 => Why would anyone add this extra middleman to their Internet activity? There are a few reasons one might want to use a forward proxy:
 
-    - To avoid state or institutional browsing restrictions - Some governments, schools, and other organizations use firewalls to give their users access to a limited version of the Internet. A forward proxy can be used to get around these restrictions, as they let the user connect to the proxy rather than directly to the sites they are visiting.
-    - To block access to certain content - Conversely, proxies can also be set up to block a group of users from accessing certain sites. For example, a school network might be configured to connect to the web through a proxy which enables content filtering rules, refusing to forward responses from Facebook and other social media sites.
-    - To protect their identity online - In some cases, regular Internet users simply desire increased anonymity online, but in other cases, Internet users live in places where the government can impose serious consequences to political dissidents. Criticizing the government in a web forum or on social media can lead to fines or imprisonment for these users. If one of these dissidents uses a forward proxy to connect to a website where they post politically sensitive comments, the IP address used to post the comments will be harder to trace back to the dissident. Only the IP address of the proxy server will be visible.
+    -- To avoid state or institutional browsing restrictions - Some governments, schools, and other organizations use firewalls to give their users access to a limited version of the Internet. A forward proxy can be used to get around these restrictions, as they let the user connect to the proxy rather than directly to the sites they are visiting.
+    -- To block access to certain content - Conversely, proxies can also be set up to block a group of users from accessing certain sites. For example, a school network might be configured to connect to the web through a proxy which enables content filtering rules, refusing to forward responses from Facebook and other social media sites.
+    -- To protect their identity online - In some cases, regular Internet users simply desire increased anonymity online, but in other cases, Internet users live in places where the government can impose serious consequences to political dissidents. Criticizing the government in a web forum or on social media can lead to fines or imprisonment for these users. If one of these dissidents uses a forward proxy to connect to a website where they post politically sensitive comments, the IP address used to post the comments will be harder to trace back to the dissident. Only the IP address of the proxy server will be visible.
 
 
 ## How is a reverse proxy different?
@@ -3522,15 +3518,15 @@ Typically all requests from D would go directly to F, and F would send responses
 
 ** Below we outline some of the benefits of a reverse proxy:
 
-    - Load balancing - A popular website that gets millions of users every day may not be able to handle all of its incoming site traffic with a single origin server. Instead, the site can be distributed among a pool of different servers, all handling requests for the same site. In this case, a reverse proxy can provide a load balancing solution which will distribute the incoming traffic evenly among the different servers to prevent any single server from becoming overloaded. In the event that a server fails completely, other servers can step up to handle the traffic.
+    -- Load balancing - A popular website that gets millions of users every day may not be able to handle all of its incoming site traffic with a single origin server. Instead, the site can be distributed among a pool of different servers, all handling requests for the same site. In this case, a reverse proxy can provide a load balancing solution which will distribute the incoming traffic evenly among the different servers to prevent any single server from becoming overloaded. In the event that a server fails completely, other servers can step up to handle the traffic.
 
-    - Protection from attacks - With a reverse proxy in place, a web site or service never needs to reveal the IP address of their origin server(s). This makes it much harder for attackers to leverage a targeted attack against them, such as a DDoS attack. Instead the attackers will only be able to target the reverse proxy, such as Cloudflare’s CDN, which will have tighter security and more resources to fend off a cyber attack.
+    -- Protection from attacks - With a reverse proxy in place, a web site or service never needs to reveal the IP address of their origin server(s). This makes it much harder for attackers to leverage a targeted attack against them, such as a DDoS attack. Instead the attackers will only be able to target the reverse proxy, such as Cloudflare’s CDN, which will have tighter security and more resources to fend off a cyber attack.
 
-    - Global server load balancing (GSLB) - In this form of load balancing, a website can be distributed on several servers around the globe and the reverse proxy will send clients to the server that’s geographically closest to them. This decreases the distances that requests and responses need to travel, minimizing load times.
+    -- Global server load balancing (GSLB) - In this form of load balancing, a website can be distributed on several servers around the globe and the reverse proxy will send clients to the server that’s geographically closest to them. This decreases the distances that requests and responses need to travel, minimizing load times.
 
-    - Caching - A reverse proxy can also cache content, resulting in faster performance. For example, if a user in Paris visits a reverse-proxied website with web servers in Los Angeles, the user might actually connect to a local reverse proxy server in Paris, which will then have to communicate with an origin server in L.A. The proxy server can then cache (or temporarily save) the response data. Subsequent Parisian users who browse the site will then get the locally cached version from the Parisian reverse proxy server, resulting in much faster performance.
+    -- Caching - A reverse proxy can also cache content, resulting in faster performance. For example, if a user in Paris visits a reverse-proxied website with web servers in Los Angeles, the user might actually connect to a local reverse proxy server in Paris, which will then have to communicate with an origin server in L.A. The proxy server can then cache (or temporarily save) the response data. Subsequent Parisian users who browse the site will then get the locally cached version from the Parisian reverse proxy server, resulting in much faster performance.
 
-    - SSL encryption - Encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
+    -- SSL encryption - Encrypting and decrypting SSL (or TLS) communications for each client can be computationally expensive for an origin server. A reverse proxy can be configured to decrypt all incoming requests and encrypt all outgoing responses, freeing up valuable resources on the origin server.
 
 --------------------------------------------------
 
@@ -3592,7 +3588,7 @@ Typically all requests from D would go directly to F, and F would send responses
         }
 
         greet() {
-            return (`Hello form ${this.name}`)
+            return (`Hello form ${this.name}!`)
         }
     }
 
@@ -3603,19 +3599,18 @@ Typically all requests from D would go directly to F, and F would send responses
 
       // testing 
 
-            class MyClass{
-          constructor(name) {
-              this.name=name
-          }
-
-          greet() {
-              return (`Hello form ${this.name}`)
-          }
-      }
-
-    let p1 = new MyClass('Dilip');
-    console.log(p1.greet());
-    module.exports = { MyClass };
+      const {myClass}=require('./myClass');
+      describe('myClass',()=>{
+        it('should create a new instances of muClass with the corrwct name',()=>{
+          const instance=new myClass('John');
+          expect(instance.name).toEqual('John')
+        });
+        it('shiukd retuen the correct greeting message',()=>{
+          const instance=new myClass('Alice');
+        const greeting=instance.greet();
+        exprect(greeting).toEqual('Hello, Alice!')
+        });
+      });
 ---------------------------------------------
 
 (4) Write a program to send a message to a specific cient in Socket.io.
@@ -3646,7 +3641,7 @@ Typically all requests from D would go directly to F, and F would send responses
           
         (B) API Gateways:
 
-          (1) Functionality: An API gateway is a 'specialized server that acts as an entry point for client requests', providing a centralized access point to a collection of backend services or microservices.
+          (1) Functionality: An API gateway is a "specialized server that acts as an entry point for client requests", providing a centralized access point to a collection of backend services or microservices.
 
           (2) Aggregation: API gateways can aggregate multiple backend services, allowing clients to interact with a single entry point instead of making multiple requests to different services.
 
@@ -3727,7 +3722,7 @@ By following these tips, you can help to ensure that your Socket.IO applications
 
 (8) Can an object methos access and modify the objects properties in Js?
 
-    => Yes, an object's method in JavaScript can access and modify the object's properties. When a method is invoked on an object, it has access to the object's properties through the this keyword. The this keyword refers to the current instance of the object that the method is being called on.
+    => Yes, an object's method in JavaScript can access and modify the object's properties. When a method is invoked on an object, it has access to the object's properties through the 'this' keyword. The this keyword refers to the current instance of the object that the method is being called on.
 
     Here's an example to illustrate how an object method can access and modify object properties:
 
@@ -3837,23 +3832,167 @@ By following these tips, you can help to ensure that your Socket.IO applications
 (1) Can an object method access and modify the objects's properties in Js?
 (2) What is JWT authentication and how does it works?
 (3) Can you explain middleware concept in Express using an example?
+---------------------------------------------------
 (4) Write a simple implementation of Watchman middleware that checks if the user is authenticated before allowing access to protected route.
+
+-------------------------------------------------
+
 (5) How can you limit the number of messages that can be sent to a client from the server in socket.io? Demonstrate one such way througth working code.
+    
+    
+    // server.js
+const express = require('express');
+const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+
+// Rate limiting configuration
+const MESSAGE_LIMIT = 10; // Maximum number of messages allowed within the time frame
+const TIME_FRAME = 60000; // Time frame in milliseconds (e.g., 60 seconds)
+
+// Track message count and reset timer for each client
+const messageCounts = new Map();
+
+io.on('connection', (socket) => {
+  // Initialize message count for the connected client
+  messageCounts.set(socket.id, 0);
+
+  // Handle incoming messages
+  socket.on('message', (data) => {
+    const count = messageCounts.get(socket.id) || 0;
+
+    // Check if the message count exceeds the limit
+    if (count >= MESSAGE_LIMIT) {
+      // Limit exceeded, emit an error message to the client
+      socket.emit('rateLimitExceeded', { message: 'Rate limit exceeded. Please try again later.' });
+      return;
+    }
+
+    // Increment message count
+    messageCounts.set(socket.id, count + 1);
+
+    // Process the message as normal
+    // ...
+
+    // Example: Broadcast the message to all connected clients
+    io.emit('message', data);
+  });
+});
+
+// Cleanup message count when a client disconnects
+io.on('disconnect', (socket) => {
+  messageCounts.delete(socket.id);
+});
+
+http.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+--------------------------------------------------
+
 (6) Write a function query records in a one to many relationship in Node.js and MongoDb. Write the code using the user and post example. Assume the relevant structure/schema wherever applicable.
+
+ const usersWithPosts = await User.find().populate('posts').exec();
+
+    // Log the users with their associated posts
+    usersWithPosts.forEach((user) => {
+      console.log(`User: ${user.name}`);
+      user.posts.forEach((post) => {
+        console.log(`Post Title: ${post.title}`);
+        console.log(`Post Content: ${post.content}`);
+      });
+-----------------------------------------------
 (7) What is impact of schema on SQl and NoSQL database?
-(8) What is difference between seerver side caching and clite side caching?
+(8) What is difference between server side caching and client side caching?
 (9) What is react? It is library or framework?
+------------------------------------------------
+
 (10) How can we handle browser window resize events using useEffect in react?
+
+    import React, { useEffect } from 'react';
+
+function MyComponent() {
+  useEffect(() => {
+    // Function to handle window resize event
+    const handleResize = () => {
+      // Perform actions on window resize
+      console.log('Window resized!');
+    };
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // Empty dependency array to ensure the effect runs only once on component mount
+
+  return <div>My Component</div>;
+}
+
+export default MyComponent;
+---------------------------------------------------
 (11) How does the 'this' keyword relate to lexical scope in Js?
+---------------------------------------
 (12) In strict mode the value of 'this' inside a module is 'undefined' by default.
-(13) How does destructuring work with nested object or arrrays in Js, ans what syntax is used to access deeply nested values?
+By defaulting this to undefined, it prevents accidental usage of the global object inside a module, which can lead to unexpected behavior and hard-to-debug issues.
+-- If you need to access the global object explicitly within a module, you can use 'globalThis' instead of 'this'. 
+----------------------------------------------
+(13) How does destructuring work with nested object or arrrays in Js, and what syntax is used to access deeply nested values?
+
+const person = {
+  name: 'John',
+  age: 30,
+  address: {
+    street: '123 Main St',
+    city: 'New York',
+    country: 'USA'
+  }
+};
+
+// Destructuring nested objects
+const { name, age, address: { city, country } } = person;
+
+console.log(name);    // Output: John
+console.log(age);     // Output: 30
+console.log(city);    // Output: New York
+console.log(country); // Output: USA
+-----------------------------------
 (14) Can you use object shorthand syntax to declare a methode in an object? If so how?
+
+const myObject = {
+  name: 'John',
+  age: 30,
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+  }
+};
+
+myObject.greet(); // Output: Hello, my name is John and I'm 30 years old.
+-------------------------------------------
 (15) How can you use socket.io to create a chat app?
   Write socket.io server using Node.js and socket.io package and aslo create a client side HTML page that includes the socket.io client library.
 (16) Create a node.js app that uses the 'Chalk' module to display a coloured text message in the console.
+
+npm install chalk
+
+
+const message = chalk.blue('Hello, colored text!');
+
+// Display the message in the console
+console.log(message);
+--------------------------------------------
 (17) What is diff b/w required and import statements in Node.js?
 (18) Write a jest test case to ckeck if the given array has milk in it.
     const shopList=['diapers','trash bags','milk'];
+
+    const shopList = ['diapers', 'trash bags', 'milk'];
+
+test('Check if array has milk', () => {
+  expect(shopList).toContain('milk');
+});
+------------------------------------------
 (19) Whai is RESTful API?
 (20) What are HTTP methods?
 (21) Difference between PUT and PATCH?
@@ -3866,8 +4005,39 @@ By following these tips, you can help to ensure that your Socket.IO applications
 (28) What are advantages of using redis as a data strucure?
 (29) What is room in socket.io?
 (30) What is the value of 'this' in a callback function passed at an event listener/
+
+const button = document.querySelector('button');
+
+button.addEventListener('click', function() {
+  console.log(this); // 'this' refers to the button element
+});
+
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+  console.log(this); // 'this' refers to the lexical context where the arrow function is defined
+});
+------------------------------------
 (31) diff bw require and import?
 (32) Create an error handling middleware.
+
+function errorHandler(err, req, res, next) {
+  // Handle the error
+  console.error(err);
+
+  // Set an appropriate status code for the error
+  res.status(500);
+
+  // Send an error response to the client
+  res.json({
+    error: 'Internal Server Error'
+  });
+}
+
+module.exports = errorHandler;
+
+app.use(errorHandler);
+------------------------------------
 (33) How can you delete the MongoDB shell?
 (34) What are advantages and Disadvantages of MongoDB referencing in relationships?
 (35) How does react differ other Js frameworks?
