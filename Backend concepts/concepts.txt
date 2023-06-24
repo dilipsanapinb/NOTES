@@ -4781,3 +4781,26 @@ function MyComponent() {
 
 ---------------------------------------------------------------
 
+## What is concurrency in Node.js ?
+
+Concurrency in Node.js refers to the ability of Node.js to handle multiple tasks simultaneously, allowing for efficient utilization of system resources. Node.js is built on an event-driven, non-blocking I/O model, which means it can handle concurrent operations without blocking the execution of other tasks.
+
+Node.js achieves concurrency through the event loop and asynchronous programming. The event loop is a mechanism that handles events and callbacks, allowing Node.js to perform I/O operations without blocking the execution of other code. When an asynchronous operation is initiated, such as reading a file or making an HTTP request, Node.js registers a callback function and continues executing other tasks. When the asynchronous operation completes, the callback is invoked, and the result is processed.
+
+Here are some key points to understand concurrency in Node.js:
+
+"Event Loop": The event loop is at the core of Node.js concurrency. It continuously checks for events and executes associated callbacks in a loop. This allows Node.js to efficiently handle multiple I/O operations concurrently.
+
+"Non-blocking I/O": Node.js uses non-blocking I/O operations, which means that when a request is made, it doesn't wait for the response before moving on to the next task. This allows Node.js to process other tasks while waiting for I/O operations to complete.
+
+"Asynchronous APIs": Node.js provides a rich set of asynchronous APIs for performing I/O operations, such as reading/writing files, making network requests, and interacting with databases. These APIs allow developers to write non-blocking code and leverage concurrency effectively.
+
+"Callbacks and Promises": To handle the results of asynchronous operations, Node.js commonly uses callbacks or promises. Callbacks are functions passed as arguments to asynchronous functions, which are invoked once the operation completes. Promises provide a more structured way of handling asynchronous operations, allowing for better error handling and chaining of multiple asynchronous operations.
+
+"Worker Threads": Starting from Node.js version 10, Node.js also provides an experimental feature called Worker Threads. Worker Threads allow developers to spawn additional JavaScript threads, enabling true multithreading in Node.js. This can be useful for CPU-intensive tasks that can benefit from parallel execution.
+
+It's important to note that while Node.js is highly concurrent, it doesn't automatically parallelize CPU-bound tasks across multiple cores. For CPU-intensive operations, using Worker Threads or implementing a cluster of Node.js processes can be considered.
+
+Overall, Node.js's concurrency model, based on the event loop and asynchronous programming, enables efficient handling of concurrent tasks, making it well-suited for I/O-bound applications and systems with high scalability requirements.
+
+------------------------------------------------------------------------------------------------------------------------------------------
