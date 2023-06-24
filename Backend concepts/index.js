@@ -158,63 +158,98 @@
 //     })
 // })
 
-const rateLimit = (limit, time, blockedTime) => {
+// const rateLimit = (limit, time, blockedTime) => {
     
-    const requests = {};
+//     const requests = {};
 
-    setInterval(() => {
+//     setInterval(() => {
         
-        for (let ip in requests) {
+//         for (let ip in requests) {
             
-            const now = Date.now();
+//             const now = Date.now();
 
-            const timeWindow = requests[ip].timeWindow;
+//             const timeWindow = requests[ip].timeWindow;
 
-            const blockedUntill = requests[ip].blockedUntill;
+//             const blockedUntill = requests[ip].blockedUntill;
 
-            requests[ip].requests = requests[ip].requests.filter((time) => {
-                return time > now - timeWindow;
-            });
+//             requests[ip].requests = requests[ip].requests.filter((time) => {
+//                 return time > now - timeWindow;
+//             });
 
-            if (requests[ip].requests.length === 0) {
-                requests[ip].timeWindow = now;
-            }
+//             if (requests[ip].requests.length === 0) {
+//                 requests[ip].timeWindow = now;
+//             }
 
-            if (blockedUntill && blockedUntill <= now) {
-                requests[ip].blockedUntill = null;
+//             if (blockedUntill && blockedUntill <= now) {
+//                 requests[ip].blockedUntill = null;
 
-                requests[ip].requests = [];
-                requests[ip].timeWindow = now
-            }
-        }
+//                 requests[ip].requests = [];
+//                 requests[ip].timeWindow = now
+//             }
+//         }
 
-    }, time);
+//     }, time);
 
-    return (req, res, next) => {
+//     return (req, res, next) => {
         
-        const ip = req.ip;
+//         const ip = req.ip;
 
-        const now = Date.now();
+//         const now = Date.now();
 
-        requests[ip] = requests[ip] || {
-            requests: [], timeWindow: now
-        };
+//         requests[ip] = requests[ip] || {
+//             requests: [], timeWindow: now
+//         };
 
-        if (requests[ip].blockedUntill && requests[ip].blockedUntill > now) {
-            const remainingTime = Math.ceil((requests[ip].blockedUntill - now) / 1000);
+//         if (requests[ip].blockedUntill && requests[ip].blockedUntill > now) {
+//             const remainingTime = Math.ceil((requests[ip].blockedUntill - now) / 1000);
 
-            res.status(429).send(`Too many requests , please try again after ${remainingTime} seconds`)
-        } else if (requests[ip].length >= limit) {
-            requests[ip].blockedUntill = now + blockedTime;
+//             res.status(429).send(`Too many requests , please try again after ${remainingTime} seconds`)
+//         } else if (requests[ip].length >= limit) {
+//             requests[ip].blockedUntill = now + blockedTime;
 
-            const remainingTime = Math.ceil((blockedTime) / 1000);
+//             const remainingTime = Math.ceil((blockedTime) / 1000);
 
-            res.status(429).send(`Too many requests , please try again after ${remainingTime} seconds`)
-        } else {
-            requests[ip].requests.push(now);
-            next();
+//             res.status(429).send(`Too many requests , please try again after ${remainingTime} seconds`)
+//         } else {
+//             requests[ip].requests.push(now);
+//             next();
+//         }
+//     }
+// };
+
+// module.exports={rateLimit}
+
+const express = require('express');
+const app = express();
+
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+
+// rate limiting
+
+const message_limit = 10;
+const timeF = 60 * 1000;
+
+const messageCount = new Map();
+
+io.on('connection', (socket) => {
+    console.log('Connected to server');
+
+    messageCount.set(socket.i, 0);
+
+    socket.io('message', (data) => {
+        const count = messageCount.get(socket.id) || 0;
+
+        if (count >= message_limit) {
+            socket.emit('rateLimitExceeded', { mesage: 'Rate limit exceeded. Please try again later.' });
+            return;
         }
-    }
-};
+        messageCount.set(socket.id, count + 1);
+        io.emit('message', data)
+    });
+});
 
-module.exports={rateLimit}
+// disconnect
+io.on('disconnect', (socket) => {
+    messageCount.delete(socket.id);
+})
