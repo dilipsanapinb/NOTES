@@ -2672,7 +2672,7 @@ Denormalization:
 
 ## How can we implement caching on frontend? **
     
-    => Its better to use the caching in browser because its is very expencive to make an API request and ts very unpredictive than retrieving the data from local cache.
+    => Its better to use the caching in browser because its is very expencive to make an API request and its very unpredictive than retrieving the data from local cache.
     => There are several ways to implement the chaching in frontend like:
     1) Browser caching:
       => Browesers can cache static assets, such as images, stylesheets, and javascript files, to reduce the number of requests to the server and speed up page load times.
@@ -2686,7 +2686,7 @@ Denormalization:
     4) Local storage caching:
       -> By using the local storage we can cache data that needs to persist across the page loads, such as user prefeerences or authentication tokens.
     5) CDN Caching: 
-    ->Content Delivery Networks(CDN) can cache static assets and dynamic content at edge locations around the world, allowing users to acces the content from a server closer to their locationa and reducing the latency.
+    ->Content Delivery Networks(CDN) can cache static assets and dynamic content at edge locations around the world, allowing users to acces the content from a server closer to their location aand reducing the latency.
     -> By using the CDN we can offload the caching and delivery of content to third-party provider and improve performence for users.
 
 ----------------------------------------------------------------------------------
@@ -2706,7 +2706,7 @@ Denormalization:
      (4) Improve Security: 
         -> A CDN may improve security by providing DDoS mitigation, improvements to security certificates, and other optimizations.
 
-    =>t its core, a CDN is a network of servers linked together with the goal of delivering content as quickly, cheaply, reliably, and securely as possible. In order to improve speed and connectivity, a CDN will place servers at the exchange points between different networks.
+    =>At its core, a CDN is a network of servers linked together with the goal of delivering content as quickly, cheaply, reliably, and securely as possible. In order to improve speed and connectivity, a CDN will place servers at the exchange points between different networks.
 
     =>These Internet exchange points (IXPs) are the primary locations where different Internet providers connect in order to provide each other access to traffic originating on their different networks. By having a connection to these high speed and highly interconnected locations, a CDN provider is able to reduce costs and transit times in high speed data delivery.
 
@@ -2752,6 +2752,7 @@ Denormalization:
 
   => Browsers are software applications that allow users to access and view content on the internet. 
   => Steps that browser takes to get data:
+
   (1) User Input: The user types a URL or a search term into the browser's address bar.
 
   (2)Domain Name System (DNS) Lookup: The browser sends a request to a DNS server to translate the domain name into an IP address. The DNS server responds with the IP address of the server that hosts the website.
@@ -3543,12 +3544,12 @@ Typically all requests from D would go directly to F, and F would send responses
 
       (4) Octal syntax: In non-strict mode, using the legacy octal syntax (e.g., 0123) is allowed, and the number is interpreted as an octal value. In strict mode, using the octal syntax is not allowed, and it results in a SyntaxError.
 
-      (5) this value in functions: In non-strict mode, if a function is invoked without an explicit receiver object, the this value is set to the global object (e.g., window in browsers). In strict mode, invoking a function without an explicit receiver sets the this value to undefined.
+      (5) 'this' value in functions: In non-strict mode, if a function is invoked without an explicit receiver object, the this value is set to the global object (e.g., window in browsers). In strict mode, invoking a function without an explicit receiver sets the this value to undefined.
 
       It's important to note that hoisting can lead to confusing code and is generally considered a best practice to declare variables and functions before using them, regardless of whether you are in strict mode or non-strict mode. This helps improve code readability and maintainability.
         
 
---------------------------------------------------
+-----------------------------------------------------------------------------------------
 
 (2) Are there any potential pitfalls need to know when we are using destructuring in js?
 
@@ -3599,7 +3600,9 @@ Typically all requests from D would go directly to F, and F would send responses
       // testing 
 
       const {myClass}=require('./myClass');
+
       describe('myClass',()=>{
+
         it('should create a new instances of myClass with the correct name',()=>{
           const instance=new myClass('John');
           expect(instance.name).toEqual('John')
@@ -3616,6 +3619,102 @@ Typically all requests from D would go directly to F, and F would send responses
 
 --------------------------------------------
 (5) How do you use cookies in an Express application.
+## How do you manage sessions in express?
+
+ => Session management is an important aspect of web application development, as it allows you to keep track of user activity and maintain user state across requests. In Express.js, session management can be implemented using the express-session middleware.
+
+    //npm i express-session
+
+    app.use(session({
+      secret: 'secret-key',
+      resave: false,
+      saveUninitialized: false
+    }));
+
+-> In the example above, we are using the MemoryStore as the session store, which stores the session data in the server's memory. secret is used to sign the session ID cookie and should be a long random string. resave and saveUninitialized are optional options that control the behavior of the session middleware.
+
+    //To set a value in the session, use the req.session object.
+
+    app.get('/login', (req, res) => {
+        req.session.username = 'John Doe';
+        res.send('Logged in successfully');
+    });
+
+
+    full code snippet;
+          
+          const session = require('express-session');
+
+          const express = require('express');
+          const app = express();
+
+          // app.set('trust proxy', 1)
+
+          app.use(session({
+              secret: 'keyboard',
+              resave: false,
+              saveUninitialized: true,
+              // cookie: { secure: true }
+          }));
+
+          app.get('/login', (req, res) => {
+              req.session.username = 'Dilip';                    
+              res.send('logged in successfully')                 Output   // logged in successfully
+          });
+
+
+          app.get("/profile", (req, res) => {
+            const username = req.session.username;
+            res.send(`Username: ${username}`);                    Output  // Username:Dilip
+          });
+          app.listen(8000, () => {
+              console.log('Server is running on port 8000');
+          })
+
+---------------------------------------------------------------
+
+## How do you manage cookies with express?
+
+Cookies can be managed using the cookie-parser middleware. This middleware parses cookie headers and populates the req.cookies object with cookie values.
+
+    //steps involved
+    (1)
+       -npm i cookie-parser
+
+    (2)Initialise the cookie-parser
+
+    var express = require('express');
+    var cookieParser = require('cookie-parser');
+    var app = express();
+    app.use(cookieParser());
+
+   (3)To set a cookie, use the res.cookie() method.
+
+        app.get('/set-cookie', (req, res) => {
+        res.cookie('username', 'John Doe', { maxAge: 900000, httpOnly: true });
+        res.send('Cookie has been set');
+        });
+
+   //The httpOnly option ensures that the cookie cannot be accessed using JavaScript
+
+  (4) To get a cookie, use the req.cookies object.
+
+        app.get('/get-cookie', (req, res) => {
+        const username = req.cookies.username;
+        if (username) {
+            res.send(`Hello, ${username}`);
+        } else {
+            res.send('Cookie not found');
+        }
+    });
+
+  (5) To delete a cookie, use the res.clearCookie() method.
+  app.get('/clear-cookie', (req, res) => {
+      res.clearCookie('username');
+      res.send('Cookie has been cleared');
+  });
+
+-- By default, cookies are stored in the client's browser memory.
 
 -------------------------------------------
 
@@ -3718,14 +3817,13 @@ By following these tips, you can help to ensure that your Socket.IO applications
 
 ----------------------------------------------
 
-(8) Can an object methos access and modify the objects properties in Js?
+(8) Can an object methods access and modify the objects properties in Js?
 
     => Yes, an object's method in JavaScript can access and modify the object's properties. When a method is invoked on an object, it has access to the object's properties through the 'this' keyword. The this keyword refers to the current instance of the object that the method is being called on.
 
     Here's an example to illustrate how an object method can access and modify object properties:
 
     eg.
-          8
           const person = {
             name: 'Alice',
             age: 30,
@@ -3853,13 +3951,17 @@ const messageCounts = new Map();
 
 io.on('connection', (socket) => {
   // Initialize message count for the connected client
+
   messageCounts.set(socket.id, 0);
 
   // Handle incoming messages
+
   socket.on('message', (data) => {
+
     const count = messageCounts.get(socket.id) || 0;
 
     // Check if the message count exceeds the limit
+
     if (count >= MESSAGE_LIMIT) {
       // Limit exceeded, emit an error message to the client
       socket.emit('rateLimitExceeded', { message: 'Rate limit exceeded. Please try again later.' });
@@ -3867,6 +3969,7 @@ io.on('connection', (socket) => {
     }
 
     // Increment message count
+
     messageCounts.set(socket.id, count + 1);
 
     // Process the message as normal
@@ -3878,6 +3981,7 @@ io.on('connection', (socket) => {
 });
 
 // Cleanup message count when a client disconnects
+
 io.on('disconnect', (socket) => {
   messageCounts.delete(socket.id);
 });
@@ -3900,6 +4004,7 @@ const Post = require('./post');
 // Assume you have connected to your MongoDB database here
 
 // Function to query posts for a specific user
+
 async function queryUserPosts(userId) {
   try {
     // Find the user based on the userId
@@ -3923,6 +4028,7 @@ async function queryUserPosts(userId) {
 }
 
 // Usage example
+
 queryUserPosts('123456789')
   .then(result => {
     console.log('User:', result.user);
@@ -3931,6 +4037,7 @@ queryUserPosts('123456789')
   .catch(error => {
     console.error(error);
   });
+
 In this example, the queryUserPosts function takes a userId as an argument and performs the following steps:
 
 It finds the user with the given userId using User.findOne.
@@ -3969,6 +4076,7 @@ NoSQL Databases:
 In summary, the impact of schema in SQL databases is more structured, rigid, and focused on data integrity, while NoSQL databases offer flexibility and scalability at the expense of strong data consistency. The choice between the two depends on the specific requirements of your application, such as data structure, scalability needs, and consistency trade-offs.
 
 -------------------------------------------------------
+
 (8) What is difference between server side caching and client side caching?
 
 Server-side caching and client-side caching are two different approaches to caching data in a web application. Here's an explanation of each:
@@ -4022,6 +4130,7 @@ In summary, React is a JavaScript library that simplifies the process of buildin
     import React, { useEffect } from 'react';
 
 function MyComponent() {
+
   useEffect(() => {
     // Function to handle window resize event
     const handleResize = () => {
@@ -4071,6 +4180,7 @@ It's important to note that arrow functions (() => {}) have a different behavior
 In summary, while 'this' is not determined solely by lexical scope, understanding lexical scope is essential for determining the context in which this is evaluated. The value of this is dynamic and depends on how a function is invoked or the context it is called in.
 
 ----------------------------------------------------
+
 (12) In strict mode the value of 'this' inside a module is 'undefined' by default.
 
 In JavaScript, 'strict mode' is a feature "introduced in ECMAScript 5 (ES5)" that enforces stricter rules and provides better error handling. When strict mode is enabled, it changes certain behaviors of JavaScript to prevent common mistakes and make the code more predictable.
@@ -4142,9 +4252,42 @@ console.log(message);
 
 (17) What is diff b/w required and import statements in Node.js?
 
+In Node.js, both require and import statements are used to include external modules or files into your application. However, there are some differences between them in terms of syntax and behavior:
+
+Syntax:
+
+require is the CommonJS syntax used in Node.js prior to version 13.
+import is the ES modules (ESM) syntax introduced in ECMAScript 2015 (ES6) and supported in Node.js starting from version 13.
+
+(1) File Extension:
+require does not require file extensions and can load both JavaScript files (.js) and JSON files (.json) by default.
+import requires the use of file extensions, typically .js, and it does not directly support importing JSON files. However, you can use 'additional plugins' or tools like 'babel' or 'jsonc' to enable importing JSON files with import.
+
+(2) Dynamic vs. Static:
+
+require allows for dynamic imports, which means that modules can be loaded conditionally at runtime based on variables or conditions.
+import is statically analyzed during the compilation process, meaning it should be used for static imports where the imported module or file is known at the time of writing the code. It does not support dynamic imports directly.
+
+(3) Top-level vs. Local Scope:
+
+require is executed at the top-level scope of a module, meaning it can be placed anywhere within the module file, and the imported module's exports are available throughout the file.
+import is scoped to the block or module where it is used. It must be placed at the top-level scope of a module file, and the imported module's exports are only available within the block or module where the import is used.
+
+(6) Asynchronous vs. Synchronous:
+
+require is synchronous by default, meaning it will block the execution of further code until the required module is loaded and executed.
+import is asynchronous by default, which allows for better performance in certain scenarios. However, it requires the use of await or then to handle the asynchronous loading of modules.
+
+(7) Default Exports:
+
+require supports both named exports and default exports, and you can choose to import either of them using the require statement.
+import also supports named exports and default exports, but the syntax for importing default exports is different. You need to use the import statement followed by a variable name, rather than curly braces for named exports.
+It's worth noting that as of my knowledge cutoff in September 2021, the experimental support for ECMAScript modules in Node.js means that import statements are still relatively new in the Node.js ecosystem. The majority of Node.js projects still use the require syntax, but the use of import is gradually increasing as Node.js and the JavaScript ecosystem continue to evolve.
+
 -------------------------------------------------------------
 
 (18) Write a jest test case to ckeck if the given array has milk in it.
+
     const shopList=['diapers','trash bags','milk'];
 
   Ans:
@@ -4157,9 +4300,45 @@ console.log(message);
 
       });
 
-------------------------------------------
+-------------------------------------------------------
 (19) Whai is RESTful API?
+
+ => REST stands for the ("Representational State Transfer") API is a web-based architectural style for creating API's.
+  => REST APIs allow communication between different systems on the internet.
+  => REST API's allows data to be exchanged between systems using HTTP and other standard web protocols.
+  => A REST API is designed around resources, which are identified by unique URLs.
+  => Data can be any type of object, such as a user, a blog post, or a product. Each data is represented as a collection of properties or attributes, which can be manipulated using a standardized set of HTTP methods, such as GET (to retrieve a data), POST (to create a new data), PUT (to update an existing data), and DELETE (to remove a data).
+  => REST API is a stateless architecture, which means that the server does not store any information about the client's state between requests. Instead, each request contains all the information necessary for the server to understand and process the request.
+  => REST API's  allows developers to create flexible and scalable APIs that can be used by a variety of different applications and systems.
+  => REST API's are easy to implement, as it uses standard web protocols and HTTP methods, and can be used with a wide range of programming languages and frameworks.
+  => Advantages of REST API include its scalability, flexibility, and compatibility with a wide range of systems and devices.
+  => However, designing and implementing a REST API can be complex, as it requires careful consideration of resource design, URL structure, and HTTP method usage. Additionally, security is also a concern, and proper authentication and authorization mechanisms must be implemented to prevent unauthorized access to resources.
+
+--------------------------------------------------------
+
 (20) What are HTTP methods?
+
+HTTP (Hypertext Transfer Protocol) defines several methods or verbs that indicate the desired action to be performed on a resource. Each HTTP method has a specific purpose and behavior. Here are the most common HTTP methods:
+
+    (1) GET: The GET method is used to retrieve a representation of a resource from the server. It requests the server to send back the specified resource in the response. "GET should be used for safe and idempotent operations, meaning 'it should not have any side effects on the server or the resource'."
+
+    (2) POST: The POST method is used to submit data to the server to create a new resource. It sends data in the request payload, typically used for form submissions, file uploads, or other actions that result in a change on the server. "POST is not idempotent as multiple requests may create multiple resources."
+
+    (3) PUT: The PUT method is used to update or replace an existing resource on the server. It sends the entire updated representation of the resource in the request payload. If the resource does not exist, PUT can create a new resource with the specified identifier. "PUT is idempotent, meaning that multiple identical requests should have the same result as a single request".
+
+    (4) DELETE: The DELETE method is used to delete a specified resource on the server. It requests the server to remove the resource identified by the URL. "DELETE is idempotent, meaning that multiple identical requests should have the same result as a single request".
+
+    (5) PATCH: The PATCH method is used to partially update a resource on the server. It sends a set of changes or instructions to be applied to the existing resource. Unlike PUT, which requires sending the entire updated representation, PATCH allows sending only the modified fields or instructions. "PATCH is not guaranteed to be idempotent."
+
+    (6) HEAD: The HEAD method is similar to GET but only retrieves the response headers, without the response body. It is often used to retrieve metadata or check the status of a resource without downloading its entire contents.
+
+    (7) OPTIONS: The OPTIONS method is used to retrieve the communication options available for a resource or server. It allows the client to determine the supported methods, headers, and other capabilities of the server.
+
+    These are the most commonly used HTTP methods. It's important to note that the usage of these methods should align with their intended purpose and follow the principles of RESTful web services.
+
+
+-------------------------------------------------------
+
 (21) Difference between PUT and PATCH?
 
 -----------------------------------------------------------
@@ -4221,6 +4400,7 @@ Socket.IO is a real-time communication library for web applications. It allows y
         This code will listen for error events emitted by the socket instance. When an error event is emitted, the error will be logged and an error message will be displayed to the user.
 
 By following these tips, you can help to ensure that your Socket.IO applications are robust and handle errors gracefully.
+
 ----------------------------------------------------------
 
 (23) How does Redis pub/sub work and what are some use cases for it?
@@ -4310,6 +4490,67 @@ for (let i = 1; i <= totalPages; i++) {
 
 (26) Write a program to send a message to specific client.
 
+const http = require("http");
+const express = require("express");
+const app=express()
+
+const server = http.createServer(app);
+
+const { Server } = require("socket.io");
+
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+    console.log("a user connected");
+
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    })
+
+    socket.on('disconnect',()=> {
+        console.log('user disconnected');
+    })
+})
+
+app.get("/", (req, res) => {
+    res.sendFile(__dirname+'/index.html');
+})
+server.listen(3000, () => {
+    console.log('server is running on port 3000');
+})
+
+<body>
+<div id="navbar">
+        <h1>Chat App</h1>
+    </div>
+    <div id="container">
+        <ul id="messages"></ul>
+        <form action="" id="form">
+            <input type="text" id="input" autocomplete="off"/><button>Send</button>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket=io();
+        let messages=document.getElementById('messages')
+        let form=document.getElementById('form');
+        let input = document.getElementById('input');
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+            if(input.value){
+                socket.emit('chat message', input.value);
+                input.value=''
+            }
+        })
+        socket.on('chat message',function(msg){
+            let item=document.createElement('li');
+            item.textContent=msg;
+            messages.appendChild(item);
+            window.scrollTo(0,document.body.scrollHeight);
+        })
+    </script>
+</body>
+
 ---------------------------------------------------------
 
 (27) What is the difference b/w redis set and sorted sets?
@@ -4374,9 +4615,12 @@ Socket.IO provides a simple API to create, join, and leave rooms. Here's an exam
 io.on('connection', (socket) => {
   // Joining a room
   socket.join('room1');
-
+io.to('room1').emit('message', 'Welcome to room1!');
   // Broadcasting to a room
-  io.to('room1').emit('message', 'Hello room1!');
+  socket.on('message',(msg)=>{
+    io.to('room1').emit('message', msg);
+  })
+  
 
   // Leaving a room
   socket.leave('room1');
@@ -4390,7 +4634,7 @@ By utilizing rooms, you can efficiently manage and control the flow of data betw
 
 -------------------------------------------------------------
 
-(30) What is the value of 'this' in a callback function passed at an event listener/
+(30) What is the value of 'this' in a callback function passed at an event listener?
 
 const button = document.querySelector('button');
 
@@ -4510,7 +4754,7 @@ Overall, React's component-based architecture, virtual DOM, unidirectional data 
 
 --------------------------------------------------------------
 
-(36) How you will use useeffect to clean up resources when an components unmounts?
+(36) How you will use useEffect to clean up resources when an components unmounts?
 
 In React, you can use the useEffect hook to clean up resources when a component unmounts by returning a cleanup function. Here's an example of how you can accomplish this:
 
@@ -4570,6 +4814,7 @@ function TimerComponent() {
 }
 
 export default TimerComponent;
+
 In this example, we have a TimerComponent that starts a timer using setInterval in the useEffect hook. The timer logs a message every second.
 
 When the component mounts, the useEffect hook is called and the timer is set up. Since we're passing an empty dependency array ([]), this effect runs only once during the initial component mount.
@@ -4663,11 +4908,13 @@ const app = express();
 const PORT = 3000;
 
 // Redirect from /old-url to /new-url
+
 app.get('/old-url', (req, res) => {
   res.redirect('/new-url');
 });
 
 // Handle GET request to /new-url
+
 app.get('/new-url', (req, res) => {
   res.send('This is new URL');
 });
@@ -4683,7 +4930,7 @@ app.listen(PORT, () => {
 
 ---------------------------------------------------------------
 
-(42) Implement an embeded relationship in Node.js and MongoDB using a blog post and comments. So that you can create a new ost document with comments. Write the schema.
+(42) Implement an embeded relationship in Node.js and MongoDB using a blog post and comments. So that you can create a new post document with comments. Write the schema.
 
 ----------------------------------------------------------------
 
@@ -4709,7 +4956,7 @@ It's worth noting that while relational databases are the traditional choice for
 
 (44) What are main components of HTTP requests in Node.js?
 
-n Node.js, when making HTTP requests, you typically use the http or https module to send the requests. The main components of an HTTP request in Node.js include:
+In Node.js, when making HTTP requests, you typically use the http or https module to send the requests. The main components of an HTTP request in Node.js include:
 
 "URL": The Uniform Resource Locator (URL) specifies the address of the resource you want to interact with. It includes the protocol (e.g., "http://" or "https://"), hostname, port, path, query parameters, and fragment identifier.
 
@@ -4730,7 +4977,8 @@ const options = {
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer your_token'
-  }
+  },
+  body:JSON.straight(obj)
 };
 
 const data = JSON.stringify({ key: 'value' });
@@ -4776,12 +5024,13 @@ function MyComponent() {
   }, []);
 
   console.log(data);
+
   // Rest of the component code, use the 'data' state as needed
 }
 
 ---------------------------------------------------------------
 
-## What is concurrency in Node.js ?
+(46) What is concurrency in Node.js ?
 
 Concurrency in Node.js refers to the ability of Node.js to handle multiple tasks simultaneously, allowing for efficient utilization of system resources. Node.js is built on an event-driven, non-blocking I/O model, which means it can handle concurrent operations without blocking the execution of other tasks.
 
@@ -4804,3 +5053,252 @@ It's important to note that while Node.js is highly concurrent, it doesn't autom
 Overall, Node.js's concurrency model, based on the event loop and asynchronous programming, enables efficient handling of concurrent tasks, making it well-suited for I/O-bound applications and systems with high scalability requirements.
 
 ------------------------------------------------------------------------------------------------------------------------------------------
+
+(47) Build setTimeout function using the setInterval();
+
+function setTimeout(func, delay, ...args) {
+  let timerId = setInterval(() => {
+    func.apply(null, args);
+    clearInterval(timerId);
+  }, delay);
+}
+
+// Usage example:
+function myFunction() {
+  console.log("Hello, world!");
+}
+
+setTimeout(myFunction, 2000);
+
+
+------------------------------------------------------------------
+
+(48) implement setInterval() function using the setTimeout()  in Js.
+
+function setInterval(func, delay, ...args) {
+  function interval() {
+    func.apply(null, args);
+    setTimeout(interval, delay);
+  }
+  
+  setTimeout(interval, delay);
+}
+
+// Usage example:
+function myFunction() {
+  console.log("Hello, world!");
+}
+
+setInterval(myFunction, 2000);
+
+---------------------------------------------------------------
+
+(49) What are callback functions in Js and how are they used?
+
+In JavaScript, a callback function is a function that is passed as an argument to another function and is executed later, usually after an asynchronous operation or an event occurs. The callback function allows you to specify what should happen after a certain operation or event completes.
+
+Here's an example to illustrate the concept of callback functions:
+
+
+function fetchData(callback) {
+  // Simulating an asynchronous operation (e.g., fetching data from a server)
+
+  setTimeout(() => {
+    const data = ['apple', 'banana', 'orange'];
+    callback(data);
+  }, 2000);
+}
+
+function processData(data) {
+  console.log('Processing data:', data);
+}
+
+fetchData(processData);
+
+In the code above, we have a function fetchData that simulates an asynchronous operation (e.g., fetching data from a server). It takes a callback function as an argument. Inside fetchData, after the data is retrieved (simulated using setTimeout here), the callback function is invoked with the retrieved data as the argument.
+
+The processData function is defined separately as the callback function. It receives the retrieved data and logs a message indicating that it is processing the data.
+
+When we call fetchData and pass processData as the callback function, the fetchData function starts the asynchronous operation and specifies that after the operation completes (in this case, after a delay of 2 seconds), it should invoke the provided callback function (processData) with the retrieved data.
+
+The use of callback functions is common in JavaScript, especially when dealing with asynchronous tasks such as making API requests, reading files, or handling events. By utilizing callbacks, you can control the flow of your program and define the actions to be performed once an operation or event finishes. Callbacks allow you to handle the result or response of asynchronous operations and enable non-blocking behavior in JavaScript applications
+
+---------------------------------------------------------------
+
+(49) How does the 'this' keyword relate to lexical scope in js?
+
+---------------------------------------------------------------
+
+(50) Write a Node.js code snippet to install and use the 'axios' module to make an HTTP GET request to a remote API and log the response.
+
+// npm install axios
+
+const axios = require('axios');
+
+axios.get('https://api.example.com/data')
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.error('Error:', error.message);
+  });
+----------------------------------------------------------------
+
+(51) What is the purpose of JWT for authentication in Node.js and MongoDB?
+
+JWT (JSON Web Tokens) is a popular method of authentication in Node.js and MongoDB applications. Its purpose is to securely transmit and verify claims or information between two parties—the client (typically a web or mobile application) and the server.
+
+Here are some key purposes of JWT for authentication:
+
+Stateless Authentication: JWT allows for stateless authentication, meaning the server does not need to store any session data or authenticate against a session store. Each request from the client contains the necessary information for the server to authenticate and authorize the user.
+
+Secure Information Exchange: JWTs are digitally signed using a secret or public/private key pair. This signature ensures that the token has not been tampered with during transmission and can be trusted by the server. The server can verify the authenticity and integrity of the token using the provided signature.
+
+Compact and Portable: JWTs are compact in size and can be easily transmitted as part of an HTTP header or in the URL query parameters. This makes them highly portable and suitable for stateless communication between different systems and microservices.
+
+Stateless Server: JWT authentication enables the server to remain stateless, which can improve scalability by eliminating the need to store session data on the server. The server can verify the JWT and extract the necessary information from the token itself, such as the user ID or roles, to make authorization decisions.
+
+Flexibility and Extensibility: JWTs can include additional custom claims or metadata, allowing for flexible authentication and authorization scenarios. You can include information like user roles, permissions, or any other relevant data within the JWT payload.
+
+Decentralized Authentication: With JWT, authentication can be decentralized, meaning that different services or microservices can issue and validate tokens independently. This decentralization enables a more flexible and distributed architecture.
+
+In a Node.js and MongoDB application, JWT can be used as a token-based authentication mechanism. When a user logs in or authenticates, the server issues a JWT containing relevant information about the user. The client receives this JWT and includes it in subsequent requests to the server. The server then verifies the JWT and extracts the necessary information to authenticate and authorize the user for each request.
+
+Overall, JWT provides a secure and efficient way to authenticate and authorize users in Node.js and MongoDB applications while maintaining scalability and flexibility in a stateless manner
+
+----------------------------------------------------------------
+
+(52) What are the advantages and disadvantages of referencing in MongoDb relationship? Write three points for each?
+
+Advantages of Referencing in MongoDB Relationships:
+
+Flexibility and Scalability: Referencing allows for flexible and scalable data modeling in MongoDB. You can easily establish relationships between different collections and manage complex data structures.
+
+Data Consistency: Referencing helps maintain data consistency by avoiding data duplication. Instead of duplicating data across multiple documents, you store references to related documents, ensuring that changes made to a referenced document are reflected across all references.
+
+Efficient Memory Usage: Referencing consumes less memory compared to embedding large amounts of data within a single document. This can be particularly beneficial when dealing with large collections or frequently accessed documents.
+
+Simplified Updates: With referencing, updating related data becomes easier. You only need to update a single document rather than multiple embedded documents, reducing the risk of inconsistencies or errors.
+
+Easier Queries and Indexing: Referencing simplifies querying and indexing in MongoDB. You can use the reference IDs to fetch related data efficiently, allowing for better performance and query optimization.
+
+Disadvantages of Referencing in MongoDB Relationships:
+
+Additional Queries: Referencing requires additional queries to retrieve related data. When you need to access related documents, you have to perform separate queries to fetch the referenced data. This can introduce additional overhead, especially in complex relationships or scenarios where data needs to be fetched from multiple collections.
+
+Possible Performance Impact: While referencing can be efficient for retrieving related data individually, it may introduce performance overhead when fetching data from multiple collections in complex queries. Joining or aggregating data across different collections can result in slower query execution times compared to embedding data within a single document.
+
+Data Integrity Constraints: MongoDB does not provide built-in support for enforcing referential integrity constraints. It is the application's responsibility to ensure that referenced documents are valid and exist. Failure to do so can lead to orphaned references or inconsistencies in the data.
+
+Lack of Atomicity: Updates involving multiple collections can become complex and lack atomicity. If you need to update data across multiple documents in a consistent manner, embedding the related data within a single document may provide better atomicity.
+
+Schema Changes: Referencing can make schema changes more challenging. When modifying a referenced document's schema, you may need to update all references to ensure data consistency. This can be cumbersome in large databases or applications with extensive relationships.
+
+It's important to consider your specific application requirements, data access patterns, and performance considerations when deciding whether to use referencing in MongoDB relationships. The choice between referencing and embedding depends on factors such as data size, data consistency requirements, querying patterns, and the complexity of relationships within your application.
+
+----------------------------------------------------------------
+
+(53) How would you use TimeLogger middleware to identify bottleneck's performance? Demonstrate through working code.
+
+// timeLogger.js
+function TimeLogger(req, res, next) {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`[${req.method}] ${req.url} - ${duration}ms`);
+  });
+  next();
+}
+
+module.exports = TimeLogger;
+
+app.use(TimeLogger);
+
+// Your routes and middleware definitions
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
+------------------------------------------------------------------
+
+(54) Write function query records in a many-to-many relationship in node.js and MongoDB. Write a psuedo-code using tag and post example, assume relevat structure.schema wherever applicable.
+
+// tag.model.js
+
+const mongoose = require('mongoose');
+
+const tagSchema = new mongoose.Schema({
+  name: { 
+      type: String,
+      required: true 
+    },
+});
+
+module.exports = mongoose.model('Tag', tagSchema);
+
+
+// post.model.js
+const mongoose = require('mongoose');
+
+const postSchema = new mongoose.Schema({
+  title: {
+      type: String,
+      required: true
+      },
+});
+
+module.exports = mongoose.model('Post', postSchema);
+
+
+
+/ postTag.model.js
+const mongoose = require('mongoose');
+
+const postTagSchema = new mongoose.Schema({
+  postId: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post', 
+    required: true },
+  tagId: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Tag',
+    required: true }
+});
+
+module.exports = mongoose.model('PostTag', postTagSchema);
+
+
+// postsController.js
+const Post = require('./post.model');
+const PostTag = require('./postTag.model');
+
+async function getPostsByTag(tagName) {
+  try {
+    // Find the tag with the given name
+    const tag = await Tag.findOne({ name: tagName });
+
+    if (!tag) {
+      return []; // If tag not found, return an empty array
+    }
+
+    // Find all post-tag relationships for the given tag
+    const postTags = await PostTag.find({ tagId: tag._id });
+
+    // Extract the post IDs from the post-tag relationships
+    const postIds = postTags.map((postTag) => postTag.postId);
+
+    // Find all posts with the extracted post IDs
+    const posts = await Post.find({ _id: { $in: postIds } });
+
+    return posts;
+  } catch (error) {
+    console.error('Error getting posts by tag:', error);
+    throw error;
+  }
+}
+
+
+// Usage
+const posts = await getPostsByTag('example');
+console.log(posts);
+-----------------------------------------------------------------
+

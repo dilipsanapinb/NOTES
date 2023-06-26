@@ -219,37 +219,129 @@
 
 // module.exports={rateLimit}
 
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+// const http = require('http').createServer(app);
+// const io = require('socket.io')(http);
 
-// rate limiting
+// // rate limiting
 
-const message_limit = 10;
-const timeF = 60 * 1000;
+// const message_limit = 10;
+// const timeF = 60 * 1000;
 
-const messageCount = new Map();
+// const messageCount = new Map();
 
-io.on('connection', (socket) => {
-    console.log('Connected to server');
+// io.on('connection', (socket) => {
+//     console.log('Connected to server');
 
-    messageCount.set(socket.i, 0);
+//     messageCount.set(socket.id, 0);
 
-    socket.io('message', (data) => {
-        const count = messageCount.get(socket.id) || 0;
+//     socket.io('message', (data) => {
+//         const count = messageCount.get(socket.id) || 0;
 
-        if (count >= message_limit) {
-            socket.emit('rateLimitExceeded', { mesage: 'Rate limit exceeded. Please try again later.' });
-            return;
-        }
-        messageCount.set(socket.id, count + 1);
-        io.emit('message', data)
-    });
-});
+//         if (count >= message_limit) {
+//             socket.emit('rateLimitExceeded', { mesage: 'Rate limit exceeded. Please try again later.' });
+//             return;
+//         }
+//         messageCount.set(socket.id, count + 1);
+//         io.emit('message', data)
+//     });
+// });
 
-// disconnect
-io.on('disconnect', (socket) => {
-    messageCount.delete(socket.id);
-})
+// // disconnect
+// io.on('disconnect', (socket) => {
+//     messageCount.delete(socket.id);
+// })
+// let arr = [1, 2, 3, 4, 5];
+// let n=5
+// for (let i = 0; i <n; ++i){
+//     console.log(arr[i])
+ 
+// function setTimeout(func, delay, ...args) {
+//   let timerId = setInterval(() => {
+//     func.apply(null, args);
+//     clearInterval(timerId);
+//   }, delay);
+// }
+// // Usage example:
+// function myFunction() {
+//   console.log("Hello, world!");
+// }
+
+// setTimeout(myFunction, 2000);
+
+// function setInterval(func, delay, ...args) {
+//   function interval() {
+//     func.apply(null, args);
+//     setTimeout(interval, delay);
+//   }
+
+//   setTimeout(interval, delay);
+// }
+
+// // Usage example:
+// function myFunction() {
+//   console.log("Hello, world!");
+// }
+
+// setInterval(myFunction, 2000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function setTimeout(func, delay, ...args) {
+//     let id = setInterval(() => {
+//         func.apply(null, args);
+//         clearInterval(id)
+//     })
+// }
+// function myGreet() {
+//     console.log('Hello World');
+// }
+
+// setTimeout(myGreet, 1000);
+
+// function setInterval(func, delay, ...agrs) {
+//     function interval() {
+//         func.apply(null, agrs);
+//         setTimeout(interval,delay)
+//     }
+//     setTimeout(interval,delay)
+// }
+
+// function myGreet() {
+//     console.log('Hello World');
+// }
+
+// setInterval(myGreet,1000)
+
+function fetchData(callback) {
+    setTimeout(() => {
+        const data = ['a', 'b', 'c'];
+        callback(data)
+    },2000)
+}
+
+function processData(data) {
+    console.log('Processing Data',data);
+}
+
+fetchData(processData);
