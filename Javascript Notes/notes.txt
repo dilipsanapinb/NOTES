@@ -732,23 +732,23 @@ Enabling strict mode in JavaScript has several advantages, but it's important to
 
 => Advantages:
 
-  (1) Catching silent errors: Strict mode helps catch common coding mistakes that would otherwise go unnoticed. It throws errors for actions that are prone to errors, such as using undeclared variables or assigning values to read-only properties. This leads to better code quality and reduces the likelihood of bugs.
+  (1) "Catching silent errors": Strict mode helps catch common coding mistakes that would otherwise go unnoticed. It throws errors for actions that are prone to errors, such as using undeclared variables or assigning values to read-only properties. This leads to better code quality and reduces the likelihood of bugs.
 
-  (2) Preventing accidental global variables: In non-strict mode, omitting(leave out) the variable declaration creates an implicit global variable, which can lead to accidental variable collisions and unexpected behavior. Strict mode requires 'explicit variable declarations', reducing the risk of polluting the global scope and making it easier to reason about the code.
+  (2) "Preventing accidental global variables": In non-strict mode, omitting(leave out) the variable declaration creates an implicit global variable, which can lead to accidental variable collisions and unexpected behavior. Strict mode requires 'explicit variable declarations', reducing the risk of polluting the global scope and making it easier to reason about the code.
 
-  (3) Discouraging the use of deprecated features: Strict mode disables certain deprecated JavaScript features, such as using arguments.callee (which allows a function to refer to itself) and using the caller property (which gives access to the calling function). These features are error-prone and can negatively impact performance, so strict mode helps enforce better coding practices.
+  (3) "Discouraging the use of deprecated features": Strict mode disables certain deprecated JavaScript features, such as using arguments.callee (which allows a function to refer to itself) and using the caller property (which gives access to the calling function). These features are error-prone and can negatively impact performance, so strict mode helps enforce better coding practices.
 
-  (4) Enforcing good programming practices: Strict mode encourages the use of best practices and more disciplined coding. It requires unique parameter names, disallows the with statement (which can lead to performance issues and scope ambiguity), and provides a safer this context within functions. By adhering to these rules, you can write more reliable and maintainable code.
+  (4) "Enforcing good programming practices": Strict mode encourages the use of best practices and more disciplined coding. It requires unique parameter names, disallows the with statement (which can lead to performance issues and scope ambiguity), and provides a safer this context within functions. By adhering to these rules, you can write more reliable and maintainable code.
 
 Despite its advantages, strict mode also has some potential disadvantages:
 
 => Disadvantages:
 
-    (1) Strict mode is opt-in: Since strict mode must be explicitly enabled, it is possible for codebases or individual scripts to not utilize it. This can lead to inconsistency in coding styles and may result in compatibility issues when combining strict mode and non-strict mode code.
+    (1) "Strict mode is opt-in": Since strict mode must be explicitly enabled, it is possible for codebases or individual scripts to not utilize it. This can lead to inconsistency in coding styles and may result in compatibility issues when combining strict mode and non-strict mode code.
 
-    (2) Breaking existing code: Enabling strict mode in an existing codebase may cause previously silent errors to become thrown exceptions. If the codebase was not written with strict mode in mind, enabling it can introduce a significant number of changes and require thorough testing to ensure compatibility.
+    (2) "Breaking existing code": Enabling strict mode in an existing codebase may cause previously silent errors to become thrown exceptions. If the codebase was not written with strict mode in mind, enabling it can introduce a significant number of changes and require thorough testing to ensure compatibility.
 
-    (3) Potential performance impact: Strict mode may have a slight impact on performance compared to non-strict mode. This is because strict mode enables additional checks and optimizations, which can result in a minor increase in execution time. However, the impact is typically negligible and should not be a significant concern in most cases.
+    (3) "Potential performance impact": Strict mode may have a slight impact on performance compared to non-strict mode. This is because strict mode enables additional checks and optimizations, which can result in a minor increase in execution time. However, the impact is typically negligible and should not be a significant concern in most cases.
 
     (4) It's worth noting that the advantages of strict mode generally outweigh the potential disadvantages. It helps catch errors early, encourages better coding practices, and contributes to more robust and reliable JavaScript code.
 
@@ -781,9 +781,9 @@ In js when event occurs it goes through the three phases known as event phases o
 
  => Promises have three states:
 
-  1) Pending: The initial state, neither fulfilled nor rejected.
-  2) Fulfilled: The operation completed successfully, and the promise has a resulting value.
-  3) Rejected: The operation failed, and the promise has a reason for the failure.
+  (1) Pending: The initial state, neither fulfilled nor rejected.
+  (2) Fulfilled: The operation completed successfully, and the promise has a resulting value.
+  (3) Rejected: The operation failed, and the promise has a reason for the failure.
    
   => You can create a promise using the Promise constructor, and you can attach handlers to it using the "then method" to handle the fulfilled state or the "catch method"to handle the rejected state. You can also chain multiple promises together using the then method, which returns a new promise that represents the eventual outcome of the chain.
 
@@ -1305,7 +1305,7 @@ JavaScript, being a prototype-based language, implements OOP using prototype-bas
 
 ## Encapsulation
 
-   => Encapsulation is the "packing of data and functions into one component" (for example, a class) and then controlling access to that component to make a "blackbox" out of the object. Because of this, a user of that class only needs to know its interface (that is, the data and functions exposed outside the class), not the hidden implementation.
+  => Encapsulation is the "packing of data and functions into one component" (for example, a class) and then controlling access to that component to make a "blackbox" out of the object. Because of this, a user of that class only needs to know its interface (that is, the data and functions exposed outside the class), not the hidden implementation.
 
   => OOPs restrict direct access to its methods and variables by encapsulating the code and data together. There are two ways of encapsulation in Javascript:
 
@@ -1325,15 +1325,15 @@ JavaScript, being a prototype-based language, implements OOP using prototype-bas
 
 ## Why should Encapsulation to be used ?
 
-  Flexibility: It's more flexible and easy to change the encapsulated code with new set of requirements. For example, if the requirement for adding/removing the project of a employee changes, we can easily update the logic in the setter method () or provided methods.
+  "Flexibility": It's more flexible and easy to change the encapsulated code with new set of requirements. For example, if the requirement for adding/removing the project of a employee changes, we can easily update the logic in the setter method () or provided methods.
 
-  Reusability: Encapsulated code can be reused throughout the application or across multiple applications.
+  "Reusability": Encapsulated code can be reused throughout the application or across multiple applications.
 
-  Maintainability: When application code is encapsulated in separate units (classes, interfaces, methods, getters/setters etc) so it's easy to change or update a part of the application without affecting other parts, thus reducing the effort and time of the developer.
+  "Maintainability": When application code is encapsulated in separate units (classes, interfaces, methods, getters/setters etc) so it's easy to change or update a part of the application without affecting other parts, thus reducing the effort and time of the developer.
 
-  Testability: For an encapsulated class writing unit tests are easier as the member variables are not scattered all around, thus reducing the time and effort of the tester as well.
+  "Testability": For an encapsulated class writing unit tests are easier as the member variables are not scattered all around, thus reducing the time and effort of the tester as well.
 
-  Data Hiding: The caller of the methods will have no idea about the internal logic of the class as the member variables are not visible to the caller function. Caller only knows the parameters which are to be passed to the setter method (or any method) for getting initialized with that value. For e.g
+  "Data Hiding": The caller of the methods will have no idea about the internal logic of the class as the member variables are not visible to the caller function. Caller only knows the parameters which are to be passed to the setter method (or any method) for getting initialized with that value. For e.g
 
   class ClassWithPrivateField {
     #privateField;
@@ -1440,45 +1440,31 @@ JavaScript, being a prototype-based language, implements OOP using prototype-bas
 
   => Points to remember We cannot create an instance of Abstract Class. It reduces the duplication of code.
 
-  =>  Example:
-      // Animal class with private properties and public methods
-    class Animal {
-      #name;
-      #age;
-      
-      constructor(name, age) {
-        this.#name = name;
-        this.#age = age;
-      }
-      
-      get name() {
-        return this.#name;
-      }
-      
-      set name(value) {
-        this.#name = value;
-      }
-      
-      get age() {
-        return this.#age;
-      }
-      
-      set age(value) {
-        this.#age = value;
-      }
-      
-      // Public method
-      speak() {
-        console.log(`${this.#name} says hello!`);
-      }
+  => eg.
+        
+  class Person{
+    #name;
+    #age;
+    constructor(name,age) {
+        this.#name = name,
+        this.#age=age
     }
+    getName() {
+        return this.#name
+    }
+    setName(newName) {
+        this.#name=newName
+    }
+}
+let p1 = new Person('Dilip', 26); 
+console.log(p1);// Person {}
+console.log(p1.getName()); //Dilip
+p1.setName("Akash")
+console.log(p1);// Person {}
+console.log(p1.name) //undefined
+console.log(p1.age)  //undefined
 
-    // Usage example
-    const animal = new Animal('Fido', 2);
-    console.log(animal.name); // Fido
-    animal.speak(); // Fido says hello!
-
-    In this example, the Animal class is using encapsulation to hide the implementation details of its private properties (#name and #age) while exposing only the necessary methods (getters, setters, and speak()) to the outside world. This helps to maintain data integrity and keeps the internal details of the Animal class hidden from other parts of the program that use it.
+    In this example, the Person class is using encapsulation to hide the implementation details of its private properties (#name and #age) while exposing only the necessary methods (getters, setters, and speak()) to the outside world. This helps to maintain data integrity and keeps the internal details of the Animal class hidden from other parts of the program that use it.
 
 -------------------------------
 
@@ -1710,7 +1696,7 @@ Closures are used in JavaScript to create private variables and functions, as we
 
       We could also use 'let' instead of 'var' to declare i, which would create a block-scoped variable that is automatically scoped to each iteration of the loop. In this case, you would not need to use an IIFE or a closure to create a new scope for each iteration of the loop.
 
-       function display(i) {
+      function display(i) {
       setTimeout(()=>console.log(this[i],i),i*1000)
         }
         for (let i = 0; i < arr.length; i++){
@@ -1860,7 +1846,7 @@ Conclusion
 ## Do while loop:
 
   let result = "";
-  let i = ;
+  let i =0 ;
 
   do {
     i = i + 1;

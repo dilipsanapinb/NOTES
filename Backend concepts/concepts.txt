@@ -3531,7 +3531,7 @@ Typically all requests from D would go directly to F, and F would send responses
 
 --------------------------------------------------
 
-## How does the strict mode affect the hoisting behaviour in js? Are there any diff b/w hoisting in strict mode and non-strict mode?
+(1) How does the strict mode affect the hoisting behaviour in js? Are there any diff b/w hoisting in strict mode and non-strict mode?
     => In JavaScript, hoisting is a behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase, allowing them to be accessed before they are actually declared in the code.
 
     => The concept of hoisting remains the same in both strict mode and non-strict mode. However, strict mode introduces some changes in the behavior of hoisting. Here are the key differences between hoisting in strict mode and non-strict mode:
@@ -3555,25 +3555,25 @@ Typically all requests from D would go directly to F, and F would send responses
 
     Yes, there are a few potential pitfalls to be aware of when using destructuring in JavaScript:
 
-    (1) Variable declaration and assignment: 
+    (1) "Variable declaration and assignment": 
         When using destructuring assignment, be careful with variable declarations and assignments. If you accidentally omit the var, let, or const keyword, JavaScript treats it as a regular assignment expression, potentially causing unintended side effects by modifying an existing variable or creating a global variable.
 
-    (2) Default values and falsy values:
+    (2) "Default values and falsy values":
         When using default values in destructuring assignments, be aware of values that are considered falsy in JavaScript (e.g., 0, '', false, null, undefined). If the destructured value is one of these falsy values, the default value will be used instead. This behavior can sometimes lead to unexpected results if you're not careful.
 
-    (4) Nested destructuring:
+    (4) "Nested destructuring":
         Destructuring can also be used with nested objects or arrays. When dealing with deeply nested structures, make sure the corresponding nested patterns match the structure correctly. Otherwise, you may encounter unexpected errors or receive undefined values.
 
-    (5) Renaming variables:
+    (5)" Renaming variables":
         Destructuring allows you to assign a new variable name during the assignment. While this can be useful for avoiding naming conflicts, be cautious when renaming variables to ensure code readability. Renaming variables excessively or using cryptic names can make the code harder to understand and maintain.
 
-    (6) Destructuring arrays need to fallow index: 
+    (6) "Destructuring arrays need to fallow index": 
         When destructuring arrays, keep in mind that the position matters. The destructured variables are assigned values based on their position in the array, rather than matching them by name. If you need to skip values or access specific elements, use commas to indicate the skipped positions.
 
-    (7) Mixing destructuring with rest syntax:
+    (7) "Mixing destructuring with rest syntax":
         The rest syntax (...) allows you to gather remaining elements into a new array or object. Be aware that when using both destructuring and the rest syntax, the rest element must be the last element in the pattern. Placing it anywhere else will result in a syntax error.
 
-    (8) Performance considerations:
+    (8) "Performance considerations":
         Destructuring can improve code readability, but it's worth noting that it may have a slight impact on performance compared to traditional assignment. In most cases, the performance difference is negligible, but it's something to consider for performance-critical sections of code.
 
     By understanding these potential pitfalls and using destructuring with care, you can leverage its benefits while avoiding unexpected issues in your JavaScript code.
@@ -4127,28 +4127,36 @@ In summary, React is a JavaScript library that simplifies the process of buildin
 
 (10) How can we handle browser window resize events using useEffect in react?
 
-    import React, { useEffect } from 'react';
+    import React, { useEffect,useState } from 'react';
 
 function MyComponent() {
-
+  const [windowSize,setWindowSize]=useState({
+    width:window.innerWidth,
+    height:window.innerHeight
+  })
+  const handleResize=()=>{
+    setWindowSize({
+      width:window.innerWidth,
+      height:window.innerHeight
+    })
+  }
   useEffect(() => {
-    // Function to handle window resize event
-    const handleResize = () => {
-      // Perform actions on window resize
-      console.log('Window resized!');
-    };
-
-    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); // Empty dependency array to ensure the effect runs only once on component mount
+  }, []); 
+  // Empty dependency array to ensure the effect runs only once on component mount
 
-  return <div>My Component</div>;
-}
+  return (
+    <div>
+    <h1>Window Size</h1>
+    <p>Width:{windowSize.width}</p>
+    <p>Height:{windowSize.height}</p>
+    </div>;
+  );
+};
 
 export default MyComponent;
 ---------------------------------------------------
@@ -4256,27 +4264,28 @@ In Node.js, both require and import statements are used to include external modu
 
 Syntax:
 
-require is the CommonJS syntax used in Node.js prior to version 13.
+'require' is the 'CommonJS' syntax used in Node.js "prior to version 13".
 import is the ES modules (ESM) syntax introduced in ECMAScript 2015 (ES6) and supported in Node.js starting from version 13.
 
 (1) File Extension:
-require does not require file extensions and can load both JavaScript files (.js) and JSON files (.json) by default.
-import requires the use of file extensions, typically .js, and it does not directly support importing JSON files. However, you can use 'additional plugins' or tools like 'babel' or 'jsonc' to enable importing JSON files with import.
+"require does not require file extensions" and can load both JavaScript files (.js) and JSON files (.json) by default.
+
+"import requires the use of file extensions", typically .js, and it does not directly support importing JSON files. However, you can use 'additional plugins' or tools like 'babel' or 'jsonc' to enable importing JSON files with import.
 
 (2) Dynamic vs. Static:
 
-require allows for dynamic imports, which means that modules can be loaded conditionally at runtime based on variables or conditions.
-import is statically analyzed during the compilation process, meaning it should be used for static imports where the imported module or file is known at the time of writing the code. It does not support dynamic imports directly.
+"require allows for dynamic imports", which means that modules can be loaded conditionally at runtime based on variables or conditions.
+"import is statically analyzed during the compilation process", meaning it should be used for static imports where the imported module or file is known at the time of writing the code. It does not support dynamic imports directly.
 
 (3) Top-level vs. Local Scope:
 
-require is executed at the top-level scope of a module, meaning it can be placed anywhere within the module file, and the imported module's exports are available throughout the file.
+"require is executed at the top-level scope of a module", meaning it can be placed anywhere within the module file, and the imported module's exports are available throughout the file.
 import is scoped to the block or module where it is used. It must be placed at the top-level scope of a module file, and the imported module's exports are only available within the block or module where the import is used.
 
 (6) Asynchronous vs. Synchronous:
 
-require is synchronous by default, meaning it will block the execution of further code until the required module is loaded and executed.
-import is asynchronous by default, which allows for better performance in certain scenarios. However, it requires the use of await or then to handle the asynchronous loading of modules.
+"require is synchronous by default", meaning it will block the execution of further code until the required module is loaded and executed.
+"import is asynchronous by default", which allows for better performance in certain scenarios. However, it requires the use of await or then to handle the asynchronous loading of modules.
 
 (7) Default Exports:
 
@@ -4306,12 +4315,12 @@ It's worth noting that as of my knowledge cutoff in September 2021, the experime
  => REST stands for the ("Representational State Transfer") API is a web-based architectural style for creating API's.
   => REST APIs allow communication between different systems on the internet.
   => REST API's allows data to be exchanged between systems using HTTP and other standard web protocols.
-  => A REST API is designed around resources, which are identified by unique URLs.
+  => "A REST API is designed around resources, which are identified by unique URLs".
   => Data can be any type of object, such as a user, a blog post, or a product. Each data is represented as a collection of properties or attributes, which can be manipulated using a standardized set of HTTP methods, such as GET (to retrieve a data), POST (to create a new data), PUT (to update an existing data), and DELETE (to remove a data).
-  => REST API is a stateless architecture, which means that the server does not store any information about the client's state between requests. Instead, each request contains all the information necessary for the server to understand and process the request.
-  => REST API's  allows developers to create flexible and scalable APIs that can be used by a variety of different applications and systems.
+  => "REST API is a stateless architecture", which means that the server does not store any information about the client's state between requests. Instead, "each request contains all the information necessary" for the server to understand and process the request.
+  => REST API's  "allows developers to create flexible and scalable APIs" that can be used by a variety of different applications and systems.
   => REST API's are easy to implement, as it uses standard web protocols and HTTP methods, and can be used with a wide range of programming languages and frameworks.
-  => Advantages of REST API include its scalability, flexibility, and compatibility with a wide range of systems and devices.
+  => Advantages of REST API include its "scalability, flexibility, and compatibility "with a wide range of systems and devices.
   => However, designing and implementing a REST API can be complex, as it requires careful consideration of resource design, URL structure, and HTTP method usage. Additionally, security is also a concern, and proper authentication and authorization mechanisms must be implemented to prevent unauthorized access to resources.
 
 --------------------------------------------------------
@@ -4470,11 +4479,13 @@ const itemsPerPage = 10;
 const container = document.getElementById("pagination-container");
 
 const totalPages = Math.ceil(totalItems / itemsPerPage);
-
+let page=1;
 function getData(page){
   // fetch the data from api
 }
-getData(page)
+getData(page);
+
+function showPages(){
 
 for (let i = 1; i <= totalPages; i++) {
   const button = document.createElement("button");
@@ -4482,10 +4493,13 @@ for (let i = 1; i <= totalPages; i++) {
   container.appendChild(button);
   button.addEventListener("click", () => {
     // Perform pagination logic when a button is clicked
-    getData(i)
+    getData(i);
+    showPages(i)
     console.log("Button", i, "clicked");
   });
 }
+}
+showPages()
 -------------------------------------------------------------
 
 (26) Write a program to send a message to specific client.
@@ -4615,7 +4629,7 @@ Socket.IO provides a simple API to create, join, and leave rooms. Here's an exam
 io.on('connection', (socket) => {
   // Joining a room
   socket.join('room1');
-io.to('room1').emit('message', 'Welcome to room1!');
+# io.to('room1').emit('message', 'Welcome to room1!');
   // Broadcasting to a room
   socket.on('message',(msg)=>{
     io.to('room1').emit('message', msg);
@@ -4934,7 +4948,7 @@ app.listen(PORT, () => {
 
 ----------------------------------------------------------------
 
-(43) Which type of database is typically used for trasanctional applications. Sucah as banking system or e-commerce websites?
+(43) Which type of database is typically used for trasanctional applications. Such as banking system or e-commerce websites?
 
 For transactional applications such as banking systems or e-commerce websites, relational databases (RDBMS) are typically used. Relational databases provide a structured and robust way to handle transactions and ensure data integrity. The ACID (Atomicity, Consistency, Isolation, Durability) properties of relational databases make them well-suited for applications that require reliable and consistent transaction processing.
 
@@ -4967,6 +4981,8 @@ In Node.js, when making HTTP requests, you typically use the http or https modul
 "Body" (optional): The request body carries the payload or data associated with the request. It is used when performing operations like sending data for form submissions, creating or updating resources, or sending JSON/XML payloads.
 
 To make HTTP requests in Node.js, you can use the http or https module's request method. Here's an example of making an HTTP POST request with some basic components:
+
+
 const http = require('http');
 
 const options = {
@@ -4978,7 +4994,6 @@ const options = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer your_token'
   },
-  body:JSON.straight(obj)
 };
 
 const data = JSON.stringify({ key: 'value' });
@@ -5150,17 +5165,17 @@ JWT (JSON Web Tokens) is a popular method of authentication in Node.js and Mongo
 
 Here are some key purposes of JWT for authentication:
 
-Stateless Authentication: JWT allows for stateless authentication, meaning the server does not need to store any session data or authenticate against a session store. Each request from the client contains the necessary information for the server to authenticate and authorize the user.
+"Stateless Authentication": JWT allows for stateless authentication, meaning the "server does not need to store any session data or authenticate against a session store". Each request from the client contains the necessary information for the server to authenticate and authorize the user.
 
-Secure Information Exchange: JWTs are digitally signed using a secret or public/private key pair. This signature ensures that the token has not been tampered with during transmission and can be trusted by the server. The server can verify the authenticity and integrity of the token using the provided signature.
+"Secure Information Exchange": JWTs are digitally signed using a secret or public/private key pair. This signature ensures that the token has not been tampered with during transmission and can be trusted by the server. The server can verify the authenticity and integrity of the token using the provided signature.
 
-Compact and Portable: JWTs are compact in size and can be easily transmitted as part of an HTTP header or in the URL query parameters. This makes them highly portable and suitable for stateless communication between different systems and microservices.
+"Compact and Portable": JWTs are compact in size and can be easily transmitted as part of an HTTP header or in the URL query parameters. This makes them highly portable and suitable for stateless communication between different systems and microservices.
 
-Stateless Server: JWT authentication enables the server to remain stateless, which can improve scalability by eliminating the need to store session data on the server. The server can verify the JWT and extract the necessary information from the token itself, such as the user ID or roles, to make authorization decisions.
+"Stateless Server": JWT authentication enables the server to remain stateless, which can improve scalability by eliminating the need to store session data on the server. The server can verify the JWT and extract the necessary information from the token itself, such as the user ID or roles, to make authorization decisions.
 
 Flexibility and Extensibility: JWTs can include additional custom claims or metadata, allowing for flexible authentication and authorization scenarios. You can include information like user roles, permissions, or any other relevant data within the JWT payload.
 
-Decentralized Authentication: With JWT, authentication can be decentralized, meaning that different services or microservices can issue and validate tokens independently. This decentralization enables a more flexible and distributed architecture.
+"Decentralized Authentication": With JWT, authentication can be decentralized, meaning that different services or microservices can issue and validate tokens independently. This decentralization enables a more flexible and distributed architecture.
 
 In a Node.js and MongoDB application, JWT can be used as a token-based authentication mechanism. When a user logs in or authenticates, the server issues a JWT containing relevant information about the user. The client receives this JWT and includes it in subsequent requests to the server. The server then verifies the JWT and extracts the necessary information to authenticate and authorize the user for each request.
 

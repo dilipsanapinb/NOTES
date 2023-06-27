@@ -333,15 +333,44 @@
 
 // setInterval(myGreet,1000)
 
-function fetchData(callback) {
-    setTimeout(() => {
-        const data = ['a', 'b', 'c'];
-        callback(data)
-    },2000)
-}
+// function fetchData(callback) {
+//     setTimeout(() => {
+//         const data = ['a', 'b', 'c'];
+//         callback(data)
+//     },2000)
+// }
 
-function processData(data) {
-    console.log('Processing Data',data);
-}
+// function processData(data) {
+//     console.log('Processing Data',data);
+// }
 
-fetchData(processData);
+// fetchData(processData);
+
+
+//   class ClassWithPrivateField {
+//     #privateField;
+
+//     constructor() {
+//       this.#privateField = 42;
+//     }
+//   }
+
+//   class SubClass extends ClassWithPrivateField {
+//     #subPrivateField;
+
+//     constructor() {
+//       super();
+//       this.#subPrivateField = 23;
+//     }
+//   }
+
+// let x = new ClassWithPrivateField();
+//     console.log(x)
+
+// console.log(x);
+// var x=10
+
+const chalk = require("chalk");
+const message = chalk.blue("Hello, colored text!");
+
+console.log(message)
