@@ -2,79 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        #modal{
-            display: none;
-            margin-top: 50%;
-            margin-left: 50%;
-        }
-    </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: center; align-items: center; border: 1ps solid red;" >
-        <div style="margin: auto; border: 1px solid;">
-            <h1>Div center</h1>
-        </div>
-    </div>
-    
-    <!-- <div>
-        <canvas id="myChart"></canvas>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <script src="./socket.io/socket.io.js"></script>
     <script>
-        const ctx = document.getElementById('myChart');
+        const socket = io();
+            let form = document.getElementById('form');
+            let x = "hello!";
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange',"Grey"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3,6],
-                    borderWidth: 1
-                },
-            {
-                        label: '# of Candidates',
-                        data: [12, 19, 3, 5, 2, 3, 6],
-                        borderWidth: 1
-                    }],
-                
-                
-                
-            },
-            // data1: {
-            //     labels: ['7', '6', '5', '4', '3', '2', "1"],
-            //     datasets: [{
-            //         label: '# of Votes',
-            //         data: [12, 19, 3, 5, 2, 3, 6],
-            //         borderWidth: 1
-            //     }]
-            // },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script> -->
-    <!-- <div id="searchDiv">
-        <input type="text" id="search" placeholder="Search"><button>Search</button>
-    </div> -->
+            let messageCont = document.getElementById('messages');
 
-    <div id="modal" >
-    <h1>Search Modal</h1>
-      <div id="searchDiv">
-    <input type="text" id="search" placeholder="Search"><button>Search</button>
-</div>
-    </div>
-    <button style="margin-left: 50%; margin-top: 10px;" id="btn">Display the Modal</button>
+            socket.emit('message', x);
+
+            socket.on('message', (msg) => {
+                let li = document.createElement('li');
+                li.appendChild(x);
+                messageCont.append(li)
+            })
+    </script>
 </body>
 </html>
-<script src="./index.js"></script>

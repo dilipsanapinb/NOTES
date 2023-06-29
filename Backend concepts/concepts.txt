@@ -3531,20 +3531,36 @@ Typically all requests from D would go directly to F, and F would send responses
 
 --------------------------------------------------
 
-(1) How does the strict mode affect the hoisting behaviour in js? Are there any diff b/w hoisting in strict mode and non-strict mode?
-    => In JavaScript, hoisting is a behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase, allowing them to be accessed before they are actually declared in the code.
+(1) Introduce yourself
+
+Good [afternoon], my name is Dilip Sanap, and I am thrilled to be here today for the Node.js software development interview. With a background in farming and a passion for coding, I embarked(0n a boat) on a journey to enhance my skills in the field of software development.
+
+After graduating from the University of Pune in 2017, I dedicated my time to supporting my family's farming business. However, my desire to explore the world of technology and programming led me to enroll in the Masai School in July 2022. Over the past year, I have been immersed in a comprehensive curriculum that has equipped me with a solid foundation in various web technologies.
+
+During my time at Masai School, I have gained hands-on experience in HTML, CSS, JavaScript, Node.js, Express.js, and MongoDB. Through practical projects and rigorous training, I have honed my abilities to develop efficient and scalable applications using the Node.js ecosystem.
+
+I am particularly drawn to Node.js because of its lightweight and event-driven architecture, which enables high-performance and real-time applications. Additionally, my experience with Express.js and MongoDB has given me the skills to build robust RESTful APIs and work with data storage efficiently.
+
+I am excited about the prospect of applying my knowledge and skills to contribute to your team. I am a fast learner, detail-oriented, and thrive in collaborative environments. I am confident that my enthusiasm for Node.js development, combined with my commitment to continuous learning, make me a valuable candidate for this role.
+
+Thank you for considering my application, and I look forward to discussing my qualifications further with you today.
+
+----------------------------------------------------------------
+
+(2) How does the strict mode affect the hoisting behaviour in js? Are there any diff b/w hoisting in strict mode and non-strict mode?
+    => In JavaScript, hoisting is a behavior where "variable and function declarations are moved to the top of their containing scope during the compilation phase", allowing them to be accessed before they are actually declared in the code.
 
     => The concept of hoisting remains the same in both strict mode and non-strict mode. However, strict mode introduces some changes in the behavior of hoisting. Here are the key differences between hoisting in strict mode and non-strict mode:
 
       (1) Variable declarations: In non-strict mode, if a variable is "referenced before it is declared, it is automatically assigned a value of undefined" during the hoisting process. "In strict mode, referencing a variable before its declaration results in a ReferenceError".
 
-      (2) Function declarations: In non-strict mode, function declarations are hoisted to the top of the scope, and you can call a function before its declaration. In strict mode, function declarations are also hoisted, but they are not accessible before their declaration. If you try to call a function before its declaration in strict mode, it will result in a TypeError.
+      (2) Function declarations: In non-strict mode, function declarations are hoisted to the top of the scope, and "you can call a function before its declaration". In strict mode, function declarations are also hoisted, but they are not accessible before their declaration. If "you try to call a function before its declaration in strict mode, it will result in a TypeError".
 
-      (3) Duplicate parameter names: In non-strict mode, defining a function with duplicate parameter names does not produce an error. The last parameter name takes precedence. In strict mode, defining a function with duplicate parameter names results in a SyntaxError.
+      (3) Duplicate parameter names: In non-strict mode, defining a function with duplicate parameter names does not produce an error. The last parameter name takes precedence. In strict mode, "defining a function with duplicate parameter names results in a SyntaxError".
 
       (4) Octal syntax: In non-strict mode, using the legacy octal syntax (e.g., 0123) is allowed, and the number is interpreted as an octal value. In strict mode, using the octal syntax is not allowed, and it results in a SyntaxError.
 
-      (5) 'this' value in functions: In non-strict mode, if a function is invoked without an explicit receiver object, the this value is set to the global object (e.g., window in browsers). In strict mode, invoking a function without an explicit receiver sets the this value to undefined.
+      (5) 'this' value in functions: In non-strict mode, if a function is invoked without an explicit receiver object, the this value is set to the global object (e.g., window in browsers). In strict mode, invoking a function without an explicit receiver sets the this value to "undefined".
 
       It's important to note that hoisting can lead to confusing code and is generally considered a best practice to declare variables and functions before using them, regardless of whether you are in strict mode or non-strict mode. This helps improve code readability and maintainability.
         
@@ -3561,10 +3577,10 @@ Typically all requests from D would go directly to F, and F would send responses
     (2) "Default values and falsy values":
         When using default values in destructuring assignments, be aware of values that are considered falsy in JavaScript (e.g., 0, '', false, null, undefined). If the destructured value is one of these falsy values, the default value will be used instead. This behavior can sometimes lead to unexpected results if you're not careful.
 
-    (4) "Nested destructuring":
+    (3) "Nested destructuring":
         Destructuring can also be used with nested objects or arrays. When dealing with deeply nested structures, make sure the corresponding nested patterns match the structure correctly. Otherwise, you may encounter unexpected errors or receive undefined values.
 
-    (5)" Renaming variables":
+    (4)" Renaming variables":
         Destructuring allows you to assign a new variable name during the assignment. While this can be useful for avoiding naming conflicts, be cautious when renaming variables to ensure code readability. Renaming variables excessively or using cryptic names can make the code harder to understand and maintain.
 
     (6) "Destructuring arrays need to fallow index": 
@@ -3722,34 +3738,34 @@ Cookies can be managed using the cookie-parser middleware. This middleware parse
 
     Middlewares and API gateways are both commonly used components in web application architectures, but they serve different purposes and have distinct characteristics:
 
-        (A) Middlewares:
+      (A) Middlewares:
 
-          (1) Functionality: Middlewares are pieces of code that sit between the client and the server/application logic. They intercept and process requests and responses within an application.
+          (1) Functionality: Middlewares are pieces of code that s"it between the client and the server/application "logic. They intercept and process requests and responses within an application.
 
-          (2) Scope: Middlewares operate at the application level, providing reusable functionality that can be applied to multiple routes or endpoints within the application.
+          (2) Scope: Middlewares "operate at the application level", providing reusable functionality that can be "applied to multiple routes or endpoints within the application".
 
-          (3) Function: Middlewares typically focus on a specific task or concern, such as logging, authentication, input validation, error handling, or request/response transformations.
+          (3) Function: Middlewares typically "focus on a specific task or concern, such as logging, authentication, input validation, error handling, or request/response transformations".
 
-          (4) Modularity: Middlewares can be chained or combined to perform multiple sequential tasks, each middleware building on the previous one.
+          (4) Modularity: Middlewares can be "chained or combined to perform multiple sequential tasks", each middleware building on the previous one.
 
           (5) Flexibility: Middlewares are often framework-specific and tied closely to the application's programming language and framework.
 
-          (6) Granularity: Middlewares operate at a granular level, allowing for fine-grained control and customization of request/response processing within an application.
+          (6) Granularity: Middlewares "operate at a granular level", allowing for fine-grained control and customization of request/response processing within an application.
           
           
-        (B) API Gateways:
+      (B) API Gateways:
 
-          (1) Functionality: An API gateway is a "specialized server that acts as an entry point for client requests", providing a centralized access point to a collection of backend services or microservices.
+          (1) Functionality: An API gateway is a "specialized server that acts as an entry point for client requests", providing a "centralized access point to a collection of backend services or microservices".
 
-          (2) Aggregation: API gateways can aggregate multiple backend services, allowing clients to interact with a single entry point instead of making multiple requests to different services.
+          (2) Aggregation: API gateways can "aggregate multiple backend services", allowing clients to interact with a single entry point instead of making multiple requests to different services.
 
-          (3) Routing and Load Balancing: API gateways handle request routing and load balancing across multiple instances of backend services, distributing the traffic efficiently.
+          (3) "Routing and Load Balancing": API gateways handle request routing and load balancing across multiple instances of backend services, distributing the traffic efficiently.
 
-          (4) Security: API gateways often include security features like authentication, authorization, rate limiting, and request validation to ensure the security and integrity of the API.
+          (4) "Security": API gateways often include security features like "authentication, authorization, rate limiting, and request validation" to ensure the security and integrity of the API.
 
-          (5) Protocol Translation: API gateways can handle protocol translation, allowing clients to use different protocols (e.g., HTTP, WebSocket, gRPC) while communicating with the backend services.
+          (5) "Protocol Translation": API gateways can handle protocol translation, allowing clients to use different protocols (e.g., HTTP, WebSocket, gRPC) while communicating with the backend services.
 
-          (6) Scalability and Performance: API gateways help improve scalability and performance by caching responses, aggregating requests, and handling traffic spikes.
+          (6) "Scalability and Performance": API gateways help improve scalability and performance by caching responses, aggregating requests, and handling traffic spikes.
 
           (7) Cross-cutting Concerns: API gateways address cross-cutting concerns like monitoring, analytics, and logging at the API level, providing centralized visibility into the API traffic.
 
@@ -3793,7 +3809,7 @@ Cookies can be managed using the cookie-parser middleware. This middleware parse
                     });
                   });
 
-    (2) Use try/catch blocks. You can also use try/catch blocks to handle errors. This is a good way to catch errors that may not be emitted as events.
+    (2)You can also use try/catch blocks to handle errors. This is a good way to catch errors that may not be emitted as events.
 
     (3) Log errors. It is always a good idea to log errors so that you can track them down and fix them.
 
@@ -3926,9 +3942,84 @@ By following these tips, you can help to ensure that your Socket.IO applications
 --------------------------------------------
 
 (1) Can an object method access and modify the objects's properties in Js?
+
+------------------------------------
+
 (2) What is JWT authentication and how does it works?
+
+JWT (JSON Web Token) authentication is a method of securely transmitting information between parties as a JSON object. It is commonly used for authentication and authorization in web applications and APIs.
+
+JWT authentication works by allowing a user or client to authenticate themselves and receive a digitally signed token in return. This token is then included in subsequent requests to the server to verify the user's identity and access rights.
+
+Here's a step-by-step breakdown of how JWT authentication works:
+
+User Authentication: The user provides their credentials, such as a username and password, to the authentication server.
+
+Token Generation: Upon successful authentication, the authentication server generates a JWT that contains the user's identity (claims), such as their user ID, roles, or any other relevant information. The token consists of three parts: a header, a payload, and a signature. The header typically contains the algorithm used for signing the token, while the payload holds the claims.
+
+Token Issuance: The authentication server sends the JWT back to the user as a response to their authentication request.
+
+Token Storage: The user or client application stores the received JWT securely, commonly in local storage or a cookie.
+
+Token Transmission: For subsequent requests to protected resources, the user includes the JWT in the request headers, typically using the "Authorization" header with the "Bearer" scheme.
+
+Token Verification: The server receiving the request extracts the JWT from the header and verifies its integrity and authenticity using the signature and the server's secret key.
+
+Claims Validation: Once the token's signature is verified, the server decodes the JWT and examines the claims to determine if the user has the necessary permissions to access the requested resource.
+
+Grant Access: If the token is valid and the user's claims are sufficient, the server grants access to the requested resource and processes the request accordingly.
+
+Token Expiration and Renewal: JWTs have an expiration time (defined in the token's payload), after which they are no longer considered valid. If a token expires, the user needs to reauthenticate and obtain a new JWT.
+
+By using a JWT-based authentication mechanism, the server can securely authenticate and authorize users without relying on session state or storing user information on the server-side. Instead, all the necessary information is encapsulated within the token itself, simplifying the process and enabling stateless authentication.
+
+------------------------------------------------
 (3) Can you explain middleware concept in Express using an example?
+
+In Express, middleware refers to functions that are executed in the request-response cycle. They play a crucial role in handling and processing incoming requests before they reach the final route handler. Middleware functions have access to the request (req) and response (res) objects and the ability to modify them, invoke additional functions, or terminate the request-response cycle.
+
+Here's an example to illustrate the concept of middleware in Express:
+
+javascript
+Copy code
+const express = require('express');
+const app = express();
+
+// Middleware function
+const logger = (req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}``);
+
+  next(); // Call next() to pass control to the next middleware or route handler
+};
+
+// Registering the middleware
+app.use(logger);
+
+// Route handler
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+// Starting the server
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+
+
+In this example, we create an Express application and define a middleware function called logger. The logger function logs the current date, HTTP method, and URL of each incoming request.
+
+By calling app.use(logger), we register the logger middleware globally, meaning it will be executed for every incoming request.
+
+When a request is made to the root URL ("/"), the logger middleware will be invoked first, logging the request details to the console. It then calls next() to pass control to the next middleware or the route handler.
+
+In this case, there is a single route handler defined using app.get('/', ...) that sends a simple "Hello, World!" response.
+
+When you start the server and make a request to the root URL, the logger middleware will execute first, logging the request details. Then, the route handler will be invoked, sending the response back to the client.
+
+Middleware allows you to perform various tasks such as logging, authentication, error handling, parsing request bodies, and more. They provide a modular and flexible way to handle common functionality across multiple routes in an Express application.
+
 ---------------------------------------------------
+
 (4) Write a simple implementation of Watchman middleware that checks if the user is authenticated before allowing access to protected route.
 
 -------------------------------------------------
@@ -4057,9 +4148,9 @@ The impact of schema in SQL and NoSQL databases differs significantly. Let's exp
 
 SQL Databases:
 
-"Defined Schema": SQL databases enforce a rigid schema that defines the structure, data types, and relationships between tables in advance. The schema is typically created using DDL (Data Definition Language) statements like CREATE TABLE. This ensures data integrity and enforces consistency.
+"Defined Schema": SQL databases enforce a rigid schema that "defines the structure, data types, and relationships between tables in advance". The schema is typically created using DDL (Data Definition Language) statements like CREATE TABLE. This ensures data integrity and enforces consistency.
 
-"Data Consistency": SQL databases enforce strict data consistency rules through constraints, such as primary keys, foreign keys, unique constraints, and data types. All records in a table must conform to the defined schema. If any data violates the schema or constraints, the database rejects the operation, maintaining data integrity.
+"Data Consistency": SQL databases enforce strict data "consistency rules through constraints, such as primary keys, foreign keys, unique constraints, and data types". All records in a table must conform to the defined schema. If any data violates the schema or constraints, the database rejects the operation, maintaining data integrity.
 
 "Scalability Challenges": SQL databases can face scalability challenges due to the strict schema and ACID (Atomicity/availability, Consistency, Isolation, Durability) properties. Altering the schema or making significant changes to the database structure can be complex, requiring careful planning and potential downtime during migrations.
 
@@ -4159,6 +4250,7 @@ function MyComponent() {
 };
 
 export default MyComponent;
+
 ---------------------------------------------------
 
 (11) How does the 'this' keyword relate to lexical scope in Js?
@@ -4202,6 +4294,7 @@ The rationale behind this change in strict mode is to "prevent accidental use of
 In strict mode, if you explicitly want to access the global object within a module, you need to reference it explicitly, for example, by using window or global depending on the environment.
 
 To summarize, strict mode modifies the behavior of this in JavaScript by setting it to undefined in the global scope and within modules. This change aims to prevent accidental use of the global object and promotes safer coding practices.
+
 ----------------------------------------------
 
 (13) How does destructuring work with nested object or arrrays in Js, and what syntax is used to access deeply nested values?
@@ -4319,7 +4412,7 @@ It's worth noting that as of my knowledge cutoff in September 2021, the experime
   => Data can be any type of object, such as a user, a blog post, or a product. Each data is represented as a collection of properties or attributes, which can be manipulated using a standardized set of HTTP methods, such as GET (to retrieve a data), POST (to create a new data), PUT (to update an existing data), and DELETE (to remove a data).
   => "REST API is a stateless architecture", which means that the server does not store any information about the client's state between requests. Instead, "each request contains all the information necessary" for the server to understand and process the request.
   => REST API's  "allows developers to create flexible and scalable APIs" that can be used by a variety of different applications and systems.
-  => REST API's are easy to implement, as it uses standard web protocols and HTTP methods, and can be used with a wide range of programming languages and frameworks.
+  => REST API's are "easy to implement", as it uses standard web protocols and HTTP methods, and can be used with a wide range of programming languages and frameworks.
   => Advantages of REST API include its "scalability, flexibility, and compatibility "with a wide range of systems and devices.
   => However, designing and implementing a REST API can be complex, as it requires careful consideration of resource design, URL structure, and HTTP method usage. Additionally, security is also a concern, and proper authentication and authorization mechanisms must be implemented to prevent unauthorized access to resources.
 
@@ -4555,7 +4648,8 @@ server.listen(3000, () => {
                 socket.emit('chat message', input.value);
                 input.value=''
             }
-        })
+        });
+
         socket.on('chat message',function(msg){
             let item=document.createElement('li');
             item.textContent=msg;
@@ -4941,6 +5035,82 @@ app.listen(PORT, () => {
 ---------------------------------------------------------------
 
 (41) Write code that uses middleware to implement rate imiting in an API.
+
+const rate = (limit, time, blockedTime) => {
+    // We define a new function called `rateLimit` which takes three arguments: 
+    // `limit` - the maximum number of requests allowed within `time` milliseconds.
+    // `time` - the duration of the time window in milliseconds.
+    // `blockedTime` - the duration of the blocked period in milliseconds.
+
+    const requests = {};
+    // We create an object called `requests` to store the request history for each IP address.
+
+    setInterval(() => {
+        // We create a new interval which runs every `time` milliseconds to remove old requests from the `requests` object.
+
+        for (const ip in requests) {
+            // We loop through each IP address in the `requests` object.
+
+            const now = Date.now();
+            // We get the current timestamp.
+
+            const timeWindow = requests[ip].timeWindow;
+            // We get the start of the current time window for the IP address.
+
+            const blockedUntil = requests[ip].blockedUntil;
+            // We get the end of the blocked period for the IP address.
+
+            requests[ip].requests = requests[ip].requests.filter((time) => {
+                return time > now - timeWindow;
+            });
+            // We remove all requests from the `requests` array for the IP address which are older than `timeWindow` milliseconds.
+
+            if (requests[ip].requests.length === 0) {
+                requests[ip].timeWindow = now;
+            }
+            // If there are no requests in the current time window for the IP address, we reset the start of the time window to the current timestamp.
+
+            if (blockedUntil && blockedUntil <= now) {
+                requests[ip].blockedUntil = null;
+                requests[ip].requests = [];
+                requests[ip].timeWindow = now;
+            }
+            // If the blocked period for the IP address has ended, we reset the request count, the start of the time window, and the end of the blocked period.
+        }
+    }, time);
+    // We set the interval to run every `time` milliseconds.
+
+    return (req, res, next) => {
+        // We return a middleware function which takes three arguments: `req`, `res`, and `next`.
+
+        const ip = req.ip;
+        // We get the IP address of the client making the request.
+
+        const now = Date.now();
+        // We get the current timestamp.
+
+        requests[ip] = requests[ip] || { requests: [], timeWindow: now };
+        // If there is no entry in the `requests` object for the IP address, we create one and initialize the `requests` array and the start of the time window.
+
+        if (requests[ip].blockedUntil && requests[ip].blockedUntil > now) {
+            const remainingTime = Math.ceil((requests[ip].blockedUntil - now) / 1000);
+            res.status(429).send(`Too many requests, please try again after ${remainingTime} seconds.`);
+        }
+        // If the client is currently blocked, we send a 429 status code with a message indicating how long the client must wait before making more requests.
+
+        else if (requests[ip].requests.length >= limit) {
+            requests[ip].blockedUntil = now + blockedTime;
+            const remainingTime = Math.ceil(blockedTime / 1000);
+            res.status(429).send(`Too many requests, please try again after ${remainingTime} seconds.`);
+            // If the client has reached the request limit, we block the client for the specified `blockedTime` and send a 429 status code with a message indicating how long the client must wait before making more requests
+        } else {
+            requests[ip].requests.push(now);
+            next();
+        }
+    }
+};
+
+module.exports={rate}   
 
 ---------------------------------------------------------------
 
