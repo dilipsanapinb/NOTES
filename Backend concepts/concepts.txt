@@ -4501,6 +4501,7 @@ const message = chalk.blue('Hello, colored text!');
 // Display the message in the console
 
 console.log(message);
+
 -------------------------------------------------------------
 
 (17) What is diff b/w required and import statements in Node.js?
@@ -4555,9 +4556,10 @@ It's worth noting that as of my knowledge cutoff in September 2021, the experime
       });
 
 -------------------------------------------------------
+
 (19) Whai is RESTful API?
 
- => REST stands for the ("Representational State Transfer") API is a web-based architectural style for creating API's.
+=> REST stands for the ("Representational State Transfer") API is a web-based architectural style for creating API's.
   => REST APIs allow communication between different systems on the internet.
   => REST API's allows data to be exchanged between systems using HTTP and other standard web protocols.
   => "A REST API is designed around resources, which are identified by unique URLs".
@@ -4841,7 +4843,7 @@ In summary, while both Redis sets and sorted sets store unique elements, sorted 
 
 Redis, which stands for "Remote Dictionary Server", is an open-source, "in-memory data structure store". It offers several advantages as a data structure that contribute to its popularity and usefulness in various applications. Here are some advantages of using Redis:
 
-(1) "High-performance in-memory storage": Redis stores data primarily in memory, allowing for extremely fast read and write operations. It is designed to deliver high performance with low latencies, making it ideal for use cases that require real-time data processing or high-speed data access.
+(1) "High-performance in-memory storage": Redis "stores data primarily in memory", allowing for extremely fast read and write operations. It is designed to deliver high performance with low latencies, making it ideal for use cases that require real-time data processing or high-speed data access.
 
 (2) "Versatile data structures": Redis provides a rich set of data structures that go beyond simple key-value pairs. It supports strings, lists, sets, sorted sets, hashes, and more. These data structures enable complex data modeling and allow developers to implement various algorithms efficiently.
 
@@ -4931,6 +4933,7 @@ function errorHandler(err, req, res, next) {
 module.exports = errorHandler;
 
 app.use(errorHandler);
+
 ---------------------------------------------------
 
 (33) How can you delete the MongoDB shell?
@@ -5039,6 +5042,7 @@ function MyComponent() {
     // JSX markup for the component
   );
 }
+
 In this example, the useEffect hook is used with an empty dependency array ([]) as the second argument. This empty dependency array ensures that the effect is only run once, when the component mounts, and the cleanup function is called only when the component unmounts.
 
 Inside the useEffect callback function, you can perform any setup or side effects that you need. This can include things like event listeners, subscriptions, timers, or other resource allocations.
@@ -5099,14 +5103,16 @@ const person = {
   }
 };
 
-// Accessing nested object properties using dot notation
+// Accessing nested object properties using "dot notation"
+
 console.log(person.name); // Output: John
 console.log(person.age); // Output: 30
 console.log(person.address.street); // Output: 123 Main St
 console.log(person.address.city); // Output: New York
 console.log(person.address.country); // Output: USA
 
-// Accessing nested object properties using bracket notation
+// Accessing nested object properties using "bracket notation"
+
 console.log(person['name']); // Output: John
 console.log(person['age']); // Output: 30
 console.log(person['address']['street']); // Output: 123 Main St
@@ -5125,8 +5131,11 @@ const obj = {
 Object.freeze(obj);
 
 // Trying to modify properties
+
 obj.prop1 = 'new value'; // This change will not take effect
+
 delete obj.prop2; // This deletion will not take effect
+
 obj.prop3 = 'value3'; // This addition will not take effect
 
 console.log(obj.prop1); // Output: value1
@@ -5135,11 +5144,11 @@ console.log(obj.prop3); // Output: undefined
 
 ---------------------------------------------------------------
 
-(39) What are some common mistakes to avoid when using query and route params in Node.js applications?
+(39) What are some "common mistakes" to avoid when "using query and route params in Node.js applications"?
 
 When using query and route parameters in Node.js applications, it's important to be aware of potential pitfalls and mistakes that can lead to security vulnerabilities or incorrect behavior. Here are some common mistakes to avoid:
 
-(1) "Insufficient input validation": Failing to validate and sanitize user input can leave your application vulnerable to attacks like SQL injection or cross-site scripting (XSS). Always validate and sanitize query and route parameters before using them in your code.
+(1) "Insufficient input validation": Failing to validate and sanitize user input can leave your application vulnerable to attacks like SQL injection( SQL injection is a type of security vulnerability that occurs when an attacker can manipulate or inject malicious SQL  statements into an application's database query. It is a common web application security risk, especially when user-supplied input is not properly validated or sanitized before being used in SQL queries.) or cross-site scripting (XSS)(Cross-Site Scripting is another common web application security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. It occurs when an application fails to properly validate or sanitize user-supplied input that is dynamically included in web pages.). Always validate and sanitize query and route parameters before using them in your code.
 
 (2) "Insecure concatenation": Avoid directly concatenating query or route parameters into database queries or other sensitive operations. Instead, use parameterized queries or prepared statements to prevent SQL injection attacks.
 
@@ -5147,13 +5156,13 @@ When using query and route parameters in Node.js applications, it's important to
 
 (5) "Not handling missing parameters": Always handle scenarios where query or route parameters are missing. Failing to do so can lead to unexpected errors or crashes in your application.
 
-(6) "Failure to handle type coercion": Query parameters are often passed as strings, so be cautious when performing operations that expect specific data types. Use appropriate type coercion or validation to ensure the correct data type is used.
+(6) "Failure to handle type coercion": "Query parameters are often passed as strings", so be cautious when performing operations that "expect specific data types". Use appropriate type coercion or validation to ensure the correct data type is used.
 
 (7) "Incorrect use of URL encoding": When passing special characters or spaces in query or route parameters, make sure to properly encode them using URL encoding (e.g., encodeURIComponent() in Node.js). Failing to do so can lead to malformed URLs and incorrect parameter values.
 
 (8) "Overly complex routes or query strings": Avoid creating overly complex or lengthy routes and query strings. This can make your code harder to read, understand, and maintain. Consider breaking down complex queries into smaller, more manageable pieces.
 
-(9) "Ignoring security considerations": Always consider security implications when handling query and route parameters. Implement measures such as rate limiting, authentication, and authorization checks to protect against malicious attacks.
+(9) "Ignoring security considerations": Always consider security implications when handling query and route parameters. Implement measures such as "rate limiting, authentication, and authorization" checks to protect against malicious attacks.
 
 (10) "Lack of documentation": Document the expected format and purpose of query and route parameters in your API documentation or code comments. This helps other developers understand how to use and interact with your endpoints correctly.
 
@@ -5186,7 +5195,7 @@ app.listen(PORT, () => {
 
 ---------------------------------------------------------------
 
-(41) Write code that uses middleware to implement rate imiting in an API.
+(41) Write code that uses middleware to implement rate limiting in an API.
 
 const rate = (limit, time, blockedTime) => {
     // We define a new function called `rateLimit` which takes three arguments: 
