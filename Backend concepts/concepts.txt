@@ -3543,7 +3543,7 @@ I am particularly drawn to Node.js because of its lightweight and event-driven a
 
 I am excited about the prospect of applying my knowledge and skills to contribute to your team. I am a fast learner, detail-oriented, and thrive in collaborative environments. I am confident that my enthusiasm for Node.js development, combined with my commitment to continuous learning, make me a valuable candidate for this role.
 
-Thank you for considering my application, and I look forward to discussing my qualifications further with you today.
+Thank you for considering my application, and today I look forward to discussing my qualifications further with you .
 
 ----------------------------------------------------------------
 
@@ -3637,7 +3637,7 @@ Thank you for considering my application, and I look forward to discussing my qu
 (5) How do you use cookies in an Express application.
 ## How do you manage sessions in express?
 
- => Session management is an important aspect of web application development, as it "allows you to keep track of user activity and maintain user state across requests". In Express.js, session management can be implemented using the express-session middleware.
+=> Session management is an important aspect of web application development, as it "allows you to keep track of user activity and maintain user state across requests". In Express.js, session management can be implemented using the express-session middleware.
 
     //npm i express-session
 
@@ -3683,6 +3683,7 @@ Thank you for considering my application, and I look forward to discussing my qu
             const username = req.session.username;
             res.send(`Username: ${username}`);                    Output  // Username:Dilip
           });
+          
           app.listen(8000, () => {
               console.log('Server is running on port 8000');
           })
@@ -5447,6 +5448,7 @@ Here's an example to illustrate the concept of callback functions:
 
 
 function fetchData(callback) {
+  
   // Simulating an asynchronous operation (e.g., fetching data from a server)
 
   setTimeout(() => {
