@@ -1,3 +1,61 @@
+# Document Oject Model(DOM)
+
+JavaScript helps you to interact with the HTML page via DOM.
+
+DOM stands for Document Object Model. It is a programming interface for HTML and XML documents. The DOM represents the structure of a document as a tree-like model where each element, attribute, and piece of text in the document is represented as a node in the tree.
+
+The DOM provides a way for programs and scripts to access and manipulate the content, structure, and style of a web page. It allows developers to dynamically modify the content and appearance of a webpage, add or remove elements, change styles, and handle user interactions.
+
+The DOM is commonly used in web development with languages like JavaScript to create interactive and dynamic web pages. It provides a set of methods and properties that allow developers to traverse and manipulate the elements of an HTML or XML document, respond to events, and update the page content in real-time.
+
+Overall, the DOM serves as an intermediary between web content and programming languages, enabling developers to interact with and modify web pages programmatically.
+
+-----------------------------------------------
+
+element.setAttribute(attributeName,attributeValue)
+
+------------------------------------------------
+
+The getAttribute() method returns the value of an element's attribute.
+
+element.getAttribute(name)
+
+-------------------------------------------------
+
+To use `localStorage` in your web applications, there are five methods to choose from:
+
+1. `setItem()`: Add key and value to `localStorage`
+2. `getItem()`: This is how you get items from `localStorage`
+3. `removeItem()`: Remove an item by key from `localStorage`
+4. `clear()`: Clear all `localStorage`
+
+--------------------------------------------
+
+# Sort
+
+let numbers = [0, 1 , 2, 3, 10, 20, 30 ];
+
+numbers.sort( function( a , b){
+    if(a > b) return 1;
+    if(a < b) return -1;
+    return 0;
+});
+
+console.log(numbers);
+
+let animals = [
+    'cat', 'dog', 'elephant', 'bee', 'ant'
+];
+
+animals.sort((a, b) => {
+    if (a > b)
+        return 1;
+    if (a < b)
+        return -1;
+    return 0;
+});
+
+console.log(animals);
 ## Primitive Data types:
 In JavaScript, a primitive (primitive value, primitive data type) is data that is not an object and has no methods or properties. There are 7 primitive data types:
 
