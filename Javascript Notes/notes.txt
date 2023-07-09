@@ -56,6 +56,9 @@ animals.sort((a, b) => {
 });
 
 console.log(animals);
+
+-------------------------------------------
+
 ## Primitive Data types:
 In JavaScript, a primitive (primitive value, primitive data type) is data that is not an object and has no methods or properties. There are 7 primitive data types:
 
@@ -119,6 +122,8 @@ In JavaScript, a primitive (primitive value, primitive data type) is data that i
 ## Two arrays or objects are not equivalent:
   Examples: [1,2]===[1,2] //false
             {}==={} //false;
+  because there addresses at the memmory is Different.
+
 
 --------------------------------------------------
 
@@ -171,6 +176,7 @@ Here are some examples of higher-order functions in JavaScript:
   => The map() method creates a new array with the results of calling a provided function on every element in the original array.
   => The provided function is a callback function that takes one argument, which is the current element being processed.
   => Example: const numbers = [1, 2, 3, 4, 5];
+
     const squareNumbers = numbers.map(function(num) {
     return num * num;
     });
@@ -283,7 +289,9 @@ console.log(myMap); // Output: Map {"name" => "John", "age" => 30}
 console.log(myMap.get('name')); // Output: John
 
 myMap.delete('age');
+
 console.log(myMap); // Output: Map {"name" => "John"}
+
 In summary, Sets are designed for storing unique values, while Maps are designed for storing key-value pairs. Sets prioritize uniqueness, while Maps prioritize key-based access to values.
 
 ------------------------------------
@@ -328,7 +336,9 @@ In summary, Sets are designed for storing unique values, while Maps are designed
           => function example() {
               let x = 10;
               if (true) {
+
               let x = 20; // does not re-declare the variable
+                
               console.log(x); // outputs 20
               }
               console.log(x); // outputs 10
@@ -344,7 +354,7 @@ In summary, Sets are designed for storing unique values, while Maps are designed
               if (true) {
               const x = 20; // does not re-declare the variable
               console.log(x); // outputs 20
-               }
+              }
               console.log(x); // outputs 10
               }
 
@@ -375,15 +385,15 @@ In summary, Sets are designed for storing unique values, while Maps are designed
          console.log(x); // outputs 10
 
          var x; // declare the variable after it's been used
-         In this example, the assignment of x is executed before the variable declaration, but it still works because the variable declaration is hoisted to the top of the scope.
+        In this example, the assignment of x is executed before the variable declaration, but it still works because the variable declaration is hoisted to the top of the scope.
 
-         Here's another example with function hoisting:
+        Here's another example with function hoisting:
          example(); // call the function before it's been declared
 
-         function example() {
-         console.log('Hello, world!');
-         }
-         => In this example, the function declaration is hoisted to the top of the scope, so we can call the function before it's been declared.
+        function example() {
+        console.log('Hello, world!');
+        }
+        => In this example, the function declaration is hoisted to the top of the scope, so we can call the function before it's been declared.
 
 ------------------------------------
 
@@ -393,34 +403,34 @@ In programming, shadowing occurs when a variable declared in a certain scope (e.
 => In JavaScript, variables can be shadowed in both the global and function scope. Global variables can be shadowed by function-scoped variables, and function-scoped variables can be shadowed by block-scoped variables declared with the let or const keyword.
 
 => Variable Shadowing in the Global Scope
- var x = "global";
+  var x = "global";
       function foo() {
-         let x = "function";
-         document.getElementById("result1").innerHTML = x
+        let x = "function";
+        document.getElementById("result1").innerHTML = x
       }
       foo();
 
 => Variable Shadowing in the Function Scope.
 
 function foo() {
-         var x = "function";
-         document.getElementById("result1").innerHTML = x
-         {
+        var x = "function";
+        document.getElementById("result1").innerHTML = x
+        {
             let x = "block";
             document.getElementById("result2").innerHTML = x
-         }
-         document.getElementById("result3").innerHTML = x
+        }
+        document.getElementById("result3").innerHTML = x
       }
       foo();
 
 => advantages:
   -Variable shadowing can be used to improve code readability and clarity. We can declare same variable in diff block or function scopes
-  - Shadowing can also be used to reduce the likelihood of errors. This can help to prevent accidental errors where the value of a variable is unintentionally reassigned.
+  -- Shadowing can also be used to reduce the likelihood of errors. This can help to prevent accidental errors where the value of a variable is unintentionally reassigned.
 
   => Disadvantages:
     
-    - Sometimes shadowing can make code more difficult to understand too.
-    - Shadowing can also make code more difficult to debug
+    -- Sometimes shadowing can make code more difficult to understand too.
+    -- Shadowing can also make code more difficult to debug
 
 -----------------------------------
 
@@ -469,7 +479,7 @@ const add10 = makeAdder(10);
 
 console.log(add5(2)); // 7
 console.log(add10(2)); // 12
-Copy to Clipboard
+
 In this example, we have defined a function makeAdder(x), that takes a single argument x, and returns a new function. The function it returns takes a single argument y, and returns the sum of x and y.
 
 let arr = [1, 2, 3, 4, 5];
@@ -502,16 +512,16 @@ for (var i = 0; i < arr.length; i++){
 
 --------------------------
 
- ## Scopes in JavaScript
+## Scopes in JavaScript
 
-   => In JavaScript, scopes determine the visibility and accessibility of variables and functions in different parts of your code.
-   =>There are two main types of scopes in JavaScript: global scope and local scope.
+  => In JavaScript, scopes determine the visibility and accessibility of variables and functions in different parts of your code.
+  =>There are two main types of scopes in JavaScript: global scope and local scope.
 
     1) Global scope:
-       -> Variables and functions declared outside of any function or block are in the global scope.
-       -> This means that they are accessible throughout the entire code, including inside functions and blocks.
-       -> However, variables declared in the global scope can be overwritten accidentally and can cause unintended behavior.
-       -> Example:
+      -> Variables and functions declared outside of any function or block are in the global scope.
+      -> This means that they are accessible throughout the entire code, including inside functions and blocks.
+      -> However, variables declared in the global scope can be overwritten accidentally and can cause unintended behavior.
+      -> Example:
           var globalVariable = 'Hello, world!';
 
           function example() {
@@ -521,10 +531,10 @@ for (var i = 0; i < arr.length; i++){
           console.log(globalVariable); // outputs 'Hello, world!'
 
     2) Local scope:
-       -> Variables and functions declared inside a function or block are in the local scope.
-       -> This means that they are accessible only within the function or block where they are declared.
-       -> This can help to prevent accidental overwriting of variables and improve code organization.
-       -> Example:
+      -> Variables and functions declared inside a function or block are in the local scope.
+      -> This means that they are accessible only within the function or block where they are declared.
+      -> This can help to prevent accidental overwriting of variables and improve code organization.
+      -> Example:
           function example() {
           var localVariable = 'Hello, world!';
           console.log(localVariable); // outputs 'Hello, world!'
@@ -567,7 +577,7 @@ for (var i = 0; i < arr.length; i++){
 
 ## Bigint
 
-    In JavaScript, the bigint data type is used to represent integers with arbitrary precision. It was introduced in ECMAScript 2020 to provide a way to work with numbers beyond the limitations of the standard number data type, which is a 64-bit floating-point number.
+    In JavaScript, the bigint data type is used to "represent integers with arbitrary precision". It was introduced in "ECMAScript 2020" to provide a way to work with numbers beyond the limitations of the standard number data type, which is a "64-bit floating-point number."
 
     BigInts allow you to perform mathematical operations on integers of any size without the risk of losing precision or encountering overflow/underflow errors. Here's an example of creating and working with BigInts:
       
@@ -610,9 +620,13 @@ for (var i = 0; i < arr.length; i++){
     The syntax for Object.defineProperty() is as follows:
 
     Object.defineProperty(object, propertyname, descriptor);
-    object: The object on which to define or modify the property.
-    propertyname: The name or symbol of the property.
-    descriptor: An object that specifies the attributes and behavior of the property using various properties like value, writable, enumerable, and configurable.
+
+    'object': The object on which to define or modify the property.
+
+    'propertyname': The name or symbol of the property.
+
+    'descriptor': An object that specifies the attributes and behavior of the property using various properties like value, writable, enumerable, and configurable.
+
     Here's an example that demonstrates the usage of Object.defineProperty():
 
     eg.
@@ -1019,7 +1033,7 @@ Library and framework are two diff conceptsin software devlopment.
       -- Libraries are designed to be used as tools to accomplish specific programming tasks, such as handling file operations, performing mathematical calculations, or interacting with a network.
       -- When using a library, developers have more control over the flow of their application. They can choose which parts of the library they want to use and integrate them into their code as needed.
       
-      - Examples of popular libraries include the React library for building user interfaces in JavaScript, the NumPy library for numerical computing in Python, and the jQuery library for simplifying JavaScript coding.
+      -- Examples of popular libraries include the 'React' library for building user interfaces in JavaScript, the 'NumPy' library for numerical computing in 'Python', and the 'jQuery' library for simplifying JavaScript coding.
       
 
     (B) Framework : 
@@ -1028,7 +1042,7 @@ Library and framework are two diff conceptsin software devlopment.
         -- It offers a foundation for developing software by providing a predefined structure, architecture, and a set of rules and conventions.
         -- Frameworks typically dictate the overall design of an application and provide a scaffolding that developers can build upon. They often include libraries and provide additional features such as database access, user authentication, and routing mechanisms.
 
-        - Some popular frameworks include Ruby on Rails for web development, Django for Python web development, and Angular for building web applications using TypeScript.
+        -- Some popular frameworks include 'Ruby' on 'Rails' for web development, 'Django' for 'Python' web development, and 'Angular' for building web applications using 'TypeScript'.
 
     -- In summary, libraries are focused on providing specific functionality or tools that developers can use in their projects, while frameworks provide a more comprehensive structure and guidelines for building applications, including libraries as part of their offerings.
 
@@ -1067,7 +1081,7 @@ Whenever the engine finds a function invocation, it creates a new execution cont
 
 ## eval() :
 
-In JavaScript, eval() is a built-in function that allows you to "evaluate or execute JavaScript code dynamically", which is provided as a string. "It takes the code as an argument and executes it within the current execution context". Here's the basic syntax of eval():
+In JavaScript, eval() is a built-in function that allows you to "evaluate or execute JavaScript code dynamically", which is provided as a 'string'. "It takes the code as an argument and executes it within the current execution context". Here's the basic syntax of eval():
 
         eval(code);
 
@@ -1114,7 +1128,7 @@ console.log("obj2:"obj); // all obj will returned
 
 => Example:
 
-   var family={
+  var family={
     father:"Barku",
     myFather(){
       console.log(this.father)
@@ -1148,7 +1162,7 @@ var son = Object.create(family);
    p1.setCity('Nashik');
    p1.eat('Veg')
 
-      var.p2=new Person("Kalpesh",26)
+  var.p2=new Person("Kalpesh",26)
    p1.setCity('Sinnar');
    p1.eat('Non-veg')
 
@@ -1522,7 +1536,7 @@ console.log(p1);// Person {}
 console.log(p1.name) //undefined
 console.log(p1.age)  //undefined
 
-    In this example, the Person class is using encapsulation to hide the implementation details of its private properties (#name and #age) while exposing only the necessary methods (getters, setters, and speak()) to the outside world. This helps to maintain data integrity and keeps the internal details of the Animal class hidden from other parts of the program that use it.
+    In this example, the Person class is using encapsulation to hide the implementation details of its private properties (#name and #age) while exposing only the necessary methods (getters, setters) to the outside world. This helps to maintain data integrity and keeps the internal details of the Person class hidden from other parts of the program that use it.
 
 -------------------------------
 
@@ -1574,11 +1588,11 @@ console.log(p1.age)  //undefined
 
     => Here are some cases where arrow functions should not be used:
 
-    (1) "As methods of an object": Arrow functions "do not have their own this binding", so they cannot be used as methods of an object. In other words, if you need to access the object's properties or methods within the function, you should use a traditional function expression instead.
+    (1) "Cannot use as methods of an object": Arrow functions "do not have their own this binding", so they cannot be used as methods of an object. In other words, if you need to access the object's properties or methods within the function, you should use a traditional function expression instead.
 
-    (2) "In constructors": Arrow functions cannot be used as constructors because "they do not have a prototype property", which is required for creating new objects. If you need to create new objects based on a blueprint, you should use a traditional function expression instead.
+    (2) "cannot use in constructors": Arrow functions cannot be used as constructors because "they do not have a prototype property", which is required for creating new objects. If you need to create new objects based on a blueprint, you should use a traditional function expression instead.
 
-    (3) "With the arguments object": Arrow functions "do not have their own arguments object", so they cannot be used to access the arguments passed to the function. If you need to access the arguments, you should use a traditional function expression instead.
+    (3) "With the arguments object": Arrow functions "do not have their own arguments object", so "they cannot be used to access the arguments passed to the function." If you need to access the arguments, you should use a traditional function expression instead.
 
     (4) "With yield keyword": Arrow functions cannot be used with the 'yield' keyword in a generator function, because "they do not have their own this binding".
 
@@ -1591,14 +1605,14 @@ console.log(p1.age)  //undefined
 
 ## Difference between .call , .apply and .bind
 
-=>In JavaScript, call, apply, and bind are three methods that can be "used to call functions with a specific this value, as well as arguments to be passed to the function".
+=>In JavaScript, call, apply, and bind are three object methods that can be "used to call functions with a specific this value, as well as arguments to be passed to the function".
 => Here's the difference between them:
 
 1) .call():
-   -> call: The .call() method is a function method that allows you "to call a function with a given this value" and "arguments provided individually".
-   -> With .call(), you can pass arguments to the function one by one, separated by commas.
+  -> call: The .call() method is a function method that allows you "to call a function with a given this value" and "arguments provided individually".
+  -> With .call(), you can pass arguments to the function one by one, separated by commas.
 
-   -> Example:
+  -> Example:
 
       function greet() {
       console.log(`Hello, ${this.name}`);
@@ -1627,11 +1641,11 @@ console.log(p1.age)  //undefined
 
 
 (2)  .apply():
-   -> The apply() method is similar to call(), but it "takes arguments as an array instead of individual arguments".
-   -> The first argument passed to apply() is the this value, and the second argument is an array of arguments to be passed to the function.
-   -> Example-1:
+  -> The apply() method is similar to call(), but it "takes arguments as an array instead of individual arguments".
+  -> The first argument passed to apply() is the this value, and the second argument is an array of arguments to be passed to the function.
+  -> Example-1:
 
-     function greet(greeting, city) {
+    function greet(greeting, city) {
         console.log(`${greeting}, ${this.name} from ${city}`);
       }
 
@@ -1654,12 +1668,12 @@ console.log(p1.age)  //undefined
 
 3) .bind():
 
-   -> The bind() method creates a new function with a specified this value and any arguments provided.
-   -> Unlike call() and apply(), bind() doesn't invoke the function immediately. Instead, it returns a new function with the bound this value and any arguments provided.
+  -> The bind() method creates a new function with a specified this value and any arguments provided.
+  -> Unlike call() and apply(), bind() doesn't invoke the function immediately. Instead, it returns a new function with the bound this value and any arguments provided.
 
-   -> Example-1:
-     
-     function greet(greeting, city) {
+  -> Example-1:
+    
+    function greet(greeting, city) {
         console.log(`${greeting}, ${this.name} from ${city}`);
       }
 
@@ -1856,12 +1870,12 @@ Together, event bubbling and capturing are called "event propagation", and they 
 ## How to re-render the view when browser is resized? show it in code.
 
   => Debounce monitors the time delay between user actions and only executes the callback function if the delay exceeds the time delay defined by the developer.
-  - So, continuous user actions can significantly delay the callback function's execution if we use debounce.
-  - Debounce is most suitable for control events like typing or button clicks.
+  -- So, continuous user actions can significantly delay the callback function's execution if we use debounce.
+  -- Debounce is most suitable for control events like typing or button clicks.
   
   => Throttle uses the time delay to execute the callback function at regular intervals until the event trigger is active.
-  - So, it does not delay the callback function execution for a significant period like debounce.
-  - Throttle is most suitable for continuous user events like resizing and scrolling.
+  -- So, it does not delay the callback function execution for a significant period like debounce.
+  -- Throttle is most suitable for continuous user events like resizing and scrolling.
   -- Throttling is a technique in JavaScript that "limits the frequency of a function call", typically in response to some event, such as scrolling, resizing, or input events. This is done to "prevent the function from being called too frequently and overloading the browser or server with too many requests".
 
   Example: 
@@ -1893,10 +1907,9 @@ Together, event bubbling and capturing are called "event propagation", and they 
 
         In the usage example, the handleResize function is passed to throttle, which returns a new function that limits the frequency of its calls to once per second. This prevents the handleResize function from being called too frequently, which can improve performance and reduce the risk of browser crashes.
 
-  
+Conclusion:
 
-Conclusion
- we could use debounce and throttle to handle user events and minimize unnecessary function executions in JavaScript applications. Ultimately, these two techniques can significantly improve your application’s performance since they can avoid many unnecessary API calls, DB queries, and so on. So, give them a try when implementing event triggers on your next application.
+we could use debounce and throttle to handle user events and minimize unnecessary function executions in JavaScript applications. Ultimately, these two techniques can significantly improve your application’s performance since they can avoid many unnecessary API calls, DB queries, and so on. So, give them a try when implementing event triggers on your next application.
 
 
 --------------------------------------------

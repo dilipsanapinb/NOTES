@@ -411,11 +411,11 @@ const userAgent = headers['user-agent'];
 
   The chunk emitted in each 'data' event is a Buffer. If you know it's going to be string data, the best thing to do is collect the data in an array, then at the 'end', concatenate and stringify it.
 
-- HTTP Status Code
+-- HTTP Status Code
 
   -The HTTP status code on a response will always be 200. Of course, not every HTTP response warrants this, and at some point you'll definitely want to send a different status code. To do that, you can set the statusCode property.
 
-- Setting Response Headers
+-- Setting Response Headers
 
   Headers are set through a convenient method called setHeader.
 
@@ -424,7 +424,7 @@ response.setHeader('X-Powered-By', 'bacon');
 
   When setting the headers on a response, the case is insensitive on their names. If you set a header repeatedly, the last value you set is the value that gets sent.
 
-- Sending Response Body
+-- Sending Response Body
 
   response.write('<html>');
 response.write('<body>');
@@ -474,7 +474,7 @@ response.end();
 ## simple req 
     
 
-       const http = require('http');
+      const http = require('http');
 
           const hostname = '127.0.0.1';
           const port = 3000;
