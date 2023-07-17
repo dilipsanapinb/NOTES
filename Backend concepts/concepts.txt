@@ -628,12 +628,12 @@ req.end();
 
 ## What are clusters?
 
--- When you run a Node.js program on a system with multiple CPUs, it creates a process that uses only a single CPU to execute by default. Since Node.js uses a single thread to execute your JavaScript code, all the requests to the application have to be handled by that thread running on a single CPU. If the application has CPU-intensive tasks, the operating system has to schedule them to share a single CPU until completion. That can result in a single process getting overwhelmed if it receives too many requests, which can slow down the performance. If the process crashes, users won’t be able to access your application.
+-- When you run a Node.js program on a system with multiple CPUs, it creates a process that uses only a single CPU to execute by default. Since Node.js uses a single thread to execute your JavaScript code, all the requests to the application have to be handled by that thread running on a single CPU. If the application has CPU-intensive tasks, the operating system has to schedule them to share a single CPU until completion. That can result in a single process getting overwhelmed if it receives too many requests, which can slow down the performance. If the process crashes, users won't be able to access your application.
 
--> As a solution, Node.js introduced the cluster module, which creates multiple copies of the same application on the same machine and has them running at the same time. It also comes with a load balancer that evenly distributes the load among the processes using the round-robin algorithm. 
+-> As a solution, Node.js introduced the cluster module, "which creates multiple copies of the same application on the same machine and has them running at the same time". It "also comes with a load balancer that evenly distributes the load among the processes using the round-robin algorithm". 
 
- -> In Node.js , a cluster refer to built-in modules that allows you to create child processes, which are commonly reffered to as worker processes.
- -> The cluster module enables you to run multiple instances of your Node.js application to take advantage of the multi-core systems commonly found in modern hardware.
+-> In Node.js , a "cluster refer to built-in modules that allows you to create child processes", which are commonly reffered to as worker processes.
+-> The cluster module enables you to run multiple instances of your Node.js application to take advantage of the multi-core systems commonly found in modern hardware.
 -> By using clusters, you can distribute the incoming network traffic or workload across multiple child processes, thereby improving the overall performance and scalability of your Node.js application. Each child process in a cluster operates in its own single-threaded event loop, utilizing a separate CPU core. This allows the application to handle more requests concurrently and leverage the full power of the underlying hardware. 
 -> It forks multiple instances of the application, and each instance becomes a worker process. The master process acts as a coordinator, distributing incoming connections or tasks among the workers.
 -> Clusters also provide a mechanism for inter-process communication (IPC) between the master and worker processes. This allows them to share information and coordinate activities. For example, the master process can send messages to the workers to instruct them to perform certain tasks or update their state.
@@ -679,11 +679,11 @@ The event loop in Node.js enables asynchronous programming, which allows develop
 
 (1)Timers:->
   its responsoble for the executing the callbacks registered by the setTimeout() and sendInterval() functions.
-  When the timer expires, the callbackis added to the next phase of event loop.
+  When the timer expires, the callback is added to the next phase of event loop.
 
 (2)I/O callback:->
   This phase is responsible for executing the callback that were deffered during a previous I/O operation, such as reading/writing the data from a socket or file.
-  When an I/O operations completes, its callbackis added to the callback phases.
+  When an I/O operations completes, its callback is added to the callback phases.
 
 (3)Idle, prepare:->
   These phases are used for internal housekeeping tasks and are generally not used by most applications. 
@@ -762,6 +762,7 @@ Node Version Manager(NVM)
 
  *How to Install NVM on Windows
 -We can install NVM by following the instructions on the official NVM GitHub page. This will depend on our operating system.
+
 1)Install a specific version of Node.js
 -nvm install node
 2)Switch the node versions
@@ -770,7 +771,7 @@ Node Version Manager(NVM)
 
 --------------------------------------------------------------
 
-## 33 What is common.js? how is it different from es modules?
+## What is common.js? how is it different from es modules?
 
 -> CommonJS modules are a popular way to modularize JavaScript code. They allow you to export and import modules using the "module.export" and "require".
 -> ES Modules are a newer way to modularize JavaScript code.
