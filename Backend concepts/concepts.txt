@@ -91,7 +91,7 @@ It's important to note that throughput is not the only consideration in evaluati
 
 ## How can you end up blocking your main thread in node.js?
 
-=>In Node.js, the main thread is the event loop, which is responsible for processing I/O operations and executing callbacks for events such as network requests, timers, and file system operations. Blocking the main thread can cause the event loop to become unresponsive, which can lead to poor performance and slow down other processes running on the system.
+=>In Node.js, the main thread is the event loop, which is responsible for processing I/O operations and executing callbacks for events such as network requests, timers, and file system operations. "Blocking the main thread can cause the event loop to become unresponsive", which can lead to poor performance and slow down other processes running on the system.
 
 =>Here are some common ways in which the main thread can be blocked in Node.js:
 
@@ -116,9 +116,9 @@ It's important to note that throughput is not the only consideration in evaluati
 
 => This helps prevent denial-of-service attacks and ensures that resources are used efficiently.
 
-=> For example, a rate limit of 100 requests per minute could be set for a particular API endpoint. Once the client has made 100 requests within a minute, any further requests would be blocked or throttled until the next minute begins. This can be done using techniques such as token bucket, leaky bucket, or sliding window algorithms.
+=> For example, a rate limit of 100 requests per minute could be set for a particular API endpoint. Once the client has made 100 requests within a minute, any further requests would be blocked or throttled until the next minute begins. This can be done using techniques such as "token bucket", "leaky bucket", or "sliding window algorithms".
 
-=> Rate limiting can also be used to prevent brute-force attacks on password-protected resources by limiting the number of failed login attempts that can be made within a certain period of time. This helps protect user accounts from being compromised by attackers who attempt to guess passwords through automated scripts.
+=> Rate limiting can also be used to prevent brute-force attacks on password-protected resources by limiting the number of failed login attempts that can be made within a certain period of time. "This helps protect user accounts from being compromised by attackers who attempt to guess passwords through automated scripts".
 
 Overall, rate limiting is an important technique for controlling traffic and preventing overload in applications and networks. It helps ensure that resources are used efficiently and can improve the overall performance and reliability of the system
 
@@ -335,7 +335,7 @@ textarea.addEventListener("input", function () {
 
 ## what is the difference between readFile and readFileSync ?
 
--The fs.readFileSync() and fs.readFile() methods are an inbuilt applications programming interface of fs module which is used to read the file and return its content. 
+-The fs.readFileSync() and fs.readFile() methods are an 'inbuilt' applications programming interface of "fs module"which is used to read the file and return its content. 
 Reading a file is a common thing in every progrmming languages and every language has its own way of reading files. here.., in node we have File system module (fs) which allows us to work with files.
 
 => both readFile() and readFileSync() reads the file at once and then delivers the content.
@@ -391,7 +391,7 @@ console.log(" -->The end<-- ");
 
 2.Create an instance of the http.ClientRequest class using http.request(options, callback), where options is an object containing information about the request, and callback is a function that will be called when the response is received.
 
-     const server = http.createServer((request, response) => {
+    const server = http.createServer((request, response) => {
       });
 
 
@@ -555,14 +555,14 @@ Sometimes a client sends something that a server just can’t handle, such as a 
 Many of the client errors are dealt with by your browser, without it ever bothering you. A few, like 404, might still pass through.
 
 Status code	Reason phrase	Meaning
--- 400	Bad Request	Used to tell the client that it has sent a malformed request.
+-- 400	"Bad Request"	Used to tell the client that it has sent a malformed request.
 
--- 401	Unauthorized	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
+-- 401	"Unauthorized"	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
 
--- 402	Payment Required	Currently this status code is not used, but it has been set aside for future use.
--- 403	Forbidden	Used to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
--- 404	Not Found	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
-405	Method Not Allowed	Used when a request is made with a method that is not supported for the requested URL. The Allow header should be included in the response to tell the client what methods are allowed on the requested resource.
+-- 402	"Payment Required"	Currently this status code is not used, but it has been set aside for future use.
+-- 403	"Forbidden	Used" to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
+-- 404	"Not Found"	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
+405"	Method Not Allowed"	Used when a request is made with a method that is not supported for the requested URL. The Allow header should be included in the response to tell the client what methods are allowed on the requested resource.
 406	Not Acceptable	Clients can specify parameters about what types of entities they are willing to accept. This code is used when the server has no resource matching the URL that is acceptable for the client. Often, servers include headers that allow the client to figure out why the request could not be satisfied.
 407	Proxy Authentication Required	Like the 401 status code, but used for proxy servers that require authentication for a resource.
 408	Request Timeout	If a client takes too long to complete its request, a server can send back this status code and close down the connection. The length of this timeout varies from server to server but generally is long enough to accommodate any legitimate request.
@@ -574,18 +574,19 @@ Status code	Reason phrase	Meaning
 414	Request URI Too Long	Used when a client sends a request with a request URL that is larger than the server can or wants to process.
 415	Unsupported Media Type	Used when a client sends an entity of a content type that the server does not understand or support. 416 Requested Range Used when the request message requested a range of a given resource and Not Satisfiable that range either was invalid or could not be met.
 417	Expectation Failed	Used when the request contained an expectation in the Expect request header that the server could not satisfy. See Expect for more on the Expect header. A proxy or other intermediary application can send this response code if it has unambiguous evidence that the origin server will generate a failed expectation for the request.
-500-599: Server Error Status Codes
+
+500-599: "Server Error Status Codes"
 Sometimes a client sends a valid request, but the server itself has an error. This could be a client running into a limitation of the server or an error in one of the server’s subcomponents, such as a gateway resource. Proxies often run into problems when trying to talk to servers on a client’s behalf.
 Download the pdf Download Pdf Types Abbreviation Advertise
 Alaska Abbreviation Client Conditional Contained Could Happen
 
 Status code	Reason phrase	Meaning
-500	Internal Server Error	Used when the server encounters an error that prevents it from servicing the request.
-501	Not Implemented	Used when a client makes a request that is beyond the server’s capabilities (e.g., using a request method that the server does not support).
-502	Bad Gateway	Used when a server acting as a proxy or gateway encounters a bogus response from the next link in the request response chain (e.g., if it is unable to connect to its parent gateway). You can click here to fix 502 bad gateway errors with relative ease.
-503	Service Unavailable	Used to indicate that the server currently cannot service the request but will be able to in the future. If the server knows when the resource will become available, it can include a Retry-After header in the response.
+500	"Internal Server Error"	Used when the server encounters an error that prevents it from servicing the request.
+501	"Not Implemented"	Used when a client makes a request that is beyond the server’s capabilities (e.g., using a request method that the server does not support).
+502	"Bad Gatewa" Used when a server acting as a proxy or gateway encounters a bogus response from the next link in the request response chain (e.g., if it is unable to connect to its parent gateway). You can click here to fix 502 bad gateway errors with relative ease.
+503"	Service Unavailable"	Used to indicate that the server currently cannot service the request but will be able to in the future. If the server knows when the resource will become available, it can include a Retry-After header in the response.
 504	Gateway Timeout	Similar to status code 408, except that the response is coming from a gateway or proxy that has timed out waiting for a response to its request from another server.
-505	HTTP Version Not Supported	Used when a server receives a request in a version of the protocol that it can’t or won’t support. Some server applications elect not to support older versions of the protocol.
+505	"HTTP Version Not Supported"	Used when a server receives a request in a version of the protocol that it can’t or won’t support. Some server applications elect not to support older versions of the protocol.
 
 -----------------------------------------------
 
@@ -601,7 +602,7 @@ Status code	Reason phrase	Meaning
 const http = require('http');
 const options = {
   hostname: 'example.com',
-  port: 80,
+  port: 8000,
   path: '/path/to/resource',
   method: 'GET'
 };
@@ -676,20 +677,21 @@ The event loop in Node.js enables asynchronous programming, which allows develop
 
 => The event loop has four different phases:
 
-1)Timers:->
- its responsoble for the executing the callbacks registered by the setTimeout() and sendInterval() functions.
+(1)Timers:->
+  its responsoble for the executing the callbacks registered by the setTimeout() and sendInterval() functions.
   When the timer expires, the callbackis added to the next phase of event loop.
 
-2)I/O callback:->
-   This phase is responsible for executing the callback that were deffered during a previous I/O operation, such as reading/writing the data from a socket or file.
-   When an I/O operations completes, its callbackis added to the callback phases.
+(2)I/O callback:->
+  This phase is responsible for executing the callback that were deffered during a previous I/O operation, such as reading/writing the data from a socket or file.
+  When an I/O operations completes, its callbackis added to the callback phases.
 
-3)Idle, prepare:->
+(3)Idle, prepare:->
   These phases are used for internal housekeeping tasks and are generally not used by most applications. 
   The idle phase runs callbacks registered by setImmediate(), while the prepare phase is an internal phase used to prepare for the next loop iteration.
-4)Poll:->
- The poll phase is responsible for performing I/O operations, such as reading or writing data from a socket or file. 
- If there are no I/O events to process, the poll phase will wait for events to occur.
+
+(4)Poll:->
+The poll phase is responsible for performing I/O operations, such as reading or writing data from a socket or file. 
+If there are no I/O events to process, the poll phase will wait for events to occur.
 Once the event loop completes all the phases, it will check if the setImmediate() queue has any pending callbacks to execute. If there are, the event loop will start over again from the first phase, otherwise, it will exit and wait for new events to occur.
 
 #How the event loop perform in Node.js
@@ -699,7 +701,7 @@ When Node.js starts, it initializes the event loop, processes the provided input
 
 -- Timers: In this phase, the callbacks of scheduled timers are executed. These timers can be set using the setTimeout() and setInterval() functions.
 
-- I/O callbacks: In this phase, the callbacks for I/O events such as network requests, file system operations, and other system events are executed.
+-- I/O callbacks: In this phase, the callbacks for I/O events such as network requests, file system operations, and other system events are executed.
 
 ------------------------------------------------------------
 
@@ -711,7 +713,7 @@ When Node.js starts, it initializes the event loop, processes the provided input
 
 ->There are several types of timers in Node.js:
 
-1)setTimeout():->
+(1)setTimeout():->
 -This function is used to execute a piece of code once after a specified delay, measured in milliseconds.
 -- setTimeout(), the delay cannot be guaranteed because of operations that may hold on to the event loop.
 -- setTimeout(), additional arguments can be added beyond the delay, and these will be passed on to the function call
@@ -723,7 +725,7 @@ function sayHello() {
 setTimeout(sayHello, 1000);
 
 
-2)setInterval():->
+(2)setInterval():->
 -This function is used to repeatedly execute a piece of code at a specified interval, also measured in milliseconds.
 eg.
 function doSomething() {
@@ -732,16 +734,16 @@ function doSomething() {
 
 setInterval(doSomething, 5000);
 
-3)setImmediate():->
- This function is used to execute a piece of code immediately after the current event loop has finished.
+(3)setImmediate():->
+This function is used to execute a piece of code immediately after the current event loop has finished.
 eg.
 setImmediate(() => {
   // run something
 });
 
-4)process.nextTick():->
- This function is used to defer the execution of a piece of code until the next pass of the event loop.
- eg.
+(4)process.nextTick():->
+This function is used to defer the execution of a piece of code until the next pass of the event loop.
+eg.
 function doSomething() {
   console.log('Doing something...');
 }
@@ -802,16 +804,16 @@ It different from es modules :->
 -> Work in Node js => What does the crypto module do?
   The crypto module in Node. js provides functionalities such as encrypting, decrypting, and hashing any type of data in a Node. js application.
 -- Use -> The crypto module provides a way of handling encrypted data.
- -> eg.
-       
-       const crypto = require('crypto');
+-> eg.
+      
+      const crypto = require('crypto');
 
 -> we can generate a cryptographic hash of a string using the createHash() function:
 const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
 -> to decrypt the data, we can use the createDecipher() function:
 
-       const decipher = crypto.createDecipher('aes192', 'my secret key');
+      const decipher = crypto.createDecipher('aes192', 'my secret key');
 
 
 -------------------------------------------------------------------
@@ -896,11 +898,11 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
       (2) Install the dependencies
 
-         npm i commander
+        npm i commander
 
       (3)Build app using cammander
 
-         const { program } = require('commander');
+        const { program } = require('commander');
 
         program
         .version('1.0.0')
@@ -3533,11 +3535,11 @@ Typically all requests from D would go directly to F, and F would send responses
 
 (1) Introduce yourself
 
-Good [afternoon], my name is Dilip Sanap, and I am thrilled to be here today for the Node.js software development interview. With a background in farming and a passion for coding, I embarked(0n a boat) on a journey to enhance my skills in the field of software development.
+Good [afternoon/ morning], my name is Dilip Sanap, and I am thrilled to be here today for the full stack web development interview. With a background in farming and a passion for coding, I embarked(0n a boat) on a journey to enhance my skills in the field of software development.
 
 After graduating from the University of Pune in 2017, I dedicated my time to supporting my family's farming business. However, my desire to explore the world of technology and programming led me to enroll in the Masai School in July 2022. Over the past year, I have been immersed in a comprehensive curriculum that has equipped me with a solid foundation in various web technologies.
 
-During my time at Masai School, I have gained hands-on experience in HTML, CSS, JavaScript, Node.js, Express.js, and MongoDB. Through practical projects and rigorous training, I have honed my abilities to develop efficient and scalable applications using the Node.js ecosystem.
+During my time at Masai School, I have gained hands-on experience in HTML, CSS, JavaScript, Node.js, Express.js, and MongoDB and also in past last month I was lerning the generative AI course in which we lerned how to write good prompts and lerned the Python, flask and Angular using the GenAI. Through practical projects and rigorous training, I have honed my abilities to develop efficient and scalable applications using the Node.js ecosystem.
 
 I am particularly drawn to Node.js because of its lightweight and event-driven architecture, which enables high-performance and real-time applications. Additionally, my experience with Express.js and MongoDB has given me the skills to build robust RESTful APIs and work with data storage efficiently.
 
