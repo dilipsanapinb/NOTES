@@ -788,7 +788,7 @@ It different from es modules :->
 
 -- "CommonJS modules are evaluated at runtime", which means that the code inside the module is executed when it is loaded.
 
--- "CommonJS modules are not statically analyzable", which can lead to s"lower performance" and 'more runtime errors'.
+-- "CommonJS modules are not statically analyzable", which can lead to "slower performance" and 'more runtime errors'.
 
 -- "ES modules are statically analyzable", which means that the 'JavaScript engine can parse and analyze the module structure at compile time', allowing for better optimization and error checking.
 
@@ -803,7 +803,7 @@ It different from es modules :->
 -> The crypto module in Node.js is a set of cryptographic functionality for secure communication and data encryption. It provides a way to perform cryptographic operations such as hashing, encryption, and decryption using a variety of algorithms.
 -> crypto allows you to hash plain texts before storing them in the database
 -> Work in Node js => What does the crypto module do?
-  The crypto module in Node. js provides functionalities such as encrypting, decrypting, and hashing any type of data in a Node. js application.
+  The crypto module in Node.js provides functionalities such as encrypting, decrypting, and hashing any type of data in a Node. js application.
 -- Use -> The crypto module provides a way of handling encrypted data.
 -> eg.
       
@@ -839,7 +839,7 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
 # What are microservices?
 
-=> Microservices are an architectural and organizational approach to software development where software is composed of small independent services that communicate over well-defined APIs.
+=> Microservices are an "architectural and organizational approach to software development" where "software is composed of small independent services that communicate over well-defined APIs".
 -> In use of microservices large, monolithic applications are broken down into smaller, independent components that are responsible for a specific business capability and that can be developed, tested, and deployed independently.
 -> Each microservice runs as a separate process and communicates with other microservices over a network, typically using lightweight protocols such as HTTP or message queues.
 
@@ -879,7 +879,7 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
           Express provides mechanisms for handling errors that occur during the request-response cycle. You can define error handling middleware functions that have an additional err parameter, allowing you to catch and handle errors. These middleware functions are typically defined after all the routes and other middleware.
 
       (6) Starting the server:
-         Once you have defined the routes, middleware, and error handlers, you can start the Express server by calling app.listen() and specifying the port number on which the server should listen for incoming requests.
+        Once you have defined the routes, middleware, and error handlers, you can start the Express server by calling app.listen() and specifying the port number on which the server should listen for incoming requests.
 
   => Express is highly flexible and can be extended with additional middleware and modules to suit your specific application needs. Its modular design and large ecosystem of middleware and plugins make it a powerful and widely used framework for building web applications with Node.js.
 
@@ -993,10 +993,10 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
 ## What are Middlewares?
 
- =>A middleware is a software component that sits between an application's server and client to intercept, process, and modify incoming and outgoing HTTP requests and responses.
- => - Middlewares are the functions that get executed before the request reaches the route handler and after the response is sent to the client.
+=>A middleware is a software component that sits between an application's server and client to intercept, process, and "modify incoming and outgoing HTTP requests and responses".
+=> - Middlewares are the functions that get executed before the request reaches the route handler and after the response is sent to the client.
 => It seats between request and response.
- => In the Node.js ecosystem, the Express framework uses middleware extensively to handle tasks such as authentication, logging, error handling, and more. 
+=> In the Node.js ecosystem, the Express framework uses middleware extensively to handle tasks such as authentication, logging, error handling, and more. 
 => - Because of the middleware, we get the chance to perform modification, updation, or deletion on request and response objects.
 => Using middlewares, we can :
     -- change the object
@@ -1005,7 +1005,7 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
     -- calculate the time taken etc.
 => Middlewares can be added to an Express application using the app.use() method, and they can be either built-in, third-party, or custom functions.
 
- => This middleware function takes three arguments: req (the request object), res (the response object), and next (a callback function that signals when the middleware has finished processing and the next middleware in the chain should be called). In this case, the middleware adds a timestamp property to the req object and calls next() to continue the request-response cycle.
+=> This middleware function takes three arguments: req (the request object), res (the response object), and next (a callback function that signals when the middleware has finished processing and the next middleware in the chain should be called). In this case, the middleware adds a timestamp property to the req object and calls next() to continue the request-response cycle.
 
     eg.
     function addTimestamp(req, res, next) {
@@ -1081,15 +1081,14 @@ In the Node.js ecosystem, there are several libraries and tools available to han
 
 ### What are some templating engines?***
 
+Template engines are" software tools that help developers create dynamic web pages by allowing them to define templates and insert dynamic data into those templates".
+These engines use a combination of HTML, CSS, and programming logic to generate web pages that can be rendered in a user's web browser.
+Template engines are "mostly used for server-side applications that are run on only one server and are not built as APIs."
+Template engines help developers separate the presentation layer (the user interface) from the business logic layer (the programming code that powers the application), making it easier to build scalable and maintainable web applications
 
- => Template engines are" software tools that help developers create dynamic web pages by allowing them to define templates and insert dynamic data into those templates".
- => These engines use a combination of HTML, CSS, and programming logic to generate web pages that can be rendered in a user's web browser.
- => Template engines are "mostly used for server-side applications that are run on only one server and are not built as APIs."
- => Template engines help developers separate the presentation layer (the user interface) from the business logic layer (the programming code that powers the application), making it easier to build scalable and maintainable web applications
+EJS is one of the template engines used with Node JS to generate HTML markups with plain Javascript. EJS stands for ("Embedded JavaScript Templates"). It can be used both on the client and the server-side.
 
- => EJS is one of the template engines used with Node JS to generate HTML markups with plain Javascript. EJS stands for ("Embedded JavaScript Templates"). It can be used both on the client and the server-side.
-
-    => They also provide features such as:
+    They also provide features such as:
 
     (1) Conditional statements:
       allowing developers to conditionally display content based on certain conditions.
@@ -1117,7 +1116,7 @@ In the Node.js ecosystem, there are several libraries and tools available to han
 
 ## How do you manage sessions in express?
 
- => Session management is an important aspect of web application development, as it allows you to keep track of user activity and maintain user state across requests. In Express.js, session management can be implemented using the express-session middleware.
+=> Session management is an important aspect of web application development, as it allows you to keep track of user activity and maintain user state across requests. In Express.js, session management can be implemented using the express-session middleware.
 
     //npm i express-session
 
@@ -1138,7 +1137,7 @@ In the Node.js ecosystem, there are several libraries and tools available to han
 
 
     full code snippet;
-         
+        
           const session = require('express-session');
 
           const express = require('express');
@@ -1175,7 +1174,7 @@ Cookies can be managed using the cookie-parser middleware. This middleware parse
 
     //steps involved
     (1)
-       -npm i cookie-parser
+      -npm i cookie-parser
 
     (2)Initialise the cookie-parser
 
@@ -1184,7 +1183,7 @@ Cookies can be managed using the cookie-parser middleware. This middleware parse
     var app = express();
     app.use(cookieParser());
 
-   (3)To set a cookie, use the res.cookie() method.
+    (3)To set a cookie, use the res.cookie() method.
 
         app.get('/set-cookie', (req, res) => {
         res.cookie('username', 'John Doe', { maxAge: 900000, httpOnly: true });
@@ -1220,13 +1219,13 @@ The common libraries you work with express are as follows :->
 -- Gulp
 -- Async.Js
 -- Async
-
 -- morgon: 
           Morgan is an HTTP request level Middleware. It is a great tool that logs the requests along with some other information depending upon its configuration and the preset used. It proves to be very helpful while debugging and also if you want to create Log files.
               
           // npm i morgan
               const logger = require('morgan');
               app.use(logger('dev'));
+
 -- mongoose
 -- Request.
 -- Browserify
@@ -1248,7 +1247,7 @@ The common libraries you work with express are as follows :->
 -- Web browsers implement a security feature called the "Same-Origin Policy," which restricts web pages from making requests to a different domain than the one that served the web page. This security feature is intended to prevent malicious attacks such as cross-site scripting (XSS) and cross-site request forgery (CSRF).
 -- CORS allows web pages to bypass the Same-Origin Policy and make requests to a different domain, but only if the server that receives the request explicitly allows it. CORS works by adding HTTP headers to the response that inform the web browser whether the request is allowed or not.
 
-   CORS Headers: CORS is implemented through HTTP headers that are sent by the server in the response to a cross-origin request. 
+  CORS Headers: CORS is implemented through HTTP headers that are sent by the server in the response to a cross-origin request. 
       
       These headers include:
 
@@ -1272,9 +1271,9 @@ The common libraries you work with express are as follows :->
 
       (a) Server-side: Web developers need to configure their server to include the appropriate CORS headers in the response to cross-origin requests. This involves adding the necessary headers, such as Access-Control-Allow-Origin, Access-Control-Allow-Methods, etc., to the server's HTTP response.
 
-         eg. 
+        eg. 
             
-             const express = require('express');
+            const express = require('express');
 
               const cors = require('cors');
 
@@ -1291,8 +1290,8 @@ The common libraries you work with express are as follows :->
       (b) Client-side: Web developers need to make sure that the client-side code, such as JavaScript, that sends cross-origin requests includes the necessary credentials and handles CORS-related errors appropriately. This may involve handling CORS errors, including the appropriate CORS headers in requests, and configuring the client-side code to work with cross-origin resources.
 
             eg. 
-               
-               fetch('http://localhost:3000/api/data', {
+              
+              fetch('http://localhost:3000/api/data', {
                 headers: {
                   'Content-Type': 'application/json',
                   'Access-Control-Allow-Origin': 'http://localhost:3000'
@@ -1305,7 +1304,7 @@ The common libraries you work with express are as follows :->
                   // Handle the error
                 });
 
-   In conclusion, CORS is a security mechanism implemented in web browsers that controls cross-origin requests to prevent unauthorized access to resources. It involves both server-side configuration and client-side handling, and it is an important consideration for web developers when building modern web applications that interact with cross-origin resources.
+  In conclusion, CORS is a security mechanism implemented in web browsers that controls cross-origin requests to prevent unauthorized access to resources. It involves both server-side configuration and client-side handling, and it is an important consideration for web developers when building modern web applications that interact with cross-origin resources.
 
 ---------------------------------------
 
@@ -1339,7 +1338,7 @@ There are two main types of HTTP headers:
 
     (1) Request Headers: Request headers are included in an HTTP request sent from the client to the server. They provide information about the request itself, the client, and any additional instructions.
         
-         Some commonly used request headers include:
+        Some commonly used request headers include:
 
         (a) User-Agent: Specifies the client application or browser making the request.
         (b) Accept: Indicates the media types (MIME types) that the client can handle in the response.
@@ -1349,7 +1348,7 @@ There are two main types of HTTP headers:
 
     (2) Response Headers: Response headers are included in an HTTP response sent from the server to the client. They provide information about the response, its status, and any additional instructions.
     
-     Some commonly used response headers include:
+    Some commonly used response headers include:
 
       (1) Content-Type: Specifies the media type of the response content.
       (2) Content-Length: Indicates the length of the response content in bytes.
@@ -1414,7 +1413,7 @@ Both clients and servers can include multiple headers in their respective reques
   -- SSL has largely been replaced by the more secure TLS (Transport Layer Security) protocol.
   -- The term "SSL" is often used colloquially to refer to both SSL and TLS, as they are closely related and share similar features.
 
-   (2) TLS ("Transport Layer Security") :
+  (2) TLS ("Transport Layer Security") :
 
   -- TLS is a cryptographic protocol for secure and encrypted communication.
   -- It provides encryption, authentication, and integrity to protect data transmitted over the internet.
@@ -1444,7 +1443,7 @@ Both clients and servers can include multiple headers in their respective reques
 
           const server=https.createServer(options,(req,res)=>{
             //handle requests
-             res.writeHead(200, { 'Content-Type': 'text/plain' });
+            res.writeHead(200, { 'Content-Type': 'text/plain' });
             res.end('Hello, world!');
           });
 
@@ -3536,21 +3535,21 @@ Typically all requests from D would go directly to F, and F would send responses
 
 (1) Introduce yourself
 
-Good [afternoon/ morning], my name is Dilip Sanap, and I am thrilled to be here today for the full stack web development interview. With a background in farming and a passion for coding, I embarked(0n a boat) on a journey to enhance my skills in the field of software development.
-
-After graduating from the University of Pune in 2017, I dedicated my time to supporting my family's farming business. However, my desire to explore the world of technology and programming led me to enroll in the Masai School in July 2022. Over the past year, I have been immersed in a comprehensive curriculum that has equipped me with a solid foundation in various web technologies.
-
-During my time at Masai School, I have gained hands-on experience in HTML, CSS, JavaScript, Node.js, Express.js, and MongoDB and also in past last month I was lerning the generative AI course in which we lerned how to write good prompts and lerned the Python, flask and Angular using the GenAI. Through practical projects and rigorous training, I have honed my abilities to develop efficient and scalable applications using the Node.js ecosystem.
-
-I am particularly drawn to Node.js because of its lightweight and event-driven architecture, which enables high-performance and real-time applications. Additionally, my experience with Express.js and MongoDB has given me the skills to build robust RESTful APIs and work with data storage efficiently.
-
-I am excited about the prospect of applying my knowledge and skills to contribute to your team. I am a fast learner, detail-oriented, and thrive in collaborative environments. I am confident that my enthusiasm for Node.js development, combined with my commitment to continuous learning, make me a valuable candidate for this role.
-
-Thank you for considering my application, and today I look forward to discussing my qualifications further with you .
 
 ----------------------------------------------------------------
 
-(2) How does the strict mode affect the hoisting behaviour in js? Are there any diff b/w hoisting in strict mode and non-strict mode?
+Extra Info(
+  Octal literals are a way of representing numbers in the octal numeral system. The octal system is a base-8 numbering system, which means it uses eight digits (0 to 7) to represent numbers. In contrast, the more commonly used decimal system is a base-10 system that uses ten digits (0 to 9).
+
+In programming languages and computer science, octal literals are often used to represent integer values in octal form. In most programming languages, an octal number is represented by prefixing it with a leading zero (0) followed by a sequence of digits ranging from 0 to 7.
+
+For example:
+
+In decimal: 1234
+In octal: 02322 (Equivalent to 18^3 + 28^2 + 38^1 + 28^0 = 666 in decimal)+
+)
+
+(1) How does the strict mode affect the hoisting behaviour in js? Are there any diff b/w hoisting in strict mode and non-strict mode?
     => In JavaScript, hoisting is a behavior where "variable and function declarations are moved to the top of their containing scope during the compilation phase", allowing them to be accessed before they are actually declared in the code.
 
     => The concept of hoisting remains the same in both strict mode and non-strict mode. However, strict mode introduces some changes in the behavior of hoisting. Here are the key differences between hoisting in strict mode and non-strict mode:
@@ -3563,7 +3562,7 @@ Thank you for considering my application, and today I look forward to discussing
 
       (4) Octal syntax: In non-strict mode, using the legacy octal syntax (e.g., 0123) is allowed, and the number is interpreted as an octal value. In strict mode, using the octal syntax is not allowed, and it results in a SyntaxError.
 
-      (5) 'this' value in functions: In non-strict mode, if a function is invoked without an explicit receiver object, the this value is set to the global object (e.g., window in browsers). In strict mode, invoking a function without an explicit receiver sets the this value to "undefined".
+      (5) 'this' value in functions: In non-strict mode, if a function is invoked without an explicit receiver object, the 'this' value is set to the global object (e.g., window in browsers). In strict mode, invoking a function without an explicit receiver sets the this value to "undefined".
 
       It's important to note that hoisting can lead to confusing code and is generally considered a best practice to declare variables and functions before using them, regardless of whether you are in strict mode or non-strict mode. This helps improve code readability and maintainability.
         
@@ -3585,12 +3584,42 @@ Thank you for considering my application, and today I look forward to discussing
 
     (4)" Renaming variables":
         Destructuring allows you to assign a new variable name during the assignment. While this can be useful for avoiding naming conflicts, be cautious when renaming variables to ensure code readability. Renaming variables excessively or using cryptic names can make the code harder to understand and maintain.
+    eg.
+    const numbers = [1, 2, 3];
+    const [first, second, third] = numbers;
+
+    console.log(first);  // Output: 1
+    console.log(second); // Output: 2
+    console.log(third);  // Output: 3
 
     (6) "Destructuring arrays need to fallow index": 
         When destructuring arrays, keep in mind that the position matters. The destructured variables are assigned values based on their position in the array, rather than matching them by name. If you need to skip values or access specific elements, use commas to indicate the skipped positions.
+        eg.
+        const numbers = [1, 2, 3, 4, 5];
+        const [first, , third] = numbers;
+
+        console.log(first);  // Output: 1
+        console.log(third);  // Output: 3
+
 
     (7) "Mixing destructuring with rest syntax":
         The rest syntax (...) allows you to gather remaining elements into a new array or object. Be aware that when using both destructuring and the rest syntax, the rest element must be the last element in the pattern. Placing it anywhere else will result in a syntax error.
+
+        eg.
+        const numbers = [1, 2, 3, 4, 5];
+      // Using rest syntax to collect remaining elements into the 'restNumbers' array
+      const [first, second, ...restNumbers] = numbers;
+      console.log(first);       // Output: 1
+      console.log(second);      // Output: 2
+      console.log(restNumbers); // Output: [3, 4, 5]
+      const person = { name: 'John', age: 30, city: 'New York', profession: 'Engineer' };
+
+      // Using rest syntax to collect remaining properties into the 'restInfo' object
+      const { name, age, ...restInfo } = person;
+
+      console.log(name);      // Output: John
+      console.log(age);       // Output: 30
+      console.log(restInfo);  // Output: { city: 'New York', profession: 'Engineer' }
 
     (8) "Performance considerations":
         Destructuring can improve code readability, but it's worth noting that it may have a slight impact on performance compared to traditional assignment. In most cases, the performance difference is negligible, but it's something to consider for performance-critical sections of code.
@@ -3599,45 +3628,57 @@ Thank you for considering my application, and today I look forward to discussing
 
 ---------------------------------------------------
 
-(3) Define a simple class myClass.js with a constructor that takes a name paramerer and greet method that returns a greeting message using the name property. Create a test file called myClass.test where we use jests describe and it functions to define two test cases. The First test case checks that a new instance of Mycalss is created with the correct names. The second test case checks that greet method returns the correct greeting message.
+(3) Define a simple class myClass.js with a constructor that takes a name paramerer and greet method that returns a greeting message using the name property. Create a test file called myClass.test where we use jests describe and it functions to define two test cases. The First test case checks that a new instance of Myclass is created with the correct names. The second test case checks that greet method returns the correct greeting message.
+
+// npm install mocha chai --save-dev
 
     class MyClass{
-        constructor(name) {
-            this.name=name
-        }
-
-        greet() {
-            return (`Hello form ${this.name}!`)
-        }
+    constructor(name) {
+        this.name=name
     }
 
-      let p1 = new MyClass('Dilip');
-      console.log(p1.greet());
+    greet() {
+        return`Hello, ${this.name}!`
+    }
+}
 
-      module.exports={MyClass}
+let person = new MyClass('Dilip');
+person.greet()
+module.exports=MyClass
 
-      // testing 
 
-      const {myClass}=require('./myClass');
+const { expect } = require("chai");
+const MyClass = require(".");
 
-      describe('myClass',()=>{
+describe('MyClass', () => {
+    it('should create a new instance with the cottest name', () => {
+        const name = 'Dilip';
+        const person = new MyClass(name);
+        expect(person).to.be.an.instanceOf(MyClass);
+        expect(person.name).to.equal(name)
+    })
 
-        it('should create a new instances of myClass with the correct name',()=>{
-          const instance=new myClass('John');
-          expect(instance.name).toEqual('John')
-        });
-        it('should return the correct greeting message',()=>{
-          const instance=new myClass('Alice');
-        const greeting=instance.greet();
-        exprect(greeting).toEqual('Hello, Alice!')
-        });
-      });
+    // for the greeting
+
+    it('should return the correct greeting message', () => {
+        const name = 'Dilip';
+        const person = new MyClass(name);
+        const greetings = person.greet();
+        expect(greetings).to.equal(`Hello, ${name}!`);
+
+    });
+});
+
+// npx mocha test.js
+
 ---------------------------------------------
 
 (4) Write a program to send a message to a specific client in Socket.io.
 
 --------------------------------------------
 (5) How do you use cookies in an Express application.
+
+
 ## How do you manage sessions in express?
 
 => Session management is an important aspect of web application development, as it "allows you to keep track of user activity and maintain user state across requests". In Express.js, session management can be implemented using the express-session middleware.
@@ -3839,7 +3880,7 @@ By following these tips, you can help to ensure that your Socket.IO applications
 
 (8) Can an object methods access and modify the objects properties in Js?
 
-    => Yes, an object's method in JavaScript can access and modify the object's properties. When a method is invoked on an object, it has access to the object's properties through the 'this' keyword. The this keyword refers to the current instance of the object that the method is being called on.
+=> Yes, an object's method in JavaScript can access and modify the object's properties. When a method is invoked on an object, it has access to the object's properties through the 'this' keyword. The this keyword refers to the current instance of the object that the method is being called on.
 
     Here's an example to illustrate how an object method can access and modify object properties:
 
@@ -3857,7 +3898,7 @@ By following these tips, you can help to ensure that your Socket.IO applications
 
             celebrateBirthday() {
               this.age++;
-              console.log(`Happy birthday! Now I am ${this.age} years old.`);
+              console.log(`Now I am ${this.age} years old.`);
             }
           };
 
@@ -3865,7 +3906,7 @@ By following these tips, you can help to ensure that your Socket.IO applications
          person.celebrateBirthday(); // Output: Happy birthday! Now I am 31 years old.
 
 
-         eg.(2)
+        eg.(2)
 
           // Define an object
 
@@ -4029,61 +4070,65 @@ Middleware allows you to perform various tasks such as logging, authentication, 
 
 (5) How can you limit the number of messages that can be sent to a client from the server in socket.io? Demonstrate one such way througth working code.
     
-    
-    // server.js
-const express = require('express');
+    const express = require("express");
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
 
-// Rate limiting configuration
-const MESSAGE_LIMIT = 10; // Maximum number of messages allowed within the time frame
-const TIME_FRAME = 60000; // Time frame in milliseconds (e.g., 60 seconds)
+const server = require('http').createServer(app);
 
-// Track message count and reset timer for each client
-const messageCounts = new Map();
+const io = require('socket.io')(server);
+
+const Message_limit = 10;
+
+const clientMessageCounts = new Map();
+
+
+const rateLimitHandlerMiddleware = (socket,next) => {
+  const clientId = socket.id;
+  const currTime = Date.now();
+
+  if (!clientMessageCounts.has(clientId)) {
+    clientMessageCounts.set(clientId, {
+      count: 1,
+      lastMessageTime: currTime
+    });
+  } else {
+    const clientInfo = clientMessageCounts.get(clientId);
+    const elapsedTime = currTime - clientInfo.lastMessageTime;
+
+    if (elapsedTime < 10000) { //from last time is less than 10 sec
+      if (clientInfo.count >= Message_limit) {
+        return next(new Error("Messsage rate limit exceeded"));
+      } else {
+        clientInfo.count++;
+        clientInfo.lastMessageTime = currTime;
+      }
+    } else {
+      clientInfo.count = 1;
+      clientInfo.lastMessageTime = currTime;
+    }
+  }
+
+  next();
+}
+
 
 io.on('connection', (socket) => {
-  // Initialize message count for the connected client
+  console.log(`Client connected : ${socket.id}`);
 
-  messageCounts.set(socket.id, 0);
+  socket.use(rateLimitHandlerMiddleware);
 
-  // Handle incoming messages
+  socket.emit('message',data)
 
-  socket.on('message', (data) => {
-
-    const count = messageCounts.get(socket.id) || 0;
-
-    // Check if the message count exceeds the limit
-
-    if (count >= MESSAGE_LIMIT) {
-      // Limit exceeded, emit an error message to the client
-      socket.emit('rateLimitExceeded', { message: 'Rate limit exceeded. Please try again later.' });
-      return;
-    }
-
-    // Increment message count
-
-    messageCounts.set(socket.id, count + 1);
-
-    // Process the message as normal
-    // ...
-
-    // Example: Broadcast the message to all connected clients
-    io.emit('message', data);
-  });
-});
-
-// Cleanup message count when a client disconnects
+})
 
 io.on('disconnect', (socket) => {
-  messageCounts.delete(socket.id);
-});
+  console.log('Socket is disconnected');
+})
 
-http.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
 
+server.listen(8000, () => {
+  console.log('Server is listening to port 8000');
+})
 --------------------------------------------------
 
 (6) Write a function query records in a one to many relationship in Node.js and MongoDb. Write the code using the user and post example. Assume the relevant structure/schema wherever applicable.
