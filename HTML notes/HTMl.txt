@@ -90,10 +90,9 @@
 
 
         (2) Session Storage (sessionStorage): Session storage is similar to local storage but has a different lifespan. It allows storing data that is specific to a particular browsing session. The data stored in session storage is available only as long as the browser tab or window remains open. Once the tab or window is closed, the session storage data is cleared. Like local storage, session storage also uses key-value pairs and can be accessed through the sessionStorage object in JavaScript.
+        
         Example usage:
 
-        javascript
-        Copy code
         // Storing data in session storage
         sessionStorage.setItem('key', 'value');
 
@@ -275,7 +274,7 @@ eg.
 <h1>Heading</h1>
     <p>para</p>
 
-    h1~p
+    h1+p
 
 *Attributes selector
 a[href="example.com"]
@@ -287,7 +286,7 @@ a[targer="_blank"]{
 }
 ------------------------------------------
 
-# CSS pseudo-classes
+# CSS pseudo-classes CSS pseudo-classes
 
 A pseudo-class is used to define a special state of an element.
 
