@@ -741,22 +741,24 @@ let arr = [1, 2, 3, 4, 5];
 
 // Throttle
 
-function throttle(fn, delay) {
-    let id;
-    return function () {
-        const args = arguments;
-        const context = this;
-        if (!id) {
-            id = setTimeout(function () {
-                fn.apply(context, args);
-                id=null
-            },delay)
-        }
-    }
-}
+// function throttle(fn, delay) {
+//     let id;
+//     return function () {
+//         const args = arguments;
+//         const context = this;
+//         if (!id) {
+//             id = setTimeout(function () {
+//                 fn.apply(context, args);
+//                 id=null
+//             },delay)
+//         }
+//     }
+// }
 
-function handleResize() {
-    console.log('resized');
-};
+// function handleResize() {
+//     console.log('resized');
+// };
 
-window.addEventListener('resize',throttle(handleResize,1000))
+// window.addEventListener('resize',throttle(handleResize,1000))
+
+
