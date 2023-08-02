@@ -503,91 +503,35 @@ response.end();
 
 ## What are some HTTP response codes? what does it mean? 2xx, 3xx, 4xx, 5xx
 
-HTTP status codes are classified into 5 broad categories. The status codes provide an easy way for clients to understand the results of their transactions.
+HTTP status codes are classified into "5 broad categories". The status codes provide an easy way for clients to understand the results of their transactions.
 
-As methods tell the server what to do, status codes tell the client what happened. Status codes live in the start lines of responses. For example, in the line “HTTP/1.1 200 OK” the status code is 200.
+As methods tell the server what to do, "status codes tell the client what happened". Status codes live in the start lines of responses. For example, in the line “HTTP/1.1 200 OK” the status code is 200.
 
-When clients send request messages to an HTTP server, many things can happen. If you are fortunate, the request will complete successfully. You might not always be so lucky. The server may tell you that the resource you requested could not be found, that you don't have permission to access the resource, or perhaps that the resource has moved someplace else.
+HTTP response codes are three-digit status codes that are sent by a web server to "indicate the result of a client's request". These codes are a part of the HTTP protocol and provide information about the success, failure, or other conditions of the request-response cycle. Here are some common HTTP response codes and their meanings:
 
-Status codes are returned in the start line of each response message. Both a numeric and a human readable status are returned. The numeric code makes error processing easy for programs, while the reason phrase is easily understood by humans.
+200 OK: This status code indicates that the request was successful, and the server has returned the requested data in the response.
 
-The different status codes are grouped into classes by their three-digit numeric codes. Status codes between 200 and 299 represent success. Codes between 300 and 399 indicate that the resource has been moved. Codes between 400 and 499 mean that the client did something wrong in the request. Codes between 500 and 599 mean something went wrong on the server.
+201 Created: This code indicates that the request was successful, and a new resource has been created as a result. It is typically used in conjunction with POST requests.
 
-Overall range	Defined range	Category
-100-199	100-101	Informational
-200-299	200-206	Successful
-300-399	300-305	Redirection
-400-499	400-415	Client error
-500-599	500-505	Server error
-100-199: Informational Status Codes
+204 No Content: This code means the request was successful, but there is no data to return in the response (e.g., for a successful DELETE request).
 
-HTTP/1.1 introduced the informational status codes to the protocol. They are relatively new and subject to a bit of controversy about their complexity and perceived value.
+400 Bad Request: This code is sent when the server cannot process the request due to a client error, such as malformed syntax or invalid parameters.
 
-Status code	Reason phrase	Meaning
-100	Continue	Indicates that an initial part of the request was received and the client should continue. After sending this, the server must respond after receiving the request.
-101	Switching Protocols	Indicates that the server is changing protocols, as specified by the client, to one listed in the Upgrade header.
-200-299: Success Status Codes
-When clients make requests, the requests usually are successful. Servers have an array of status codes to indicate success, matched up with different types of requests.
+401 Unauthorized: This status code indicates that the client must authenticate itself to get the requested response. It is used when the user's credentials are missing or invalid.
 
-Status code	Reason phrase	Meaning
-200	OK	Request is okay, entity body contains requested resource.
-201	Created	For requests that create server objects (e.g., PUT). The entity body of the response should contain the various URLs for referencing the created resource, with the Location header containing the most specific reference. The server must have created the object prior to sending this status code.
-202	Accepted	The request was accepted, but the server has not yet performed any action with it. There are no guarantees that the server will complete the request; this just means that the request looked valid when accepted. The server should include an entity body with a description indicating the status of the request and possibly an estimate for when it will be completed (or a pointer to where this information can be obtained).
-203	Non-Authoritative Information	The information contained in the entity headers came not from the origin server but from a copy of the resource. This could happen if an intermediary had a copy of a resource but could not or did not validate the meta-information (headers) it sent about the resource. This response code is not required to be used; it is an option for applications that have a response that would be a 200 status if the entity headers had come from the origin server.
-204	No Content	The response message contains headers and a status line, but no entity body. Primarily used to update browsers without having them move to a new document (e.g., refreshing a form page).
-205	Reset Content	Another code primarily for browsers. Tells the browser to clear any HTML form elements on the current page.
-206	Partial Content	A partial or range request was successful. Later, we will see that clients can request part or a range of a document by using special headers – this status code indicates that the range request was successful. A 206 response must include a Content-Range, Date, and either ETag or Content-Location header.
-300-399: Redirection Status Codes
-The redirection status codes either tell clients to use alternate locations for the resources they’re interested in or provide an alternate response instead of the content. If a resource has moved, a redirection status code and an optional Location header can be sent to tell the client that the resource has moved and where it can now be found. This allows browsers to go to the new location transparently, without bothering their human users.
+403 Forbidden: This code means that the client does not have the necessary permissions to access the requested resource.
 
-Status code	Reason phrase	Meaning
-300	Multiple Choices	Returned when a client has requested a URL that actually refers to multiple resources, such as a server hosting an English and French version of an HTML document. This code is returned along with a list of options; the user can then select which one he wants.
-301	Moved Permanently	Used when the requested URL has been moved. The response should contain in the Location header the URL where the resource now resides.
-302	Found	Like the 301 status code; however, the client should use the URL given in the Location header to locate the resource temporarily. Future requests should use the old URL.
-303	See Other	Used to tell the client that the resource should be fetched using a different URL. This new URL is in the Location header of the response message. Its main purpose is to allow responses to POST requests to direct a client to a resource.
-304	Not Modified	Clients can make their requests conditional by the request headers they include. If a client makes a conditional request, such as a GET if the resource has not been changed recently, this code is used to indicate that the resource has not changed. Responses with this status code should not contain an entity body.
-305	Use Proxy	Used to indicate that the resource must be accessed through a proxy; the location of the proxy is given in the Location header. It’s important that clients interpret this response relative to a specific resource and do not assume that this proxy should be used for all requests or even all requests to the server holding the requested resource. This could lead to broken behavior if the proxy mistakenly interfered with a request, and it poses a security hole.
-306	(Unused)	Not currently used.
-307	Temporary Redirect	Like the 301 status code; however, the client should use the URL given in the Location header to locate the resource temporarily. Future requests should use the old URL.
-400-499: Client Error Status Codes
-Sometimes a client sends something that a server just can’t handle, such as a badly formed request message or, most often, a request for a URL that does not exist. We’ve all seen the infamous 404 Not Found error code while browsing  this is just the server telling us that we have requested a resource about which it knows nothing.
+404 Not Found: This status code is returned when the server cannot find the requested resource or endpoint.
 
-Many of the client errors are dealt with by your browser, without it ever bothering you. A few, like 404, might still pass through.
+500 Internal Server Error: This code indicates that an unexpected error occurred on the server while processing the request.
 
-Status code	Reason phrase	Meaning
--- 400	"Bad Request"	Used to tell the client that it has sent a malformed request.
+502 Bad Gateway: This status code is returned when the server acting as a gateway or proxy received an invalid response from the upstream server.
 
--- 401	"Unauthorized"	Returned along with appropriate headers that ask the client to authenticate itself before it can gain access to the resource.
+503 Service Unavailable: This code indicates that the server is currently unable to handle the request due to maintenance or overload. It is a temporary condition.
 
--- 402	"Payment Required"	Currently this status code is not used, but it has been set aside for future use.
--- 403	"Forbidden	Used" to indicate that the request was refused by the server. If the server wants to indicate why the request was denied, it can include an entity body describing the reason. However, this code usually is used when the server does not want to reveal the reason for the refusal.
--- 404	"Not Found"	Used to indicate that the server cannot find the requested URL. Often, an entity is included for the client application to display to the user.
-405"	Method Not Allowed"	Used when a request is made with a method that is not supported for the requested URL. The Allow header should be included in the response to tell the client what methods are allowed on the requested resource.
-406	Not Acceptable	Clients can specify parameters about what types of entities they are willing to accept. This code is used when the server has no resource matching the URL that is acceptable for the client. Often, servers include headers that allow the client to figure out why the request could not be satisfied.
-407	Proxy Authentication Required	Like the 401 status code, but used for proxy servers that require authentication for a resource.
-408	Request Timeout	If a client takes too long to complete its request, a server can send back this status code and close down the connection. The length of this timeout varies from server to server but generally is long enough to accommodate any legitimate request.
-409	Conflict	Used to indicate some conflict that the request may be causing on a resource. Servers might send this code when they fear that a request could cause a conflict. The response should contain a body describing the conflict.
-410	Gone	Similar to 404, except that the server once held the resource. Used mostly for web site maintenance, so a server’s administrator can notify clients when a resource has been removed.
-411	Length Required	Used when the server requires a Content-Length header in the request message.
-412	Precondition Failed	Used if a client makes a conditional request and one of the conditions fails. Conditional requests occur when a client includes an Expect header.
-413	Request Entity Too Large	Used when a client sends an entity body that is larger than the server can or wants to process.
-414	Request URI Too Long	Used when a client sends a request with a request URL that is larger than the server can or wants to process.
-415	Unsupported Media Type	Used when a client sends an entity of a content type that the server does not understand or support. 416 Requested Range Used when the request message requested a range of a given resource and Not Satisfiable that range either was invalid or could not be met.
-417	Expectation Failed	Used when the request contained an expectation in the Expect request header that the server could not satisfy. See Expect for more on the Expect header. A proxy or other intermediary application can send this response code if it has unambiguous evidence that the origin server will generate a failed expectation for the request.
+504 Gateway Timeout: This code is returned when the server acting as a gateway or proxy did not receive a timely response from the upstream server.
 
-500-599: "Server Error Status Codes"
-Sometimes a client sends a valid request, but the server itself has an error. This could be a client running into a limitation of the server or an error in one of the server’s subcomponents, such as a gateway resource. Proxies often run into problems when trying to talk to servers on a client’s behalf.
-Download the pdf Download Pdf Types Abbreviation Advertise
-Alaska Abbreviation Client Conditional Contained Could Happen
-
-Status code	Reason phrase	Meaning
-500	"Internal Server Error"	Used when the server encounters an error that prevents it from servicing the request.
-501	"Not Implemented"	Used when a client makes a request that is beyond the server’s capabilities (e.g., using a request method that the server does not support).
-502	"Bad Gatewa" Used when a server acting as a proxy or gateway encounters a bogus response from the next link in the request response chain (e.g., if it is unable to connect to its parent gateway). You can click here to fix 502 bad gateway errors with relative ease.
-503"	Service Unavailable"	Used to indicate that the server currently cannot service the request but will be able to in the future. If the server knows when the resource will become available, it can include a Retry-After header in the response.
-504	Gateway Timeout	Similar to status code 408, except that the response is coming from a gateway or proxy that has timed out waiting for a response to its request from another server.
-505	"HTTP Version Not Supported"	Used when a server receives a request in a version of the protocol that it can’t or won’t support. Some server applications elect not to support older versions of the protocol.
-
+These are just a few examples of HTTP response codes. There are many other status codes with specific meanings that are used for different scenarios. Each status code provides valuable information to both clients and developers, helping to troubleshoot and handle requests appropriately. When working with APIs or web services, it's essential to understand the meaning of various HTTP response codes to handle errors and responses effectively.
 -----------------------------------------------
 
 ## How to create a web server without express?**

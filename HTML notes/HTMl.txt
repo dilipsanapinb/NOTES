@@ -320,7 +320,7 @@ selector:pseudo-class{
 
 :last-child    
 
-:link           - select all unvsited links
+:link           - select all unvisited links
 
 :not(p)         - select every element which is not P
 
@@ -420,7 +420,7 @@ property:value;
     <html lang="en"></html>
 
  -> title attribute
-    - it give some extra info abt an element
+    -- it give some extra info abt an element
 
  => <p title="I am a tooltip"> This is a paragraph</p>
 
@@ -481,12 +481,12 @@ Understanding the stacking context and its rules is important for managing the v
 (1) <header> 
     => used to introductory and navigational information about a section of page.
     -> authors name
-    -> time and date of  publication
+    -> time and date of publication
     -> table of contents
     -> navigational information
 
         eg. 
-            
+
             <header>
               <h1>Website Title</h1>
               <nav>
@@ -499,7 +499,7 @@ Understanding the stacking context and its rules is important for managing the v
             </header>
   
   (2) <article>
-      => is ment to house a self-contained composition the can logically be independently recreated out of the pagewithout loosing its mening.
+      => is ment to house a self-contained composition the can logically be independently recreated out of the pagewithout loosing its meaning.
       =>Examples ;
         -> individual blog post or news stories.
 
@@ -542,9 +542,9 @@ Here are some examples of semantic tags:
 
 Using semantic tags can make your HTML code more readable and understandable, both for human developers and for automated tools like search engines and screen readers. It can also help you structure your content more effectively, making it easier to maintain and update over time.
 
-    (1) Semantics: allowing you to describe more precisely what your content is.
-    (2) Connectivity: allowing you to communicate with the server in new and innovative ways.
-    (3) Offline and storage: allowing web pages to store data on the client-side locally and operate offline more efficiently.
+    (1) "Semantics": allowing you to describe more precisely what your content is.
+    (2) "Connectivity": allowing you to communicate with the server in new and innovative ways.
+    (3) "Offline and storage": allowing web pages to store data on the client-side locally and operate offline more efficiently.
     (4) Multimedia: making video and audio first-class citizens in the Open Web.
     (5) 2D/3D graphics and effects: allowing a much more diverse range of presentation options.
     (6) Performance and integration: providing greater speed optimization and better usage of computer hardware.
@@ -793,7 +793,7 @@ The HTML <main> element represents the "dominant content of the of a document". 
     <p>Many species of gecko have adhesive toe pads which enable them to climb walls and even windows.</p>
 </main>
 
-Note: A document mustn't have more than one <main> element that doesn't have the hidden attribute specified.
+Note: A document must not have more than one <main> element that doesn't have the hidden attribute specified.
 
 ----------------------------------------------
 

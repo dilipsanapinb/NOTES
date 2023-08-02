@@ -1953,6 +1953,9 @@ inputField.addEventListener("input", event => {
   // This event handler will be called only after 300ms of inactivity
   debouncedSearch(event.target.value);
 });
+
+
+
 Throttle:
 
 Definition: Throttling is a technique where a function is executed at a fixed interval, ensuring it's not called more than once within that interval.
@@ -1996,10 +1999,9 @@ The choice between debounce and throttle depends on the specific use case and de
 
 ## How to re-render the view when browser is resized? show it in code.
 
-o re-render the view when the browser is resized, you can use the resize event and listen for changes in the window size. When the resize event is triggered, you can update the view or perform any actions you want. Here's how you can achieve this using JavaScript:
+To re-render the view when the browser is resized, you can use the resize event and listen for changes in the window size. When the resize event is triggered, you can update the view or perform any actions you want. Here's how you can achieve this using JavaScript:
 
-html
-Copy code
+
 <!DOCTYPE html>
 <html>
 <head>
