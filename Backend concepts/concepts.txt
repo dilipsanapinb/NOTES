@@ -509,6 +509,8 @@ As methods tell the server what to do, "status codes tell the client what happen
 
 HTTP response codes are three-digit status codes that are sent by a web server to "indicate the result of a client's request". These codes are a part of the HTTP protocol and provide information about the success, failure, or other conditions of the request-response cycle. Here are some common HTTP response codes and their meanings:
 
+100 for informational purpose.
+
 200 OK: This status code indicates that the request was successful, and the server has returned the requested data in the response.
 
 201 Created: This code indicates that the request was successful, and a new resource has been created as a result. It is typically used in conjunction with POST requests.
@@ -572,7 +574,11 @@ req.end();
 
 ## What are clusters?
 
--- When you run a Node.js program on a system with multiple CPUs, it creates a process that uses only a single CPU to execute by default. Since Node.js uses a single thread to execute your JavaScript code, all the requests to the application have to be handled by that thread running on a single CPU. If the application has CPU-intensive tasks, the operating system has to schedule them to share a single CPU until completion. That can result in a single process getting overwhelmed if it receives too many requests, which can slow down the performance. If the process crashes, users won't be able to access your application.
+-- When you run a Node.js program on a system with multiple CPUs, it creates a process that uses only a single CPU to execute by default. 
+Since Node.js uses a single thread to execute your JavaScript code, all the requests to the application have to be handled by that thread running on a single CPU.
+If the application has CPU-intensive tasks, the operating system has to schedule them to share a single CPU until completion. 
+That can result in a single process getting overwhelmed if it receives too many requests, which can slow down the performance. 
+If the process crashes, users won't be able to access your application.
 
 -> As a solution, Node.js introduced the cluster module, "which creates multiple copies of the same application on the same machine and has them running at the same time". It "also comes with a load balancer that evenly distributes the load among the processes using the round-robin algorithm". 
 
@@ -619,10 +625,10 @@ req.end();
 The event loop in Node.js enables asynchronous programming, which allows developers to write scalable and efficient applications that can handle a large number of I/O operations without blocking the main thread. By leveraging the event loop, Node.js applications can be built to handle high traffic, real-time applications such as web servers, chat applications, and APIs.
 
 
-=> The event loop has four different phases:
+=> The event loop has four different phases(timers,i/o callback,idle/prepare,poll):
 
 (1)Timers:->
-  its responsoble for the executing the callbacks registered by the setTimeout() and sendInterval() functions.
+  its responsible for the executing the callbacks registered by the setTimeout() and setInterval() functions.
   When the timer expires, the callback is added to the next phase of event loop.
 
 (2)I/O callback:->
@@ -679,14 +685,14 @@ function doSomething() {
 setInterval(doSomething, 5000);
 
 (3)setImmediate():->
-This function is used to execute a piece of code immediately after the current event loop has finished.
+This function is used to execute a piece of code immediately "after the current event loop has finished".
 eg.
 setImmediate(() => {
   // run something
 });
 
 (4)process.nextTick():->
-This function is used to defer the execution of a piece of code until the next pass of the event loop.
+This function is used to "defer the execution of a piece of code until the next pass of the event loop".
 eg.
 function doSomething() {
   console.log('Doing something...');
@@ -746,7 +752,9 @@ It different from es modules :->
 
 -> The crypto module in Node.js is a set of cryptographic functionality for secure communication and data encryption. It provides a way to perform cryptographic operations such as hashing, encryption, and decryption using a variety of algorithms.
 -> crypto allows you to hash plain texts before storing them in the database
+
 -> Work in Node js => What does the crypto module do?
+
   The crypto module in Node.js provides functionalities such as encrypting, decrypting, and hashing any type of data in a Node. js application.
 -- Use -> The crypto module provides a way of handling encrypted data.
 -> eg.
