@@ -750,29 +750,11 @@ It different from es modules :->
 
 ### How does the crypto module work?
 
--> The crypto module in Node.js is a set of cryptographic functionality for secure communication and data encryption. It provides a way to perform cryptographic operations such as hashing, encryption, and decryption using a variety of algorithms.
--> crypto allows you to hash plain texts before storing them in the database
-
--> Work in Node js => What does the crypto module do?
-
-  The crypto module in Node.js provides functionalities such as encrypting, decrypting, and hashing any type of data in a Node. js application.
--- Use -> The crypto module provides a way of handling encrypted data.
--> eg.
-      
-      const crypto = require('crypto');
-
--> we can generate a cryptographic hash of a string using the createHash() function:
-const hash = crypto.createHash('sha256').update('my string').digest('hex');
-
--> to decrypt the data, we can use the createDecipher() function:
-
-      const decipher = crypto.createDecipher('aes192', 'my secret key');
-
+# crypto module is deprecated
 
 -------------------------------------------------------------------
 
 # What are web sockets?
-
 
 -> WebSocket is bidirectional, a full-duplex protocol that is used in the same scenario of client-server communication, unlike HTTP ......
 -> It provies  real-time, two-way communication channels between a client (such as a web browser) and a server over a single TCP connection.
@@ -840,7 +822,7 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
 ## Creating a CLI based app using Node.js and publish it
 
- => Steps need to follow to create the Command Line Intrface app :
+=> Steps need to follow to create the Command Line Intrface app :
 
       (1) create a new directory and initializes the app with npm
 
@@ -897,8 +879,8 @@ const hash = crypto.createHash('sha256').update('my string').digest('hex');
 
 ## What are routes?
 
- => routes define how the server will handle incoming requests based on the URL path and HTTP method.
- => Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method GET, POST,DELETE and PATCH .
+=> routes define how the server will handle incoming requests based on the URL path and HTTP method.
+=> Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URL (or path) and a specific HTTP request method GET, POST,DELETE and PATCH .
 
 -> Routing allows targeting different routes or different URLs on our page.
 -> Node.js has several popular frameworks such as Express.js that provide a simple and elegant way of defining and handling routes. Express.js allows you to define routes using its built-in routing system, which provides a clean API for defining and handling HTTP requests.
@@ -1089,6 +1071,8 @@ EJS is one of the template engines used with Node JS to generate HTML markups wi
 
 
     full code snippet;
+
+        // npm i express-session
         
           const session = require('express-session');
 
