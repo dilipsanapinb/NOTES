@@ -1406,14 +1406,14 @@ Both clients and servers can include multiple headers in their respective reques
 
     -- SQL Database are relational databases that store data in tables with predefined schema.
     -- They use structured query language (SQL) to manage and manipulate data.
-    -- SQL databases are known for their ability to handle complex queries, transactions, and relationships between tables.
-    -- They are often used for applications that require a high degree of data consistency, such as financial systems or inventory management systems.
+    -- SQL databases are known for their ability to handle "complex queries", "transactions", and "relationships between tables".
+    -- They are often used for applications that require a "high degree of data consistency", such as financial systems or inventory management systems.
     -- SQL databases typically have vertical scalability, which means they can handle increasing amounts of data by adding more hardware resources (e.g., RAM, CPU, disk space). 
     -- SQL databases are typically ACID (Availability, Consistency, Isolation and Durability)-compliant, which means they provide a high level of data consistency and reliability
 
   (2) NoSQL databases:
 
-    -- NoSQL databasesare non-relational databases that do not use a fixed schema to store data.
+    -- NoSQL databasesare non-relational databases that do "not use a fixed schema to store data".
     -- They are designed to be highly scalable and flexible, making them useful for applications that require large amounts of unstructured or semi-structured data, such as social media platforms or e-commerce sites.
     -- NoSQL databases typically have their own query language, which is optimized for the specific data model they use.
     -- NoSQL databases can handle different types of data models, such as key-value, document-based, or graph-based, and are often used for distributed systems or cloud-based applications.
@@ -1513,18 +1513,20 @@ db.orders.aggregate([
 ### Q. What is CAP theorem? ***
 
 -- CAP theorem is a fundamental concept in distributed database systems.
--- It is also known as Brewer's theorem.
+-- It is also known as "Brewer's theorem."
 -- CAP stands for Consistency, Availability, and Partition Tolerance.
 
-(1) Consistency: Every read receives the most recent write or an error.
+(1) Consistency: "Every read receives the most recent write or an error".
     --  when a write operation occurs, all subsequent read operations should return the most recent write value. Achieving consistency ensures that all clients see a single, up-to-date version of the data
 
-(2) Availability: Every request receives a response, without guarantee that it contains the most recent version of the information.
+(2) Availability: "Every request receives a response, without guarantee that it contains the most recent version" of the information.
     --  the system remains operational and responsive even in the presence of failures. High availability ensures that the system is accessible to users at all times.
 
-(3) Partition tolerance: The system continues to function even when network partitions occur.
-    --  the system remains operational and responsive even in the presence of failures. High availability ensures that the system is accessible to users at all times.
-    -- Partitioning refers to the concept of splitting a distributed system into multiple parts that can operate independently. Partition tolerance ensures that the system can handle network partitions without complete failure.
+(3) Partition tolerance: "The system continues to function even when network partitions occur".
+    --  "the system remains operational and responsive even in the presence of failures".
+    -- High availability ensures that the system is accessible to users at all times.
+    -- Partitioning refers to the concept of "splitting a distributed system into multiple parts" that can operate independently.
+    -- Partition tolerance ensures that the "system can handle network partitions without complete failure".
 
 -- According to the CAP theorem, it is impossible to achieve all three guarantees simultaneously in a distributed database system.
 -- In a Node.js backend application, the CAP theorem impacts the design and behavior of the database system.
@@ -1532,7 +1534,7 @@ db.orders.aggregate([
   -- This means that if a system provides consistency and availability, it will not be able to tolerate network partitions.
   -- If it provides availability and partition tolerance, it will sacrifice consistency, and
   -- If it provides consistency and partition tolerance, it will sacrifice availability.
--- You may need to prioritize and make trade-offs between consistency, availability, and partition tolerance based on your application requirements.
+-- WE may need to prioritize and make trade-offs between consistency, availability, and partition tolerance based on your application requirements.
 
 *** In the context of Node.js, let's consider an example using a "distributed database system":
 
@@ -1548,9 +1550,10 @@ Node.js itself doesn't enforce a specific choice regarding consistency, availabi
 
 ### Q. What is indexing ?
 
--- Indexing in a database is the process of creating a data structure that allows for faster retrieval of data from a table.
---  An index is a data structure that is created on one or more columns of a table, which enables the database management system to quickly find and retrieve rows that match a specific search condition.
--- Indexes are special data structures that store a small portion of the collection's data set in an easy to traverse form. The index stores the value of a specific field or set of fields, ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations. In addition, MongoDB can return sorted results by using the ordering in the index.
+-- Indexing in a database is the "process of creating a data structure that allows for faster retrieval of data from a table".
+--  An "index is a data structure that is created on one or more columns of a table", which enables the database management system to quickly find and retrieve rows that match a specific search condition.
+-- Indexes are special data structures that "store a small portion of the collection's data set in an easy to traverse form". The "index stores the value of a specific field or set of fields", ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations.
+ In addition, MongoDB can return sorted results by using the ordering in the index.
 
 
 --  Two main types of indexing methods are ;
@@ -1568,12 +1571,12 @@ Node.js itself doesn't enforce a specific choice regarding consistency, availabi
 
 -- Clustering index is defined as an order data file.
 -- Multilevel Indexing is created when a primary index does not fit in memory.
--- The biggest benefit of Indexing is that it helps you to reduce the total number of I/O operations needed to retrieve that data.
+-- "The biggest benefit of Indexing is that it helps you to reduce the total number of I/O operations needed to retrieve that data".
 -- The biggest drawback to performing the indexing database management system, "you need a primary key" on the table with a unique value.
 
 -- Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
 
--- MongoDB has default indexing.
+-- "MongoDB has default indexing".
 -- In a MongoDB we can create index like db.collection.createIndex(key and index specification);
 
 (A) Single indexing,
@@ -1605,27 +1608,30 @@ We can use the explain() method to get insights into how MongoDB executes a quer
 db.users.explain().find({ email: "example@example.com" });
 
 
-This will return detailed information about the query execution, including the chosen index and its efficiency.
+This will return "detailed information about the query execution, including the chosen index and its efficiency".
 
 -
 -- You can view index names using the
 
       db.collection.getIndexes();
 
--- You cannot rename an index once created. Instead, you must drop and re-create the index with a new name.
+-- You "cannot rename an index" once created. Instead, you must drop and re-create the index with a new name.
 
       db.users.dropIndex({ email: 1 })
 ---------------------------------------------
 
 ### Q.  What is DB replication ?
 
--- "Database replication" is the process of copying data from one database server to another, or to multiple servers, in order to maintain a redundant and distributed database system.
--- Replication can provide several benefits, such as improved availability, scalability, and reliability, as well as better disaster recovery and backup options.
--- In a replicated database system, changes made to the data on one server are automatically propagated to the other servers, ensuring that all servers have consistent and up-to-date data.
+-- "Database replication" is the process of "copying data from one database server to another", or to multiple servers, in order to maintain a" redundant and distributed database" system.
+-- helps:- improved availability, scalability, and reliability, as well as "better disaster recovery" and backup options.
+-- In a replicated changes made to the data on one server are automatically propagated to the other servers, to maintain consistency.
 -- Replication can be performed at different levels, such as at the transaction level, statement level, or even the data block level, depending on the specific database management system being used.
--- There are several different replication topologies that can be used, such as master-slave replication, master-master replication, and multi-master replication.
+-- different replication topologies that can be used such as , 
+      -- master-slave replication, 
+      -- master-master replication, 
+      -- and multi-master replication.
 -- Each topology has its own advantages and trade-offs, and the choice of topology depends on the specific requirements of the application and the database system.
--- Database replication can be implemented in different ways, such as using built-in replication features provided by the database management system, or using third-party tools and services.
+--  different ways, such as using built-in replication features provided by the database management system, or using third-party tools and services.
 -- Some popular database management systems that support replication include MySQL, PostgreSQL, Oracle, and SQL Server.
 
 Overall, database replication is an important technique for building scalable and reliable database systems, and it is commonly used in modern web applications, e-commerce sites, and other large-scale systems that require high availability and performance.
@@ -1697,8 +1703,8 @@ Denormalization:
 
         # Reason for the above Use case :
 
-         -- Simply, because the new updated value of the Post “Like” counter needs some time to move from Japan to America and update server nodes running there. Though the value of the counter at that point in time was 101, the user in America sees old inconsistent values. 
-         -- But when he refreshes his web page after a few seconds “Like” counter value shows as 101. So, data was initially inconsistent but eventually got consistent across server nodes deployed around the world. This is what eventual consistency is.
+        -- Simply, because the new updated value of the Post “Like” counter needs some time to move from Japan to America and update server nodes running there. Though the value of the counter at that point in time was 101, the user in America sees old inconsistent values. 
+        -- But when he refreshes his web page after a few seconds “Like” counter value shows as 101. So, data was initially inconsistent but eventually got consistent across server nodes deployed around the world. This is what eventual consistency is.
 
 
 -----------------------------------------------------------
@@ -1751,7 +1757,7 @@ Denormalization:
 
 ##  Explain why mongoose does not return a promise but has a .then 
 
-   => The Mongoose does not return a promise direcly because it was designed to support both the call-back base and promise bases API's. Insted of returning a promise, Mongoose provide a ".then()" methode on queries that allows us to chain promise based operations.
+  => The Mongoose does not return a promise direcly because it was "designed to support both the call-back base and promise bases API's". Insted of returning a promise, Mongoose provide a ".then()" methode on queries that allows us to chain promise based operations.
     -> Mongoose queries are executed asynchronously and return a query object that implements the Promise API. The `.then()` method on Query object allows you to chain additional asynchronous operations that will be executed when the query is complete. This is similar to how promise work, where you can chain additional operations using `.then()`.
     -> Mongoose also suppports callback-bases API's, which means we can pass callback function to a query insted using a promise.
     ->".then()" is provided to developers convinience who prefer to use promises, but Mongoose queries can be used with callback as well.
@@ -1838,7 +1844,8 @@ Denormalization:
 
 ## I'm using an arrow function for a virtual, middleware, getter/setter, or method and the value of this is wrong. Why? 
 
-=> Arrow functions in JS are lexically scopped, which means they don't have their own 'this' context like traditional function expressions. Insted, 'this' in  a arrow function is determined by the surrounding lexical scope, which can lead to unexpected behavior when used in certained contexts.
+=> Arrow functions in JS are lexically scopped, which means they "don't have their own 'this' scope" like traditional function expressions.
+-- Insted, 'this' in  a arrow function is determined by the surrounding lexical scope, which can lead to unexpected behavior when used in certained contexts.
 => In the case of virtual, middleware, getter/setters and methods in Mongoose, the value of `this` is important because it refers to the document being operated on. If we use an arrow function for one of these purposes, 'this' will refer to surrounding lexical scope , which is undefined in document.
   =>Example:
         const mongoose = require('mongoose');
@@ -1927,8 +1934,8 @@ Denormalization:
 
 ## What are pre and post hooks? 
 
--> Pre and post also known as middlewares are the functions which are passes control during execution of asynchronous functions. 
--> middleware is specified on the schema level and is usefull for writin plugins.
+-> Pre and post also known as" middlewares" are the functions which are passes control during execution of asynchronous functions. 
+->" middleware is specified on the schema level" and is usefull for writin plugins.
 -> Pre and post are functions that are executed before or after a certain action that we specify.
   -eg. We want run a function everytime before we save a document in the DB, we use pre-hook and if we want something to be executed after that we use post hooks.
 -> These hooks allow us to add custom logic to a Mongoose schema, such as validating data before it saved to database or updating related document when a document is deleted.
@@ -1995,8 +2002,8 @@ Denormalization:
   =>Authorization is the process of granting or denying access to specific resources or actions to specific users or groups of users.
   -> It is a critical component of security in any application or system that requires access control.
   -> It is most usefull at "Roll Based Access Control". 
-  -> Authentication generally involves granting or denying access to specific route or pages based on user's role or permissins.
-      eg. an e-commerce application allow only authenticated person to checkout page or an HR management sysyem might allow HR administrator to view or modify employees records.
+  -> Authentication generally involves granting or denying access to specific route or pages based on user's role or permissions.
+      eg. an e-commerce application allow only authenticated person to checkout page or an HR management system might allow HR administrator to view or modify employees records.
   -> Authorization is ussually implemented by checking the user's credentials against a set of predefined rules or policies that specify what resources or actions they are alloiwed to access.
 
   => In many cases, authorization is implemented in conjunction with authentication, which is the process of verifying a user's identity. Together, these two processes provide a secure and reliable mechanism for controlling access to sensitive resources and data in a system.
@@ -2057,9 +2064,21 @@ Denormalization:
 
         When a user creates an account on a  website, their password is often hashed using a hash function before being stored in a database. When the user logs in, the password they enter is hashed and compared to the stored hash value to verify their identity. If the hash values match, the user is granted access.
 
+        const bcrypt=require('bcrypt');
+        async function createHash(name,email,password){
+
+          bcrypt.hash(password,5,(err,hash)=>{
+            const user=new User({name,email,password:hash});
+            await user.save();
+
+          })
+          
+        }
+        createHash('Dilip','dilip@gmail.com','dilip123')
+
     (2) Data Retrieval:
 
-        Hashing can also be used for efficient data retrieval in large databases. A hash table is a data structure that uses a hash function to map keys to indices in an array. This allows for quick access to data based on its key value.
+        Hashing can also be used for "efficient data retrieval in large databases". A hash table is a data structure that uses a hash function to map keys to indices in an array. This allows for quick access to data based on its key value.
 
     (3) Digital Signatures:
 
@@ -2081,7 +2100,7 @@ Denormalization:
 
       (1)Symmetric Encryption:
 
-          -> In symmetric encryption, the same key is used for both encryption and decryption.
+          -> In symmetric encryption, the "same key is used for both encryption and decryption".
           -> The sender and the receiver must both possess the same secret key to be able to decrypt the ciphertext. 
           ->Examples of symmetric encryption algorithms include AES (Advanced Encryption Standard), DES (Data Encryption Standard), and 3DES (Triple Data Encryption Standard).
 
@@ -2101,7 +2120,7 @@ Denormalization:
 
     => Currently, AES is one of the best encryption protocols available, as it flawlessly combines speed and security, letting us enjoy our daily online activities without any disruption.
 
-    =>  AES is a symmetric type of encryption, as it uses the same key to both encrypt and decrypt data.
+    =>  "AES is a symmetric type of encryption", as it uses the same key to both encrypt and decrypt data.
 
     => It also uses the SPN (substitution permutation network) algorithm, applying multiple rounds to encrypt data. These encryption rounds are the reason behind the impenetrability of AES, as there are far too many rounds to break through.
 
@@ -2180,15 +2199,15 @@ Denormalization:
     -> This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
     => JSON Web Tokens can be used in,
 
-     -> Authorization: 
+    -> Authorization: 
         -- This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
         -- Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
 
-     -> Information Exchange:
+    -> Information Exchange:
         -- JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. 
         -- Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
-     => JSON Web Tokens consist of three parts separated by dots (.), which are:
+    => JSON Web Tokens consist of three parts separated by dots (.), which are:
 
         (1) Header:
             -> The header typically consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC, SHA256 or RSA.

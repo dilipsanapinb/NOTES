@@ -1,0 +1,45 @@
+
+
+db.users.createIndex({email:1, phoneNumber:1})
+
+# explain
+db.users.explain().find({email:'dilipsanap@gmai.com'})
+
+# get index names
+db.collection.getIndexes();
+
+# drop the index
+db.collection.dropIndex({email:1})
+
+# create Index in mongoose
+
+const mongoose=require('mongoose');
+const userSchema=mongoose.Schema({
+    name:String,
+    email:String,
+    password:String
+});
+
+mongoose.index({email:1});
+
+const User=mongoose.model('user',userSchema);
+
+module.exports=User;
+
+# authorization
+
+const authorization=(roles_array)=>{
+    return (req,res,next)=>{
+        const user_role=req.body.userRole;
+        if(roles_array.includes(user_role)){
+            next
+        }else{
+            return res.status(401).send("Unauthorized for this action")
+        }
+    }
+}
+
+module.exports=authorization;
+
+
+
